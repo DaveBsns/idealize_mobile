@@ -1,0 +1,79 @@
+import 'package:http_parser/http_parser.dart' as http_parser;
+import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
+import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
+import 'package:idealize_new_version/Core/Data/Services/tags_service.dart';
+import 'package:idealize_new_version/Core/Data/Services/upload_service.dart';
+import 'package:idealize_new_version/Features/authentication/data/remote/authentication_service.dart';
+
+import '../../domain/register_repo.dart';
+
+class RegisterRepositoryImpl implements RegisterRepository {
+  @override
+  Future<Map<String, dynamic>?> createUser({
+    required String firstname,
+    required String surname,
+    required String email,
+    required String password,
+  }) async {
+    return await AuthenticationService().createUser(
+      firstname: firstname,
+      surname: surname,
+      email: email,
+      password: password,
+    );
+  }
+
+  @override
+  Future<List<Tag>> fetchAllTags() async {
+    return await TagService().fetchAllTags();
+  }
+
+  @override
+  Future<Map<String, dynamic>?> resendCode({
+    required String email,
+  }) async {
+    return await AuthenticationService().resendCode(
+      email: email,
+    );
+  }
+
+  @override
+  Future<Map<String, dynamic>?> updateUser({
+    String? firstname,
+    String? surname,
+    String? username,
+    String? profilePicture,
+    List<String> interstedTags = const [],
+    List<String> interstedCourses = const [],
+    List<String> studyPrograms = const [],
+  }) async {
+    return await AuthenticationService().updateUser(
+      firstname: firstname,
+      surname: surname,
+      username: username,
+      profilePicture: profilePicture,
+      interstedTags: interstedTags,
+      interstedCourses: interstedCourses,
+      studyPrograms: studyPrograms,
+    );
+  }
+
+  @override
+  Future<ProjectFile?> uploadFile(
+    String path,
+    http_parser.MediaType mediaType,
+  ) async {
+    return await UploadService().uploadFile(path: path, mediaType: mediaType);
+  }
+
+  @override
+  Future<Map<String, dynamic>?> verifyAccount({
+    required String email,
+    required String code,
+  }) async {
+    return await AuthenticationService().verify(
+      code: code,
+      email: email,
+    );
+  }
+}

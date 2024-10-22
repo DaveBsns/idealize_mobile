@@ -1,0 +1,139 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:idealize_new_version/app_repo.dart';
+import '../../../../Core/Components/otp_bottom_sheet.dart';
+import '../../../../Core/Constants/config.dart';
+import '../../domain/reset_password_repository.dart';
+
+class ResetPasswordController extends GetxController {
+  late ResetPasswordRepository repo;
+
+  String code = '';
+  String email = '';
+
+  RxBool isPassword = RxBool(true);
+  RxBool loading = RxBool(false);
+
+  ResetPasswordController({
+    required this.repo,
+  });
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController rePasswordController = TextEditingController();
+
+  void resetPasswordRequest() async {
+    loading.value = false;
+
+    if (emailController.text.isNotEmpty && emailController.text.isEmail) {
+      AppRepo().showLoading();
+      final result = await repo.resetPasswordRequest(emailController.text);
+      AppRepo().hideLoading();
+      if (result != null) {
+        Get.back();
+        await Future.delayed(const Duration(seconds: 1));
+        showCodeBottomsheet();
+      }
+    } else {
+      AppRepo().hideLoading();
+      AppRepo().showSnackbar(
+          label: 'Error',
+          text: 'Please enter a valid email',
+          position: SnackPosition.TOP);
+    }
+  }
+
+  Future<void> showCodeBottomsheet() async {
+    Get.bottomSheet(
+      OtpBottomSheet(
+        onCodeSubmitted: (newCode) async {
+          code = newCode;
+          email = emailController.text;
+          Get.back();
+          Get.toNamed(AppConfig().routes.resetPassword);
+        },
+        onTappedResendCode: () async {
+          resetPasswordRequest();
+        },
+        onTappedEditInformation: () {
+          Get.back();
+        },
+      ),
+      isScrollControlled: true,
+      isDismissible: false,
+      enableDrag: false,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+    );
+  }
+
+  void reset() async {
+    if (email.isEmpty || !email.isEmail) {
+      AppRepo().showSnackbar(
+        label: 'Error',
+        text: 'Please enter a valid email',
+        position: SnackPosition.TOP,
+      );
+      return;
+    }
+
+    if (code.isEmpty ||
+        passwordController.text.isEmpty ||
+        rePasswordController.text.isEmpty) {
+      AppRepo().showSnackbar(
+        label: 'Error',
+        text: 'Please enter code and password',
+        position: SnackPosition.TOP,
+      );
+      return;
+    }
+
+    if (passwordController.text != rePasswordController.text) {
+      AppRepo().showSnackbar(
+        label: 'Error',
+        text: 'Passwords do not match',
+        position: SnackPosition.TOP,
+      );
+      return;
+    }
+
+    try {
+      AppRepo().showLoading();
+      final response = await repo.resetPasswordVerify(
+        emailController.text,
+        code,
+        passwordController.text,
+      );
+      AppRepo().hideLoading();
+
+      if (response != null) {
+        AppRepo().showSnackbar(
+          label: 'Success',
+          text:
+              'Your password has been reset, you will redirect to auth page in 3 seconds.',
+          position: SnackPosition.TOP,
+        );
+        await Future.delayed(const Duration(seconds: 3));
+        Get.offAllNamed(AppConfig().routes.splash);
+      }
+    } on HttpException catch (exception) {
+      AppRepo().showSnackbar(
+        label: 'Error',
+        text: exception.message,
+        position: SnackPosition.TOP,
+      );
+      AppRepo().hideLoading();
+    } catch (er) {
+      AppRepo().showSnackbar(
+        label: 'Error',
+        text: er.toString(),
+        position: SnackPosition.TOP,
+      );
+      AppRepo().hideLoading();
+    }
+  }
+}
