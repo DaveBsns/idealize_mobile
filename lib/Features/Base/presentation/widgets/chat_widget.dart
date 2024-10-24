@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Features/Base/domain/entity/chat_entity.dart';
 import 'package:idealize_new_version/gen/assets.gen.dart';
 
@@ -117,9 +118,12 @@ class ChatWidget extends StatelessWidget {
                           bottomLeft: Radius.circular(35),
                         )),
                     padding: const EdgeInsets.all(10).copyWith(right: 35),
-                    child: Text(
-                      chatEntity.text,
-                    ),
+                    child: (chatEntity.projects.isEmpty &&
+                            chatEntity.users.isEmpty)
+                        ? Text(
+                            chatEntity.text,
+                          )
+                        : showUsersOrProjects(chatEntity),
                   ),
                 ),
               ],
@@ -128,5 +132,81 @@ class ChatWidget extends StatelessWidget {
 
     return Padding(
         padding: EdgeInsets.only(top: isFirst ? 0 : 15), child: chat);
+  }
+
+  Widget showUsersOrProjects(ChatEntity chatEntity) {
+    if (chatEntity.projects.isNotEmpty) {
+      return Column(
+        children: [
+          ...chatEntity.projects.map(
+            (e) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutes().projectDetails,
+                      arguments: e['_id'],
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Title : ${e['title']}',
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.underline,
+                            fontSize: 13,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: Icon(Icons.chevron_right),
+                      ),
+                    ],
+                  ),
+                ),
+                const Divider(
+                  thickness: 0.5,
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    } else {
+      return Column(
+        children: [
+          ...chatEntity.users.map(
+            (e) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    '${e['firstName']} ${e['lastName']}',
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const Divider(
+                  thickness: 0.5,
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    }
   }
 }

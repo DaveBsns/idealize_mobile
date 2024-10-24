@@ -4,6 +4,7 @@ import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Features/Base/base_model.dart';
 import 'package:idealize_new_version/Features/Base/domain/entity/chat_entity.dart';
+import 'package:idealize_new_version/app_repo.dart';
 
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:socket_io_client/socket_io_client.dart';
@@ -65,6 +66,8 @@ class BaseViewModel extends GetxController {
               .setTransports(["websocket"])
               .disableAutoConnect()
               .enableForceNew()
+              .setExtraHeaders(
+                  {'authorization': 'Bearer ${AppRepo().jwtToken}'})
               .build());
 
       socket?.on("unauthorized", (data) {
@@ -72,14 +75,24 @@ class BaseViewModel extends GetxController {
       });
 
       socket?.on("error", (data) {
-        print('error: $data');
+        // print('error: $data');
         chats.add(ChatEntity(text: data, isMe: false));
         aiIsResponding.value = false;
       });
 
       socket?.on("receiveMessage", (data) {
-        print('receiveMessage: $data["message"]');
-        chats.add(ChatEntity(text: data['message'], isMe: false));
+        // print('receiveMessage: $data["message"]');
+        chats.add(ChatEntity(text: data['message']['message'], isMe: false));
+        if (data['message']['projects'] != null &&
+            data['message']['projects'].isNotEmpty) {
+          chats.add(ChatEntity(
+              text: '', projects: data['message']['projects'], isMe: false));
+        }
+        // if (data['message']['users'] != null &&
+        //     data['message']['users'].isNotEmpty) {
+        //   chats.add(ChatEntity(
+        //       text: '', users: data['message']['users'], isMe: false));
+        // }
         aiIsResponding.value = false;
 
         scrollCtrl.animateTo(scrollCtrl.position.maxScrollExtent + 100,

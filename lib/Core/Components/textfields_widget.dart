@@ -150,7 +150,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       validator: widget.validator,
       style: textTheme.bodyMedium,
       minLines: widget.minLines,
-      maxLines: widget.maxLines,
+      maxLines: widget.isPassword ? 1 : widget.maxLines,
       textInputAction: widget.textInputAction,
       onEditingComplete: () => widget.onEditingComplete?.call(),
     );

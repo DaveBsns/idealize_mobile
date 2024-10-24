@@ -2,10 +2,20 @@
   <a href="https://www.hs-heilbronn.de/de/induko" target="blank"><img src="induko_image.png" width="600" alt="Induko Logo" /></a>
 </p>
 
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-# IdeaLize (Idea + reaLize): "Let ideas get realized!"
+  <p align="center">
+  Heilbronn University is researching advanced technical tools and didactic approaches designed to foster collaboration and interaction. The primary goal is to enhance and facilitate interdisciplinary, inter-faculty, and inter-university cooperation. Through the InduKo research project, we aim to strengthen this collaboration using innovative digital tools and modern, digitally supported strategies that boost motivation and foster innovation through partnership.
+A key aspect of this effort is involving students directly in the development process. The <a href="https://www.hs-heilbronn.de/en/idealize-12f73ca0754864df" target="_blank">IdeaLize</a> platform, a sub-project within InduKo, is designed to showcase HHN's ideas and projects, helping to identify collaboration opportunities, share expertise, and encourage new perspectives. Students, professors, lecturers, and staff are invited to post projects, engage in discussions, and collaborate or offer support, fostering a community of shared knowledge.
+This platform facilitates sustainable project management and transparent knowledge transfer, providing a comprehensive portfolio of HHN initiatives. It inspires joint projects, potential start-ups, and a broad spectrum of exchanges across locations and faculties, empowering both students and faculty to connect and innovate together.  <a href="https://www.hs-heilbronn.de/en/projekt-induko-2cab68e84c21b797" target="_blank">InduKo</a> Project was funded by  <a href="https://stiftung-hochschullehre.de/en/" target="_blank">Stiftung Innovation in der Hochschullehre</a> (August 2021 - July 2024). 
 
-Heilbronn University is researching advanced technical tools and didactic approaches designed to foster collaboration and interaction. The primary goal is to enhance and facilitate interdisciplinary, inter-faculty, and inter-university cooperation. Through the InduKo research project, we aim to strengthen this collaboration using innovative digital tools and modern, digitally supported strategies that boost motivation and foster innovation through partnership. A key aspect of this effort is involving students directly in the development process. The IdeaLize platform, a sub-project within InduKo, is designed to showcase HHN's ideas and projects, helping to identify collaboration opportunities, share expertise, and encourage new perspectives. Students, professors, lecturers, and staff are invited to post projects, engage in discussions, and collaborate or offer support, fostering a community of shared knowledge. This platform facilitates sustainable project management and transparent knowledge transfer, providing a comprehensive portfolio of HHN initiatives. It inspires joint projects, potential start-ups, and a broad spectrum of exchanges across locations and faculties, empowering both students and faculty to connect and innovate together. InduKo Project was funded by Stiftung Innovation in der Hochschullehre (August 2021 - July 2024). Refrence
+  </p>
+
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+
+
 ## Features
 
 - Post and share projects within the university community.
@@ -103,10 +113,13 @@ Contributions are welcome! Please follow these steps to contribute:
 5. Open a Pull Request.
 
 ## License
-
-This project is licensed under Apache License, Version 2.0. Copyright 2024 Prof. Dr. Mahsa Fischer, Hochschule Heilbronn
+- This project is licensed under [Apache 2.0](LICENSE). Copyright 2024 Prof. Dr. Mahsa Fischer, Hochschule Heilbronn.
 
   
+
+## Links
+- [Induko Project Website](https://www.hs-heilbronn.de/en/projekt-induko-2cab68e84c21b797)
+- [IdeaLize Project Website](https://www.hs-heilbronn.de/en/idealize-12f73ca0754864df)
 
 ## Acknowledgments
 
