@@ -104,7 +104,9 @@ Contributions are welcome! Please follow these steps to contribute:
 
 ## License
 
-This project is licensed under the 
+This project is licensed under Apache License, Version 2.0. Copyright 2024 Prof. Dr. Mahsa Fischer, Hochschule Heilbronn
+
+  
 
 ## Acknowledgments
 
