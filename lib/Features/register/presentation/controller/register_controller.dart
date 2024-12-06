@@ -228,8 +228,7 @@ class RegisterController extends GetxController {
     );
 
     if (response != null) {
-      await AppRepo().loginUser(response);
-      Get.toNamed(AppConfig().routes.base);
+      Get.replace(AppConfig().routes.splash);
     }
   }
 
