@@ -43,12 +43,12 @@ class BaseViewModel extends GetxController {
   void onTappedSendMessage() {
     if (messageCtrl.text.isNotEmpty) {
       chats.add(ChatEntity(text: messageCtrl.text, isMe: true));
-      messageCtrl.clear();
 
       socket?.emit("sendMessage", {
         "message": messageCtrl.text,
       });
 
+      messageCtrl.clear();
       aiIsResponding.value = true;
 
       scrollCtrl.animateTo(scrollCtrl.position.maxScrollExtent + 100,
