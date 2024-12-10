@@ -11,9 +11,9 @@ class AppConfig {
   factory AppConfig() => _singleton;
   AppConfig._internal();
 
-  String get baseURL => "baseURL";
-  String get baseFileUrl => "baseFileUrl";
-  String get chatBotServer => "chatBotServerUrl";
+  String get baseURL => "http://localhost:3000/api";
+  String get baseFileUrl => "http://localhost:3000";
+  String get chatBotServer => "http://localhost:3000/chat";
 
   double get textRatio => 1.0;
   final baseLocale = LanguageConstants().languageList[0];
