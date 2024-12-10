@@ -47,6 +47,8 @@ class ChatScreen extends GetView<BaseViewModel> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AppImageLoader(
+                    height: 55,
+                    width: 55,
                     imageId: AppRepo().user?.profilePicture?.id ?? '',
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,

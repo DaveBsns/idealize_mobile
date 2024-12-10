@@ -38,4 +38,14 @@ class UserService extends ServicesHelper {
 
     return mappedData;
   }
+
+  Future<Map<String, dynamic>> getAnotherUserData(String userId) async {
+    final mappedData = await request(
+      '$baseURL/users/$userId',
+      serviceType: ServiceType.get,
+      requiredDefaultHeader: true,
+    );
+
+    return mappedData;
+  }
 }
