@@ -56,6 +56,7 @@ class BaseViewModel extends GetxController {
         if (didPop) {
           if (result == const Key('clearChat')) {
             chats.clear();
+            chats.add(ChatEntity(text: 'Hi! how can I help you?', isMe: false));
           }
         }
       },
