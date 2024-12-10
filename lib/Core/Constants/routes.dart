@@ -27,6 +27,8 @@ import 'package:idealize_new_version/Features/Register/presentation/View/registr
 
 import 'package:idealize_new_version/Features/archived_projcts/presentation/archived_projcts_screen.dart';
 import 'package:idealize_new_version/Features/register/presentation/binding/register_binding.dart';
+import 'package:idealize_new_version/Features/userSuggestionProfile/presentation/binding/user_suggestion_profile_binding.dart';
+import 'package:idealize_new_version/Features/userSuggestionProfile/presentation/user_suggestion_profile_screen.dart';
 
 import '../../Features/Register/presentation/View/register_third_step_screen.dart';
 
@@ -52,6 +54,7 @@ class AppRoutes {
   final textSizeView = '/textSizeView';
   final notification = '/notification';
   final archivedProject = '/archivedProject';
+  final userSuggestionProfile = '/userSuggestionProfile';
 
   List<GetPage> get pages {
     return [
@@ -138,6 +141,11 @@ class AppRoutes {
         name: chatScreen,
         page: () => const ChatScreen(),
         binding: BaseBinding(),
+      ),
+      GetPage(
+        name: userSuggestionProfile,
+        page: () => const UserSuggestionProfileScreen(),
+        binding: UserSuggestionProfileBinding(),
       ),
     ];
   }

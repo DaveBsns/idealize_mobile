@@ -47,6 +47,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.reEnterPassword: "Re-enter password",
         AppStrings.resetSuccesful: "Reset Successful",
         AppStrings.findProjects: "Find Projects",
+        AppStrings.projects: "Projects",
         AppStrings.trendingTab: "Trending",
         AppStrings.latestTab: "Latest",
         AppStrings.favoritesTab: "Favorites",

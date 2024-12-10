@@ -59,6 +59,7 @@ class AppStrings {
   static const String signUpHere = "signUpHere";
   static const String wrongCredentials = "wrongCredentials";
   static const String myProjects = "myProjects";
+  static const String projects = "projects";
   static const String favorites = "favorites";
   static const String interests = "interests";
   static const String addInterest = "addInterest";

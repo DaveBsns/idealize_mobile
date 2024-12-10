@@ -188,7 +188,12 @@ class ChatWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutes().userSuggestionProfile,
+                      arguments: e['_id'],
+                    );
+                  },
                   child: Text(
                     '${e['firstName']} ${e['lastName']}',
                     textAlign: TextAlign.left,

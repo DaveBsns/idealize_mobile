@@ -13,6 +13,7 @@ class ProjectService extends ServicesHelper {
     int? limit,
     bool isDraft = false,
     bool myProjects = false,
+    String ownerId = '',
   }) async {
     final base =
         myProjects ? '$baseURL/projects/my-projects' : '$baseURL/projects';
@@ -33,6 +34,10 @@ class ProjectService extends ServicesHelper {
 
     if (isDraft) {
       queryParametrs['owner'] = AppRepo().user?.id;
+    } else {
+      if (ownerId.isNotEmpty) {
+        queryParametrs['owner'] = ownerId;
+      }
     }
 
     final query = queryMaker(queryParametrs);

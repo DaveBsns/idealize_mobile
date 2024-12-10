@@ -48,6 +48,7 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.reEnterPassword: "Passwort erneut eingeben",
         AppStrings.resetSuccesful: "Passwort erfolgreich geändert",
         AppStrings.findProjects: "Projekte suchen",
+        AppStrings.projects: "Projekte",
         AppStrings.trendingTab: "Trends",
         AppStrings.latestTab: "Neu",
         AppStrings.favoritesTab: "Favoriten",
