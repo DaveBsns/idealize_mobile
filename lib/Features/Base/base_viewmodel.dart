@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
@@ -38,7 +39,28 @@ class BaseViewModel extends GetxController {
     Get.toNamed(AppRoutes().chatScreen);
   }
 
-  void onTappedMoreButton() {}
+  void onTappedMoreButton() {
+    // ignore: unused_result
+    showModalActionSheet(
+      context: Get.context!,
+      actions: const [
+        SheetAction(
+          label: 'Clear Chat',
+          isDestructiveAction: true,
+          key: Key('clearChat'),
+        ),
+      ],
+      isDismissible: true,
+      canPop: true,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) {
+          if (result == const Key('clearChat')) {
+            chats.clear();
+          }
+        }
+      },
+    );
+  }
 
   void onTappedSendMessage() {
     if (messageCtrl.text.isNotEmpty) {
@@ -87,12 +109,11 @@ class BaseViewModel extends GetxController {
             data['message']['projects'].isNotEmpty) {
           chats.add(ChatEntity(
               text: '', projects: data['message']['projects'], isMe: false));
+        } else if (data['message']['users'] != null &&
+            data['message']['users'].isNotEmpty) {
+          chats.add(ChatEntity(
+              text: '', users: data['message']['users'], isMe: false));
         }
-        // if (data['message']['users'] != null &&
-        //     data['message']['users'].isNotEmpty) {
-        //   chats.add(ChatEntity(
-        //       text: '', users: data['message']['users'], isMe: false));
-        // }
         aiIsResponding.value = false;
 
         scrollCtrl.animateTo(scrollCtrl.position.maxScrollExtent + 100,

@@ -274,15 +274,19 @@ class UserSuggestionProfileScreen
                                 Gap(AppConfig().dimens.small),
                                 SizedBox(
                                   width: MediaQuery.sizeOf(context).width,
-                                  child: Column(
-                                    children: [
-                                      for (final project in state.projects)
-                                        ProjectCardHomeWidget(
-                                          project: project,
-                                          isLoading: false,
-                                        )
-                                    ],
-                                  ),
+                                  child: state.isProjectsLoading
+                                      ? const Center(
+                                          child: CircularProgressIndicator())
+                                      : Column(
+                                          children: [
+                                            for (final project
+                                                in state.projects)
+                                              ProjectCardHomeWidget(
+                                                project: project,
+                                                isLoading: false,
+                                              )
+                                          ],
+                                        ),
                                 ),
                               ],
                             ),

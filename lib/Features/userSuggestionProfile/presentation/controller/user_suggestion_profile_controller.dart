@@ -13,6 +13,7 @@ class UserSuggestionProfileController extends GetxController {
   List<Project> projects = [];
 
   bool isLoading = false;
+  bool isProjectsLoading = false;
 
   @override
   void onInit() {
@@ -22,20 +23,25 @@ class UserSuggestionProfileController extends GetxController {
     update();
 
     repo.getUserProfile(userId: Get.arguments).then((value) {
-      user = User.fromJson(value!);
       isLoading = false;
+      user = User.fromJson(value!);
       update();
     }).catchError((e) {
       isLoading = false;
       update();
     });
 
+    isProjectsLoading = true;
     repo.getUserProjects(userId: Get.arguments).then(
       (value) {
+        isProjectsLoading = false;
         projects.clear();
         projects.addAll(value);
         update();
       },
-    );
+    ).catchError((e) {
+      isProjectsLoading = false;
+      update();
+    });
   }
 }
