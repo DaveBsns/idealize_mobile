@@ -12,6 +12,8 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../Core/Utils/enums.dart';
 import '../../domain/register_repo.dart';
+import 'dart:async';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class RegisterController extends GetxController {
   late RegisterRepository repo;
@@ -131,7 +133,7 @@ class RegisterController extends GetxController {
         checkboxValue.value != CustomCheckBoxValue.checked) {
       AppRepo().showSnackbar(
         label: 'Error',
-        text: 'Please fill all the required fields correctly',
+        text: AppStrings.fillRequiredFields.tr,
         position: SnackPosition.TOP,
       );
       if (checkboxValue.value != CustomCheckBoxValue.checked) {

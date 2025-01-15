@@ -6,6 +6,9 @@ import 'package:idealize_new_version/app_repo.dart';
 import '../../../../Core/Components/otp_bottom_sheet.dart';
 import '../../../../Core/Constants/config.dart';
 import '../../domain/reset_password_repository.dart';
+import 'dart:async';
+
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class ResetPasswordController extends GetxController {
   late ResetPasswordRepository repo;
@@ -40,7 +43,7 @@ class ResetPasswordController extends GetxController {
       AppRepo().hideLoading();
       AppRepo().showSnackbar(
           label: 'Error',
-          text: 'Please enter a valid email',
+          text: AppStrings.enterValidEmail.tr,
           position: SnackPosition.TOP);
     }
   }
@@ -75,7 +78,7 @@ class ResetPasswordController extends GetxController {
     if (email.isEmpty || !email.isEmail) {
       AppRepo().showSnackbar(
         label: 'Error',
-        text: 'Please enter a valid email',
+        text: AppStrings.enterValidEmail.tr,
         position: SnackPosition.TOP,
       );
       return;
@@ -86,7 +89,7 @@ class ResetPasswordController extends GetxController {
         rePasswordController.text.isEmpty) {
       AppRepo().showSnackbar(
         label: 'Error',
-        text: 'Please enter code and password',
+        text: AppStrings.enterCodePassword.tr,
         position: SnackPosition.TOP,
       );
       return;
@@ -95,7 +98,7 @@ class ResetPasswordController extends GetxController {
     if (passwordController.text != rePasswordController.text) {
       AppRepo().showSnackbar(
         label: 'Error',
-        text: 'Passwords do not match',
+        text: AppStrings.passIsNotMatch.tr,
         position: SnackPosition.TOP,
       );
       return;
@@ -114,7 +117,7 @@ class ResetPasswordController extends GetxController {
         AppRepo().showSnackbar(
           label: 'Success',
           text:
-              'Your password has been reset, you will redirect to auth page in 3 seconds.',
+              AppStrings.passIsReset.tr,
           position: SnackPosition.TOP,
         );
         await Future.delayed(const Duration(seconds: 3));

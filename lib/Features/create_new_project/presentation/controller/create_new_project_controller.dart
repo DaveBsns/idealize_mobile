@@ -17,6 +17,9 @@ import 'package:idealize_new_version/Features/my_projects/presentation/controlle
 import 'package:idealize_new_version/app_repo.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../domain/create_new_project_repo.dart';
+import 'package:flutter/material.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 
 class CreateNewProjectController extends GetxController {
   late CreateNewProjectRepository repo;
@@ -408,7 +411,7 @@ class CreateNewProjectController extends GetxController {
   Future<void> pickGeneralFile() async {
     // TODO please check dupplicated files before adding to the list
     if (files.length >= 5) {
-      Get.snackbar('File Picker', 'You have reached the maximum files!');
+      Get.snackbar('File Picker', AppStrings.maximumFilesReached.tr);
       return;
     }
 
@@ -435,18 +438,18 @@ class CreateNewProjectController extends GetxController {
           );
         } else {
           Get.snackbar('File Picker',
-              'The file ${file.name} is too large or not a supported format');
+              AppStrings.fileTooLargeNotSupportedFormat.trParams({'keyword3': file.name}));
         }
       }
       update();
     } else {
-      Get.snackbar('File Picker', 'No file was selected');
+      Get.snackbar('File Picker', AppStrings.noFileSelected.tr);
     }
   }
 
   Future<void> pickMediaFile() async {
     if (mediaFiles.length >= 5) {
-      Get.snackbar('Media Picker', 'You have reached the maximum medias!');
+      Get.snackbar('Media Picker', AppStrings.maximumMedias.tr);
       return;
     }
 
@@ -457,7 +460,7 @@ class CreateNewProjectController extends GetxController {
 
     if (result != null) {
       if (result.files.length >= 5) {
-        Get.snackbar('Media Picker', 'You have reached the maximum medias!');
+        Get.snackbar('Media Picker', AppStrings.maximumMedias.tr);
         return;
       }
 
@@ -469,7 +472,7 @@ class CreateNewProjectController extends GetxController {
         // Check if the file is already in the mediaFiles list
         if (mediaFiles.any((mediaFile) => mediaFile.path == pickedFile.path)) {
           Get.snackbar(
-              'Media Picker', 'The file ${pickedFile.name} is already added');
+              'Media Picker', AppStrings.fileAlreadyAdded.trParams({'keyword4': pickedFile.name}));
           continue;
         }
 
@@ -511,17 +514,17 @@ class CreateNewProjectController extends GetxController {
        
               AppRepo().showSnackbar(
                 label: 'Error',
-                text: 'The file ${pickedFile.name} is not a supported format',
+                text: AppStrings.fileNotSupportedFormat.trParams({'keyword1': pickedFile.name}),
               );
             }
           } else {
             Get.snackbar(
-                'Media Picker', 'The file ${pickedFile.name} is too large');
+                'Media Picker', AppStrings.fileTooLarge.trParams({'keyword2': pickedFile.name}));
           }
         }
       }
     } else {
-      Get.snackbar('Media Picker', 'No media file was selected');
+      Get.snackbar('Media Picker', AppStrings.noMediafileSelected.tr);
     }
   }
 

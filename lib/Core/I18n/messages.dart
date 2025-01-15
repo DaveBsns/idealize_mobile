@@ -117,6 +117,7 @@ class AppStrings {
   static const String search = "search";
   static const String click = "click";
   static const String addNewTagOrCourse = "addNewTagOrCourse";
+  static const String toAddNewTagOrCourse = "toAddNewTagOrCourse";
   static const String confirmationRequired = "confirmationRequired";
   static const String skipRegistrationStepsMsg = "skipRegistrationStepsMsg";
   static const String okay = "okay";
@@ -163,4 +164,26 @@ class AppStrings {
   static const String noContributors = "noContributors";
   static const String joinProject = "joinProject";
   static const String report = "report";
+  static const String tagNameValid = "tagNameValid";
+  static const String editInformation = "editInformation";
+  static const String tooManyRequests = "tooManyRequests";
+  static const String enterValidEmail = "enterValidEmail";
+  static const String enterCodePassword = "enterCodePassword";
+  static const String passIsReset = "passIsReset";
+  static const String profileUpdated = "profileUpdated";
+  static const String profileUpdateFailed = "profileUpdateFailed";
+  static const String downloadError = "downloadError";
+  static const String downloadComplete = "downloadComplete";
+  static const String requestSent = "requestSent";
+  static const String ownerNotAvailable = "ownerNotAvailable";
+  static const String projectReported = "projectReported";
+  static const String fillRequiredFields = "fillRequiredFields";
+  static const String fileNotSupportedFormat = "fileNotSupportedFormat";
+  static const String fileTooLarge = "fileTooLarge";
+  static const String noMediafileSelected = "noMediafileSelected";
+  static const String maximumFilesReached = "maximumFilesReached";
+  static const String fileTooLargeNotSupportedFormat = "fileTooLargeNotSupportedFormat";
+  static const String noFileSelected = "noFileSelected";
+  static const String maximumMedias = "maximumMedias";
+  static const String fileAlreadyAdded = "fileAlreadyAdded";
 }

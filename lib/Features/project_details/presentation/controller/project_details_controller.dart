@@ -18,6 +18,9 @@ import 'package:idealize_new_version/app_repo.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../domain/project_details_repo.dart';
+import 'package:flutter/widgets.dart';
+import 'dart:async';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class ProjectDetailsController extends GetxController {
   late ProjectDetailsRepository repo;
@@ -172,14 +175,14 @@ class ProjectDetailsController extends GetxController {
     } catch (e) {
       AppRepo().showSnackbar(
         label: 'Error',
-        text: 'An error occurred during download. Please try again later.',
+        text: AppStrings.downloadError.tr,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.BOTTOM,
       );
     } finally {
       AppRepo().showSnackbar(
         label: 'Download complete',
-        text: 'File downloaded to: ${file.path}',
+        text: AppStrings.downloadComplete.tr + ' ' + file.path,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.BOTTOM,
       );
@@ -218,7 +221,7 @@ class ProjectDetailsController extends GetxController {
         AppRepo().showSnackbar(
           label: 'Request sent',
           text:
-              'Your request to join the project has been sent. Please wait for the project owner to respond.',
+              AppStrings.requestSent.tr,
           backgroundColor: AppColors().primaryColor,
           position: SnackPosition.TOP,
         );
@@ -226,7 +229,7 @@ class ProjectDetailsController extends GetxController {
     } else {
       AppRepo().showSnackbar(
         label: 'Error',
-        text: 'The project owner is not available. Please try again later.',
+        text: AppStrings.ownerNotAvailable.tr,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.TOP,
       );
@@ -250,7 +253,7 @@ class ProjectDetailsController extends GetxController {
     if (response != null) {
       AppRepo().showSnackbar(
         label: 'Success',
-        text: 'The project has been reported.',
+        text: AppStrings.projectReported.tr,
       );
     }
   }
