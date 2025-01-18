@@ -186,6 +186,7 @@ class AppStrings {
   static const String projectReported = "projectReported";
   static const String fillRequiredFields = "fillRequiredFields";
   static const String fileNotSupportedFormat = "fileNotSupportedFormat";
+  static const String termsCondifitonCheckbox = "termsCondifitonCheckbox";
   static const String fileTooLarge = "fileTooLarge";
   static const String noMediafileSelected = "noMediafileSelected";
   static const String maximumFilesReached = "maximumFilesReached";
@@ -203,4 +204,14 @@ class AppStrings {
   static const String fillAllFields = "fillAllFields";
   static const String sureAboutDeletingMaterial = "sureAboutDeletingMaterial";
   static const String passwordInstructions = "passwordInstructions";
+  static const String addNew = "addNew";
+  static const String toAddNew = "toAddNew";
+  static const String tag = "tag";
+  static const String course = "course";
+  static const String studyProgram = "studyProgram";
+  static const String skip = "skip";
+  static const String photoAccessDenied = "photoAccessDenied";
+  static const String accessDenied = "accessDenied";
+  static const String okey = "okey";
+  static const String skipReqDesc = "skipReqDesc";
 }

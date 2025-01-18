@@ -246,17 +246,31 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
           ],
         ).paddingAll(AppConfig().dimens.medium),
       ),
-      bottomNavigationBar: CustomIconButton(
-        title: AppStrings.next.tr,
-        onTap: () => Get.toNamed(AppConfig().routes.registrationThirdStep),
-        txtColor: AppColors().primaryColor,
-      ).paddingOnly(
-        left: AppConfig().dimens.medium,
-        right: AppConfig().dimens.medium,
-        bottom: MediaQuery.of(context).padding.bottom > 0
-            ? MediaQuery.of(context).padding.bottom
-            : AppConfig().dimens.medium,
-        top: AppConfig().dimens.small,
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).padding.bottom > 0
+              ? MediaQuery.of(context).padding.bottom
+              : AppConfig().dimens.medium,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+                child: CustomOutlineIconButton(
+              title: AppStrings.skip.tr,
+              onTap: () => controller.cancelOptionalStepsRegistration(),
+              txtColor: AppColors().primaryColor,
+            )),
+            Gap(AppConfig().dimens.medium),
+            Expanded(
+                child: CustomIconButton(
+              title: AppStrings.next.tr,
+              onTap: () =>
+                  Get.toNamed(AppConfig().routes.registrationThirdStep),
+              txtColor: AppColors().primaryColor,
+            )),
+          ],
+        ).paddingAll(AppConfig().dimens.medium),
       ),
     );
   }

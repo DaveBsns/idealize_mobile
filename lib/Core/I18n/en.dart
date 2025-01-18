@@ -131,7 +131,9 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.click: "Click",
         AppStrings.studyPrograms: "Study Programs:",
         AppStrings.addNewTagOrCourse: "Add new tag or course.",
+        AppStrings.addNew: "Add new @name.",
         AppStrings.toAddNewTagOrCourse: "to add new tag or course.",
+        AppStrings.toAddNew: "to add new @name.",
         AppStrings.confirmationRequired: "Confirmation Required",
         AppStrings.skipRegistrationStepsMsg:
             "You have the option to skip the registration steps and complete them later in your profile settings.",
@@ -227,5 +229,16 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.sureAboutDeletingMaterial: "Are you sure you want to delete the material from the project ? It will delete the material permanantly from the project!",
         AppStrings.passwordInstructions:
             "Password Requirements:\n- Minimum of 8 characters\n- At least one uppercase letter\n- At least one numeric digit\n- At least one special character",
+        AppStrings.termsCondifitonCheckbox:
+            "You have accepted the terms and conditions checkbox",
+        AppStrings.tag: "Tag",
+        AppStrings.course: "Course",
+        AppStrings.studyProgram: "Study Program",
+        AppStrings.skip: "Skip",
+        AppStrings.photoAccessDenied:
+            "Photo access denied, please allow access in settings",
+        AppStrings.accessDenied: "Access Denied",
+        AppStrings.okey: "Okey",
+        AppStrings.skipReqDesc: "You have the option to skip this steps and add it later in your profile.",
       };
 }

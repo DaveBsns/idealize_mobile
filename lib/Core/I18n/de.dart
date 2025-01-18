@@ -135,6 +135,8 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.search: "Suche",
         AppStrings.click: "Klick",
         AppStrings.addNewTagOrCourse: "Neues Schlagwort oder Kurs hinzufügen.",
+        AppStrings.toAddNew: "neues @name hinzufügen.",
+        AppStrings.addNew: "Neues @name hinzufügen.",
         AppStrings.toAddNewTagOrCourse:
             "um ein neues Schlagwort oder Kurs hinzuzufügen.",
         AppStrings.confirmationRequired: "Bestätigung erforderlich",
@@ -235,5 +237,17 @@ class DeLanguageData extends LanguageDataKeys {
             "'Die Datei @keyword4 ist bereits hinzugefügt'",
         AppStrings.passwordInstructions:
             "Passwortanforderungen:\n- Mindestens 8 Zeichen\n- Mindestens ein Großbuchstabe\n- Mindestens eine Ziffer\n- Mindestens ein Sonderzeichen",
+        AppStrings.termsCondifitonCheckbox:
+            "Sie haben die Nutzungsbedingungen akzeptiert",
+        AppStrings.tag: "Schlagwort",
+        AppStrings.course: "Kurs",
+        AppStrings.studyProgram: "Studiengang",
+        AppStrings.skip: "Umschalten",
+        AppStrings.photoAccessDenied:
+            "Zugriff auf Fotos verweigert, bitte erlauben Sie den Zugriff in den Einstellungen",
+        AppStrings.accessDenied: "Zugriff verweigert",
+        AppStrings.okey: "OK",
+        AppStrings.skipReqDesc:
+            "Sie haben die Option, diese Schritte zu überspringen und sie später in Ihrem Profil hinzuzufügen.",
       };
 }
