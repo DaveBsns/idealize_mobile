@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:idealize_new_version/Core/Components/textfields_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
+import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Features/register/presentation/controller/register_controller.dart';
 import '../../../../Core/Components/stepper_widget.dart';
 import '../../../../Core/Constants/colors.dart';
@@ -187,6 +189,10 @@ class RegisterFirstStepScreen extends GetView<RegisterController> {
                     children: <TextSpan>[
                       TextSpan(text: AppStrings.iAgree.tr),
                       TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            AppConfig().termsCondiftionsUrl.launchURL();
+                          },
                         text: AppStrings.termsAndConditions.tr,
                         style: textTheme.titleMedium!.copyWith(
                           color: AppColors().secondaryColor,
