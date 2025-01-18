@@ -41,6 +41,9 @@ class TagSelectorScreen extends StatelessWidget {
     );
 
     TextTheme textStyles = Theme.of(context).textTheme;
+
+    controller.tags.sort((a, b) => a.tagName.compareTo(b.tagName));
+
     return Obx(
       () => ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
@@ -162,7 +165,19 @@ class TagSelectorScreen extends StatelessWidget {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: "  " + AppStrings.toAddNewTagOrCourse.tr,
+                                          text:
+                                              ' ${AppStrings.toAddNew.trParams({
+                                                'name': tagType == TagType.tag
+                                                    ? AppStrings.tag.tr
+                                                    : (tagType == TagType.course
+                                                        ? AppStrings.course.tr
+                                                        : (tagType ==
+                                                                TagType
+                                                                    .studyProgram)
+                                                            ? AppStrings
+                                                                .studyProgram.tr
+                                                            : '')
+                                              })}',
                                           style:
                                               textStyles.titleMedium!.copyWith(
                                             color: AppConfig()
