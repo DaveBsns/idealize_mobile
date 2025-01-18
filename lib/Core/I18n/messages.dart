@@ -72,7 +72,7 @@ class AppStrings {
   static const String lastNameHint = "lastNameHint";
   static const String delete = "delete";
   static const String deleteAccount = "deleteAccount";
-  static const String deleteMaterial = "deleteMaterial";  
+  static const String deleteMaterial = "deleteMaterial";
   static const String changePicture = "changePicture";
   static const String editProfile = "editProfile";
   static const String cancel = "cancel";
@@ -150,7 +150,7 @@ class AppStrings {
   static const String warning = "warning";
   static const String files = "files";
   static const String uploadFile = "uploadFile";
-  static const String uploadFiles = "uploadFiles";  
+  static const String uploadFiles = "uploadFiles";
   static const String media = "media";
   static const String uploadMedia = "uploadMedia";
   static const String thumbnail = "thumbnail";
@@ -189,7 +189,8 @@ class AppStrings {
   static const String fileTooLarge = "fileTooLarge";
   static const String noMediafileSelected = "noMediafileSelected";
   static const String maximumFilesReached = "maximumFilesReached";
-  static const String fileTooLargeNotSupportedFormat = "fileTooLargeNotSupportedFormat";
+  static const String fileTooLargeNotSupportedFormat =
+      "fileTooLargeNotSupportedFormat";
   static const String noFileSelected = "noFileSelected";
   static const String maximumMedias = "maximumMedias";
   static const String fileAlreadyAdded = "fileAlreadyAdded";
@@ -197,7 +198,9 @@ class AppStrings {
   static const String noUsersToShow = "noUsersToShow";
   static const String emptyHere = "emptyHere";
   static const String fileUploadInfo = "fileUploadInfo";
-  static const String uploadInformation = "Sie können Dateien bis zu einer Größe von 10 MB hochladen. Unterstützte Formate sind PDF, DOC, PPT und PPTX.";
+  static const String uploadInformation =
+      "Sie können Dateien bis zu einer Größe von 10 MB hochladen. Unterstützte Formate sind PDF, DOC, PPT und PPTX.";
   static const String fillAllFields = "fillAllFields";
   static const String sureAboutDeletingMaterial = "sureAboutDeletingMaterial";
+  static const String passwordInstructions = "passwordInstructions";
 }

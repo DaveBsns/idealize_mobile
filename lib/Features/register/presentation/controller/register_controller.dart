@@ -50,9 +50,9 @@ class RegisterController extends GetxController {
   }
 
   bool isStrongPassword(String password) {
-    final RegExp passwordRegex = RegExp(
-        r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
-    return passwordRegex.hasMatch(password);
+    final RegExp passwordRegex =
+        RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
+    return passwordRegex.hasMatch(password.trim()) && !password.contains(' ');
   }
 
   bool arePasswordsSame() {
@@ -191,10 +191,10 @@ class RegisterController extends GetxController {
   }
 
   Future<void> _signUp() async {
-    final password = passwordCtrl.text;
-    final email = emailCtrl.text;
-    final firstname = firstnameCtrl.text;
-    final surname = surnameCtrl.text;
+    final password = passwordCtrl.text.trim();
+    final email = emailCtrl.text.trim();
+    final firstname = firstnameCtrl.text.trim();
+    final surname = surnameCtrl.text.trim();
 
     loading.value = true;
     final response = await repo.createUser(
@@ -214,7 +214,7 @@ class RegisterController extends GetxController {
   Future<void> updateUserProfile() async {
     // final firstname = firstnameCtrl.text;
     // final surname = surnameCtrl.text;
-    final username = usernameCtrl.text;
+    final username = usernameCtrl.text.trim();
 
     loading.value = true;
     final response = await repo.updateUser(
