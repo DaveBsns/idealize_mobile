@@ -186,4 +186,5 @@ class AppStrings {
   static const String noFileSelected = "noFileSelected";
   static const String maximumMedias = "maximumMedias";
   static const String fileAlreadyAdded = "fileAlreadyAdded";
+  static const String passwordInstructions = "passwordInstructions";
 }

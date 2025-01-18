@@ -106,6 +106,17 @@ class RegisterFirstStepScreen extends GetView<RegisterController> {
               "${AppStrings.password.tr}: *",
               style: textTheme.titleMedium,
             ),
+            Container(
+              margin: const EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                AppStrings.passwordInstructions.tr,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppConfig().colors.lightGrayColor,
+                ),
+              ),
+            ),
             Gap(AppConfig().dimens.small),
             CustomTextField(
               controller: controller.passwordCtrl,

@@ -132,7 +132,8 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.search: "Suche",
         AppStrings.click: "Klick",
         AppStrings.addNewTagOrCourse: "Neues Schlagwort oder Kurs hinzufügen.",
-        AppStrings.toAddNewTagOrCourse: "um ein neues Schlagwort oder Kurs hinzuzufügen.",
+        AppStrings.toAddNewTagOrCourse:
+            "um ein neues Schlagwort oder Kurs hinzuzufügen.",
         AppStrings.confirmationRequired: "Bestätigung erforderlich",
         AppStrings.skipRegistrationStepsMsg:
             "Sie haben die Möglichkeit, die Registrierungsschritte zu überspringen und sie später in Ihren Profileinstellungen zu vervollständigen.",
@@ -182,25 +183,38 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.report: "Melden",
         AppStrings.tagNameValid: "Schlagwort-Name muss gültig sein!",
         AppStrings.editInformation: "Informationen bearbeiten?",
-        AppStrings.tooManyRequests: "Zu viele Anfragen, bitte versuchen Sie es später noch einmal!",
+        AppStrings.tooManyRequests:
+            "Zu viele Anfragen, bitte versuchen Sie es später noch einmal!",
         AppStrings.enterValidEmail: "Bitte geben Sie eine gültige E-Mail ein",
         AppStrings.enterCodePassword: "Bitte Code und Passwort eingeben",
-        AppStrings.passIsReset: "Ihr Passwort wurde zurückgesetzt, Sie werden in 3 Sekunden zur Anmeldeseite weitergeleitet.",
+        AppStrings.passIsReset:
+            "Ihr Passwort wurde zurückgesetzt, Sie werden in 3 Sekunden zur Anmeldeseite weitergeleitet.",
         AppStrings.profileUpdated: "Profil erfolgreich aktualisiert",
         AppStrings.profileUpdateFailed: "Profil kann nicht aktualisiert werden",
-        AppStrings.downloadError: "Beim Herunterladen ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
+        AppStrings.downloadError:
+            "Beim Herunterladen ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
         AppStrings.downloadComplete: "Datei heruntergeladen auf:",
-        AppStrings.requestSent: "Ihre Anfrage, dem Projekt beizutreten, wurde abgeschickt. Bitte warten Sie auf die Antwort des Projektinhabers.",
-        AppStrings.ownerNotAvailable: "Der Projektinhaber ist nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
+        AppStrings.requestSent:
+            "Ihre Anfrage, dem Projekt beizutreten, wurde abgeschickt. Bitte warten Sie auf die Antwort des Projektinhabers.",
+        AppStrings.ownerNotAvailable:
+            "Der Projektinhaber ist nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
         AppStrings.projectReported: "Das Projekt wurde gemeldet.",
-        AppStrings.fillRequiredFields: "Bitte füllen Sie alle erforderlichen Felder korrekt aus",
-        AppStrings.fileNotSupportedFormat: "Die Datei @keyword1 ist ein nicht unterstütztes Format",
+        AppStrings.fillRequiredFields:
+            "Bitte füllen Sie alle erforderlichen Felder korrekt aus",
+        AppStrings.fileNotSupportedFormat:
+            "Die Datei @keyword1 ist ein nicht unterstütztes Format",
         AppStrings.fileTooLarge: "Die Datei @keyword2 ist zu groß",
         AppStrings.noMediafileSelected: "Es wurde keine Mediendatei ausgewählt",
-        AppStrings.maximumFilesReached: "Sie haben die maximale Anzahl an Dateien erreicht!",
-        AppStrings.fileTooLargeNotSupportedFormat: "Die Datei @keyword3 ist zu groß oder ein nicht unterstütztes Format",
+        AppStrings.maximumFilesReached:
+            "Sie haben die maximale Anzahl an Dateien erreicht!",
+        AppStrings.fileTooLargeNotSupportedFormat:
+            "Die Datei @keyword3 ist zu groß oder ein nicht unterstütztes Format",
         AppStrings.noFileSelected: "Es wurde keine Datei ausgewählt",
-        AppStrings.maximumMedias: "Sie haben die maximale Anzahl an Medien erreicht!",
-        AppStrings.fileAlreadyAdded: "'Die Datei @keyword4 ist bereits hinzugefügt'"
+        AppStrings.maximumMedias:
+            "Sie haben die maximale Anzahl an Medien erreicht!",
+        AppStrings.fileAlreadyAdded:
+            "'Die Datei @keyword4 ist bereits hinzugefügt'",
+        AppStrings.passwordInstructions:
+            "Passwortanforderungen:\n- Mindestens 8 Zeichen\n- Mindestens ein Großbuchstabe\n- Mindestens eine Ziffer\n- Mindestens ein Sonderzeichen",
       };
 }

@@ -128,7 +128,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.click: "Click",
         AppStrings.studyPrograms: "Study Programs:",
         AppStrings.addNewTagOrCourse: "Add new tag or course.",
-        AppStrings.toAddNewTagOrCourse: "to add new tag or course.",        
+        AppStrings.toAddNewTagOrCourse: "to add new tag or course.",
         AppStrings.confirmationRequired: "Confirmation Required",
         AppStrings.skipRegistrationStepsMsg:
             "You have the option to skip the registration steps and complete them later in your profile settings.",
@@ -183,25 +183,35 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.report: "Report",
         AppStrings.tagNameValid: "Tag name must be valid!",
         AppStrings.editInformation: "Edit information?",
-        AppStrings.tooManyRequests: "Too many requests exception, please try again later!",
+        AppStrings.tooManyRequests:
+            "Too many requests exception, please try again later!",
         AppStrings.enterValidEmail: "Please enter a valid email",
         AppStrings.enterCodePassword: "Please enter code and password",
-        AppStrings.passIsReset: "Your password has been reset, you will redirect to auth page in 3 seconds.",
+        AppStrings.passIsReset:
+            "Your password has been reset, you will redirect to auth page in 3 seconds.",
         AppStrings.profileUpdated: "Profile updated successfully",
         AppStrings.profileUpdateFailed: "Failed to update profile",
-        AppStrings.downloadError: "An error occurred during download. Please try again later.",
+        AppStrings.downloadError:
+            "An error occurred during download. Please try again later.",
         AppStrings.downloadComplete: "File downloaded to:",
-        AppStrings.requestSent: "Your request to join the project has been sent. Please wait for the project owner to respond.",
-        AppStrings.ownerNotAvailable: "The project owner is not available. Please try again later.",
+        AppStrings.requestSent:
+            "Your request to join the project has been sent. Please wait for the project owner to respond.",
+        AppStrings.ownerNotAvailable:
+            "The project owner is not available. Please try again later.",
         AppStrings.projectReported: "The project has been reported.",
-        AppStrings.fillRequiredFields: "Please fill all the required fields correctly",
-        AppStrings.fileNotSupportedFormat: "The file @keyword1 is not a supported format",
+        AppStrings.fillRequiredFields:
+            "Please fill all the required fields correctly",
+        AppStrings.fileNotSupportedFormat:
+            "The file @keyword1 is not a supported format",
         AppStrings.fileTooLarge: "The file @keyword2 is too large",
         AppStrings.noMediafileSelected: "No media file was selected",
         AppStrings.maximumFilesReached: "You have reached the maximum files!",
-        AppStrings.fileTooLargeNotSupportedFormat: "The file @keyword3 is too large or not a supported format",
+        AppStrings.fileTooLargeNotSupportedFormat:
+            "The file @keyword3 is too large or not a supported format",
         AppStrings.noFileSelected: "No file was selected",
         AppStrings.maximumMedias: "You have reached the maximum medias!",
-        AppStrings.fileAlreadyAdded: "The file @keyword4 is already added"
+        AppStrings.fileAlreadyAdded: "The file @keyword4 is already added",
+        AppStrings.passwordInstructions:
+            "Password Requirements:\n- Minimum of 8 characters\n- At least one uppercase letter\n- At least one numeric digit\n- At least one special character",
       };
 }
