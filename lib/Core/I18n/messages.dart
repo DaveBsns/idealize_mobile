@@ -214,4 +214,5 @@ class AppStrings {
   static const String accessDenied = "accessDenied";
   static const String okey = "okey";
   static const String skipReqDesc = "skipReqDesc";
+  static const String noTitle = "noTitle";
 }

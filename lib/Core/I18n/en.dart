@@ -239,6 +239,8 @@ class EnLanguageData extends LanguageDataKeys {
             "Photo access denied, please allow access in settings",
         AppStrings.accessDenied: "Access Denied",
         AppStrings.okey: "Okey",
-        AppStrings.skipReqDesc: "You have the option to skip this steps and add it later in your profile.",
+        AppStrings.skipReqDesc:
+            "You have the option to skip this steps and add it later in your profile.",
+        AppStrings.noTitle: "No title",
       };
 }

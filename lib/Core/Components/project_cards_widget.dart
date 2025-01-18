@@ -13,6 +13,7 @@ class ProjectCardHomeWidget extends StatelessWidget {
   final Project project;
   final bool isLoading;
   final VoidCallback? onTapOpenProject;
+  final VoidCallback? onTapLikeCommentToOpenProject;
   final Function(bool, Project)? toggleFavorite;
 
   const ProjectCardHomeWidget({
@@ -21,6 +22,7 @@ class ProjectCardHomeWidget extends StatelessWidget {
     required this.isLoading,
     this.toggleFavorite,
     this.onTapOpenProject,
+    this.onTapLikeCommentToOpenProject,
   });
 
   @override
@@ -84,7 +86,7 @@ class ProjectCardHomeWidget extends StatelessWidget {
               ],
             ),
             Text(
-              project.title.isNotEmpty ? project.title : "No title",
+              project.title.isNotEmpty ? project.title : AppStrings.noTitle.tr,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -137,9 +139,14 @@ class ProjectCardHomeWidget extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: CustomIconText(
-                    likes: project.likes,
-                    comments: project.comments,
+                  child: InkWell(
+                    onTap: () {
+                      onTapLikeCommentToOpenProject?.call();
+                    },
+                    child: CustomIconText(
+                      likes: project.likes,
+                      comments: project.comments,
+                    ),
                   ),
                 ),
                 CustomOutlineIconButton(

@@ -101,8 +101,14 @@ class HomeController extends GetxController {
     }
   }
 
-  void routeToProject(Project project) {
-    Get.toNamed(AppConfig().routes.projectDetails, arguments: project.id);
+  void routeToProject(Project project, {bool scrollToComments = false}) {
+    Get.toNamed(
+      AppConfig().routes.projectDetails,
+      arguments: project.id,
+      parameters: {
+        'scroll-to-comments': '$scrollToComments',
+      },
+    );
   }
 
   Future<void> toggleArchive(bool archive, Project project) async {

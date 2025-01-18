@@ -249,5 +249,6 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.okey: "OK",
         AppStrings.skipReqDesc:
             "Sie haben die Option, diese Schritte zu überspringen und sie später in Ihrem Profil hinzuzufügen.",
+        AppStrings.noTitle: "Kein Titel",
       };
 }
