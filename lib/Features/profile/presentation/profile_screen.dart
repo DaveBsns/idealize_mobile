@@ -300,7 +300,7 @@ class ProfileScreen extends GetView<ProfileController> {
                                       context: context,
                                       builder: (BuildContext context) {
                                         return TagSelectorScreen(
-                                          tagType: TagType.course,
+                                          tagType: TagType.studyProgram,
                                           onTapedSavedButton:
                                               controller.saveChanges,
                                           initialSelectedChipData:
@@ -344,7 +344,7 @@ class ProfileScreen extends GetView<ProfileController> {
                                             ),
                                           ),
                                           backgroundColor:
-                                              AppConfig().colors.greenColor,
+                                              AppConfig().colors.lightBlue,
                                           deleteIcon: const Icon(
                                             Icons.close,
                                             size: 18.0,

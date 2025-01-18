@@ -7,6 +7,7 @@ import 'package:idealize_new_version/Core/Components/users_like_bottomsheet_widg
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
+import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/app_repo.dart';
@@ -108,16 +109,24 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 spacing: 8.0,
                 runSpacing: 0.0,
                 children: [
-                  Chip(
-                      side: BorderSide(color: AppConfig().colors.lightBlue),
-                      label: Text(
-                        ownerName,
-                        style: TextStyle(
-                          color: AppConfig().colors.lightBlue,
-                          fontWeight: FontWeight.bold,
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(
+                        AppRoutes().userSuggestionProfile,
+                        arguments: ownerId,
+                      );
+                    },
+                    child: Chip(
+                        side: BorderSide(color: AppConfig().colors.lightBlue),
+                        label: Text(
+                          ownerName,
+                          style: TextStyle(
+                            color: AppConfig().colors.lightBlue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      backgroundColor: Colors.transparent)
+                        backgroundColor: Colors.transparent),
+                  )
                 ],
               )
             ],

@@ -85,13 +85,17 @@ class TagSelectorScreen extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     side: BorderSide(
                                       color: isSelected
-                                          ? AppConfig().colors.greenColor
+                                          ? (tagType == TagType.studyProgram
+                                              ? AppConfig().colors.lightBlue
+                                              : AppConfig().colors.greenColor)
                                           : AppConfig().colors.primaryColor,
                                     ),
                                     borderRadius: BorderRadius.circular(
                                         AppConfig().dimens.small),
                                   ),
-                                  selectedColor: AppConfig().colors.greenColor,
+                                  selectedColor: tagType == TagType.studyProgram
+                                      ? AppConfig().colors.lightBlue
+                                      : AppConfig().colors.greenColor,
                                   label: Text(entry.tagName),
                                   labelStyle: isSelected
                                       ? textStyles.titleMedium!
