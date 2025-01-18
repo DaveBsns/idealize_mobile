@@ -7,6 +7,8 @@ import 'package:idealize_new_version/Features/Profile/domain/profile_repo.dart';
 import 'package:idealize_new_version/Features/edit_profile/domain/edit_profile_repo.dart';
 import 'package:idealize_new_version/app_repo.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:async';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class ProfileController extends GetxController {
   late ProfileRepository repo;
@@ -54,14 +56,14 @@ class ProfileController extends GetxController {
 
         AppRepo().showSnackbar(
           label: "Success",
-          text: "Profile updated successfully",
+          text: AppStrings.profileUpdated.tr,
           position: SnackPosition.TOP,
         );
       } else {
         AppRepo().hideLoading();
         AppRepo().showSnackbar(
           label: "Error",
-          text: "Failed to update profile",
+          text: AppStrings.profileUpdateFailed.tr,
           position: SnackPosition.TOP,
         );
       }
@@ -167,7 +169,7 @@ class ProfileController extends GetxController {
 
         AppRepo().showSnackbar(
           label: 'Profile updated successfully',
-          text: 'Your profile has been updated successfully',
+          text: AppStrings.profileUpdated.tr,
           position: SnackPosition.TOP,
         );
       } else {
@@ -175,7 +177,7 @@ class ProfileController extends GetxController {
 
         AppRepo().showSnackbar(
           label: 'Profile update failed',
-          text: 'Failed to update your profile',
+          text: AppStrings.profile.tr,
           position: SnackPosition.TOP,
         );
       }

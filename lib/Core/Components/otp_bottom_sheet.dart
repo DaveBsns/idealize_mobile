@@ -3,8 +3,17 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
 import 'dart:async';
-
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
+import 'package:idealize_new_version/Core/Components/textfields_widget.dart';
+import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Utils/extensions.dart';
+import 'package:idealize_new_version/app_repo.dart';
+import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class OtpController extends GetxController {
   var code = List.filled(4, '').obs;
@@ -155,9 +164,9 @@ class OtpBottomSheet extends StatelessWidget {
                   text: TextSpan(
                     style: TextStyle(color: AppConfig().colors.txtColor),
                     children: <TextSpan>[
-                      const TextSpan(text: "Didn’t receive code?  "),
+                      TextSpan(text: AppStrings.didntReceiveCode.tr + "  "),
                       TextSpan(
-                        text: "resend code",
+                        text: AppStrings.resendCode.tr,
                         style: TextStyle(
                             color: AppConfig().colors.secondaryColor,
                             fontWeight: FontWeight.w500,
@@ -174,9 +183,9 @@ class OtpBottomSheet extends StatelessWidget {
                   text: TextSpan(
                     style: TextStyle(color: AppConfig().colors.txtColor),
                     children: <TextSpan>[
-                      const TextSpan(text: "Edit information?  "),
+                      TextSpan(text: AppStrings.editInformation.tr + "  "),
                       TextSpan(
-                        text: "Edit",
+                        text: AppStrings.edit.tr,
                         style: TextStyle(
                             color: AppConfig().colors.secondaryColor,
                             fontWeight: FontWeight.w500,

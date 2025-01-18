@@ -5,6 +5,9 @@ import 'package:idealize_new_version/Core/Components/textfields_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/app_repo.dart';
+import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 
 class AddNewTagBottomsheetWidget extends StatelessWidget {
   final Function(String tagName) onAddedTagName;
@@ -51,7 +54,7 @@ class AddNewTagBottomsheetWidget extends StatelessWidget {
                   if (tagNameCtrl.text.isEmpty) {
                     AppRepo().showSnackbar(
                       label: 'Error',
-                      text: 'Tag name must be valid!',
+                      text: AppStrings.tagNameValid.tr,
                     );
                   } else {
                     onAddedTagName(tagNameCtrl.text);

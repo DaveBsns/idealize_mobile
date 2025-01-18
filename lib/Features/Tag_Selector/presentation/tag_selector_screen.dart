@@ -12,6 +12,8 @@ import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Features/tag_selector/presentation/controller/tag_selector_controller.dart';
 
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 class TagSelectorScreen extends StatelessWidget {
   final List<Tag> initialChipData;
   final List<Tag> initialSelectedChipData;
@@ -135,7 +137,7 @@ class TagSelectorScreen extends StatelessWidget {
                                   child: RichText(
                                     textAlign: TextAlign.center,
                                     text: TextSpan(
-                                      text: "Click  ",
+                                      text: AppStrings.click.tr + "  ",
                                       style: textStyles.titleMedium!.copyWith(
                                         color:
                                             AppConfig().colors.lightGrayColor,
@@ -144,7 +146,7 @@ class TagSelectorScreen extends StatelessWidget {
                                       ),
                                       children: [
                                         TextSpan(
-                                          text: "here\n",
+                                          text: AppStrings.here.tr + "\n",
                                           style:
                                               textStyles.titleMedium!.copyWith(
                                             color: AppConfig()
@@ -160,7 +162,7 @@ class TagSelectorScreen extends StatelessWidget {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: "  to add new Course or Tag.",
+                                          text: "  " + AppStrings.toAddNewTagOrCourse.tr,
                                           style:
                                               textStyles.titleMedium!.copyWith(
                                             color: AppConfig()

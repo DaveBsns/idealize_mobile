@@ -8,6 +8,7 @@ import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/app_repo.dart';
 import '../../Constants/config.dart';
 import 'package:http_parser/http_parser.dart' as http_parser;
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class ServicesHelper {
   final String baseURL = AppConfig().baseURL;
@@ -232,7 +233,7 @@ class ServicesHelper {
     } else if (response.statusCode == 429) {
       AppRepo().showSnackbar(
           label: 'Server',
-          text: 'Too many requests exception, please try again later!');
+          text: AppStrings.tooManyRequests.tr);
       return null;
     } else {
       AppRepo().hideLoading();
