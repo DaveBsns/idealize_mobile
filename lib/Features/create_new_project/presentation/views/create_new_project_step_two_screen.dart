@@ -63,6 +63,8 @@ class CreateNewProjectStepTwoScreen
                 onAddLink: controller.onAddLink,
                 links: controller.links,
                 onLinkDeleted: controller.onLinkDeleted,
+                onLinkNameChanged: (p0) => controller.linkName = p0,
+                onLinkUrlChanged: (p0) => controller.linkUrl = p0,
               ),
               Gap(AppConfig().dimens.medium),
             ],

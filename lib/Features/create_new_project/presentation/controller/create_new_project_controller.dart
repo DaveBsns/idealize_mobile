@@ -20,7 +20,6 @@ import '../../domain/create_new_project_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 
-
 class CreateNewProjectController extends GetxController {
   late CreateNewProjectRepository repo;
   Project? updateProjectModel;
@@ -32,6 +31,10 @@ class CreateNewProjectController extends GetxController {
   final _scrollController = ScrollController();
   final titleCtrl = TextEditingController();
   final descriptionCtrl = TextEditingController();
+
+  String linkName = '';
+  String linkUrl = '';
+
   final RxBool loading = false.obs;
   final pageController = PageController();
 
@@ -153,6 +156,12 @@ class CreateNewProjectController extends GetxController {
       uploadedThumbnail = await repo.uploadFile(
         pickedThumbnail.value!.path,
         (pickedThumbnail.value!.mimeType ?? 'image/jpeg').toMediaType(),
+      );
+    }
+
+    if (links.isEmpty && (linkName.isNotEmpty && linkUrl.isNotEmpty)) {
+      links.add(
+        LinkModel(label: linkName, link: linkUrl),
       );
     }
 
@@ -283,6 +292,13 @@ class CreateNewProjectController extends GetxController {
   }
 
   void createNewProjectStep2() {
+    if (descriptionCtrl.text.length < 100) {
+      AppRepo().showSnackbar(
+          label: 'Warning',
+          text: 'Description must be at least 100 characters.');
+      return;
+    }
+
     pageController.nextPage(
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeIn,
@@ -437,8 +453,10 @@ class CreateNewProjectController extends GetxController {
             ),
           );
         } else {
-          Get.snackbar('File Picker',
-              AppStrings.fileTooLargeNotSupportedFormat.trParams({'keyword3': file.name}));
+          Get.snackbar(
+              'File Picker',
+              AppStrings.fileTooLargeNotSupportedFormat
+                  .trParams({'keyword3': file.name}));
         }
       }
       update();
@@ -472,7 +490,9 @@ class CreateNewProjectController extends GetxController {
         // Check if the file is already in the mediaFiles list
         if (mediaFiles.any((mediaFile) => mediaFile.path == pickedFile.path)) {
           Get.snackbar(
-              'Media Picker', AppStrings.fileAlreadyAdded.trParams({'keyword4': pickedFile.name}));
+              'Media Picker',
+              AppStrings.fileAlreadyAdded
+                  .trParams({'keyword4': pickedFile.name}));
           continue;
         }
 
@@ -511,15 +531,17 @@ class CreateNewProjectController extends GetxController {
                 Get.snackbar('Media Picker', e.toString());
               }
             } else {
-       
               AppRepo().showSnackbar(
                 label: 'Error',
-                text: AppStrings.fileNotSupportedFormat.trParams({'keyword1': pickedFile.name}),
+                text: AppStrings.fileNotSupportedFormat
+                    .trParams({'keyword1': pickedFile.name}),
               );
             }
           } else {
             Get.snackbar(
-                'Media Picker', AppStrings.fileTooLarge.trParams({'keyword2': pickedFile.name}));
+                'Media Picker',
+                AppStrings.fileTooLarge
+                    .trParams({'keyword2': pickedFile.name}));
           }
         }
       }

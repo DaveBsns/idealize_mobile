@@ -143,6 +143,8 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                         .contains(controller.joinedStatus)
                                     ? null
                                     : () => controller.joinProject(),
+                                isReported:
+                                    controller.project?.isReported ?? false,
                               ),
                             ),
                             Gap(AppConfig().dimens.medium),
@@ -263,12 +265,19 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                   ],
                                 ),
                               ),
-                            SizedBox(
-                              height: 50,
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                minHeight: 50,
+                              ),
                               child: TextField(
                                 focusNode: controller.myFocusNode,
                                 controller: controller.commentCtrl,
+                                maxLength: 500,
+                                minLines: 1,
+                                maxLines: 5,
                                 decoration: InputDecoration(
+                                  counter: null,
+                                  counterText: "",
                                   fillColor: Colors.white,
                                   filled: true,
                                   border: OutlineInputBorder(

@@ -23,6 +23,7 @@ class Project {
   bool? isArchived;
   String? archiveId;
   String? joinedStatus;
+  bool isReported;
 
   Project({
     required this.id,
@@ -43,6 +44,7 @@ class Project {
     this.archiveId,
     this.thumbnail,
     this.joinedStatus,
+    this.isReported = false,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {
@@ -99,6 +101,7 @@ class Project {
           ? ProjectFile.fromJson(json['thumbnail'])
           : null,
       joinedStatus: json['joinedStatus'],
+      isReported: json['isReported'] ?? false,
     );
   }
 }
