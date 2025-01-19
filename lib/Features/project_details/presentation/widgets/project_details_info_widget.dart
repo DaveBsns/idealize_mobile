@@ -23,6 +23,7 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
   final VoidCallback? onTappedComment;
   final VoidCallback? onTapJoinProject;
   final Function(String) onReportProjectTapped;
+  final String? joinedStatus;
   final TextEditingController reportController = TextEditingController();
 
   ProjectDetailsInfoWidget({
@@ -36,6 +37,7 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
     this.isLiked = false,
     this.onTappedComment,
     this.onTapJoinProject,
+    this.joinedStatus,
     required this.onReportProjectTapped,
   });
 
@@ -171,27 +173,7 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 ),
               if (AppRepo().user!.id != ownerId &&
                   !members.any((element) => element.id == AppRepo().user!.id))
-                GestureDetector(
-                  onTap: onTapJoinProject,
-                  child: Chip(
-                    side: BorderSide.none,
-                    label: Text(
-                      AppStrings.joinProject.tr,
-                      style: TextStyle(
-                        color: AppConfig().colors.primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    avatar: Icon(
-                      Icons.add,
-                      color: AppConfig().colors.primaryColor,
-                    ),
-                    backgroundColor: AppConfig().colors.secondaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                )
+                _joinSection()
             ],
           ).paddingOnly(
             left: AppConfig().dimens.medium,
@@ -322,5 +304,100 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _joinSection() {
+    Widget joinBtn = GestureDetector(
+      onTap: onTapJoinProject,
+      child: Chip(
+        side: BorderSide.none,
+        label: Text(
+          AppStrings.joinProject.tr,
+          style: TextStyle(
+            color: AppConfig().colors.primaryColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 12.5,
+          ),
+        ),
+        avatar: Icon(
+          Icons.add,
+          color: AppConfig().colors.primaryColor,
+        ),
+        backgroundColor: AppConfig().colors.secondaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+
+    if (joinedStatus == 'pending') {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.amber.shade100,
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(
+            color: const Color.fromARGB(255, 201, 152, 3),
+            width: 0.5,
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+        child: Text(
+          AppStrings.joinProjectPending.tr,
+          style: const TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Color.fromARGB(255, 201, 152, 3),
+            fontSize: 12.5,
+          ),
+        ),
+      );
+    } else if (joinedStatus == 'accepted') {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.green.shade100,
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(
+            color: const Color.fromARGB(255, 7, 130, 11),
+            width: 0.5,
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+        child: Text(
+          AppStrings.joinProjectAccepted.tr,
+          style: const TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Color.fromARGB(255, 7, 130, 11),
+            fontSize: 12.5,
+          ),
+        ),
+      );
+    } else if (joinedStatus == 'cancelled') {
+      return Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.red.shade100,
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: const Color.fromARGB(255, 201, 3, 3),
+                width: 0.5,
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+            child: Text(
+              AppStrings.joinProjectCancelled.tr,
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Color.fromARGB(255, 174, 5, 5),
+                fontSize: 12.5,
+              ),
+            ),
+          ),
+          Gap(AppConfig().dimens.small),
+          joinBtn,
+        ],
+      );
+    }
+
+    return joinBtn;
   }
 }

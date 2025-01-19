@@ -182,6 +182,10 @@ class EnLanguageData extends LanguageDataKeys {
             "No Comments Available!\nBe the first to comment!",
         AppStrings.noContributors: "No Contributors",
         AppStrings.joinProject: "Join Project",
+        AppStrings.joinProjectPending:
+            "Your request to join the project has been sent. Please wait for the project owner to respond.",
+        AppStrings.joinProjectAccepted: "You're part of the project!",
+        AppStrings.joinProjectCancelled: "Join request cancelled",
         AppStrings.report: "Report",
         AppStrings.tagNameValid: "Tag name must be valid!",
         AppStrings.editInformation: "Edit information?",
