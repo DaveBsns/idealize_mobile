@@ -266,6 +266,7 @@ class ProjectDetailsController extends GetxController {
     AppRepo().hideLoading();
     Get.back();
     if (response != null) {
+      await getProject();
       AppRepo().showSnackbar(
         label: 'Success',
         text: AppStrings.projectReported.tr,

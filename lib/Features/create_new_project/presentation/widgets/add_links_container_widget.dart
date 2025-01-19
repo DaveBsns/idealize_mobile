@@ -14,12 +14,16 @@ class AddLinksContainer extends StatelessWidget {
   final Function(LinkModel)? onAddLink;
   final List<LinkModel> links;
   final Function(LinkModel) onLinkDeleted;
+  final Function(String)? onLinkNameChanged;
+  final Function(String)? onLinkUrlChanged;
 
   AddLinksContainer({
     super.key,
     this.onAddLink,
     required this.links,
     required this.onLinkDeleted,
+    this.onLinkNameChanged,
+    this.onLinkUrlChanged,
   });
 
   final labelCtrl = TextEditingController();
@@ -105,6 +109,7 @@ class AddLinksContainer extends StatelessWidget {
                 keyboardType: TextInputType.url,
                 icon: Iconsax.edit_2,
                 controller: labelCtrl,
+                onChanged: onLinkNameChanged,
               ),
               Center(
                 child: SizedBox(
@@ -119,6 +124,7 @@ class AddLinksContainer extends StatelessWidget {
                 iconColor: AppColors().lightGrayColor,
                 icon: Iconsax.edit_2,
                 controller: linkCtrl,
+                onChanged: onLinkUrlChanged,
               ),
               Gap(AppConfig().dimens.medium),
               Obx(

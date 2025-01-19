@@ -258,9 +258,18 @@ class CustomMultiLineTextField extends StatelessWidget {
   final String? labelText;
   final IconData? icon;
   final Function(String)? onChanged;
+  final int? maxCharcters;
+  final int? maxLines;
 
-  const CustomMultiLineTextField(
-      {super.key, this.controller, this.labelText, this.icon, this.onChanged});
+  const CustomMultiLineTextField({
+    super.key,
+    this.controller,
+    this.labelText,
+    this.icon,
+    this.onChanged,
+    this.maxCharcters,
+    this.maxLines,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -269,10 +278,10 @@ class CustomMultiLineTextField extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: TextField(
         controller: controller,
-        maxLines: null,
         onChanged: onChanged,
         minLines: 5,
-        maxLength: 1500,
+        maxLines: maxLines,
+        maxLength: maxCharcters ?? 1500,
         style: textTheme.bodyMedium,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(

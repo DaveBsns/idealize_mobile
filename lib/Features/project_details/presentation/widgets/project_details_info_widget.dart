@@ -20,6 +20,7 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
   final List<ProjectUser> members;
   final VoidCallback? onTappedLike;
   final bool isLiked;
+  final bool isReported;
   final VoidCallback? onTappedComment;
   final VoidCallback? onTapJoinProject;
   final Function(String) onReportProjectTapped;
@@ -39,9 +40,16 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
     this.onTapJoinProject,
     this.joinedStatus,
     required this.onReportProjectTapped,
+    this.isReported = false,
   });
 
   void _showReportDialog(BuildContext context) {
+    if (isReported) {
+      AppRepo().showSnackbar(
+          label: 'Already Reported',
+          text: 'You have already reported this project.');
+      return;
+    }
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -63,6 +71,8 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 CustomMultiLineTextField(
                   labelText: "Enter your reason",
                   controller: reportController,
+                  maxCharcters: 300,
+                  maxLines: 7,
                 ),
               ],
             ),
@@ -284,15 +294,15 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Iconsax.link_2,
+                      Iconsax.warning_2,
                       size: 20,
-                      color: AppConfig().colors.txtColor,
+                      color: AppConfig().colors.redColor,
                     ),
                     Gap(AppConfig().dimens.small),
                     Text(
                       AppStrings.report.tr,
                       style: TextStyle(
-                        color: AppConfig().colors.txtColor,
+                        color: AppConfig().colors.redColor,
                       ),
                     ),
                   ],

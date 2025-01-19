@@ -42,7 +42,7 @@ class CreateNewProjectStepOneScreen
               ),
               Gap(AppConfig().dimens.medium),
               Text(
-                AppStrings.desciption.tr,
+                '${AppStrings.desciption.tr}*',
                 style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,

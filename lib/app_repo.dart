@@ -124,6 +124,7 @@ class AppRepo {
       color: Colors.white,
     ),
   }) {
+    Get.closeAllSnackbars();
     CustomSnackbar(
       label: label,
       text: text,
