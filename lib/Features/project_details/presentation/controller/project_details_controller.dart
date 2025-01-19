@@ -45,7 +45,7 @@ class ProjectDetailsController extends GetxController {
   RxList<ProjectComment> comments = RxList([]);
 
   int currentCommentsPage = 1;
-  bool isRequestSent = false;
+  String? joinedStatus;
   FocusNode myFocusNode = FocusNode();
 
   ProjectDetailsController({
@@ -65,6 +65,7 @@ class ProjectDetailsController extends GetxController {
     project = result;
 
     await initComments();
+    joinedStatus = project!.joinedStatus;
     isLiked.value = project!.isLiked;
     isArchived.value = project!.isArchived ?? false;
     archiveId.value = project!.archiveId;
@@ -75,6 +76,11 @@ class ProjectDetailsController extends GetxController {
     if (scrolableToComments) {
       scrollToComments();
     }
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      refresh();
+      update();
+    });
 
     return result;
   }
@@ -227,6 +233,7 @@ class ProjectDetailsController extends GetxController {
       final result = await repo.join(project!.id, project!.owner!.id);
       AppRepo().hideLoading();
       if (result != null) {
+        await getProject();
         AppRepo().showSnackbar(
           label: AppStrings.requestSent.tr,
           text: AppStrings.requestSent.tr,

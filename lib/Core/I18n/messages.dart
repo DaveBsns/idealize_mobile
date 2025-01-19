@@ -170,6 +170,9 @@ class AppStrings {
   static const String noComments = "noComments";
   static const String noContributors = "noContributors";
   static const String joinProject = "joinProject";
+  static const String joinProjectPending = "joinProjectPending";
+  static const String joinProjectAccepted = "joinProjectAccepted";
+  static const String joinProjectCancelled = "joinProjectCancelled";
   static const String report = "report";
   static const String tagNameValid = "tagNameValid";
   static const String editInformation = "editInformation";

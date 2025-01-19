@@ -124,6 +124,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                 onReportProjectTapped: (reason) {
                                   controller.reportProject(reason);
                                 },
+                                joinedStatus: controller.joinedStatus,
                                 onTappedComment: controller.scrollToComments,
                                 ownerName:
                                     controller.project?.owner?.firstname ??
@@ -138,8 +139,10 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                   controller.toggleLike(
                                       AppRepo().user!.id.toString());
                                 },
-                                onTapJoinProject: () =>
-                                    controller.joinProject(),
+                                onTapJoinProject: ['pending', 'accepted']
+                                        .contains(controller.joinedStatus)
+                                    ? null
+                                    : () => controller.joinProject(),
                               ),
                             ),
                             Gap(AppConfig().dimens.medium),

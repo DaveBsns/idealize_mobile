@@ -22,6 +22,7 @@ class Project {
   final int likes;
   bool? isArchived;
   String? archiveId;
+  String? joinedStatus;
 
   Project({
     required this.id,
@@ -41,6 +42,7 @@ class Project {
     this.isArchived = false,
     this.archiveId,
     this.thumbnail,
+    this.joinedStatus,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {
@@ -96,6 +98,7 @@ class Project {
               json['thumbnail'] is Map<String, dynamic>)
           ? ProjectFile.fromJson(json['thumbnail'])
           : null,
+      joinedStatus: json['joinedStatus'],
     );
   }
 }

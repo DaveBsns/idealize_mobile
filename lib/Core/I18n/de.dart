@@ -191,6 +191,10 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.noComments: "Keine Kommentare",
         AppStrings.noContributors: "Keine Mitwirkenden",
         AppStrings.joinProject: "Projekt beitreten",
+        AppStrings.joinProjectPending:
+            "Ihre Anfrage, dem Projekt beizutreten, wurde gesendet. Bitte warten Sie, bis der Projektbesitzer antwortet.",
+        AppStrings.joinProjectAccepted: "Sie sind Teil des Projekts!",
+        AppStrings.joinProjectCancelled: "Anfrage zum Beitritt abgebrochen",
         AppStrings.report: "Melden",
         AppStrings.tagNameValid: "Schlagwort-Name muss gültig sein!",
         AppStrings.editInformation: "Informationen bearbeiten?",
