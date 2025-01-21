@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
@@ -109,22 +110,43 @@ class ProfileController extends GetxController {
   XFile? image;
 
   Future<void> selectImageFromGallery() async {
-    final XFile? selectedImage =
-        await imagePicker.pickImage(source: ImageSource.gallery);
+    try {
+      final XFile? selectedImage =
+          await imagePicker.pickImage(source: ImageSource.gallery);
 
-    if (selectedImage != null) {
-      image = selectedImage;
-      update();
+      if (selectedImage != null) {
+        image = selectedImage;
+        update();
+      }
+    } on PlatformException catch (exception) {
+      if (exception.code == 'photo_access_denied') {
+        AppRepo().showSnackbar(
+          label: AppStrings.accessDenied.tr,
+          text: AppStrings.photoAccessDenied.tr,
+        );
+      }
+    } catch (er) {
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: er.toString(),
+      );
     }
   }
 
   Future<void> takePicture() async {
-    final XFile? picture =
-        await imagePicker.pickImage(source: ImageSource.camera);
+    try {
+      final XFile? picture =
+          await imagePicker.pickImage(source: ImageSource.camera);
 
-    if (picture != null) {
-      image = picture;
-      update();
+      if (picture != null) {
+        image = picture;
+        update();
+      }
+    } catch (er) {
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: er.toString(),
+      );
     }
   }
 

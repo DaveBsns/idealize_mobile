@@ -163,6 +163,9 @@ class AppStrings {
   static const String noComments = "noComments";
   static const String noContributors = "noContributors";
   static const String joinProject = "joinProject";
+  static const String joinProjectPending = "joinProjectPending";
+  static const String joinProjectAccepted = "joinProjectAccepted";
+  static const String joinProjectCancelled = "joinProjectCancelled";
   static const String report = "report";
   static const String tagNameValid = "tagNameValid";
   static const String editInformation = "editInformation";
@@ -179,11 +182,25 @@ class AppStrings {
   static const String projectReported = "projectReported";
   static const String fillRequiredFields = "fillRequiredFields";
   static const String fileNotSupportedFormat = "fileNotSupportedFormat";
+  static const String termsCondifitonCheckbox = "termsCondifitonCheckbox";
   static const String fileTooLarge = "fileTooLarge";
   static const String noMediafileSelected = "noMediafileSelected";
   static const String maximumFilesReached = "maximumFilesReached";
-  static const String fileTooLargeNotSupportedFormat = "fileTooLargeNotSupportedFormat";
+  static const String fileTooLargeNotSupportedFormat =
+      "fileTooLargeNotSupportedFormat";
   static const String noFileSelected = "noFileSelected";
   static const String maximumMedias = "maximumMedias";
   static const String fileAlreadyAdded = "fileAlreadyAdded";
+  static const String passwordInstructions = "passwordInstructions";
+  static const String addNew = "addNew";
+  static const String toAddNew = "toAddNew";
+  static const String tag = "tag";
+  static const String course = "course";
+  static const String studyProgram = "studyProgram";
+  static const String skip = "skip";
+  static const String photoAccessDenied = "photoAccessDenied";
+  static const String accessDenied = "accessDenied";
+  static const String okey = "okey";
+  static const String skipReqDesc = "skipReqDesc";
+  static const String noTitle = "noTitle";
 }

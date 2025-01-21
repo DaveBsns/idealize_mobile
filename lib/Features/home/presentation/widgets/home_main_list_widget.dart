@@ -21,16 +21,6 @@ class HomeMainListWidget extends GetView<HomeController> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Text(
-              AppStrings.pullDownToRefresh.tr,
-              style: TextStyle(
-                fontSize: 12,
-                color: AppConfig().colors.darkGrayColor,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Gap(AppConfig().dimens.medium),
-
             // TODO change style of the card when there is no internet connection
             Expanded(
               child: Stack(
@@ -106,7 +96,13 @@ class HomeMainListWidget extends GetView<HomeController> {
                                 isLoading: loadingObject.isNotEmpty,
                                 onTapOpenProject: () =>
                                     controller.routeToProject(
-                                        controller.searchedProjects[index]),
+                                  controller.searchedProjects[index],
+                                ),
+                                onTapLikeCommentToOpenProject: () =>
+                                    controller.routeToProject(
+                                  controller.searchedProjects[index],
+                                  scrollToComments: true,
+                                ),
                                 toggleFavorite: controller.toggleArchive,
                               );
 

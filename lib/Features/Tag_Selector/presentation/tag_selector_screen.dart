@@ -41,6 +41,9 @@ class TagSelectorScreen extends StatelessWidget {
     );
 
     TextTheme textStyles = Theme.of(context).textTheme;
+
+    controller.tags.sort((a, b) => a.tagName.compareTo(b.tagName));
+
     return Obx(
       () => ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
@@ -82,13 +85,17 @@ class TagSelectorScreen extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     side: BorderSide(
                                       color: isSelected
-                                          ? AppConfig().colors.greenColor
+                                          ? (tagType == TagType.studyProgram
+                                              ? AppConfig().colors.lightBlue
+                                              : AppConfig().colors.greenColor)
                                           : AppConfig().colors.primaryColor,
                                     ),
                                     borderRadius: BorderRadius.circular(
                                         AppConfig().dimens.small),
                                   ),
-                                  selectedColor: AppConfig().colors.greenColor,
+                                  selectedColor: tagType == TagType.studyProgram
+                                      ? AppConfig().colors.lightBlue
+                                      : AppConfig().colors.greenColor,
                                   label: Text(entry.tagName),
                                   labelStyle: isSelected
                                       ? textStyles.titleMedium!
@@ -162,7 +169,19 @@ class TagSelectorScreen extends StatelessWidget {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: "  " + AppStrings.toAddNewTagOrCourse.tr,
+                                          text:
+                                              ' ${AppStrings.toAddNew.trParams({
+                                                'name': tagType == TagType.tag
+                                                    ? AppStrings.tag.tr
+                                                    : (tagType == TagType.course
+                                                        ? AppStrings.course.tr
+                                                        : (tagType ==
+                                                                TagType
+                                                                    .studyProgram)
+                                                            ? AppStrings
+                                                                .studyProgram.tr
+                                                            : '')
+                                              })}',
                                           style:
                                               textStyles.titleMedium!.copyWith(
                                             color: AppConfig()

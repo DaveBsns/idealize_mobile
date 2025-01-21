@@ -124,6 +124,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                 onReportProjectTapped: (reason) {
                                   controller.reportProject(reason);
                                 },
+                                joinedStatus: controller.joinedStatus,
                                 onTappedComment: controller.scrollToComments,
                                 ownerName:
                                     controller.project?.owner?.firstname ??
@@ -138,8 +139,12 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                   controller.toggleLike(
                                       AppRepo().user!.id.toString());
                                 },
-                                onTapJoinProject: () =>
-                                    controller.joinProject(),
+                                onTapJoinProject: ['pending', 'accepted']
+                                        .contains(controller.joinedStatus)
+                                    ? null
+                                    : () => controller.joinProject(),
+                                isReported:
+                                    controller.project?.isReported ?? false,
                               ),
                             ),
                             Gap(AppConfig().dimens.medium),
@@ -260,12 +265,19 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                   ],
                                 ),
                               ),
-                            SizedBox(
-                              height: 50,
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                minHeight: 50,
+                              ),
                               child: TextField(
                                 focusNode: controller.myFocusNode,
                                 controller: controller.commentCtrl,
+                                maxLength: 500,
+                                minLines: 1,
+                                maxLines: 5,
                                 decoration: InputDecoration(
+                                  counter: null,
+                                  counterText: "",
                                   fillColor: Colors.white,
                                   filled: true,
                                   border: OutlineInputBorder(

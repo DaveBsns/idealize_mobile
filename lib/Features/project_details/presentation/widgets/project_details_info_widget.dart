@@ -7,6 +7,7 @@ import 'package:idealize_new_version/Core/Components/users_like_bottomsheet_widg
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
+import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/app_repo.dart';
@@ -19,9 +20,11 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
   final List<ProjectUser> members;
   final VoidCallback? onTappedLike;
   final bool isLiked;
+  final bool isReported;
   final VoidCallback? onTappedComment;
   final VoidCallback? onTapJoinProject;
   final Function(String) onReportProjectTapped;
+  final String? joinedStatus;
   final TextEditingController reportController = TextEditingController();
 
   ProjectDetailsInfoWidget({
@@ -35,10 +38,18 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
     this.isLiked = false,
     this.onTappedComment,
     this.onTapJoinProject,
+    this.joinedStatus,
     required this.onReportProjectTapped,
+    this.isReported = false,
   });
 
   void _showReportDialog(BuildContext context) {
+    if (isReported) {
+      AppRepo().showSnackbar(
+          label: 'Already Reported',
+          text: 'You have already reported this project.');
+      return;
+    }
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -60,6 +71,8 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 CustomMultiLineTextField(
                   labelText: "Enter your reason",
                   controller: reportController,
+                  maxCharcters: 300,
+                  maxLines: 7,
                 ),
               ],
             ),
@@ -108,16 +121,24 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 spacing: 8.0,
                 runSpacing: 0.0,
                 children: [
-                  Chip(
-                      side: BorderSide(color: AppConfig().colors.lightBlue),
-                      label: Text(
-                        ownerName,
-                        style: TextStyle(
-                          color: AppConfig().colors.lightBlue,
-                          fontWeight: FontWeight.bold,
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(
+                        AppRoutes().userSuggestionProfile,
+                        arguments: ownerId,
+                      );
+                    },
+                    child: Chip(
+                        side: BorderSide(color: AppConfig().colors.lightBlue),
+                        label: Text(
+                          ownerName,
+                          style: TextStyle(
+                            color: AppConfig().colors.lightBlue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      backgroundColor: Colors.transparent)
+                        backgroundColor: Colors.transparent),
+                  )
                 ],
               )
             ],
@@ -162,27 +183,7 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 ),
               if (AppRepo().user!.id != ownerId &&
                   !members.any((element) => element.id == AppRepo().user!.id))
-                GestureDetector(
-                  onTap: onTapJoinProject,
-                  child: Chip(
-                    side: BorderSide.none,
-                    label: Text(
-                      AppStrings.joinProject.tr,
-                      style: TextStyle(
-                        color: AppConfig().colors.primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    avatar: Icon(
-                      Icons.add,
-                      color: AppConfig().colors.primaryColor,
-                    ),
-                    backgroundColor: AppConfig().colors.secondaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                )
+                _joinSection()
             ],
           ).paddingOnly(
             left: AppConfig().dimens.medium,
@@ -293,15 +294,15 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Iconsax.link_2,
+                      Iconsax.warning_2,
                       size: 20,
-                      color: AppConfig().colors.txtColor,
+                      color: AppConfig().colors.redColor,
                     ),
                     Gap(AppConfig().dimens.small),
                     Text(
                       AppStrings.report.tr,
                       style: TextStyle(
-                        color: AppConfig().colors.txtColor,
+                        color: AppConfig().colors.redColor,
                       ),
                     ),
                   ],
@@ -313,5 +314,100 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _joinSection() {
+    Widget joinBtn = GestureDetector(
+      onTap: onTapJoinProject,
+      child: Chip(
+        side: BorderSide.none,
+        label: Text(
+          AppStrings.joinProject.tr,
+          style: TextStyle(
+            color: AppConfig().colors.primaryColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 12.5,
+          ),
+        ),
+        avatar: Icon(
+          Icons.add,
+          color: AppConfig().colors.primaryColor,
+        ),
+        backgroundColor: AppConfig().colors.secondaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+    );
+
+    if (joinedStatus == 'pending') {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.amber.shade100,
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(
+            color: const Color.fromARGB(255, 201, 152, 3),
+            width: 0.5,
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+        child: Text(
+          AppStrings.joinProjectPending.tr,
+          style: const TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Color.fromARGB(255, 201, 152, 3),
+            fontSize: 12.5,
+          ),
+        ),
+      );
+    } else if (joinedStatus == 'accepted') {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.green.shade100,
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(
+            color: const Color.fromARGB(255, 7, 130, 11),
+            width: 0.5,
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+        child: Text(
+          AppStrings.joinProjectAccepted.tr,
+          style: const TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Color.fromARGB(255, 7, 130, 11),
+            fontSize: 12.5,
+          ),
+        ),
+      );
+    } else if (joinedStatus == 'cancelled') {
+      return Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.red.shade100,
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: const Color.fromARGB(255, 201, 3, 3),
+                width: 0.5,
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+            child: Text(
+              AppStrings.joinProjectCancelled.tr,
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Color.fromARGB(255, 174, 5, 5),
+                fontSize: 12.5,
+              ),
+            ),
+          ),
+          Gap(AppConfig().dimens.small),
+          joinBtn,
+        ],
+      );
+    }
+
+    return joinBtn;
   }
 }

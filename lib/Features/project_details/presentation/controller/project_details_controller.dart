@@ -25,6 +25,7 @@ import 'package:idealize_new_version/Core/I18n/messages.dart';
 class ProjectDetailsController extends GetxController {
   late ProjectDetailsRepository repo;
   late String projectId;
+  late bool scrolableToComments;
 
   Project? project;
 
@@ -44,7 +45,7 @@ class ProjectDetailsController extends GetxController {
   RxList<ProjectComment> comments = RxList([]);
 
   int currentCommentsPage = 1;
-  bool isRequestSent = false;
+  String? joinedStatus;
   FocusNode myFocusNode = FocusNode();
 
   ProjectDetailsController({
@@ -55,6 +56,7 @@ class ProjectDetailsController extends GetxController {
   void onInit() {
     super.onInit();
     projectId = Get.arguments;
+    scrolableToComments = Get.parameters['scroll-to-comments'] == 'true';
     getProject();
   }
 
@@ -63,11 +65,21 @@ class ProjectDetailsController extends GetxController {
     project = result;
 
     await initComments();
+    joinedStatus = project!.joinedStatus;
     isLiked.value = project!.isLiked;
     isArchived.value = project!.isArchived ?? false;
     archiveId.value = project!.archiveId;
     commentCtrl.addListener(() {
       isCommentEmpty.value = commentCtrl.text.trim().isEmpty;
+    });
+
+    if (scrolableToComments) {
+      scrollToComments();
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      refresh();
+      update();
     });
 
     return result;
@@ -137,11 +149,13 @@ class ProjectDetailsController extends GetxController {
   }
 
   void scrollToComments() {
-    scrollController.animateTo(
-      scrollController.position.maxScrollExtent,
-      duration: const Duration(seconds: 1),
-      curve: Curves.fastOutSlowIn,
-    );
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      scrollController.animateTo(
+        scrollController.position.maxScrollExtent,
+        duration: const Duration(seconds: 1),
+        curve: Curves.fastOutSlowIn,
+      );
+    });
   }
 
   void removeReply() {
@@ -215,20 +229,21 @@ class ProjectDetailsController extends GetxController {
 
   Future<void> joinProject() async {
     if (project!.owner != null) {
+      AppRepo().showLoading();
       final result = await repo.join(project!.id, project!.owner!.id);
-
+      AppRepo().hideLoading();
       if (result != null) {
+        await getProject();
         AppRepo().showSnackbar(
-          label: 'Request sent',
-          text:
-              AppStrings.requestSent.tr,
+          label: AppStrings.requestSent.tr,
+          text: AppStrings.requestSent.tr,
           backgroundColor: AppColors().primaryColor,
           position: SnackPosition.TOP,
         );
       }
     } else {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: AppStrings.ownerNotAvailable.tr,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.TOP,
@@ -251,6 +266,7 @@ class ProjectDetailsController extends GetxController {
     AppRepo().hideLoading();
     Get.back();
     if (response != null) {
+      await getProject();
       AppRepo().showSnackbar(
         label: 'Success',
         text: AppStrings.projectReported.tr,

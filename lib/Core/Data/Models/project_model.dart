@@ -12,6 +12,7 @@ class Project {
   final List<Tag> tags;
   final List<Tag> courses;
   final List<ProjectUser> projectUsers;
+  final List<ProjectUser> pendingMembers;
   final User? owner;
   final DateTime createdAt;
   final List<ProjectFile> attachments;
@@ -22,6 +23,8 @@ class Project {
   final int likes;
   bool? isArchived;
   String? archiveId;
+  String? joinedStatus;
+  bool isReported;
 
   Project({
     required this.id,
@@ -31,6 +34,7 @@ class Project {
     required this.tags,
     required this.courses,
     required this.projectUsers,
+    required this.pendingMembers,
     this.owner,
     required this.createdAt,
     this.attachments = const [],
@@ -41,6 +45,8 @@ class Project {
     this.isArchived = false,
     this.archiveId,
     this.thumbnail,
+    this.joinedStatus,
+    this.isReported = false,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {
@@ -79,6 +85,14 @@ class Project {
               .whereType<ProjectUser>()
               .toList()
           : [],
+      pendingMembers: (json['pendingMembers'] != null &&
+              (json['pendingMembers'] as List).isListMapStringDynamic)
+          ? json['pendingMembers']
+              .map((userJson) =>
+                  userJson.isNotEmpty ? ProjectUser.fromJson(userJson) : null)
+              .whereType<ProjectUser>()
+              .toList()
+          : [],
       attachments: (json['attachments'] != null &&
               json['attachments'] != [] &&
               (json['attachments'] as List).isListMapStringDynamic)
@@ -96,6 +110,8 @@ class Project {
               json['thumbnail'] is Map<String, dynamic>)
           ? ProjectFile.fromJson(json['thumbnail'])
           : null,
+      joinedStatus: json['joinedStatus'],
+      isReported: json['isReported'] ?? false,
     );
   }
 }

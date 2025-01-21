@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/otp_bottom_sheet.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
@@ -50,9 +51,9 @@ class RegisterController extends GetxController {
   }
 
   bool isStrongPassword(String password) {
-    final RegExp passwordRegex = RegExp(
-        r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
-    return passwordRegex.hasMatch(password);
+    final RegExp passwordRegex =
+        RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
+    return passwordRegex.hasMatch(password.trim()) && !password.contains(' ');
   }
 
   bool arePasswordsSame() {
@@ -86,14 +87,14 @@ class RegisterController extends GetxController {
             }
           } on HttpException catch (exception) {
             AppRepo().showSnackbar(
-              label: 'Error',
+              label: AppStrings.error.tr,
               text: exception.message,
               position: SnackPosition.TOP,
             );
             AppRepo().hideLoading();
           } catch (er) {
             AppRepo().showSnackbar(
-              label: 'Error',
+              label: AppStrings.error.tr,
               text: er.toString(),
               position: SnackPosition.TOP,
             );
@@ -129,16 +130,24 @@ class RegisterController extends GetxController {
         !emailCheck ||
         !surnameCheck ||
         !passwordCheck ||
-        !arePasswordsSame() ||
-        checkboxValue.value != CustomCheckBoxValue.checked) {
+        !arePasswordsSame()) {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: AppStrings.fillRequiredFields.tr,
         position: SnackPosition.TOP,
       );
-      if (checkboxValue.value != CustomCheckBoxValue.checked) {
-        checkboxValue.value = CustomCheckBoxValue.error;
-      }
+      return;
+    }
+
+    if (checkboxValue.value != CustomCheckBoxValue.checked) {
+      checkboxValue.value = CustomCheckBoxValue.error;
+
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: AppStrings.termsCondifitonCheckbox.tr,
+        position: SnackPosition.TOP,
+      );
+
       return;
     }
 
@@ -146,24 +155,45 @@ class RegisterController extends GetxController {
   }
 
   Future<void> selectImageFromGallery() async {
-    final XFile? selectedImage =
-        await imagePicker.pickImage(source: ImageSource.gallery);
+    try {
+      final XFile? selectedImage =
+          await imagePicker.pickImage(source: ImageSource.gallery);
 
-    if (selectedImage != null) {
-      image = selectedImage;
-      uploadedAvatarId.value = await _uploadAvatar() ?? '';
-      update();
+      if (selectedImage != null) {
+        image = selectedImage;
+        uploadedAvatarId.value = await _uploadAvatar() ?? '';
+        update();
+      }
+    } on PlatformException catch (exception) {
+      if (exception.code == 'photo_access_denied') {
+        AppRepo().showSnackbar(
+          label: AppStrings.accessDenied.tr,
+          text: AppStrings.photoAccessDenied.tr,
+        );
+      }
+    } catch (er) {
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: er.toString(),
+      );
     }
   }
 
   Future<void> takePicture() async {
-    final XFile? picture =
-        await imagePicker.pickImage(source: ImageSource.camera);
+    try {
+      final XFile? picture =
+          await imagePicker.pickImage(source: ImageSource.camera);
 
-    if (picture != null) {
-      image = picture;
-      update();
-      uploadedAvatarId.value = await _uploadAvatar() ?? '';
+      if (picture != null) {
+        image = picture;
+        update();
+        uploadedAvatarId.value = await _uploadAvatar() ?? '';
+      }
+    } catch (er) {
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: er.toString(),
+      );
     }
   }
 
@@ -191,10 +221,10 @@ class RegisterController extends GetxController {
   }
 
   Future<void> _signUp() async {
-    final password = passwordCtrl.text;
-    final email = emailCtrl.text;
-    final firstname = firstnameCtrl.text;
-    final surname = surnameCtrl.text;
+    final password = passwordCtrl.text.trim();
+    final email = emailCtrl.text.trim();
+    final firstname = firstnameCtrl.text.trim();
+    final surname = surnameCtrl.text.trim();
 
     loading.value = true;
     final response = await repo.createUser(
@@ -214,7 +244,7 @@ class RegisterController extends GetxController {
   Future<void> updateUserProfile() async {
     // final firstname = firstnameCtrl.text;
     // final surname = surnameCtrl.text;
-    final username = usernameCtrl.text;
+    final username = usernameCtrl.text.trim();
 
     loading.value = true;
     final response = await repo.updateUser(
@@ -236,13 +266,12 @@ class RegisterController extends GetxController {
 
   void cancelOptionalStepsRegistration() {
     AppRepo().showCustomAlertDialog(
-      title: "Confirmation Required",
-      content:
-          "You have the option to skip this steps and add it later in your profile.",
-      buttonText: "Okay",
+      title: AppStrings.confirmationRequired.tr,
+      content: AppStrings.skipReqDesc.tr,
+      buttonText: AppStrings.okey.tr,
       onPressed: () => Get.offAllNamed(AppConfig().routes.registrationComleted),
       buttonTextStyle: TextStyle(color: AppConfig().colors.primaryColor),
-      outlinedButtonText: "Cancel",
+      outlinedButtonText: AppStrings.cancel.tr,
       outlinedButtonOnPressed: () => Get.back(),
       buttonColor: AppColors().secondaryColor,
       outlinedButtonColor: Colors.transparent,

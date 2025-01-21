@@ -13,7 +13,7 @@ class LinkModel {
         label: 'no label',
         link: json,
       );
-    } else if (json.runtimeType is Map<String, dynamic>) {
+    } else if (json.runtimeType.toString() == '_Map<String, dynamic>') {
       return LinkModel(
         label: json['label'],
         link: json['link'],
