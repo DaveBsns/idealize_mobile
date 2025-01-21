@@ -163,7 +163,7 @@ class AppRepo {
         buttonText: buttonText,
         buttonColor: buttonColor,
         buttonTextStyle: buttonTextStyle,
-        onPressed: onPressed,
+        onPressed: onPressed ?? () => Get.back(),
         outlinedButtonText: outlinedButtonText,
         outlinedButtonOnPressed: outlinedButtonOnPressed,
         outlinedButtonColor: outlinedButtonColor,

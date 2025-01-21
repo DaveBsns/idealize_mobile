@@ -12,6 +12,7 @@ class Project {
   final List<Tag> tags;
   final List<Tag> courses;
   final List<ProjectUser> projectUsers;
+  final List<ProjectUser> pendingMembers;
   final User? owner;
   final DateTime createdAt;
   final List<ProjectFile> attachments;
@@ -33,6 +34,7 @@ class Project {
     required this.tags,
     required this.courses,
     required this.projectUsers,
+    required this.pendingMembers,
     this.owner,
     required this.createdAt,
     this.attachments = const [],
@@ -78,6 +80,14 @@ class Project {
       projectUsers: (json['teamMembers'] != null &&
               (json['teamMembers'] as List).isListMapStringDynamic)
           ? json['teamMembers']
+              .map((userJson) =>
+                  userJson.isNotEmpty ? ProjectUser.fromJson(userJson) : null)
+              .whereType<ProjectUser>()
+              .toList()
+          : [],
+      pendingMembers: (json['pendingMembers'] != null &&
+              (json['pendingMembers'] as List).isListMapStringDynamic)
+          ? json['pendingMembers']
               .map((userJson) =>
                   userJson.isNotEmpty ? ProjectUser.fromJson(userJson) : null)
               .whereType<ProjectUser>()

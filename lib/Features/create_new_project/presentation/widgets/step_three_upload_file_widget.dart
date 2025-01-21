@@ -222,7 +222,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                               title: AppStrings.fileUploadInfo.tr,
                               content:
                                   AppStrings.uploadInformation.tr,
-                              buttonText: 'OK',
+                              buttonText: AppStrings.okay.tr,
                               buttonTextStyle: TextStyle(
                                   color: AppConfig().colors.primaryColor,
                                   fontWeight: FontWeight.w700),
@@ -376,7 +376,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                                 title: AppStrings.fileUploadInfo.tr,
                                 content:
                                     AppStrings.uploadInformation.tr,
-                                buttonText: 'OK',
+                                buttonText: AppStrings.okay.tr,
                                 buttonTextStyle: TextStyle(
                                     color: AppConfig().colors.primaryColor,
                                     fontWeight: FontWeight.w700),
