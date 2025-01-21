@@ -17,11 +17,9 @@ Future<XFile> compressImage(XFile imageFile) async {
     format = CompressFormat.jpeg;
   } else if (filePathLowercase.endsWith('.png')) {
     format = CompressFormat.png;
-  } else if (filePathLowercase.endsWith('.webp')) {
-    format = CompressFormat.webp;
   } else {
     throw Exception(
-        'Unsupported image format. Please upload a JPEG, PNG, or WEBP image.');
+        'Unsupported image format. Please upload a JPEG or PNG image.');
   }
 
   var result = await FlutterImageCompress.compressAndGetFile(

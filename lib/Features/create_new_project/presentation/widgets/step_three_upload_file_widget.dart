@@ -219,7 +219,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                             onTap: () => AppRepo().showCustomAlertDialog(
                               title: 'File Upload Info',
                               content:
-                                  'You can upload files up to 10 MB in size.You can upload images up to 50 MB in size and videos up to 200 MB in size. All common formats are supported.',
+                                  'You can upload files up to 10 MB in size.You can upload images up to 50 MB in size and videos up to 200 MB in size. Supported formats are JPEG, PNG, GIF, WEBP, MP4, and AVI.',
                               buttonText: 'OK',
                               buttonTextStyle: TextStyle(
                                   color: AppConfig().colors.primaryColor,
@@ -373,7 +373,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                               onTap: () => AppRepo().showCustomAlertDialog(
                                 title: 'File Upload Info',
                                 content:
-                                    'You can upload files up to 10 MB in size.You can upload images up to 50 MB in size and videos up to 200 MB in size. All common formats are supported.',
+                                    'You can upload files up to 10 MB in size.You can upload images up to 50 MB in size and videos up to 200 MB in size. Supported formats are JPEG and PNG.',
                                 buttonText: 'OK',
                                 buttonTextStyle: TextStyle(
                                     color: AppConfig().colors.primaryColor,

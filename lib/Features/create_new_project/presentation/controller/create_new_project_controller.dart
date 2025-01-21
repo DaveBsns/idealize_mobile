@@ -597,6 +597,20 @@ class CreateNewProjectController extends GetxController {
           ),
         ) ??
         []);
+    selectedUsers.addAll(
+      updateProjectModel?.pendingMembers.map(
+            (e) => User(
+              id: e.id,
+              email: e.email,
+              createdAt: DateTime.now(),
+              firstname: e.firstName,
+              surname: e.lastName,
+              status: true,
+              updatedAt: DateTime.now(),
+            ),
+          ) ??
+          [],
+    );
 
     isDraft.refresh();
     update();
