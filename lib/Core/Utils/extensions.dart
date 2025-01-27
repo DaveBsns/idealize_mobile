@@ -288,28 +288,10 @@ extension ParserCheck on List {
 
 extension FormatUrl on String {
   String? formatUrl() {
-    String url = this;
+    const urlPattern =
+        r'^(https?:\/\/)?(www\.)?([a-zA-Z0-9._-]+\.[a-zA-Z]{2,6})(\/\S*)?$';
+    final urlRegExp = RegExp(urlPattern);
 
-    // Check if the URL starts with 'www.'
-    if (!url.startsWith('www.')) {
-      url = 'www.$url';
-    }
-
-    // Check if the URL contains a scheme (http:// or https://)
-    if (!url.startsWith(RegExp(r'http://|https://'))) {
-      // If not, prepend 'http://'
-      url = 'https://$url';
-    }
-
-    // Check if the URL is in a valid format
-    if (!RegExp(
-            r'^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)')
-        .hasMatch(url)) {
-      // If not, return null
-      return null;
-    }
-
-    return url;
+    return urlRegExp.hasMatch(this) ? this : null;
   }
 }
-

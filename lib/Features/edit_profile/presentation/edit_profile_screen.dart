@@ -108,14 +108,14 @@ class EditProfileScreen extends GetView<ProfileController> {
                   height: 45,
                 ),
                 Gap(AppConfig().dimens.small),
-                const Divider(
-                  height: 50,
-                ),
-                CustomRow(
-                  lable: AppStrings.userName.tr,
-                  lableValue: AppStrings.userNameHint.tr,
-                  controller: controller.usernameCtrl,
-                ),
+                // const Divider(
+                //   height: 50,
+                // ),
+                // CustomRow(
+                //   lable: AppStrings.userName.tr,
+                //   lableValue: AppStrings.userNameHint.tr,
+                //   controller: controller.usernameCtrl,
+                // ),
                 Gap(AppConfig().dimens.large),
                 CustomRow(
                   lable: AppStrings.firstName.tr,

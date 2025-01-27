@@ -12,18 +12,20 @@ class ProjectItemListWidget extends StatelessWidget {
   final Function(Project)? onTappedDeleteProject;
   final Function(Project)? onTappedOpenProject;
   final List<Project> projects;
+  final bool isEditLabel;
 
   const ProjectItemListWidget({
     super.key,
     required this.projects,
     this.onTappedDeleteProject,
     this.onTappedOpenProject,
+    this.isEditLabel = false,
   });
 
   @override
   Widget build(BuildContext context) {
     if (projects.isEmpty) {
-      return  EmptyListWidget(
+      return EmptyListWidget(
         title: AppStrings.emptyDraftProjectMessage.tr,
       );
     }
@@ -40,7 +42,9 @@ class ProjectItemListWidget extends StatelessWidget {
         }
         return ProjectCardMyProjectsWidget(
           onDeleteProject: () => onTappedDeleteProject?.call(projects[index]),
-          btnTitle: AppStrings.openProject.tr,
+          btnTitle: isEditLabel
+              ? AppStrings.editProject.tr
+              : AppStrings.openProject.tr,
           project: projects[index],
           onTapOpenProject: () => onTappedOpenProject?.call(projects[index]),
         );

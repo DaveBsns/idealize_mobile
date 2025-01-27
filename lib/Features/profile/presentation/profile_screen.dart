@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
 import 'package:idealize_new_version/Core/Components/image_loader_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Constants/global_keys.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
@@ -24,6 +25,7 @@ class ProfileScreen extends GetView<ProfileController> {
           : AppConfig().colors.backGroundColor,
       child: SafeArea(
         child: Scaffold(
+          key: GlobalKeys.profile,
           backgroundColor: AppConfig().colors.backGroundColor,
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),

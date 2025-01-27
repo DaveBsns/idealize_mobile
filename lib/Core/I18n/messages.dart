@@ -218,4 +218,7 @@ class AppStrings {
   static const String okey = "okey";
   static const String skipReqDesc = "skipReqDesc";
   static const String noTitle = "noTitle";
+  static const String delete = "delete";
+  static const String deleteProject = "deleteProject";
+  static const String deleteProjectContent = "deleteProjectContent";
 }

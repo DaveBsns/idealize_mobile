@@ -246,5 +246,8 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.skipReqDesc:
             "You have the option to skip this steps and add it later in your profile.",
         AppStrings.noTitle: "No title",
+        AppStrings.delete: "Delete",
+        AppStrings.deleteProject: "Delete Project",
+        AppStrings.deleteProjectContent: "Are you sure you want to delete @projectKeyword? This action cannot be undone.",
       };
 }

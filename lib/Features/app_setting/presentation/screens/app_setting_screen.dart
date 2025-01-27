@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Features/app_setting/presentation/widgets/delete_account_bottomsheet_widget.dart';
 import 'package:idealize_new_version/Core/Components/switch_btn_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
@@ -31,54 +32,54 @@ class AppSettingScreen extends GetView<AppSettingController> {
               color: Colors.white,
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Icon(Icons.sunny,
-                          size: 25, color: AppConfig().colors.darkGrayColor),
-                      Gap(AppConfig().dimens.medium),
-                      Text(AppStrings.darkMode.tr),
-                      const Spacer(),
-                      Obx(
-                        () {
-                          return CustomSwitchButton(
-                            value: controller.isDarkMode.value,
-                            onChanged: (newValue) =>
-                                controller.isDarkMode.value = newValue,
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    color: AppConfig().colors.lightGrayColor,
-                    thickness: 0.5,
-                    height: 40,
-                  ),
-                  InkWell(
-                    onTap: () => Get.toNamed(AppConfig().routes.textSizeView),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Iconsax.text,
-                          size: 25,
-                          color: AppConfig().colors.darkGrayColor,
-                        ),
-                        Gap(AppConfig().dimens.medium),
-                        Text(AppStrings.textSize.tr),
-                        const Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 22,
-                          color: AppConfig().colors.darkGrayColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    color: AppConfig().colors.lightGrayColor,
-                    thickness: 0.5,
-                    height: 40,
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Icon(Icons.sunny,
+                  //         size: 25, color: AppConfig().colors.darkGrayColor),
+                  //     Gap(AppConfig().dimens.medium),
+                  //     Text(AppStrings.darkMode.tr),
+                  //     const Spacer(),
+                  //     Obx(
+                  //       () {
+                  //         return CustomSwitchButton(
+                  //           value: controller.isDarkMode.value,
+                  //           onChanged: (newValue) =>
+                  //               controller.isDarkMode.value = newValue,
+                  //         );
+                  //       },
+                  //     ),
+                  //   ],
+                  // ),
+                  // Divider(
+                  //   color: AppConfig().colors.lightGrayColor,
+                  //   thickness: 0.5,
+                  //   height: 40,
+                  // ),
+                  // InkWell(
+                  //   onTap: () => Get.toNamed(AppConfig().routes.textSizeView),
+                  //   child: Row(
+                  //     children: [
+                  //       Icon(
+                  //         Iconsax.text,
+                  //         size: 25,
+                  //         color: AppConfig().colors.darkGrayColor,
+                  //       ),
+                  //       Gap(AppConfig().dimens.medium),
+                  //       Text(AppStrings.textSize.tr),
+                  //       const Spacer(),
+                  //       Icon(
+                  //         Icons.arrow_forward_ios_rounded,
+                  //         size: 22,
+                  //         color: AppConfig().colors.darkGrayColor,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Divider(
+                  //   color: AppConfig().colors.lightGrayColor,
+                  //   thickness: 0.5,
+                  //   height: 40,
+                  // ),
                   InkWell(
                     onTap: () => showModalBottomSheet(
                       backgroundColor: Colors.white,
@@ -115,7 +116,9 @@ class AppSettingScreen extends GetView<AppSettingController> {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      AppConfig().privacyPolicyUrl.launchURL();
+                    },
                     child: Row(
                       children: [
                         Icon(
@@ -140,16 +143,19 @@ class AppSettingScreen extends GetView<AppSettingController> {
                     height: 40,
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      AppConfig().termsCondiftionsUrl.launchURL();
+                    },
                     child: Row(
                       children: [
                         Icon(
-                          Iconsax.lock,
+                          Iconsax.document,
                           size: 25,
                           color: AppConfig().colors.darkGrayColor,
                         ),
                         Gap(AppConfig().dimens.medium),
-                        Text(AppStrings.security.tr),
+                        Text(AppStrings.termsAndConditions.tr
+                            .replaceAll(' *.', '')),
                         const Spacer(),
                         Icon(
                           Icons.arrow_forward_ios_rounded,
@@ -159,6 +165,31 @@ class AppSettingScreen extends GetView<AppSettingController> {
                       ],
                     ),
                   ),
+                  // Divider(
+                  //   color: AppConfig().colors.lightGrayColor,
+                  //   thickness: 0.5,
+                  //   height: 40,
+                  // ),
+                  // InkWell(
+                  //   onTap: () {},
+                  //   child: Row(
+                  //     children: [
+                  //       Icon(
+                  //         Iconsax.lock,
+                  //         size: 25,
+                  //         color: AppConfig().colors.darkGrayColor,
+                  //       ),
+                  //       Gap(AppConfig().dimens.medium),
+                  //       Text(AppStrings.security.tr),
+                  //       const Spacer(),
+                  //       Icon(
+                  //         Icons.arrow_forward_ios_rounded,
+                  //         size: 22,
+                  //         color: AppConfig().colors.darkGrayColor,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ).paddingAll(AppConfig().dimens.medium),
             ),
