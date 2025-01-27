@@ -119,7 +119,7 @@ class AddLinksContainer extends StatelessWidget {
                 ),
               ),
               CustomTextField(
-                labelText: "Add Url",
+                labelText: "Add Url (https://...)",
                 keyboardType: TextInputType.url,
                 iconColor: AppColors().lightGrayColor,
                 icon: Iconsax.edit_2,

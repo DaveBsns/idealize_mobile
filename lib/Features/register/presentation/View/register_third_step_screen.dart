@@ -41,17 +41,17 @@ class RegisterThirdStepScreen extends GetView<RegisterController> {
               stepCount: 3,
               activeStep: 3,
             ),
-            Text(
-              AppStrings.userName.tr,
-              style: textTheme.titleMedium,
-            ),
-            Gap(AppConfig().dimens.small),
-            CustomTextField(
-              key: const Key('auth_username'),
-              controller: controller.usernameCtrl,
-              labelText: AppStrings.userName.tr,
-            ),
-            Gap(AppConfig().dimens.large),
+            // Text(
+            //   AppStrings.userName.tr,
+            //   style: textTheme.titleMedium,
+            // ),
+            // Gap(AppConfig().dimens.small),
+            // CustomTextField(
+            //   key: const Key('auth_username'),
+            //   controller: controller.usernameCtrl,
+            //   labelText: AppStrings.userName.tr,
+            // ),
+            // Gap(AppConfig().dimens.large),
             Text(
               AppStrings.profilePicture.tr,
               style: textTheme.titleMedium,

@@ -96,12 +96,40 @@ class CreateNewProjectController extends GetxController {
   }
 
   void deleteProject(Project project) async {
-    loading.value = true;
-    update();
-    await repo.deleteProject(project.id);
-    loading.value = false;
-    update();
-    refreshContent();
+    AppRepo().showCustomAlertDialog(
+      title: AppStrings.deleteProject.tr,
+      content: AppStrings.deleteProjectContent.trParams(
+        {
+          'projectKeyword': '"${project.title}"',
+        },
+      ),
+      buttonText: AppStrings.delete.tr,
+      onPressed: () async {
+        AppRepo().showLoading();
+        //loading.value = true;
+        // update();
+        await Future.delayed(const Duration(milliseconds: 1000));
+        await repo.deleteProject(project.id);
+        // loading.value = false;
+        // update();
+        refreshContent();
+        AppRepo().hideLoading();
+        Get.back();
+      },
+      buttonTextStyle: TextStyle(
+        color: AppConfig().colors.primaryColor,
+        fontWeight: FontWeight.w700,
+      ),
+      buttonColor: AppConfig().colors.secondaryColor,
+      outlinedButtonText: AppStrings.cancel.tr,
+      outlinedButtonColor: Colors.transparent,
+      outlinedButtonBorderColor: AppConfig().colors.darkGrayColor,
+      outlinedButtonTextStyle: TextStyle(
+        color: AppConfig().colors.darkGrayColor,
+        fontWeight: FontWeight.w700,
+      ),
+      outlinedButtonOnPressed: () => Get.back(),
+    );
   }
 
   Future<void> deleteProjectMaterial(String attachmentId) async {

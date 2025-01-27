@@ -235,5 +235,9 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.skipReqDesc:
             "Sie haben die Option, diese Schritte zu überspringen und sie später in Ihrem Profil hinzuzufügen.",
         AppStrings.noTitle: "Kein Titel",
+        AppStrings.delete: "Löschen",
+        AppStrings.deleteProject: "Projekt löschen",
+        AppStrings.deleteProjectContent:
+            "Sind Sie sicher, dass Sie @projectKeyword löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
       };
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/stepper_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Constants/global_keys.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 
@@ -24,6 +25,7 @@ class CreateNewProjectScreen extends GetView<CreateNewProjectController> {
     });
 
     return Scaffold(
+      key: GlobalKeys.addProject,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: AppConfig().colors.backGroundColor,
@@ -39,7 +41,7 @@ class CreateNewProjectScreen extends GetView<CreateNewProjectController> {
           builder: (_) => controller.updateProjectModel != null
               ? Text(
                   "Edit ${controller.updateProjectModel!.isDraft ? 'Draft' : 'Project'}")
-              :  Text(AppStrings.newProject.tr),
+              : Text(AppStrings.newProject.tr),
         ),
       ),
       body: Column(

@@ -9,12 +9,14 @@ class ProjectItemListWidget extends StatelessWidget {
   final Function(Project)? onTappedDeleteProject;
   final Function(Project)? onTappedOpenProject;
   final List<Project> projects;
+  final bool isEditLabel;
 
   const ProjectItemListWidget({
     super.key,
     required this.projects,
     this.onTappedDeleteProject,
     this.onTappedOpenProject,
+    this.isEditLabel = false,
   });
 
   @override
@@ -37,7 +39,7 @@ class ProjectItemListWidget extends StatelessWidget {
         }
         return ProjectCardMyProjectsWidget(
           onDeleteProject: () => onTappedDeleteProject?.call(projects[index]),
-          btnTitle: "Open Project",
+          btnTitle: isEditLabel ? "Edit Project" : "Open Project",
           project: projects[index],
           onTapOpenProject: () => onTappedOpenProject?.call(projects[index]),
         );
