@@ -1,6 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+import 'package:idealize_new_version/Features/create_new_project/presentation/controller/create_new_project_controller.dart';
+import 'package:idealize_new_version/app_repo.dart';
 
 import '../../domain/my_projects_repo.dart';
 
@@ -39,18 +43,50 @@ class MyProjectsController extends GetxController {
   }
 
   void deleteProject(Project project) async {
-    // loading.value = true;
-    update();
-    await repo.delete(project.id);
+    AppRepo().showCustomAlertDialog(
+      title: AppStrings.deleteProject.tr,
+      content: AppStrings.deleteProjectContent.trParams(
+        {
+          'projectKeyword': '"${project.title}"',
+        },
+      ),
+      buttonText: AppStrings.delete.tr,
+      onPressed: () async {
+        // loading.value = true;
+        AppRepo().showLoading();
+        update();
+        await Future.delayed(const Duration(milliseconds: 1000));
+        await repo.delete(project.id);
+        // update projects page
+        final createNewProjectController =
+            Get.find<CreateNewProjectController>();
+        await createNewProjectController.refreshContent();
 
-    if (tabIndex.value == 0) {
-      myProjects.removeWhere((element) => element.id == project.id);
-    } else {
-      draftProjects.removeWhere((element) => element.id == project.id);
-    }
-    tabIndex.refresh();
-    update();
-    // refreshContent();
+        if (tabIndex.value == 0) {
+          myProjects.removeWhere((element) => element.id == project.id);
+        } else {
+          draftProjects.removeWhere((element) => element.id == project.id);
+        }
+        tabIndex.refresh();
+        update();
+        // refreshContent();
+        AppRepo().hideLoading();
+        Get.back();
+      },
+      buttonTextStyle: TextStyle(
+        color: AppConfig().colors.primaryColor,
+        fontWeight: FontWeight.w700,
+      ),
+      buttonColor: AppConfig().colors.secondaryColor,
+      outlinedButtonText: AppStrings.cancel.tr,
+      outlinedButtonColor: Colors.transparent,
+      outlinedButtonBorderColor: AppConfig().colors.darkGrayColor,
+      outlinedButtonTextStyle: TextStyle(
+        color: AppConfig().colors.darkGrayColor,
+        fontWeight: FontWeight.w700,
+      ),
+      outlinedButtonOnPressed: () => Get.back(),
+    );
   }
 
   void routeToProject(Project project) {

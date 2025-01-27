@@ -15,8 +15,8 @@ class AppConfig {
   String get baseFileUrl => "http://localhost:3000";
   String get chatBotServer => "http://localhost:3000/chat";
 
-  String get termsCondiftionsUrl => "http://localhost:4200/terms";
-  String get privacyPolicyUrl => "http://localhost:4200/privacy";
+  String get termsCondiftionsUrl => "https://localhost:4200/terms";
+  String get privacyPolicyUrl => "https://localhost:4200/privacy";
 
   double get textRatio => 1.0;
   final baseLocale = LanguageConstants().languageList[0];

@@ -34,6 +34,7 @@ class MyProjectsScreen extends GetView<MyProjectsController> {
                   children: [
                     ProjectItemListWidget(
                       projects: controller.myProjects,
+                      isEditLabel: true,
                       onTappedDeleteProject: (project) =>
                           controller.deleteProject(
                         project,
@@ -42,6 +43,7 @@ class MyProjectsScreen extends GetView<MyProjectsController> {
                           controller.routeToProject(project),
                     ),
                     ProjectItemListWidget(
+                      isEditLabel: true,
                       projects: controller.draftProjects,
                       onTappedDeleteProject: (project) =>
                           controller.deleteProject(
