@@ -4,6 +4,7 @@ import 'package:idealize_new_version/Core/Components/empty_list_widget.dart';
 import 'package:idealize_new_version/Core/Components/project_cards_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/routes.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 import 'controller/archived_projcts_controller.dart';
 
@@ -16,23 +17,41 @@ class ArchivedProjctsScreen extends GetView<ArchivedProjctsController> {
       backgroundColor: AppConfig().colors.backGroundColor,
       appBar: AppBar(
         backgroundColor: AppConfig().colors.backGroundColor,
-        title: const Text(
-          "Favorites",
+        title: Text(
+          AppStrings.favorites.tr,
         ),
       ),
       body: Obx(() => controller.archives.isNotEmpty
           ? ListView.builder(
               padding: EdgeInsets.all(AppConfig().dimens.medium),
               itemCount: controller.archives.length,
-              itemBuilder: (context, index) => ProjectCardHomeWidget(
-                project: controller.archives[index],
-                isLoading: false,
-                onTapOpenProject: () {
-                  Get.toNamed(
-                    AppRoutes().projectDetails,
-                    arguments: controller.archives[index].id,
-                  );
-                },
+              itemBuilder: (context, index) => Padding(
+                padding: EdgeInsets.only(bottom: AppConfig().dimens.medium),
+                child: ProjectCardHomeWidget(
+                  onTapLikeCommentToOpenProject: () =>
+                      controller.routeToProject(
+                    controller.archives[index],
+                    scrollToComments: true,
+                  ),
+                  favoritePage: true,
+                  toggleFavorite: (_, __) {
+                    controller.unArchive(false, controller.archives[index]);
+                  },
+                  isLoading: controller.unarchiving
+                      .where(
+                        (element) =>
+                            element.id == controller.archives[index].id,
+                      )
+                      .toList()
+                      .isNotEmpty,
+                  project: controller.archives[index],
+                  onTapOpenProject: () {
+                    Get.toNamed(
+                      AppRoutes().projectDetails,
+                      arguments: controller.archives[index].id,
+                    );
+                  },
+                ),
               ),
             )
           : const EmptyListWidget(

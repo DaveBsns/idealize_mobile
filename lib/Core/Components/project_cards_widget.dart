@@ -15,6 +15,7 @@ class ProjectCardHomeWidget extends StatelessWidget {
   final VoidCallback? onTapOpenProject;
   final VoidCallback? onTapLikeCommentToOpenProject;
   final Function(bool, Project)? toggleFavorite;
+  final bool favoritePage;
 
   const ProjectCardHomeWidget({
     super.key,
@@ -23,6 +24,7 @@ class ProjectCardHomeWidget extends StatelessWidget {
     this.toggleFavorite,
     this.onTapOpenProject,
     this.onTapLikeCommentToOpenProject,
+    this.favoritePage = false,
   });
 
   @override
@@ -60,29 +62,49 @@ class ProjectCardHomeWidget extends StatelessWidget {
                         : project.createdAt.toFullDate(),
                   ),
                 ),
-                IconButton(
-                  icon: isLoading
-                      ? const SizedBox(
-                          width: 10,
-                          height: 10,
-                          child: CustomLoadingIndicator(stroke: 2))
-                      : Icon(
-                          project.isArchived ?? false
-                              ? Icons.bookmark
-                              : Icons.bookmark_add_outlined,
-                          color: project.isArchived ?? false
-                              ? AppConfig().colors.purpleColor
-                              : AppConfig().colors.purpleColor,
-                        ),
-                  onPressed: () {
-                    if (!isLoading) {
-                      if (toggleFavorite != null) {
-                        toggleFavorite!(
-                            !(project.isArchived ?? false), project);
-                      }
-                    }
-                  },
-                ),
+                favoritePage
+                    ? IconButton(
+                        icon: isLoading
+                            ? const SizedBox(
+                                width: 10,
+                                height: 10,
+                                child: CustomLoadingIndicator(stroke: 2))
+                            : Icon(
+                                Icons.delete,
+                                color: AppConfig().colors.purpleColor,
+                              ),
+                        onPressed: () {
+                          if (!isLoading) {
+                            if (toggleFavorite != null) {
+                              toggleFavorite!(
+                                  !(project.isArchived ?? false), project);
+                            }
+                          }
+                        },
+                      )
+                    : IconButton(
+                        icon: isLoading
+                            ? const SizedBox(
+                                width: 10,
+                                height: 10,
+                                child: CustomLoadingIndicator(stroke: 2))
+                            : Icon(
+                                project.isArchived ?? false
+                                    ? Icons.bookmark
+                                    : Icons.bookmark_add_outlined,
+                                color: project.isArchived ?? false
+                                    ? AppConfig().colors.purpleColor
+                                    : AppConfig().colors.purpleColor,
+                              ),
+                        onPressed: () {
+                          if (!isLoading) {
+                            if (toggleFavorite != null) {
+                              toggleFavorite!(
+                                  !(project.isArchived ?? false), project);
+                            }
+                          }
+                        },
+                      ),
               ],
             ),
             Text(
