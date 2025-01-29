@@ -5,6 +5,9 @@ import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/Components/empty_list_widget.dart';
 
+import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 class ProjectItemListWidget extends StatelessWidget {
   final Function(Project)? onTappedDeleteProject;
   final Function(Project)? onTappedOpenProject;
@@ -20,8 +23,8 @@ class ProjectItemListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (projects.isEmpty) {
-      return const EmptyListWidget(
-        title: "You don't have any draft projects yet.",
+      return  EmptyListWidget(
+        title: AppStrings.emptyDraftProjectMessage.tr,
       );
     }
 
@@ -37,7 +40,7 @@ class ProjectItemListWidget extends StatelessWidget {
         }
         return ProjectCardMyProjectsWidget(
           onDeleteProject: () => onTappedDeleteProject?.call(projects[index]),
-          btnTitle: "Open Project",
+          btnTitle: AppStrings.openProject.tr,
           project: projects[index],
           onTapOpenProject: () => onTappedOpenProject?.call(projects[index]),
         );

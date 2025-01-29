@@ -114,8 +114,8 @@ class TagSelectorScreen extends StatelessWidget {
                                   color: Colors.grey[400],
                                 ),
                                 Gap(AppConfig().dimens.small),
-                                const Text(
-                                  'It is empty here!',
+                                Text(
+                                  AppStrings.emptyHere.tr,
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 14,
@@ -183,7 +183,7 @@ class TagSelectorScreen extends StatelessWidget {
                   Gap(AppConfig().dimens.medium),
                   CustomIconButton(
                     color: AppConfig().colors.secondaryColor,
-                    title: "Save",
+                    title: AppStrings.save.tr,
                     txtColor: AppColors().primaryColor,
                     onTap: () {
                       Get.back();

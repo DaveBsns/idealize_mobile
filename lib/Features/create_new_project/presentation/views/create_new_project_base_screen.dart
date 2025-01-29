@@ -93,7 +93,7 @@ class CreateNewProjectBaseScreen extends GetView<CreateNewProjectController> {
                         itemBuilder: (context, index) {
                           final wrappedProjectCard =
                               ProjectCardMyProjectsWidget(
-                            btnTitle: "Edit",
+                            btnTitle: AppStrings.edit.tr,
                             onDeleteProject: () => controller.deleteProject(
                                 controller.searchedProjects[index]),
                             project: controller.searchedProjects[index],

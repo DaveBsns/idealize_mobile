@@ -10,6 +10,10 @@ import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Features/tag_selector/presentation/tag_selector_screen.dart';
 import 'package:idealize_new_version/app_repo.dart';
 
+import 'package:get/get.dart';
+
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 class CoursesContainerWidget extends StatelessWidget {
   final List<Tag> selectedCourses;
   final Function(List<Tag>) onCoursesChanged;
@@ -48,8 +52,8 @@ class CoursesContainerWidget extends StatelessWidget {
                       spacing: 10.0,
                       runSpacing: 0.0,
                       children: [
-                        const Text(
-                          "Courses :",
+                        Text(
+                          AppStrings.courses.tr + " :",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -57,9 +61,9 @@ class CoursesContainerWidget extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
-                            title: 'File Upload Info',
+                            title: AppStrings.fileUploadInfo.tr,
                             content:
-                                'You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .',
+                                AppStrings.uploadInformation.tr,
                             buttonText: 'OK',
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,
@@ -76,7 +80,7 @@ class CoursesContainerWidget extends StatelessWidget {
                     ),
                   ),
                   CustomOutlineIconButton(
-                    title: "Add Courses",
+                    title: AppStrings.addCourses.tr,
                     icon: const Icon(Iconsax.add),
                     width: 160,
                     height: 45,

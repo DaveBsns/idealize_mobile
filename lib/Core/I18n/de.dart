@@ -7,6 +7,7 @@ class DeLanguageData extends LanguageDataKeys {
   @override
   Map<String, String> get keys => {
         AppStrings.addTag: "Schlagwort hinzufügen",
+        AppStrings.addTags: "Schlagwörter hinzufügen",
         AppStrings.searchNotFound: "keine Suchergebnisse",
         AppStrings.createNewProject: "Neues Projekt erstellen",
         AppStrings.editProject: "Projekt bearbeiten",
@@ -97,7 +98,9 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.language: "Sprache",
         AppStrings.privacy: "Privatsphäre",
         AppStrings.security: "Sicherheit",
+        AppStrings.delete: "Löschen",
         AppStrings.deleteAccount: "Account löschen",
+        AppStrings.deleteMaterial: "Material löschen",
         AppStrings.logout: "Abmelden",
         AppStrings.splashScreenText:
             "Bitte anmelden oder registrieren um fortzufahren",
@@ -148,6 +151,8 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.addNewProject: "Neues Projekt hinzufügen",
         AppStrings.or: "Oder",
         AppStrings.workOnAProjectFromDraft: "Arbeite an einem Entwurf:",
+        AppStrings.emptyDraftProjectMessage: "Sie haben noch keine Entwurfsprojekte.",
+        AppStrings.emptyFavoriteProject: "Sie haben noch keine Lieblingsprojekte.",
         AppStrings.emptyDraftProject:
             "Sie haben noch keine Entwurfsprojekte. \n Beginnen Sie mit der Erstellung eines neuen Projekts.",
         AppStrings.multiLineTextFieldHint: "Geben Sie Ihren Text hier ein",
@@ -156,8 +161,10 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.addLinkUrl: "URL hinzufügen",
         AppStrings.courses: "Kurse",
         AppStrings.addCourse: "Kurs hinzufügen",
+        AppStrings.addCourses: "Kurse hinzufügen",
         AppStrings.files: "Dateien:",
         AppStrings.uploadFile: "Datei hochladen",
+        AppStrings.uploadFiles: "Dateien hochladen",
         AppStrings.media: "Medien:",
         AppStrings.uploadMedia: "Medien hochladen",
         AppStrings.thumbnail: "Thumbnail:",
@@ -201,6 +208,13 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.fileTooLargeNotSupportedFormat: "Die Datei @keyword3 ist zu groß oder ein nicht unterstütztes Format",
         AppStrings.noFileSelected: "Es wurde keine Datei ausgewählt",
         AppStrings.maximumMedias: "Sie haben die maximale Anzahl an Medien erreicht!",
-        AppStrings.fileAlreadyAdded: "'Die Datei @keyword4 ist bereits hinzugefügt'"
+        AppStrings.fileAlreadyAdded: "'Die Datei @keyword4 ist bereits hinzugefügt'",
+        AppStrings.writeAComment: "Schreib einen Kommentar",
+        AppStrings.noUsersToShow: "Es gibt keine Benutzer, die angezeigt werden können.\nBitte prüfen Sie später.",
+        AppStrings.emptyHere: "Hier ist es leer!",
+        AppStrings.fileUploadInfo: "File Upload Info",
+        AppStrings.uploadInformation: "Sie können Dateien bis zu einer Größe von 10 MB hochladen. Unterstützte Formate sind PDF, DOC, PPT und PPTX.",
+        AppStrings.fillAllFields: "Bitte füllen Sie alle Felder aus",
+        AppStrings.sureAboutDeletingMaterial: "Sind Sie sicher, dass Sie das Material aus dem Projekt löschen wollen? Dadurch wird das Material dauerhaft aus dem Projekt gelöscht!"
       };
 }

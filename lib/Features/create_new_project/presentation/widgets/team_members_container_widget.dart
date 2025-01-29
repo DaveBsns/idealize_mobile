@@ -9,6 +9,10 @@ import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/app_repo.dart';
 
+import 'package:get/get.dart';
+
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 class TeamMembersContainerWidget extends StatelessWidget {
   final List<User> selectedUsers;
   final Function(List<User>) onUsersChanged;
@@ -56,9 +60,9 @@ class TeamMembersContainerWidget extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
-                            title: 'File Upload Info',
+                            title: AppStrings.fileUploadInfo.tr,
                             content:
-                                'You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .',
+                                AppStrings.uploadInformation.tr,
                             buttonText: 'OK',
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,
@@ -75,7 +79,7 @@ class TeamMembersContainerWidget extends StatelessWidget {
                     ),
                   ),
                   CustomOutlineIconButton(
-                    title: "Add Members",
+                    title: AppStrings.addMembers.tr,
                     icon: const Icon(Iconsax.add),
                     width: 160,
                     height: 45,
