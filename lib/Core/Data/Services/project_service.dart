@@ -14,6 +14,7 @@ class ProjectService extends ServicesHelper {
     bool isDraft = false,
     bool myProjects = false,
     String ownerId = '',
+    String? filter,
   }) async {
     final base =
         myProjects ? '$baseURL/projects/my-projects' : '$baseURL/projects';
@@ -26,6 +27,10 @@ class ProjectService extends ServicesHelper {
 
     if (search != null) {
       queryParametrs['search'] = search;
+    }
+
+    if (filter != null) {
+      queryParametrs['filter'] = filter;
     }
 
     if (sortField != null) {

@@ -19,7 +19,7 @@ class HomeTopBarWidget extends GetView<HomeController> {
         children: [
           Expanded(
             child: CustomSearchField(
-              icon: Iconsax.filter,
+              // icon: Iconsax.filter,
               secondIcon: Iconsax.search_normal_14,
               onChanged: (newSearchValue) =>
                   controller.searchInput = newSearchValue,

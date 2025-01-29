@@ -57,9 +57,9 @@ class CoursesContainerWidget extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
-                            title: 'File Upload Info',
+                            title: 'What are courses?',
                             content:
-                                'You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .',
+                                'Courses are the subjects or topics that you want to focus on in your project. You can add as many courses as you want.',
                             buttonText: 'OK',
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,

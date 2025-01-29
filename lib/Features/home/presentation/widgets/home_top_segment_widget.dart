@@ -15,7 +15,7 @@ class HomeTopSegmentWidget extends GetView<HomeController> {
       builder: (_) => SizedBox(
         // height: 40,
         width: MediaQuery.sizeOf(context).width,
-        child: SegmentedButton<int>(
+        child: SegmentedButton<String>(
           showSelectedIcon: false,
           multiSelectionEnabled: false,
           style: ButtonStyle(
@@ -69,29 +69,29 @@ class HomeTopSegmentWidget extends GetView<HomeController> {
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           segments: [
-            ButtonSegment<int>(
-                value: 0,
+            ButtonSegment<String>(
+                value: 'all-projects',
                 label: Text(
-                  AppStrings.newHome.tr,
+                  AppStrings.projects.tr,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 )),
-            ButtonSegment<int>(
-                value: 1,
+            ButtonSegment<String>(
+                value: 'my-projects',
                 label: Text(
-                  AppStrings.forYou.tr,
+                  AppStrings.myProjects.tr,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 )),
-            ButtonSegment<int>(
-                value: 2,
+            ButtonSegment<String>(
+                value: 'favorite-projects',
                 label: Text(
-                  AppStrings.weeklyTrend.tr,
+                  AppStrings.favorites.tr,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 )),
           ],
-          selected: {controller.selectedValue},
+          selected: {controller.selectedFilter},
           onSelectionChanged: controller.updateSegmentValue,
         ),
       ),
