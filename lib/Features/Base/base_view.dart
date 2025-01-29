@@ -25,15 +25,16 @@ class AppBaseView extends GetView<BaseViewModel> {
               resizeToAvoidBottomInset: false,
               extendBody: true,
               extendBodyBehindAppBar: true,
-              floatingActionButton: Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: FloatingActionButton(
-                  onPressed: controller.openChatScreen,
-                  backgroundColor: const Color(0xff6675AE),
-                  shape: const CircleBorder(),
-                  child: SvgPicture.asset(Assets.svg.chatIc),
-                ),
-              ),
+              // TODO should be uncoment after realse version 1.0.0
+              // floatingActionButton: Padding(
+              //   padding: const EdgeInsets.only(right: 10),
+              //   child: FloatingActionButton(
+              //     onPressed: controller.openChatScreen,
+              //     backgroundColor: const Color(0xff6675AE),
+              //     shape: const CircleBorder(),
+              //     child: SvgPicture.asset(Assets.svg.chatIc),
+              //   ),
+              // ),
               body: IndexedStack(
                   index: controller.model.currentNavigationbarIndex,
                   children: const [
