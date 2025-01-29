@@ -57,9 +57,9 @@ class AddLinksContainer extends StatelessWidget {
               Gap(AppConfig().dimens.small),
               GestureDetector(
                 onTap: () => AppRepo().showCustomAlertDialog(
-                  title: 'File Upload Info',
+                  title: 'Links',
                   content:
-                      'You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .',
+                      'Links are optional. You can add links to your project. These will be visible to the user when they view your project.',
                   buttonText: 'OK',
                   buttonTextStyle: TextStyle(
                       color: AppConfig().colors.primaryColor,

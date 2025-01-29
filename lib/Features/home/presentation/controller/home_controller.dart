@@ -13,7 +13,7 @@ class HomeController extends GetxController {
 
   bool loading = false;
   List<Project> searchedProjects = [];
-  int selectedValue = 0;
+  String selectedFilter = 'all-projects';
   ScrollController scrollController = ScrollController();
 
   int hasNewNotfications = 0;
@@ -44,7 +44,7 @@ class HomeController extends GetxController {
     final result = await repo.fetchAll(
       page: page,
       searchInput: searchInput,
-      selectedSegment: selectedValue,
+      selectedSegment: selectedFilter,
     );
 
     if (result.isNotEmpty) {
@@ -82,8 +82,8 @@ class HomeController extends GetxController {
     await _fetchAllTheProjects();
   }
 
-  void updateSegmentValue(Set<int> indexes) {
-    selectedValue = indexes.first;
+  void updateSegmentValue(Set<String> indexes) {
+    selectedFilter = indexes.first;
     update();
     refreshContent();
   }

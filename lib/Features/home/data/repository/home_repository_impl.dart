@@ -21,26 +21,15 @@ class HomeRepositoryImpl extends HomeRepository {
   @override
   Future<List<Project>> fetchAll({
     String? searchInput,
-    int selectedSegment = 0,
+    String selectedSegment = 'all-projects',
     int page = 1,
   }) async {
     return await projectService.fetchAllProject(
         search: searchInput,
         page: page,
-        sortField: _getSortField(selectedSegment));
-  }
-
-  String _getSortField(int selectedSegment) {
-    switch (selectedSegment) {
-      case 0:
-        return '_id';
-      case 1:
-        return 'status';
-      case 2:
-        return 'title';
-      default:
-        return 'creationDate';
-    }
+        sortField: 'creationDate',
+        filter: selectedSegment,
+        );
   }
 
   @override

@@ -56,9 +56,9 @@ class TeamMembersContainerWidget extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
-                            title: 'File Upload Info',
+                            title: 'Team Members',
                             content:
-                                'You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .',
+                                'Team members are the people who will work on the project. You can add team members by clicking on the "Add Members" button.',
                             buttonText: 'OK',
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,

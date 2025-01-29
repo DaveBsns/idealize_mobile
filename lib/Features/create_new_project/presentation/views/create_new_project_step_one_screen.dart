@@ -52,6 +52,7 @@ class CreateNewProjectStepOneScreen
               CustomMultiLineTextField(
                 controller: controller.descriptionCtrl,
                 onChanged: controller.updateDescription,
+                labelText: AppStrings.descriptionHint.tr,
               ),
               Gap(AppConfig().dimens.medium),
               TagsContainer(

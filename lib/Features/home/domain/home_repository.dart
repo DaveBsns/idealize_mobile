@@ -3,7 +3,7 @@ import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 abstract class HomeRepository {
   Future<List<Project>> fetchAll({
     String? searchInput,
-    int selectedSegment = 0,
+    String selectedSegment = 'all-projects',
     int page = 1,
   });
   Future<String?> archive({required String projectId});
