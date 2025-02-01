@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
 import 'package:idealize_new_version/Core/Components/image_loader_widget.dart';
 import 'package:idealize_new_version/Core/Components/loading_widget.dart';
 import 'package:idealize_new_version/Core/Components/tabbar_widget.dart';
+import 'package:idealize_new_version/Core/Components/textfields_widget.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
@@ -142,7 +144,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                 onTapJoinProject: ['pending', 'accepted']
                                         .contains(controller.joinedStatus)
                                     ? null
-                                    : () => controller.joinProject(),
+                                    : () => _showJoinRequestDialog(context),
                                 isReported:
                                     controller.project?.isReported ?? false,
                               ),
@@ -338,6 +340,46 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
           return Container();
         },
       ),
+    );
+  }
+
+  void _showJoinRequestDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(AppStrings.jrdTitle.tr),
+          content: Text(AppStrings.jrdContent.tr),
+          actions: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("Message:",
+                    style: TextStyle(
+                      color: AppConfig().colors.txtColor,
+                      fontWeight: FontWeight.w700,
+                    )),
+                Gap(AppConfig().dimens.small),
+                CustomMultiLineTextField(
+                  labelText: AppStrings.jrdContentHint.tr,
+                  controller: controller.joinReqMsgController,
+                  maxCharcters: 300,
+                  maxLines: 7,
+                ),
+              ],
+            ),
+            // Gap(AppConfig().dimens.medium),
+            CustomIconButton(
+                    title: AppStrings.submit.tr,
+                    onTap: () {
+                      controller.joinProject();
+                    },
+                    txtColor: AppConfig().colors.primaryColor)
+                .paddingOnly(top: 20),
+          ],
+        );
+      },
     );
   }
 

@@ -18,7 +18,11 @@ abstract class ProjectDetailsRepository {
   });
   Future<String?> archive(String projectId, String userId);
   Future<bool> unarchive(String archiveId);
-  Future<dynamic> join(String projectId, String userId);
+  Future<dynamic> join(
+    String projectId,
+    String userId, {
+    String? message,
+  });
   Future<dynamic> report(
     String projectId,
     String userId, {

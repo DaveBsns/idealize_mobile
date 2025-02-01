@@ -47,8 +47,12 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
   }
 
   @override
-  Future<dynamic> join(String projectId, String userId) async {
-    return await JoinProjectService().joinProject(projectId, userId);
+  Future<dynamic> join(
+    String projectId,
+    String userId, {
+    String? message,
+  }) async {
+    return await JoinProjectService().joinProject(projectId, userId, message);
   }
 
   @override

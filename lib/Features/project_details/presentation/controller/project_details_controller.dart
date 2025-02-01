@@ -34,6 +34,8 @@ class ProjectDetailsController extends GetxController {
   final ScrollController scrollController = ScrollController();
   final GlobalKey commentsKey = GlobalKey();
 
+  final TextEditingController joinReqMsgController = TextEditingController();
+
   final RxBool isLiked = false.obs;
   final RxBool isArchived = false.obs;
   final RxBool isCommentEmpty = true.obs;
@@ -230,8 +232,14 @@ class ProjectDetailsController extends GetxController {
   Future<void> joinProject() async {
     if (project!.owner != null) {
       AppRepo().showLoading();
-      final result = await repo.join(project!.id, project!.owner!.id);
+      final joinReqMessage = joinReqMsgController.text;
+      final result = await repo.join(
+        project!.id,
+        project!.owner!.id,
+        message: joinReqMessage,
+      );
       AppRepo().hideLoading();
+      Get.back(closeOverlays: true);
       if (result != null) {
         await getProject();
         AppRepo().showSnackbar(

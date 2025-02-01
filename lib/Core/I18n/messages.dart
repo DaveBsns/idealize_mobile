@@ -220,4 +220,8 @@ class AppStrings {
   static const String noTitle = "noTitle";
   static const String deleteProject = "deleteProject";
   static const String deleteProjectContent = "deleteProjectContent";
+  static const String jrdTitle = "jrdTitle";
+  static const String jrdContent = "jrdContent";
+  static const String jrdContentHint = "jrdContentHint";
+  static const String submit = "submit";
 }
