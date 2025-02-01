@@ -262,5 +262,12 @@ class DeLanguageData extends LanguageDataKeys {
             "Indem Sie einem Projekt beitreten, können Sie daran teilnehmen. Sie können mit anderen Benutzern zusammenarbeiten und an Projekten zusammenarbeiten. Sie können sogar eine Nachricht an den Projektinhaber senden.",
         AppStrings.jrdContentHint: "Geben Sie Ihre Nachricht ein (Optional)",
         AppStrings.submit: "Senden",
+        AppStrings.reply: "Antworten",
+        AppStrings.replyTo: "Antworten an",
+        AppStrings.hideComments: "Kommentare verbergen",
+        AppStrings.showComments: "Kommentare anzeigen",
+        AppStrings.deleteCommentTitle: "Kommentar löschen",
+        AppStrings.deleteCommentContent:
+            "Sind Sie sicher, dass Sie diesen Kommentar löschen wollen?",
       };
 }

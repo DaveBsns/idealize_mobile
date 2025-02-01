@@ -259,5 +259,11 @@ class EnLanguageData extends LanguageDataKeys {
             "By joining to a project, you can participate in it. cooperating with other users and working on projects together. you can even leave a message to the project owner.",
         AppStrings.jrdContentHint: "Enter your message (Optional)",
         AppStrings.submit: "Submit",
+        AppStrings.reply: "Reply",
+        AppStrings.replyTo: "Reply to",
+        AppStrings.hideComments: "Hide comments",
+        AppStrings.showComments: "Show comments",
+        AppStrings.deleteCommentTitle: "Delete Comment",
+        AppStrings.deleteCommentContent: "Are you sure you want to delete this comment?",
       };
 }

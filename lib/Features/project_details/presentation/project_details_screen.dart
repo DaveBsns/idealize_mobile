@@ -240,8 +240,11 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                                   (e) => CommentContainerWidget(
                                                     comment: e,
                                                     isReply: false,
-                                                    onTappedReply: () =>
-                                                        controller.reply(e.id),
+                                                    onTappedReply: (id) =>
+                                                        controller.reply(id),
+                                                    onTappedRemove: (id) =>
+                                                        controller
+                                                            .removeComment(id),
                                                   ),
                                                 )
                                                 .toList(),
@@ -250,14 +253,17 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                 )),
                             if (controller.replyCommentId.isNotEmpty)
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
+                                padding: const EdgeInsets.only(
+                                  bottom: 10,
+                                  left: 16,
+                                ),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                        'Reply To ${controller.getNameBasedOnReplyId(controller.replyCommentId.value)}'),
+                                        '${AppStrings.replyTo.tr} ${controller.getNameBasedOnReplyId(controller.replyCommentId.value)}'),
                                     IconButton(
                                         onPressed: controller.removeReply,
                                         icon: const Icon(Icons.close)),

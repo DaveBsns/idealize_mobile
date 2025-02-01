@@ -29,4 +29,6 @@ abstract class ProjectDetailsRepository {
     String type = 'project', // 'project' | 'comment' | 'user'
     String content = '',
   });
+
+  Future<void> deleteComment(String commentId);
 }
