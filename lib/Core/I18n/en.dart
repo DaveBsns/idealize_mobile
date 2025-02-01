@@ -95,7 +95,6 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.language: "Language",
         AppStrings.privacy: "Privacy",
         AppStrings.security: "Security",
-        
         AppStrings.deleteAccount: "Delete Account",
         AppStrings.deleteMaterial: "Delete Material",
         AppStrings.logout: "Logout",
@@ -255,5 +254,10 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.deleteProject: "Delete Project",
         AppStrings.deleteProjectContent:
             "Are you sure you want to delete @projectKeyword? This action cannot be undone.",
+        AppStrings.jrdTitle: "Join Request",
+        AppStrings.jrdContent:
+            "Project's owner will review your request, you can leave a message.",
+        AppStrings.jrdContentHint: "Enter your message (Optional)",
+        AppStrings.submit: "Submit",
       };
 }

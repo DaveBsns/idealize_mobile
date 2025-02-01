@@ -258,5 +258,10 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.deleteProject: "Projekt löschen",
         AppStrings.deleteProjectContent:
             "Sind Sie sicher, dass Sie @projectKeyword löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+        AppStrings.jrdTitle: "Join-Anfrage",
+        AppStrings.jrdContent:
+            "Der Eigentümer des Projekts wird Ihre Anfrage überprüfen, Sie können eine Nachricht hinterlassen.",
+        AppStrings.jrdContentHint: "Geben Sie Ihre Nachricht ein (Optional)",
+        AppStrings.submit: "Senden",
       };
 }
