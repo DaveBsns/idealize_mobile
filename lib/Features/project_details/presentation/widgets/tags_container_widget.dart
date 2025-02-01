@@ -3,9 +3,11 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
+import 'package:idealize_new_version/Features/home/presentation/controller/home_controller.dart';
 
 class TagsContainerWidget extends StatelessWidget {
-  final List<String> tags;
+  final List<Tag> tags;
   const TagsContainerWidget({
     super.key,
     required this.tags,
@@ -40,16 +42,22 @@ class TagsContainerWidget extends StatelessWidget {
             children: tags.isNotEmpty
                 ? tags
                     .map(
-                      (tag) => Chip(
-                        side: BorderSide.none,
-                        label: Text(
-                          tag,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                      (tag) => InkWell(
+                        onTap: () {
+                          Get.find<HomeController>().updateFilteredByTag(tag);
+                          Get.back();
+                        },
+                        child: Chip(
+                          side: BorderSide.none,
+                          label: Text(
+                            tag.tagName,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
+                          backgroundColor: AppConfig().colors.greenColor,
                         ),
-                        backgroundColor: AppConfig().colors.greenColor,
                       ),
                     )
                     .toList()

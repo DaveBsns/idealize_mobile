@@ -188,10 +188,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                             ),
                             Gap(AppConfig().dimens.medium),
                             TagsContainerWidget(
-                              tags: controller.project?.tags
-                                      .map((tag) => tag.tagName)
-                                      .toList() ??
-                                  [],
+                              tags: controller.project?.tags ?? [],
                             ),
                             Gap(AppConfig().dimens.medium),
                             Container(

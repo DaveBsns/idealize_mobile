@@ -254,13 +254,12 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.skipReqDesc:
             "Sie haben die Option, diese Schritte zu überspringen und sie später in Ihrem Profil hinzuzufügen.",
         AppStrings.noTitle: "Kein Titel",
-        AppStrings.delete: "Löschen",
         AppStrings.deleteProject: "Projekt löschen",
         AppStrings.deleteProjectContent:
             "Sind Sie sicher, dass Sie @projectKeyword löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
         AppStrings.jrdTitle: "Join-Anfrage",
         AppStrings.jrdContent:
-            "Der Eigentümer des Projekts wird Ihre Anfrage überprüfen, Sie können eine Nachricht hinterlassen.",
+            "Indem Sie einem Projekt beitreten, können Sie daran teilnehmen. Sie können mit anderen Benutzern zusammenarbeiten und an Projekten zusammenarbeiten. Sie können sogar eine Nachricht an den Projektinhaber senden.",
         AppStrings.jrdContentHint: "Geben Sie Ihre Nachricht ein (Optional)",
         AppStrings.submit: "Senden",
       };
