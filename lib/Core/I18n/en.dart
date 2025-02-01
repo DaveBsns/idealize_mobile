@@ -95,7 +95,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.language: "Language",
         AppStrings.privacy: "Privacy",
         AppStrings.security: "Security",
-        AppStrings.delete: "Delete",
+        
         AppStrings.deleteAccount: "Delete Account",
         AppStrings.deleteMaterial: "Delete Material",
         AppStrings.logout: "Logout",
