@@ -114,6 +114,7 @@ class ProjectDetailsController extends GetxController {
 
       if (status) {
         initComments();
+        removeReply();
         commentCtrl.clear();
       }
     }
@@ -141,6 +142,30 @@ class ProjectDetailsController extends GetxController {
   void reply(String replyId) {
     replyCommentId.value = replyId;
     FocusScope.of(Get.context!).requestFocus(myFocusNode);
+  }
+
+  void removeComment(String commentId) async {
+    AppRepo().showCustomAlertDialog(
+      title: AppStrings.deleteCommentTitle.tr,
+      content: AppStrings.deleteCommentContent.tr,
+      buttonText: AppStrings.delete.tr,
+      outlinedButtonText: AppStrings.cancel.tr,
+      buttonColor: AppConfig().colors.secondaryColor,
+      outlinedButtonColor: Colors.transparent,
+      outlinedButtonBorderColor: AppConfig().colors.darkGrayColor,
+      outlinedButtonTextStyle: TextStyle(
+        color: AppConfig().colors.darkGrayColor,
+      ),
+      buttonTextStyle: const TextStyle(color: Colors.white),
+      onPressed: () async {
+        Get.back();
+        AppRepo().showLoading();
+        await repo.deleteComment(commentId);
+        initComments();
+        AppRepo().hideLoading();
+      },
+      outlinedButtonOnPressed: () => Get.back(),
+    );
   }
 
   String getNameBasedOnReplyId(String replyId) {

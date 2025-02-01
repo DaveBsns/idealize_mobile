@@ -87,4 +87,9 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
       type: type,
     );
   }
+  
+  @override
+  Future<void> deleteComment(String commentId) async {
+    await CommentService().deleteComment(commentId);
+  }
 }

@@ -224,4 +224,10 @@ class AppStrings {
   static const String jrdContent = "jrdContent";
   static const String jrdContentHint = "jrdContentHint";
   static const String submit = "submit";
+  static const String reply = "reply";
+  static const String replyTo = "replyTo";
+  static const String hideComments = "hideComments";
+  static const String showComments = "showComments";
+  static const String deleteCommentTitle = "deleteCommentTitle";
+  static const String deleteCommentContent = "deleteCommentContent";
 }
