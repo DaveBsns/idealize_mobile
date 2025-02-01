@@ -256,7 +256,7 @@ class EnLanguageData extends LanguageDataKeys {
             "Are you sure you want to delete @projectKeyword? This action cannot be undone.",
         AppStrings.jrdTitle: "Join Request",
         AppStrings.jrdContent:
-            "Project's owner will review your request, you can leave a message.",
+            "By joining to a project, you can participate in it. cooperating with other users and working on projects together. you can even leave a message to the project owner.",
         AppStrings.jrdContentHint: "Enter your message (Optional)",
         AppStrings.submit: "Submit",
       };

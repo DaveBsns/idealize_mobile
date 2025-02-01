@@ -1,4 +1,5 @@
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
+import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
 import 'package:idealize_new_version/Core/Data/Services/archive_service.dart';
 import 'package:idealize_new_version/Core/Data/Services/project_service.dart';
 import 'package:idealize_new_version/Features/home/domain/home_repository.dart';
@@ -23,12 +24,14 @@ class HomeRepositoryImpl extends HomeRepository {
     String? searchInput,
     String selectedSegment = 'all-projects',
     int page = 1,
+    Tag? filteredByTag,
   }) async {
     return await projectService.fetchAllProject(
         search: searchInput,
         page: page,
         sortField: 'creationDate',
         filter: selectedSegment,
+        filterByTag: filteredByTag?.id,
         );
   }
 

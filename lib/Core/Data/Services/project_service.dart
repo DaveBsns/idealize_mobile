@@ -15,6 +15,7 @@ class ProjectService extends ServicesHelper {
     bool myProjects = false,
     String ownerId = '',
     String? filter,
+    String? filterByTag,
   }) async {
     final base =
         myProjects ? '$baseURL/projects/my-projects' : '$baseURL/projects';
@@ -35,6 +36,10 @@ class ProjectService extends ServicesHelper {
 
     if (sortField != null) {
       queryParametrs['sort'] = sortField;
+    }
+
+    if (filterByTag != null) {
+      queryParametrs['filterByTag'] = filterByTag;
     }
 
     if (isDraft) {

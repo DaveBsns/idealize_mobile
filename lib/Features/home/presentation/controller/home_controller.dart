@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
+import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
 import 'package:idealize_new_version/Features/home/domain/home_repository.dart';
 
 class HomeController extends GetxController {
@@ -22,6 +23,8 @@ class HomeController extends GetxController {
   bool lastPage = false;
   String searchInput = '';
   List<Project> projects = [];
+
+  Rx<Tag?> filteredByTag = Rx<Tag?>(null);
 
   @override
   void onInit() {
@@ -45,6 +48,7 @@ class HomeController extends GetxController {
       page: page,
       searchInput: searchInput,
       selectedSegment: selectedFilter,
+      filteredByTag: filteredByTag.value,
     );
 
     if (result.isNotEmpty) {
@@ -65,6 +69,12 @@ class HomeController extends GetxController {
 
     loading = false;
     update();
+  }
+
+  void updateFilteredByTag(Tag? tag) {
+    filteredByTag.value = tag;
+    update();
+    refreshContent();
   }
 
   void search() {
