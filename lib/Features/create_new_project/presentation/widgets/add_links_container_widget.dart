@@ -10,6 +10,8 @@ import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/app_repo.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 class AddLinksContainer extends StatelessWidget {
   final Function(LinkModel)? onAddLink;
   final List<LinkModel> links;
@@ -47,8 +49,8 @@ class AddLinksContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text(
-                "Add Links:",
+              Text(
+                AppStrings.addLink.tr,
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -57,9 +59,8 @@ class AddLinksContainer extends StatelessWidget {
               Gap(AppConfig().dimens.small),
               GestureDetector(
                 onTap: () => AppRepo().showCustomAlertDialog(
-                  title: 'Links',
-                  content:
-                      'Links are optional. You can add links to your project. These will be visible to the user when they view your project.',
+                  title: AppStrings.fileUploadInfo.tr,
+                  content: AppStrings.uploadInformation.tr,
                   buttonText: 'OK',
                   buttonTextStyle: TextStyle(
                       color: AppConfig().colors.primaryColor,
@@ -87,11 +88,11 @@ class AddLinksContainer extends StatelessWidget {
                       linkCtrl.clear();
                     } else {
                       AppRepo().showSnackbar(
-                          label: 'Error', text: 'Please enter a valid URL');
+                          label: 'Error', text: AppStrings.errorValidUrl.tr);
                     }
                   } else {
                     AppRepo().showSnackbar(
-                        label: 'Warning', text: 'Please fill all the fields');
+                        label: 'Warning', text: AppStrings.fillAllFields.tr);
                   }
                 },
                 icon: const Icon(Iconsax.add),
@@ -104,7 +105,7 @@ class AddLinksContainer extends StatelessWidget {
           Column(
             children: [
               CustomTextField(
-                labelText: "Link name",
+                labelText: AppStrings.addLinkTitle.tr,
                 iconColor: AppColors().lightGrayColor,
                 keyboardType: TextInputType.url,
                 icon: Iconsax.edit_2,
@@ -119,7 +120,7 @@ class AddLinksContainer extends StatelessWidget {
                 ),
               ),
               CustomTextField(
-                labelText: "Add Url (https://...)",
+                labelText: AppStrings.addLinkUrl.tr,
                 keyboardType: TextInputType.url,
                 iconColor: AppColors().lightGrayColor,
                 icon: Iconsax.edit_2,

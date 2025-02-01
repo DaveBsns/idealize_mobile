@@ -7,6 +7,7 @@ import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 import 'controller/archived_projcts_controller.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class ArchivedProjctsScreen extends GetView<ArchivedProjctsController> {
   const ArchivedProjctsScreen({super.key});
@@ -17,8 +18,8 @@ class ArchivedProjctsScreen extends GetView<ArchivedProjctsController> {
       backgroundColor: AppConfig().colors.backGroundColor,
       appBar: AppBar(
         backgroundColor: AppConfig().colors.backGroundColor,
-        title: Text(
-          AppStrings.favorites.tr,
+        title:  Text(
+          AppStrings.favoritesTab.tr,
         ),
       ),
       body: Obx(() => controller.archives.isNotEmpty
@@ -54,8 +55,8 @@ class ArchivedProjctsScreen extends GetView<ArchivedProjctsController> {
                 ),
               ),
             )
-          : const EmptyListWidget(
-              title: "You don't have any favorite projects yet.",
+          : EmptyListWidget(
+              title: AppStrings.emptyFavoriteProject.tr,
             )),
     );
   }

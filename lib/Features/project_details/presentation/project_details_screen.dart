@@ -294,7 +294,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                       width: 1.5,
                                     ),
                                   ),
-                                  hintText: "Write a comment",
+                                  hintText: AppStrings.writeAComment.tr,
                                   contentPadding: EdgeInsets.only(
                                     left: AppConfig().dimens.medium,
                                     right: AppConfig().dimens.medium,

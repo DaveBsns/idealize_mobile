@@ -17,6 +17,7 @@ import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class TeamMembersSelectorBottomSheetWidget extends StatefulWidget {
   final List<User> chipData;
@@ -163,9 +164,9 @@ class _InterestAndCourseSelectorBottomSheetState
                                 color: Colors.grey[400],
                               ),
                               Gap(AppConfig().dimens.medium),
-                              const Text(
+                              Text(
                                 textAlign: TextAlign.center,
-                                'There are no users to show.\nPlease check later.',
+                                AppStrings.noUsersToShow.tr,
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 14,
@@ -179,7 +180,7 @@ class _InterestAndCourseSelectorBottomSheetState
                 Gap(AppConfig().dimens.medium),
                 CustomIconButton(
                   color: AppConfig().colors.secondaryColor,
-                  title: "Save",
+                  title: AppStrings.save.tr,
                   txtColor: AppColors().primaryColor,
                   onTap: Get.back,
                 ),

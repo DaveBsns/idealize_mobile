@@ -5,6 +5,8 @@ import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Features/app_setting/presentation/controller/app_setting_controller.dart';
 
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 class TextSizeView extends GetView<AppSettingController> {
   const TextSizeView({super.key});
 
@@ -12,7 +14,7 @@ class TextSizeView extends GetView<AppSettingController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Text Size'),
+        title:  Text(AppStrings.textSize.tr),
       ),
       body: Column(
         children: [

@@ -7,6 +7,7 @@ class EnLanguageData extends LanguageDataKeys {
   @override
   Map<String, String> get keys => {
         AppStrings.addTag: "Add Tag",
+        AppStrings.addTags: "Add Tags",
         AppStrings.searchNotFound: "Search not found",
         AppStrings.createNewProject: "Create New Project",
         AppStrings.editProject: "Edit Project",
@@ -94,7 +95,9 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.language: "Language",
         AppStrings.privacy: "Privacy",
         AppStrings.security: "Security",
+        AppStrings.delete: "Delete",
         AppStrings.deleteAccount: "Delete Account",
+        AppStrings.deleteMaterial: "Delete Material",
         AppStrings.logout: "Logout",
         AppStrings.splashScreenText:
             "Please log in or create an account to proceed",
@@ -146,6 +149,10 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.addNewProject: "Add New Project",
         AppStrings.or: "Or",
         AppStrings.workOnAProjectFromDraft: "Work on a project from draft:",
+        AppStrings.emptyFavoriteProject:
+            "You don't have any favorite projects yet.",
+        AppStrings.emptyDraftProjectMessage:
+            "You don't have any draft projects yet.",
         AppStrings.emptyDraftProject:
             "You don't have any draft projects yet. \n Start by creating a new project.",
         AppStrings.multiLineTextFieldHint: "Enter your text here",
@@ -154,12 +161,14 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.addLinkUrl: "Add URL",
         AppStrings.courses: "Courses",
         AppStrings.addCourse: "Add Course",
+        AppStrings.addCourses: "Add Courses",
         AppStrings.warningValidUrl: 'Please enter a valid URL',
         AppStrings.errorValidUrl: 'Please enter a valid URL',
         AppStrings.error: "Error",
         AppStrings.warning: "Warning",
         AppStrings.files: "Files:",
         AppStrings.uploadFile: "Upload File",
+        AppStrings.uploadFiles: "Upload Files",
         AppStrings.media: "Media:",
         AppStrings.uploadMedia: "Upload Media",
         AppStrings.thumbnail: "Thumbnail:",
@@ -217,6 +226,16 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.noFileSelected: "No file was selected",
         AppStrings.maximumMedias: "You have reached the maximum medias!",
         AppStrings.fileAlreadyAdded: "The file @keyword4 is already added",
+        AppStrings.writeAComment: "Write a comment",
+        AppStrings.noUsersToShow:
+            "There are no users to show.\nPlease check later.",
+        AppStrings.emptyHere: "It is empty here!",
+        AppStrings.fileUploadInfo: "File Upload Info",
+        AppStrings.uploadInformation:
+            "You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .",
+        AppStrings.fillAllFields: "Please fill all the fields",
+        AppStrings.sureAboutDeletingMaterial:
+            "Are you sure you want to delete the material from the project ? It will delete the material permanantly from the project!",
         AppStrings.passwordInstructions:
             "Password Requirements:\n- Minimum of 8 characters\n- At least one uppercase letter\n- At least one numeric digit\n- At least one special character",
         AppStrings.termsCondifitonCheckbox:
@@ -234,6 +253,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.noTitle: "No title",
         AppStrings.delete: "Delete",
         AppStrings.deleteProject: "Delete Project",
-        AppStrings.deleteProjectContent: "Are you sure you want to delete @projectKeyword? This action cannot be undone.",
+        AppStrings.deleteProjectContent:
+            "Are you sure you want to delete @projectKeyword? This action cannot be undone.",
       };
 }

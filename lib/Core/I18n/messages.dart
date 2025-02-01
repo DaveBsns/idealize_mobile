@@ -2,6 +2,7 @@ class AppStrings {
   static const String login = "login";
   static const String signUp = "signUp";
   static const String addTag = "addTag";
+  static const String addTags = "addTags";
   static const String searchNotFound = "searchNotFound";
   static const String createNewProject = "createNewProject";
   static const String editProject = "editProject";
@@ -69,7 +70,9 @@ class AppStrings {
   static const String lastName = "lastName";
   static const String firstNameHint = "firstNameHint";
   static const String lastNameHint = "lastNameHint";
+  static const String delete = "delete";
   static const String deleteAccount = "deleteAccount";
+  static const String deleteMaterial = "deleteMaterial";
   static const String changePicture = "changePicture";
   static const String editProfile = "editProfile";
   static const String cancel = "cancel";
@@ -131,6 +134,8 @@ class AppStrings {
   static const String addNewProject = "addNewProject";
   static const String or = "or";
   static const String workOnAProjectFromDraft = "workOnAProjectFromDraft";
+  static const String emptyDraftProjectMessage = "emptyDraftProjectMessage";
+  static const String emptyFavoriteProject = "emptyFavoriteProject";
   static const String emptyDraftProject = "emptyDraftProject";
   static const String multiLineTextFieldHint = "multiLineTextFieldHint";
   static const String addLink = "addLink";
@@ -138,12 +143,14 @@ class AppStrings {
   static const String addLinkUrl = "addLinkUrl";
   static const String courses = "courses";
   static const String addCourse = "addCourse";
+  static const String addCourses = "addCourses";
   static const String warningValidUrl = "warningValidUrl";
   static const String errorValidUrl = "errorValidUrl";
   static const String error = "error";
   static const String warning = "warning";
   static const String files = "files";
   static const String uploadFile = "uploadFile";
+  static const String uploadFiles = "uploadFiles";
   static const String media = "media";
   static const String uploadMedia = "uploadMedia";
   static const String thumbnail = "thumbnail";
@@ -191,6 +198,14 @@ class AppStrings {
   static const String noFileSelected = "noFileSelected";
   static const String maximumMedias = "maximumMedias";
   static const String fileAlreadyAdded = "fileAlreadyAdded";
+  static const String writeAComment = "writeAComment";
+  static const String noUsersToShow = "noUsersToShow";
+  static const String emptyHere = "emptyHere";
+  static const String fileUploadInfo = "fileUploadInfo";
+  static const String uploadInformation =
+      "Sie können Dateien bis zu einer Größe von 10 MB hochladen. Unterstützte Formate sind PDF, DOC, PPT und PPTX.";
+  static const String fillAllFields = "fillAllFields";
+  static const String sureAboutDeletingMaterial = "sureAboutDeletingMaterial";
   static const String passwordInstructions = "passwordInstructions";
   static const String addNew = "addNew";
   static const String toAddNew = "toAddNew";

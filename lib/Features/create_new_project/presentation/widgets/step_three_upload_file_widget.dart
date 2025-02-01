@@ -12,6 +12,8 @@ import 'package:idealize_new_version/Core/Utils/file_utils.dart';
 import 'package:idealize_new_version/Features/create_new_project/presentation/controller/create_new_project_controller.dart';
 import 'package:idealize_new_version/app_repo.dart';
 
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
   const StepThreeUploadFilewidget({super.key});
 
@@ -45,8 +47,8 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                         runSpacing: 0.0,
                         alignment: WrapAlignment.start,
                         children: [
-                          const Text(
-                            "Files:",
+                          Text(
+                            AppStrings.files.tr,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -54,9 +56,8 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                           ),
                           GestureDetector(
                             onTap: () => AppRepo().showCustomAlertDialog(
-                              title: 'File Upload Info',
-                              content:
-                                  'You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .',
+                              title: AppStrings.fileUploadInfo.tr,
+                              content: AppStrings.uploadInformation.tr,
                               buttonText: 'OK',
                               buttonTextStyle: TextStyle(
                                   color: AppConfig().colors.primaryColor,
@@ -76,7 +77,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                     Flexible(
                       fit: FlexFit.tight,
                       child: CustomOutlineIconButton(
-                        title: "Upload Files",
+                        title: AppStrings.uploadFiles.tr,
                         icon: const Icon(Iconsax.add),
                         width: 160,
                         height: 50,
@@ -144,10 +145,10 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                                                         .uploadedId)
                                                 .id);
                                       },
-                                      title: "Delete Material",
-                                      content:
-                                          "Are you sure you want to delete the material from the project ? It will delete the material permanantly from the project!",
-                                      buttonText: "Delete",
+                                      title: AppStrings.deleteMaterial.tr,
+                                      content: AppStrings
+                                          .sureAboutDeletingMaterial.tr,
+                                      buttonText: AppStrings.delete.tr,
                                       buttonTextStyle: TextStyle(
                                           color:
                                               AppConfig().colors.primaryColor,
@@ -157,7 +158,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                                       outlinedButtonBorderColor:
                                           AppColors().primaryColor,
                                       outlinedButtonOnPressed: () => Get.back(),
-                                      outlinedButtonText: "Cancel",
+                                      outlinedButtonText: AppStrings.cancel.tr,
                                       outlinedButtonColor: Colors.transparent,
                                       outlinedButtonTextStyle: TextStyle(
                                           color:
@@ -208,8 +209,8 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                         runSpacing: 0.0,
                         alignment: WrapAlignment.start,
                         children: [
-                          const Text(
-                            "Media:",
+                          Text(
+                            AppStrings.media.tr,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -217,10 +218,9 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                           ),
                           GestureDetector(
                             onTap: () => AppRepo().showCustomAlertDialog(
-                              title: 'File Upload Info',
-                              content:
-                                  'You can upload files up to 10 MB in size.You can upload images up to 50 MB in size and videos up to 200 MB in size. Supported formats are JPEG, PNG, GIF, WEBP, MP4, and AVI.',
-                              buttonText: 'OK',
+                              title: AppStrings.fileUploadInfo.tr,
+                              content: AppStrings.uploadInformation.tr,
+                              buttonText: AppStrings.okay.tr,
                               buttonTextStyle: TextStyle(
                                   color: AppConfig().colors.primaryColor,
                                   fontWeight: FontWeight.w700),
@@ -239,7 +239,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                     Flexible(
                       fit: FlexFit.tight,
                       child: CustomOutlineIconButton(
-                        title: "Upload Media",
+                        title: AppStrings.uploadMedia.tr,
                         icon: const Icon(Iconsax.add),
                         width: 160,
                         height: 50,
@@ -301,10 +301,10 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                                     controller.deleteProjectMaterial(
                                         controller.attachments[index].id);
                                   },
-                                  title: "Delete Material",
+                                  title: AppStrings.deleteMaterial.tr,
                                   content:
-                                      "Are you sure you want to delete the material from the project ? It will delete the material permanantly from the project!",
-                                  buttonText: "Delete",
+                                      AppStrings.sureAboutDeletingMaterial.tr,
+                                  buttonText: AppStrings.delete.tr,
                                   buttonTextStyle: TextStyle(
                                       color: AppConfig().colors.primaryColor,
                                       fontWeight: FontWeight.w700),
@@ -313,7 +313,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                                   outlinedButtonBorderColor:
                                       AppColors().primaryColor,
                                   outlinedButtonOnPressed: () => Get.back(),
-                                  outlinedButtonText: "Cancel",
+                                  outlinedButtonText: AppStrings.cancel.tr,
                                   outlinedButtonColor: Colors.transparent,
                                   outlinedButtonTextStyle: TextStyle(
                                       color: AppConfig().colors.primaryColor,
@@ -362,8 +362,8 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                           runSpacing: 0.0,
                           alignment: WrapAlignment.start,
                           children: [
-                            const Text(
-                              "Thumbnail:",
+                            Text(
+                              AppStrings.thumbnail.tr,
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -371,10 +371,9 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                             ),
                             GestureDetector(
                               onTap: () => AppRepo().showCustomAlertDialog(
-                                title: 'File Upload Info',
-                                content:
-                                    'You can upload files up to 10 MB in size.You can upload images up to 50 MB in size and videos up to 200 MB in size. Supported formats are JPEG and PNG.',
-                                buttonText: 'OK',
+                                title: AppStrings.fileUploadInfo.tr,
+                                content: AppStrings.uploadInformation.tr,
+                                buttonText: AppStrings.okay.tr,
                                 buttonTextStyle: TextStyle(
                                     color: AppConfig().colors.primaryColor,
                                     fontWeight: FontWeight.w700),
@@ -393,7 +392,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                       Flexible(
                         fit: FlexFit.tight,
                         child: CustomOutlineIconButton(
-                          title: "Upload Thumbnail",
+                          title: AppStrings.uploadThumbnail.tr,
                           icon: const Icon(Iconsax.add),
                           width: 160,
                           height: 50,

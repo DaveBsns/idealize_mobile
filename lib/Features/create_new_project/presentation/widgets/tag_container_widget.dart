@@ -10,6 +10,10 @@ import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Features/tag_selector/presentation/tag_selector_screen.dart';
 import 'package:idealize_new_version/app_repo.dart';
+import 'package:get/get.dart';
+
+import 'package:idealize_new_version/Core/I18n/messages.dart';
+
 
 class TagsContainer extends StatelessWidget {
   final List<Tag> selectedTags;
@@ -77,7 +81,7 @@ class TagsContainer extends StatelessWidget {
                   ),
                   Flexible(
                     child: CustomOutlineIconButton(
-                      title: "Add Tags",
+                      title: AppStrings.addTags.tr,
                       icon: const Icon(Iconsax.add),
                       width: 160,
                       height: 45,
