@@ -32,6 +32,7 @@ dependencies:
   cached_memory_image: ^1.5.0
   socket_io_client: ^3.0.0
   adaptive_dialog: ^2.3.0
+  permission_handler: ^11.3.1
 
 
 get:

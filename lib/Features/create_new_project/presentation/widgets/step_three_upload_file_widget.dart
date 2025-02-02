@@ -49,7 +49,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                         children: [
                           Text(
                             AppStrings.files.tr,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black),
@@ -58,7 +58,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                             onTap: () => AppRepo().showCustomAlertDialog(
                               title: AppStrings.fileUploadInfo.tr,
                               content: AppStrings.uploadInformation.tr,
-                              buttonText: 'OK',
+                              buttonText: AppStrings.okay.tr,
                               buttonTextStyle: TextStyle(
                                   color: AppConfig().colors.primaryColor,
                                   fontWeight: FontWeight.w700),
@@ -211,7 +211,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                         children: [
                           Text(
                             AppStrings.media.tr,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black),
@@ -284,9 +284,12 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                               color: mediaFiles[index].fileColor,
                               borderRadius: BorderRadius.circular(6),
                             ),
-                            child: Icon(
-                              mediaFiles[index].fileIcon,
-                              color: Colors.white,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: Image.file(
+                                File(mediaFiles[index].path),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                           trailing: IconButton(
@@ -364,7 +367,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                           children: [
                             Text(
                               AppStrings.thumbnail.tr,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black),

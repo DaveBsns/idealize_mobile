@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Features/app_setting/presentation/widgets/delete_account_bottomsheet_widget.dart';
 import 'package:idealize_new_version/Core/Components/switch_btn_widget.dart';
@@ -115,6 +116,33 @@ class AppSettingScreen extends GetView<AppSettingController> {
               color: Colors.white,
               child: Column(
                 children: [
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(AppRoutes().reportaBug);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Iconsax.alarm,
+                          size: 25,
+                          color: AppConfig().colors.darkGrayColor,
+                        ),
+                        Gap(AppConfig().dimens.medium),
+                        Text(AppStrings.reportBug.tr),
+                        const Spacer(),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 22,
+                          color: AppConfig().colors.darkGrayColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    color: AppConfig().colors.lightGrayColor,
+                    thickness: 0.5,
+                    height: 40,
+                  ),
                   InkWell(
                     onTap: () {
                       AppConfig().privacyPolicyUrl.launchURL();

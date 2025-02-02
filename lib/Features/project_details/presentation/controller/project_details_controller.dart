@@ -169,10 +169,19 @@ class ProjectDetailsController extends GetxController {
   }
 
   String getNameBasedOnReplyId(String replyId) {
-    return comments
-        .firstWhere((element) => element.id == replyId)
-        .userId
-        .firstname;
+    for (var comment in comments) {
+      if (comment.id == replyId) {
+        return comment.user.firstname;
+      }
+
+      for (var reply in comment.replies.$2) {
+        if (reply.id == replyId) {
+          return reply.user.firstname;
+        }
+      }
+    }
+
+    return 'Unknown';
   }
 
   void scrollToComments() {

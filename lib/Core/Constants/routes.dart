@@ -27,6 +27,8 @@ import 'package:idealize_new_version/Features/Register/presentation/View/registr
 
 import 'package:idealize_new_version/Features/archived_projcts/presentation/archived_projcts_screen.dart';
 import 'package:idealize_new_version/Features/register/presentation/binding/register_binding.dart';
+import 'package:idealize_new_version/Features/report_bug/presentation/binding/report_bug_binding.dart';
+import 'package:idealize_new_version/Features/report_bug/presentation/screens/report_bug_screen.dart';
 import 'package:idealize_new_version/Features/userSuggestionProfile/presentation/binding/user_suggestion_profile_binding.dart';
 import 'package:idealize_new_version/Features/userSuggestionProfile/presentation/user_suggestion_profile_screen.dart';
 
@@ -55,6 +57,7 @@ class AppRoutes {
   final notification = '/notification';
   final archivedProject = '/archivedProject';
   final userSuggestionProfile = '/userSuggestionProfile';
+  final reportaBug = '/reportaBug';
 
   List<GetPage> get pages {
     return [
@@ -146,6 +149,11 @@ class AppRoutes {
         name: userSuggestionProfile,
         page: () => const UserSuggestionProfileScreen(),
         binding: UserSuggestionProfileBinding(),
+      ),
+      GetPage(
+        name: reportaBug,
+        page: () => const ReportBugScreen(),
+        binding: ReportBugBinding(),
       ),
     ];
   }

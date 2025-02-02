@@ -2,7 +2,7 @@ import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 
 class ProjectComment {
   final String id;
-  final User userId;
+  final User user;
   final ProjectComment? parentCommentId;
   final String content;
   final DateTime createdAt;
@@ -10,7 +10,7 @@ class ProjectComment {
 
   ProjectComment({
     required this.id,
-    required this.userId,
+    required this.user,
     required this.content,
     this.parentCommentId,
     required this.createdAt,
@@ -20,7 +20,7 @@ class ProjectComment {
   factory ProjectComment.fromJson(Map<String, dynamic> json) {
     return ProjectComment(
         id: json['_id'],
-        userId: User.fromJson(json['userId']),
+        user: User.fromJson(json['user']),
         content: json['content'],
         parentCommentId: (json['parentCommentId'] != null &&
                 json['parentCommentId'] is Map<String, dynamic>)
@@ -28,12 +28,12 @@ class ProjectComment {
             : null,
         createdAt: DateTime.parse(json['createdAt']),
         replies: (json['replies'] != null &&
-                json['replies']['comments'] != null &&
-                json['replies']['total'] > 0)
+                json['replies'] is List &&
+                json['replies'].isNotEmpty)
             ? (
-                json['replies']['total'],
+                json['replies'].length,
                 [
-                  for (final commentJson in json['replies']['comments'])
+                  for (final commentJson in json['replies'])
                     ProjectComment.fromJson(commentJson)
                 ]
               )

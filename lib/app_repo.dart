@@ -13,9 +13,11 @@ import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
 import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 import 'package:idealize_new_version/Core/Data/Services/tags_service.dart';
 import 'package:idealize_new_version/Core/Data/Services/user_service.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class AppRepo {
   static final AppRepo _singleton = AppRepo._internal();
@@ -44,7 +46,6 @@ class AppRepo {
     label: '',
     text: '',
   );
-
 
   String getProjectFileUrl(ProjectFile? file) {
     if (file != null) {
@@ -222,5 +223,51 @@ class AppRepo {
 
     await AppRepo().refillAllTheData();
     return true;
+  }
+
+  Future<bool> checkPermission() async {
+    PermissionStatus status = await Permission.photos.request();
+
+    if (status.isDenied || status.isPermanentlyDenied) {
+      showPermissionDialog(Get.context);
+      return false;
+    }
+
+    return true;
+  }
+
+  void showPermissionDialog(BuildContext? context) {
+    if (context == null) return;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            AppStrings.permissionRequired.tr,
+          ),
+          content: Text(
+            AppStrings.permissionRequiredContent.tr,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                openAppSettings();
+                Navigator.pop(context);
+              },
+              child: Text(
+                AppStrings.openSettings.tr,
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                AppStrings.cancel.tr,
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

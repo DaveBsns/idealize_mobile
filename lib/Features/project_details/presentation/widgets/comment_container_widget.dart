@@ -34,38 +34,46 @@ class _CommentContainerWidgetState extends State<CommentContainerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        children: [
-          _comment,
-          if (widget.comment.replies.$1 > 0 && _repliesShown) _replies,
-          if (!widget.isReply && widget.comment.replies.$1 > 0)
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    _repliesShown = !_repliesShown;
-                  });
-                },
-                child: ColoredBox(
-                  color: AppConfig().colors.primaryColor.withOpacity(0.2),
-                  child: SizedBox(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            textAlign: TextAlign.center,
-                            _repliesShown
-                                ? AppStrings.showComments.tr
-                                : '${AppStrings.showComments.tr} (${widget.comment.replies.$1})'),
-                      )),
-                )),
-        ],
-      ),
+    return Column(
+      children: [
+        _commentWidget,
+        if (widget.comment.replies.$1 > 0 && _repliesShown) _repliesWidget,
+        if (widget.comment.replies.$2.isNotEmpty)
+          InkWell(
+            onTap: () {
+              setState(() {
+                _repliesShown = !_repliesShown;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0).copyWith(bottom: 10),
+              child: Text(
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 11.5,
+                  color: AppColors().darkGrayColor,
+                  fontWeight: FontWeight.w600,
+                ),
+                _repliesShown
+                    ? AppStrings.hideComments.tr
+                    : '${AppStrings.showComments.tr} (${widget.comment.replies.$1})',
+              ),
+            ),
+          ),
+      ],
     );
   }
 
-  Widget get _replies => Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 5),
+  Widget get _repliesWidget => Container(
+        padding: const EdgeInsets.only(top: 5, bottom: 5),
+        margin: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade100.withOpacity(0.2),
+          border: Border.all(
+            color: AppColors().lightGrayColor.withOpacity(0.4),
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
         child: Column(
           children: widget.comment.replies.$2.map((reply) {
             return Column(
@@ -73,7 +81,7 @@ class _CommentContainerWidgetState extends State<CommentContainerWidget> {
                 CommentContainerWidget(
                   comment: reply,
                   isReply: true,
-                  onTappedReply: null,
+                  onTappedReply: widget.onTappedReply,
                   onTappedRemove: widget.onTappedRemove,
                 ),
                 if (reply != widget.comment.replies.$2.last)
@@ -86,138 +94,141 @@ class _CommentContainerWidgetState extends State<CommentContainerWidget> {
           }).toList(),
         ),
       );
-  Widget get _comment {
+
+  Widget get _commentWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        widget.comment.userId.profilePicture == null
-            ? Container(
-                height: 38,
-                width: 38,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppConfig().colors.lightGrayColor,
-                    width: 1,
-                  ),
-                  shape: BoxShape.circle,
-                  image: widget.comment.userId.profilePicture == null
-                      ? DecorationImage(
-                          image: AssetImage(
-                            Assets.png.placeholderProfile.path,
-                          ),
-                          fit: BoxFit.cover,
-                        )
-                      : DecorationImage(
-                          image: AssetImage(
-                            Assets.png.placeholderProfile.path,
-                          ),
-                        ),
-                ),
-              )
+        widget.comment.user.profilePicture == null
+            ? _placeholderProfile()
             : AppImageLoader(
-                imageId: widget.comment.userId.profilePicture!.id,
+                imageId: widget.comment.user.profilePicture!.id,
                 height: 38,
                 width: 38,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                placeholder: Container(
-                  height: 38,
-                  width: 38,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: AppConfig().colors.primaryColor,
-                      width: 2,
-                    ),
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(Assets.png.placeholderProfile.path),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                placeholder: _placeholderProfile(),
               ),
         Gap(AppConfig().dimens.small),
         Expanded(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      '${toCamelCase(widget.comment.userId.firstname)} ${toCamelCase(widget.comment.userId.surname)}',
-                      style: TextStyle(
-                        color: AppColors().txtColor,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                  Gap(AppConfig().dimens.small),
-                  Text(
-                    widget.comment.createdAt.timeAgo(),
-                    style: TextStyle(color: AppColors().txtColor, fontSize: 12),
-                  ),
-                ],
-              ),
+              _commentHeader(),
               Gap(AppConfig().dimens.small),
-              AppRepo().user!.id != widget.comment.userId.id
-                  ? Text(widget.comment.content)
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(widget.comment.content),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: 10,
-                          ),
-                          child: SizedBox(
-                            width: 24,
-                            child: InkWell(
-                              onTap: () {
-                                widget.onTappedRemove?.call(widget.comment.id);
-                              },
-                              child: Icon(
-                                Icons.delete,
-                                color: AppColors().lightGrayColor,
-                                size: 18,
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+              _commentContent(),
               const Gap(10),
-              if (widget.onTappedReply != null)
-                InkWell(
-                  onTap: () => widget.onTappedReply?.call(widget.comment.id),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Iconsax.messages_3,
-                        size: 18,
-                        color: AppColors().darkGrayColor,
-                      ),
-                      Gap(AppConfig().dimens.small),
-                      Text(
-                        AppStrings.reply.tr,
-                        style: TextStyle(
-                          color: AppColors().darkGrayColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                )
+              _replyButton(),
             ],
           ),
         ),
       ],
     ).paddingAll(AppConfig().dimens.small);
+  }
+
+  Widget _commentHeader() {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            '${toCamelCase(widget.comment.user.firstname)} ${toCamelCase(widget.comment.user.surname)}',
+            style: TextStyle(
+              color: AppColors().txtColor,
+              fontWeight: FontWeight.w700,
+              fontSize: 12.5,
+              letterSpacing: -0.4,
+            ),
+          ),
+        ),
+        Gap(AppConfig().dimens.small),
+        Text(
+          widget.comment.createdAt.timeAgo(),
+          style: TextStyle(color: AppColors().txtColor, fontSize: 12),
+        ),
+      ],
+    );
+  }
+
+  Widget _commentContent() {
+    return AppRepo().user!.id != widget.comment.user.id
+        ? Text(
+            widget.comment.content,
+            style: const TextStyle(
+              fontSize: 12,
+              letterSpacing: -0.4,
+            ),
+          )
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(
+                  widget.comment.content,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    letterSpacing: -0.4,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: SizedBox(
+                  width: 24,
+                  child: InkWell(
+                    onTap: () {
+                      widget.onTappedRemove?.call(widget.comment.id);
+                    },
+                    child: Icon(
+                      Icons.delete,
+                      color: AppColors().lightGrayColor,
+                      size: 18,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          );
+  }
+
+  Widget _replyButton() {
+    return InkWell(
+      onTap: () => widget.onTappedReply?.call(widget.comment.id),
+      child: Row(
+        children: [
+          Icon(
+            Iconsax.messages_3,
+            size: 18,
+            color: AppColors().darkGrayColor,
+          ),
+          Gap(AppConfig().dimens.small),
+          Text(
+            AppStrings.reply.tr,
+            style: TextStyle(
+              color: AppColors().darkGrayColor,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _placeholderProfile() {
+    return Container(
+      height: 38,
+      width: 38,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: AppConfig().colors.lightGrayColor,
+          width: 1,
+        ),
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: AssetImage(Assets.png.placeholderProfile.path),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 }

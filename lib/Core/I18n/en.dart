@@ -264,6 +264,27 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.hideComments: "Hide comments",
         AppStrings.showComments: "Show comments",
         AppStrings.deleteCommentTitle: "Delete Comment",
-        AppStrings.deleteCommentContent: "Are you sure you want to delete this comment?",
+        AppStrings.deleteCommentContent:
+            "Are you sure you want to delete this comment?",
+        AppStrings.filePicker: "File Picker",
+        AppStrings.mediaPicker: "Media Picker",
+        AppStrings.unknown: "Unknown",
+        AppStrings.descriptionWaring:
+            "Description must be at least 100 characters.",
+        AppStrings.linksWarningMoreThan5: "You cannot add more than 5 links.",
+        AppStrings.permissionRequired: "Permission Required",
+        AppStrings.permissionRequiredContent:
+            "Please allow access to photos in your settings.",
+        AppStrings.openSettings: "Open Settings",
+        AppStrings.reportBug: "Report Bug",
+        AppStrings.reportBugContent:
+            "You visited a bug in the app? you can easily report it here, please describe the bug for us.",
+        AppStrings.reportBugDesc: "Enter your bug description/suggestion",
+        AppStrings.addNewTag: "Add New Tag",
+        AppStrings.tagName: "Tag name",
+        AppStrings.add: "Add",
+        AppStrings.reportedSuccessTitle: "Reported Successfully",
+        AppStrings.reportedSuccessDesc:
+            "Your report has been sent successfully",
       };
 }

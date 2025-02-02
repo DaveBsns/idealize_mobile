@@ -230,4 +230,20 @@ class AppStrings {
   static const String showComments = "showComments";
   static const String deleteCommentTitle = "deleteCommentTitle";
   static const String deleteCommentContent = "deleteCommentContent";
+  static const String filePicker = "filePicker";
+  static const String mediaPicker = "mediaPicker";
+  static const String unknown = "unknown";
+  static const String descriptionWaring = "descriptionWaring";
+  static const String linksWarningMoreThan5 = "linksWarningMoreThan5";
+  static const String permissionRequired = "permissionRequired";
+  static const String permissionRequiredContent = "permissionRequiredContent";
+  static const String openSettings = "openSettings";
+  static const String reportBug = "reportBug";
+  static const String reportBugContent = "reportBugContent";
+  static const String reportBugDesc = "reportBugDesc";
+  static const String addNewTag = "addNewTag";
+  static const String tagName = "tagName";
+  static const String add = "add";
+  static const String reportedSuccessTitle = "reportedSuccessTitle";
+  static const String reportedSuccessDesc = "reportedSuccessDesc";
 }

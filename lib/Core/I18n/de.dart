@@ -269,5 +269,27 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.deleteCommentTitle: "Kommentar löschen",
         AppStrings.deleteCommentContent:
             "Sind Sie sicher, dass Sie diesen Kommentar löschen wollen?",
+        AppStrings.filePicker: "Dateiauswahl",
+        AppStrings.mediaPicker: "Medienauswahl",
+        AppStrings.unknown: "Unbekannt",
+        AppStrings.descriptionWaring:
+            "Die Beschreibung muss mindestens 100 Zeichen lang sein.",
+        AppStrings.linksWarningMoreThan5:
+            "Sie können nicht mehr als 5 Links hinzufügen.",
+        AppStrings.permissionRequired: "Berechtigung erforderlich",
+        AppStrings.permissionRequiredContent:
+            "Bitte erlauben Sie in Ihren Einstellungen den Zugriff auf Fotos.",
+        AppStrings.openSettings: "Einstellungen",
+        AppStrings.reportBug: "Fehler melden",
+        AppStrings.reportBugContent:
+            "Sind Sie auf einen Fehler in der App gestoßen? Sie können ihn hier einfach melden. Bitte beschreiben Sie den Fehler für uns.",
+        AppStrings.reportBugDesc:
+            "Geben Sie Ihre Fehlerbeschreibung/Hinweise ein",
+        AppStrings.addNewTag: "Neues Schlagwort hinzufügen",
+        AppStrings.tagName: "Schlagwortname",
+        AppStrings.add: "Hinzufügen",
+        AppStrings.reportedSuccessTitle: "Erfolgreich gemeldet",
+        AppStrings.reportedSuccessDesc:
+            "Ihr Bericht wurde erfolgreich gesendet",
       };
 }
