@@ -286,5 +286,33 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.reportedSuccessTitle: "Reported Successfully",
         AppStrings.reportedSuccessDesc:
             "Your report has been sent successfully",
+        AppStrings.joinTeamMemberAcceptedByYou:
+            "You accepted @name to join project @project",
+        AppStrings.joinTeamMemberCanceledByYou:
+            "You canceled @name to join project @project",
+        AppStrings.joinTeamMemberAccepted:
+            "@name accepted your join request on project @project",
+        AppStrings.joinTeamMemberCanceled:
+            "@name canceled your join request on project @project",
+        AppStrings.joinTeamMember: "@name would like to join project @project",
+        AppStrings.somebodyBookmarkedyou: "@name bookmarked project @project",
+        AppStrings.somebodyLikedyou: "@name liked project @project",
+        AppStrings.somebodyReportedyou: "@name reported project @project",
+        AppStrings.somebodyCommentedyou: "@name commented on project @project",
+        AppStrings.notifBookmar: "Bookmark",
+        AppStrings.notifLike: "Like",
+        AppStrings.notifComment: "Comment",
+        AppStrings.notifReport: "Report",
+        AppStrings.notifAddTeamMamber: "Add Team Member",
+        AppStrings.notifJoinTeamMember: "Join Request",
+        AppStrings.addTeamMember:
+            "@name would like to add you to project @project",
+        AppStrings.addTeamMemberAccepted: "@name accepted your join request",
+        AppStrings.addTeamMemberCanceled: "@name canceled your join request",
+        AppStrings.addTeamMemberAcceptedByYou:
+            "You accepted to be a part of @project",
+        AppStrings.addTeamMemberCanceledByYou:
+            "You canceled to be a part of @project",
+        AppStrings.message: "Message",
       };
 }

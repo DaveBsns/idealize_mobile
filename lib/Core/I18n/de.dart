@@ -291,5 +291,37 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.reportedSuccessTitle: "Erfolgreich gemeldet",
         AppStrings.reportedSuccessDesc:
             "Ihr Bericht wurde erfolgreich gesendet",
+        AppStrings.somebodyBookmarkedyou:
+            "@name hat Projekt @project bookmarked",
+        AppStrings.somebodyLikedyou: "@name hat Projekt @project geliked",
+        AppStrings.somebodyReportedyou: "@name hat Projekt @project gemeldet",
+        AppStrings.somebodyCommentedyou:
+            "@name hat auf Projekt @project kommentiert",
+        AppStrings.notifBookmar: "Bookmark",
+        AppStrings.notifLike: "Like",
+        AppStrings.notifComment: "Kommentar",
+        AppStrings.notifReport: "Melden",
+        AppStrings.notifAddTeamMamber: "Team-Mitglied hinzufügen",
+        AppStrings.notifJoinTeamMember: "Beitrittsanfrage",
+        AppStrings.joinTeamMemberAcceptedByYou:
+            "Sie haben @name zum Beitritt zu Projekt @project zugelassen",
+        AppStrings.joinTeamMemberCanceledByYou:
+            "Sie haben @name Beitrittsanfrage zu Projekt @project abgebrochen",
+        AppStrings.joinTeamMemberAccepted:
+            "@name hat Ihre Beitrittsanfrage auf Projekt @project akzeptiert",
+        AppStrings.joinTeamMemberCanceled:
+            "@name hat Ihre Beitrittsanfrage auf Projekt @project abgebrochen",
+        AppStrings.joinTeamMember: "@name möchte Projekt @project beitreten",
+        AppStrings.addTeamMember:
+            "@name möchte Sie zu Projekt @project hinzufügen",
+        AppStrings.addTeamMemberAccepted:
+            "@name hat Ihre Beitrittsanfrage angenommen",
+        AppStrings.addTeamMemberCanceled:
+            "@name hat Ihre Beitrittsanfrage abgebrochen",
+        AppStrings.addTeamMemberAcceptedByYou:
+            "Sie haben angenommen, Teil von @project zu sein",
+        AppStrings.addTeamMemberCanceledByYou:
+            "Sie haben abgebrochen, Teil von @project zu sein",
+        AppStrings.message: "Nachricht",
       };
 }

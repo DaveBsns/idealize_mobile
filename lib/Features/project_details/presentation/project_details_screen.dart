@@ -126,7 +126,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                 onReportProjectTapped: (reason) {
                                   controller.reportProject(reason);
                                 },
-                                joinedStatus: controller.joinedStatus,
+                                joinedStatus: controller.joinedStatus.value,
                                 onTappedComment: controller.scrollToComments,
                                 ownerName:
                                     controller.project?.owner?.firstname ??
@@ -358,7 +358,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Message:",
+                Text("${AppStrings.message.tr}:",
                     style: TextStyle(
                       color: AppConfig().colors.txtColor,
                       fontWeight: FontWeight.w700,

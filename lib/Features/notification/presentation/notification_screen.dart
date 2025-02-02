@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Components/image_loader_widget.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
+import 'package:idealize_new_version/gen/assets.gen.dart';
 
 import 'controller/notification_controller.dart';
 
@@ -102,8 +104,8 @@ class NotificationScreen extends GetView<NotificationController> {
                                     children: [
                                       Gap(AppConfig().dimens.medium),
                                       Container(
-                                        height: 58,
-                                        width: 58,
+                                        height: 44,
+                                        width: 44,
                                         decoration: BoxDecoration(
                                           border: Border.all(
                                             color: AppConfig()
@@ -116,7 +118,16 @@ class NotificationScreen extends GetView<NotificationController> {
                                         child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(100),
-                                            child: _getProfileImage(index)),
+                                            child: AppImageLoader(
+                                              imageId:
+                                                  _getProfileImage(index) ?? '',
+                                              fit: BoxFit.cover,
+                                              placeholder: Assets
+                                                  .png.placeholderProfile
+                                                  .image(),
+                                              width: 44,
+                                              height: 44,
+                                            )),
                                       ),
                                       Gap(AppConfig().dimens.medium),
                                       Flexible(
@@ -130,8 +141,8 @@ class NotificationScreen extends GetView<NotificationController> {
                                               maxLines: 1,
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
-                                                fontSize:
-                                                    AppConfig().dimens.medium,
+                                                fontSize: 14,
+                                                letterSpacing: -0.5,
                                                 fontWeight: FontWeight.bold,
                                                 color: AppConfig()
                                                     .colors
@@ -142,9 +153,9 @@ class NotificationScreen extends GetView<NotificationController> {
                                               _notifMessage(index),
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                fontSize:
-                                                    AppConfig().dimens.medium,
+                                              style: const TextStyle(
+                                                fontSize: 13,
+                                                letterSpacing: -0.5,
                                               ),
                                             ),
                                           ],
@@ -154,7 +165,7 @@ class NotificationScreen extends GetView<NotificationController> {
                                       Icon(
                                         controller
                                             .notifications[index].type.toIcon,
-                                        size: AppConfig().dimens.large,
+                                        size: AppConfig().dimens.medium,
                                         color: AppColors().primaryColor,
                                       ),
                                       Gap(AppConfig().dimens.medium),
@@ -206,7 +217,7 @@ class NotificationScreen extends GetView<NotificationController> {
                                                         color: Colors.white,
                                                         fontSize: AppConfig()
                                                             .dimens
-                                                            .medium,
+                                                            .small,
                                                         fontWeight:
                                                             FontWeight.w600),
                                                   ),
@@ -214,7 +225,7 @@ class NotificationScreen extends GetView<NotificationController> {
                                                   Icon(Iconsax.tick_circle,
                                                       size: AppConfig()
                                                           .dimens
-                                                          .large,
+                                                          .small,
                                                       color: Colors.white),
                                                 ],
                                               ).paddingSymmetric(
@@ -264,7 +275,7 @@ class NotificationScreen extends GetView<NotificationController> {
                                                         color: Colors.white,
                                                         fontSize: AppConfig()
                                                             .dimens
-                                                            .medium,
+                                                            .small,
                                                         fontWeight:
                                                             FontWeight.w600),
                                                   ),
@@ -272,7 +283,7 @@ class NotificationScreen extends GetView<NotificationController> {
                                                   Icon(Icons.cancel_outlined,
                                                       size: AppConfig()
                                                           .dimens
-                                                          .large,
+                                                          .small,
                                                       color: Colors.white),
                                                 ],
                                               ).paddingSymmetric(
@@ -316,28 +327,103 @@ class NotificationScreen extends GetView<NotificationController> {
   String _notifMessage(int index) {
     final type = controller.notifications[index].type.value;
     final proccessed = controller.notifications[index].processed;
-    if (type == 'addTeamMember' && !proccessed) {
-      return 'Request to join project "${controller.notifications[index].projectId.title}"';
-    } else if (type == 'joinTeamMember' && !proccessed) {
-      return 'Request to join your project "${controller.notifications[index].projectId.title}"';
-    } else {
-      return controller.notifications[index].message;
+
+    final name =
+        '${controller.notifications[index].sender.firstname} ${controller.notifications[index].sender.surname}';
+    final project = controller.notifications[index].projectId.title;
+
+    final params = {
+      'name': '"$name"',
+      'project': '"$project"',
+    };
+
+    const joinReqCanceledKey = 'join_req_canceled';
+    const joinReqAcceptedKey = 'join_req_accepted';
+    const joinReqCanceledByYouKey = 'join_req_canceled_by_you';
+    const joinReqAcceptedByYouKey = 'join_req_accepted_by_you';
+    const join_request = 'join_request';
+
+    switch (type) {
+      case 'addTeamMember':
+        if (proccessed) {
+          if (controller.notifications[index].message == joinReqCanceledKey) {
+            return AppStrings.addTeamMemberCanceled.trParams(params);
+          }
+          if (controller.notifications[index].message == joinReqAcceptedKey) {
+            return AppStrings.addTeamMemberAccepted.trParams(params);
+          }
+          if (controller.notifications[index].message ==
+              joinReqCanceledByYouKey) {
+            return AppStrings.addTeamMemberCanceledByYou.trParams(params);
+          }
+          if (controller.notifications[index].message ==
+              joinReqAcceptedByYouKey) {
+            return AppStrings.addTeamMemberAcceptedByYou.trParams(params);
+          }
+
+          return controller.notifications[index].message;
+        } else {
+          return AppStrings.addTeamMember.trParams(params);
+        }
+
+      case 'joinTeamMember':
+        if (proccessed) {
+          if (controller.notifications[index].message == joinReqCanceledKey) {
+            return AppStrings.joinTeamMemberCanceled.trParams(params);
+          }
+          if (controller.notifications[index].message == joinReqAcceptedKey) {
+            return AppStrings.joinTeamMemberAccepted.trParams(params);
+          }
+          if (controller.notifications[index].message ==
+              joinReqCanceledByYouKey) {
+            return AppStrings.joinTeamMemberCanceledByYou.trParams(params);
+          }
+          if (controller.notifications[index].message ==
+              joinReqAcceptedByYouKey) {
+            return AppStrings.joinTeamMemberAcceptedByYou.trParams(params);
+          }
+
+          return controller.notifications[index].message;
+        } else {
+          return AppStrings.joinTeamMember.trParams(params);
+        }
+
+      case 'bookmark':
+        return AppStrings.somebodyBookmarkedyou.trParams(params);
+      case 'like':
+        return AppStrings.somebodyLikedyou.trParams(params);
+      case 'comment':
+        return AppStrings.somebodyCommentedyou.trParams(params);
+      case 'report':
+        return AppStrings.somebodyReportedyou.trParams(params);
+      default:
+        return controller.notifications[index].message;
     }
   }
 
-  Image _getProfileImage(int index) {
+  String? _getProfileImage(int index) {
     final notif = controller.notifications[index];
-    return notif.sender.getImage();
+    return notif.sender.profilePicture?.id;
   }
 
   String _notifTitle(int index) {
     final type = controller.notifications[index].type.value;
-    if (type == 'addTeamMember') {
-      return 'Add Team Member';
-    } else if (type == 'joinTeamMember') {
-      return 'Join Request';
-    } else {
-      return controller.notifications[index].message;
+
+    switch (type) {
+      case 'addTeamMember':
+        return AppStrings.notifAddTeamMamber.tr;
+      case 'joinTeamMember':
+        return AppStrings.notifJoinTeamMember.tr;
+      case 'bookmark':
+        return AppStrings.notifBookmar.tr;
+      case 'like':
+        return AppStrings.notifLike.tr;
+      case 'comment':
+        return AppStrings.notifComment.tr;
+      case 'report':
+        return AppStrings.notifReport.tr;
+      default:
+        return type;
     }
   }
 }
