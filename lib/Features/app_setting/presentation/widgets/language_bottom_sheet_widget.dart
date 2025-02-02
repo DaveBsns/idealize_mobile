@@ -15,6 +15,12 @@ class LanguageBottomSheetWidget extends GetView<AppSettingController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.languagesOptions.clear();
+    controller.languagesOptions.addAll([
+      RadioListItem(title: AppStrings.english.tr, value: 0),
+      RadioListItem(title: AppStrings.german.tr, value: 1),
+    ]);
+
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
       child: SizedBox(

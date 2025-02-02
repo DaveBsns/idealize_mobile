@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 
 class CustomRadioGroup extends StatelessWidget {
-  final List<dynamic> radioList;
+  final List<RadioListItem> radioList;
   final Function(dynamic) onSelect;
   final dynamic selected;
   final dynamic scrollDirection;
@@ -28,16 +28,23 @@ class CustomRadioGroup extends StatelessWidget {
 
               Expanded(
                 child: Text(
-                  radioList[i],
+                  radioList[i].title,
                   style: Theme.of(context).textTheme.bodyMedium,
                   overflow: TextOverflow.clip,
                 ),
               ),
             ],
           ),
-          value: radioList[i],
+          value: radioList[i].value,
           groupValue: selected,
           onChanged: (v) => onSelect(v)),
       separatorBuilder: (c, i) => const Divider(),
       itemCount: radioList.length);
+}
+
+class RadioListItem {
+  final String title;
+  final int value;
+
+  RadioListItem({required this.title, required this.value});
 }
