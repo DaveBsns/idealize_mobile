@@ -264,6 +264,55 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.hideComments: "Hide comments",
         AppStrings.showComments: "Show comments",
         AppStrings.deleteCommentTitle: "Delete Comment",
-        AppStrings.deleteCommentContent: "Are you sure you want to delete this comment?",
+        AppStrings.deleteCommentContent:
+            "Are you sure you want to delete this comment?",
+        AppStrings.filePicker: "File Picker",
+        AppStrings.mediaPicker: "Media Picker",
+        AppStrings.unknown: "Unknown",
+        AppStrings.descriptionWaring:
+            "Description must be at least 100 characters.",
+        AppStrings.linksWarningMoreThan5: "You cannot add more than 5 links.",
+        AppStrings.permissionRequired: "Permission Required",
+        AppStrings.permissionRequiredContent:
+            "Please allow access to photos in your settings.",
+        AppStrings.openSettings: "Open Settings",
+        AppStrings.reportBug: "Report Bug",
+        AppStrings.reportBugContent:
+            "You visited a bug in the app? you can easily report it here, please describe the bug for us.",
+        AppStrings.reportBugDesc: "Enter your bug description/suggestion",
+        AppStrings.addNewTag: "Add New Tag",
+        AppStrings.tagName: "Tag name",
+        AppStrings.add: "Add",
+        AppStrings.reportedSuccessTitle: "Reported Successfully",
+        AppStrings.reportedSuccessDesc:
+            "Your report has been sent successfully",
+        AppStrings.joinTeamMemberAcceptedByYou:
+            "You accepted @name to join project @project",
+        AppStrings.joinTeamMemberCanceledByYou:
+            "You canceled @name to join project @project",
+        AppStrings.joinTeamMemberAccepted:
+            "@name accepted your join request on project @project",
+        AppStrings.joinTeamMemberCanceled:
+            "@name canceled your join request on project @project",
+        AppStrings.joinTeamMember: "@name would like to join project @project",
+        AppStrings.somebodyBookmarkedyou: "@name bookmarked project @project",
+        AppStrings.somebodyLikedyou: "@name liked project @project",
+        AppStrings.somebodyReportedyou: "@name reported project @project",
+        AppStrings.somebodyCommentedyou: "@name commented on project @project",
+        AppStrings.notifBookmar: "Bookmark",
+        AppStrings.notifLike: "Like",
+        AppStrings.notifComment: "Comment",
+        AppStrings.notifReport: "Report",
+        AppStrings.notifAddTeamMamber: "Add Team Member",
+        AppStrings.notifJoinTeamMember: "Join Request",
+        AppStrings.addTeamMember:
+            "@name would like to add you to project @project",
+        AppStrings.addTeamMemberAccepted: "@name accepted your join request",
+        AppStrings.addTeamMemberCanceled: "@name canceled your join request",
+        AppStrings.addTeamMemberAcceptedByYou:
+            "You accepted to be a part of @project",
+        AppStrings.addTeamMemberCanceledByYou:
+            "You canceled to be a part of @project",
+        AppStrings.message: "Message",
       };
 }

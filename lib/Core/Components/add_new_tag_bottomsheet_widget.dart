@@ -8,7 +8,6 @@ import 'package:idealize_new_version/app_repo.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 
-
 class AddNewTagBottomsheetWidget extends StatelessWidget {
   final Function(String tagName) onAddedTagName;
   final String tagName;
@@ -34,13 +33,13 @@ class AddNewTagBottomsheetWidget extends StatelessWidget {
               Gap(
                 AppConfig().dimens.medium,
               ),
-              const Text('Add New Tag'),
+              Text(AppStrings.addNewTag.tr),
               Gap(AppConfig().dimens.small),
               SizedBox(
                 height: 60,
                 width: double.infinity,
                 child: CustomTextField(
-                  labelText: "Tag name...",
+                  labelText: "${AppStrings.tagName.tr}...",
                   icon: null,
                   controller: tagNameCtrl,
                 ),
@@ -49,11 +48,11 @@ class AddNewTagBottomsheetWidget extends StatelessWidget {
                 AppConfig().dimens.medium,
               ),
               CustomIconButton(
-                title: 'Add',
+                title: AppStrings.add.tr,
                 onTap: () {
                   if (tagNameCtrl.text.isEmpty) {
                     AppRepo().showSnackbar(
-                      label: 'Error',
+                      label: AppStrings.error.tr,
                       text: AppStrings.tagNameValid.tr,
                     );
                   } else {

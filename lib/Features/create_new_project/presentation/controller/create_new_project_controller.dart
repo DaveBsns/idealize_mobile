@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:path/path.dart' as path;
 import 'package:file_picker/file_picker.dart';
@@ -88,7 +89,9 @@ class CreateNewProjectController extends GetxController {
   void onAddLink(LinkModel model) {
     if (links.length >= 5) {
       AppRepo().showSnackbar(
-          label: 'Warning', text: 'You cannot add more than 5 links.');
+        label: AppStrings.warning.tr,
+        text: AppStrings.linksWarningMoreThan5.tr,
+      );
       return;
     }
 
@@ -322,8 +325,7 @@ class CreateNewProjectController extends GetxController {
   void createNewProjectStep2() {
     if (descriptionCtrl.text.length < 100) {
       AppRepo().showSnackbar(
-          label: 'Warning',
-          text: 'Description must be at least 100 characters.');
+          label: AppStrings.warning.tr, text: AppStrings.descriptionWaring.tr);
       return;
     }
 
@@ -455,7 +457,7 @@ class CreateNewProjectController extends GetxController {
   Future<void> pickGeneralFile() async {
     // TODO please check dupplicated files before adding to the list
     if (files.length >= 5) {
-      Get.snackbar('File Picker', AppStrings.maximumFilesReached.tr);
+      Get.snackbar(AppStrings.filePicker.tr, AppStrings.maximumFilesReached.tr);
       return;
     }
 
@@ -466,7 +468,8 @@ class CreateNewProjectController extends GetxController {
 
     if (result != null) {
       for (var file in result.files) {
-        final fileExtension = file.extension?.toLowerCase() ?? 'unknown';
+        final fileExtension =
+            file.extension?.toLowerCase() ?? AppStrings.unknown.tr;
 
         // Check if the file size is below the limit (10 MB in this example)
         // and the file is a PDF, DOC, or PPT file
@@ -482,20 +485,20 @@ class CreateNewProjectController extends GetxController {
           );
         } else {
           Get.snackbar(
-              'File Picker',
+              AppStrings.filePicker.tr,
               AppStrings.fileTooLargeNotSupportedFormat
                   .trParams({'keyword3': file.name}));
         }
       }
       update();
     } else {
-      Get.snackbar('File Picker', AppStrings.noFileSelected.tr);
+      Get.snackbar(AppStrings.filePicker.tr, AppStrings.noFileSelected.tr);
     }
   }
 
   Future<void> pickMediaFile() async {
     if (mediaFiles.length >= 5) {
-      Get.snackbar('Media Picker', AppStrings.maximumMedias.tr);
+      Get.snackbar(AppStrings.mediaPicker.tr, AppStrings.maximumMedias.tr);
       return;
     }
 
@@ -506,7 +509,7 @@ class CreateNewProjectController extends GetxController {
 
     if (result != null) {
       if (result.files.length >= 5) {
-        Get.snackbar('Media Picker', AppStrings.maximumMedias.tr);
+        Get.snackbar(AppStrings.mediaPicker.tr, AppStrings.maximumMedias.tr);
         return;
       }
 
@@ -518,7 +521,7 @@ class CreateNewProjectController extends GetxController {
         // Check if the file is already in the mediaFiles list
         if (mediaFiles.any((mediaFile) => mediaFile.path == pickedFile.path)) {
           Get.snackbar(
-              'Media Picker',
+              AppStrings.mediaPicker.tr,
               AppStrings.fileAlreadyAdded
                   .trParams({'keyword4': pickedFile.name}));
           continue;
@@ -556,43 +559,48 @@ class CreateNewProjectController extends GetxController {
                 );
                 update();
               } catch (e) {
-                Get.snackbar('Media Picker', e.toString());
+                Get.snackbar(AppStrings.mediaPicker.tr, e.toString());
               }
             } else {
               AppRepo().showSnackbar(
-                label: 'Error',
+                label: AppStrings.error.tr,
                 text: AppStrings.fileNotSupportedFormat
                     .trParams({'keyword1': pickedFile.name}),
               );
             }
           } else {
             Get.snackbar(
-                'Media Picker',
+                AppStrings.mediaPicker.tr,
                 AppStrings.fileTooLarge
                     .trParams({'keyword2': pickedFile.name}));
           }
         }
       }
     } else {
-      Get.snackbar('Media Picker', AppStrings.noMediafileSelected.tr);
+      Get.snackbar(
+          AppStrings.mediaPicker.tr, AppStrings.noMediafileSelected.tr);
     }
   }
 
   Future<void> pickThumbnail() async {
-    XFile? pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    try {
+      XFile? pickedImage =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
 
-    if (pickedImage != null) {
-      try {
+      if (pickedImage != null) {
         XFile compressedImage = await compressImage(pickedImage);
 
         pickedThumbnail.value = compressedImage;
-      } catch (e) {
-        AppRepo().showSnackbar(
-          label: 'Error',
-          text: e.toString(),
-        );
       }
+    } on PlatformException catch (e) {
+      if (e.code == 'photo_access_denied') {
+        await AppRepo().checkPermission();
+      }
+    } catch (e) {
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: e.toString(),
+      );
     }
   }
 

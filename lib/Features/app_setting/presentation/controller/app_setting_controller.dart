@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Components/group_radio_btn_widget.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/app_repo.dart';
 
 import '../../domain/app_setting_repo.dart';
@@ -9,19 +11,27 @@ class AppSettingController extends GetxController {
   var sliderValue = 1.0.obs;
   var sliderLabel = 'Small'.obs;
 
-  final List<String> deleteAccountoptions = [
-    "I want to keep my projects data with my name and delete my account",
-    "I want to keep my projects data without my name and delete my account",
-    "I want to delete my account and all my projects data",
+  final List<RadioListItem> deleteAccountoptions = [
+    RadioListItem(
+        title:
+            "I want to keep my projects data with my name and delete my account",
+        value: 0),
+    RadioListItem(
+        title:
+            "I want to keep my projects data without my name and delete my account",
+        value: 1),
+    RadioListItem(
+        title: "I want to delete my account and all my projects data",
+        value: 2),
   ];
 
-  final List<String> languagesOptions = [
-    "English",
-    "German",
+  List<RadioListItem> languagesOptions = [
+    RadioListItem(title: AppStrings.english.tr, value: 0),
+    RadioListItem(title: AppStrings.german.tr, value: 1),
   ];
 
   RxString selecteddeleteAccountoption = RxString("");
-  RxString selectedLanguageOption = RxString("");
+  RxInt selectedLanguageOption = RxInt(0);
   RxBool isDarkMode = false.obs;
 
   AppSettingController({
@@ -32,7 +42,7 @@ class AppSettingController extends GetxController {
   void onReady() {
     super.onReady();
     selectedLanguageOption.value =
-        AppRepo().getCurrentLanguageCode == "en" ? "English" : "German";
+        AppRepo().getCurrentLanguageCode == "en" ? 0 : 1;
   }
 
   void updateSlider(double value) {

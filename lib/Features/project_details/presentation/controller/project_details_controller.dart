@@ -47,7 +47,7 @@ class ProjectDetailsController extends GetxController {
   RxList<ProjectComment> comments = RxList([]);
 
   int currentCommentsPage = 1;
-  String? joinedStatus;
+  RxString joinedStatus = RxString('');
   FocusNode myFocusNode = FocusNode();
 
   ProjectDetailsController({
@@ -62,12 +62,27 @@ class ProjectDetailsController extends GetxController {
     getProject();
   }
 
+  Future<Project> getProjectAfterInit() async {
+    final result = await repo.projectDetails(projectId);
+    project = result;
+
+    joinedStatus.value = project!.joinedStatus ?? '';
+    isLiked.value = project!.isLiked;
+    isArchived.value = project!.isArchived ?? false;
+    archiveId.value = project!.archiveId;
+
+    refresh();
+    update();
+
+    return result;
+  }
+
   Future<Project> getProject() async {
     final result = await repo.projectDetails(projectId);
     project = result;
 
     await initComments();
-    joinedStatus = project!.joinedStatus;
+    joinedStatus.value = project!.joinedStatus ?? '';
     isLiked.value = project!.isLiked;
     isArchived.value = project!.isArchived ?? false;
     archiveId.value = project!.archiveId;
@@ -169,10 +184,19 @@ class ProjectDetailsController extends GetxController {
   }
 
   String getNameBasedOnReplyId(String replyId) {
-    return comments
-        .firstWhere((element) => element.id == replyId)
-        .userId
-        .firstname;
+    for (var comment in comments) {
+      if (comment.id == replyId) {
+        return comment.user.firstname;
+      }
+
+      for (var reply in comment.replies.$2) {
+        if (reply.id == replyId) {
+          return reply.user.firstname;
+        }
+      }
+    }
+
+    return 'Unknown';
   }
 
   void scrollToComments() {
@@ -266,7 +290,7 @@ class ProjectDetailsController extends GetxController {
       AppRepo().hideLoading();
       Get.back(closeOverlays: true);
       if (result != null) {
-        await getProject();
+        await getProjectAfterInit();
         AppRepo().showSnackbar(
           label: AppStrings.requestSent.tr,
           text: AppStrings.requestSent.tr,
@@ -299,7 +323,7 @@ class ProjectDetailsController extends GetxController {
     AppRepo().hideLoading();
     Get.back();
     if (response != null) {
-      await getProject();
+      await getProjectAfterInit();
       AppRepo().showSnackbar(
         label: 'Success',
         text: AppStrings.projectReported.tr,

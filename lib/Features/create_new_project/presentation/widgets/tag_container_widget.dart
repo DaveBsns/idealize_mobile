@@ -14,7 +14,6 @@ import 'package:get/get.dart';
 
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 
-
 class TagsContainer extends StatelessWidget {
   final List<Tag> selectedTags;
   final Function(List<Tag>) onTagsChanged;
@@ -51,19 +50,18 @@ class TagsContainer extends StatelessWidget {
                       spacing: 10.0,
                       runSpacing: 0.0,
                       children: [
-                        const Text(
-                          "Tags :*",
-                          style: TextStyle(
+                        Text(
+                          "${AppStrings.tags.tr} :*",
+                          style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                               color: Colors.black),
                         ),
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
-                            title: 'File Upload Info',
-                            content:
-                                'You can upload files up to 10 MB in size. Supported formats are PDF, DOC, PPT and PPTX .',
-                            buttonText: 'OK',
+                            title: AppStrings.fileUploadInfo.tr,
+                            content: AppStrings.uploadInformation.tr,
+                            buttonText: AppStrings.okay.tr,
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,
                                 fontWeight: FontWeight.w700),

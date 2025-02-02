@@ -230,4 +230,50 @@ class AppStrings {
   static const String showComments = "showComments";
   static const String deleteCommentTitle = "deleteCommentTitle";
   static const String deleteCommentContent = "deleteCommentContent";
+  static const String filePicker = "filePicker";
+  static const String mediaPicker = "mediaPicker";
+  static const String unknown = "unknown";
+  static const String descriptionWaring = "descriptionWaring";
+  static const String linksWarningMoreThan5 = "linksWarningMoreThan5";
+  static const String permissionRequired = "permissionRequired";
+  static const String permissionRequiredContent = "permissionRequiredContent";
+  static const String openSettings = "openSettings";
+  static const String reportBug = "reportBug";
+  static const String reportBugContent = "reportBugContent";
+  static const String reportBugDesc = "reportBugDesc";
+  static const String addNewTag = "addNewTag";
+  static const String tagName = "tagName";
+  static const String add = "add";
+  static const String reportedSuccessTitle = "reportedSuccessTitle";
+  static const String reportedSuccessDesc = "reportedSuccessDesc";
+
+  static const String somebodyBookmarkedyou = "somebodyBookmarkedyou";
+  static const String somebodyLikedyou = "somebodyLikedyou";
+  static const String somebodyReportedyou = "somebodyReportedyou";
+  static const String somebodyCommentedyou = "somebodyCommentedyou";
+
+  // Join team member
+  static const String joinTeamMemberCanceledByYou =
+      "joinTeamMemberCanceledByYou";
+  static const String joinTeamMemberCanceled = "joinTeamMemberCanceled";
+  static const String joinTeamMember = "joinTeamMember";
+  static const String joinTeamMemberAcceptedByYou =
+      "joinTeamMemberAcceptedByYou";
+  static const String joinTeamMemberAccepted = "joinTeamMemberAccepted";
+
+  // Add team member
+  static const String addTeamMemberCanceledByYou = "addTeamMemberCanceledByYou";
+  static const String addTeamMemberCanceled = "addTeamMemberCanceled";
+  static const String addTeamMember = "addTeamMember";
+  static const String addTeamMemberAcceptedByYou = "addTeamMemberAcceptedByYou";
+  static const String addTeamMemberAccepted = "addTeamMemberAccepted";
+
+  static const String notifBookmar = "notifBookmar";
+  static const String notifLike = "notifLike";
+  static const String notifComment = "notifComment";
+  static const String notifReport = "notifReport";
+  static const String notifAddTeamMamber = "notifAddTeamMamber";
+  static const String notifJoinTeamMember = "notifJoinTeamMember";
+
+  static const String message = "message";
 }

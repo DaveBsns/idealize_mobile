@@ -166,10 +166,7 @@ class RegisterController extends GetxController {
       }
     } on PlatformException catch (exception) {
       if (exception.code == 'photo_access_denied') {
-        AppRepo().showSnackbar(
-          label: AppStrings.accessDenied.tr,
-          text: AppStrings.photoAccessDenied.tr,
-        );
+        await AppRepo().checkPermission();
       }
     } catch (er) {
       AppRepo().showSnackbar(
