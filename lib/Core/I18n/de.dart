@@ -328,5 +328,23 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.yesDelete: "Ja, lösche mein Konto",
         AppStrings.youHaveToChangeTheOwner:
             "Sie müssen den Eigentümer der Projekte ändern, bevor Sie Ihr Konto löschen.",
+        AppStrings.connectionProblem: "Verbindungsproblem",
+        AppStrings.project: "Projekt",
+        AppStrings.draft: "Entwurf",
+        AppStrings.editAndSave: "Bearbeiten und speichern",
+        AppStrings.success: "Erfolg",
+        // Dialog
+        AppStrings.dailogAddLinksTitle: "Links hinzufügen",
+        AppStrings.dailogAddLinksContent:
+            "Die Links können auf der Projektseite angezeigt werden, wie z.B. GitHub, LinkedIn usw.",
+        AppStrings.dailogAddTagsTitle: "Tags hinzufügen",
+        AppStrings.dailogAddTagsContent:
+            "Fügen Sie Tags zum Projekt hinzu, um es einfacher zu finden.",
+        AppStrings.dailogAddCoursesTitle: "Kurse hinzufügen",
+        AppStrings.dailogAddCoursesContent:
+            "Fügen Sie Kurse zum Projekt hinzu, um es einfacher zu finden.",
+        AppStrings.dailogAddTeamMemberTitle: "Team-Mitglied hinzufügen",
+        AppStrings.dailogAddTeamMemberContent:
+            "Sie können Mitglieder zum Projekt hinzufügen, um an der Arbeit mitzuwirken und mehr.",
       };
 }

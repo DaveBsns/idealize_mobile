@@ -61,10 +61,10 @@ class CoursesContainerWidget extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
-                            title: AppStrings.fileUploadInfo.tr,
+                            title: AppStrings.dailogAddCoursesTitle.tr,
                             content:
-                                AppStrings.uploadInformation.tr,
-                            buttonText: 'OK',
+                                AppStrings.dailogAddCoursesContent.tr,
+                            buttonText: AppStrings.okay.tr,
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,
                                 fontWeight: FontWeight.w700),

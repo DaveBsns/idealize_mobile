@@ -59,8 +59,8 @@ class TagsContainer extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
-                            title: AppStrings.fileUploadInfo.tr,
-                            content: AppStrings.uploadInformation.tr,
+                            title: AppStrings.dailogAddTagsTitle.tr,
+                            content: AppStrings.dailogAddTagsContent.tr,
                             buttonText: AppStrings.okay.tr,
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,

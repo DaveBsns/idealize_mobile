@@ -61,27 +61,27 @@ class UserSuggestionProfileScreen
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Gap(AppConfig().dimens.small),
-                                  AppImageLoader(
-                                    imageId:
-                                        controller.user?.profilePicture?.id ??
-                                            '',
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    placeholder: Container(
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(170),
+                                    child: showImageFromNetwork(
+                                      controller.user?.profilePicture?.id ?? '',
                                       height: 170,
                                       width: 170,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color:
-                                              AppConfig().colors.primaryColor,
-                                          width: 2,
-                                        ),
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          image: AssetImage(Assets
-                                              .png.placeholderProfile.path),
-                                          fit: BoxFit.cover,
+                                      placeholder: Container(
+                                        height: 170,
+                                        width: 170,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color:
+                                                AppConfig().colors.primaryColor,
+                                            width: 2,
+                                          ),
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            image: AssetImage(Assets
+                                                .png.placeholderProfile.path),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),

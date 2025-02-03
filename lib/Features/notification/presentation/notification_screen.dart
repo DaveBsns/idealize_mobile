@@ -118,9 +118,8 @@ class NotificationScreen extends GetView<NotificationController> {
                                         child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(100),
-                                            child: AppImageLoader(
-                                              imageId:
-                                                  _getProfileImage(index) ?? '',
+                                            child: showImageFromNetwork(
+                                              _getProfileImage(index) ?? '',
                                               fit: BoxFit.cover,
                                               placeholder: Assets
                                                   .png.placeholderProfile

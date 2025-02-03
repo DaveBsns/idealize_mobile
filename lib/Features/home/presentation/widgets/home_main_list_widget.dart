@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/go_to_top_widget.dart';
 import 'package:idealize_new_version/Core/Components/loading_widget.dart';
 import 'package:idealize_new_version/Core/Components/project_cards_widget.dart';
+import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Features/home/presentation/controller/home_controller.dart';
@@ -119,10 +120,14 @@ class HomeMainListWidget extends GetView<HomeController> {
                                 child: Container(
                                   height: double.infinity,
                                   width: double.infinity,
-                                  decoration:
-                                      const BoxDecoration(color: Colors.red),
-                                  child: const Center(
-                                      child: Text('Connection Problem...')),
+                                  decoration: BoxDecoration(
+                                    color: AppColors().backGroundColor,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '${AppStrings.connectionProblem.tr} ...',
+                                    ),
+                                  ),
                                 ),
                               )
                             : const SizedBox(),

@@ -101,14 +101,14 @@ class _CommentContainerWidgetState extends State<CommentContainerWidget> {
       children: [
         widget.comment.user.profilePicture == null
             ? _placeholderProfile()
-            : AppImageLoader(
-                imageId: widget.comment.user.profilePicture!.id,
-                height: 38,
-                width: 38,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(38),
+                child: showImageFromNetwork(
+                  widget.comment.user.profilePicture!.id,
+                  height: 38,
+                  width: 38,
+                  placeholder: _placeholderProfile(),
                 ),
-                placeholder: _placeholderProfile(),
               ),
         Gap(AppConfig().dimens.small),
         Expanded(

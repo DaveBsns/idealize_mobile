@@ -215,11 +215,13 @@ class CreateNewProjectController extends GetxController {
       loading.value = false;
       refreshContent();
     } else {
+      AppRepo().showLoading();
       final homeViewModel = Get.find<HomeController>();
       await homeViewModel.refreshContent();
     }
 
     loading.value = false;
+    AppRepo().hideLoading();
     if (!saveAsDraftCondition) {
       Get.toNamed(AppRoutes().createNewProjectCompleted);
       clearInputs();
@@ -267,6 +269,12 @@ class CreateNewProjectController extends GetxController {
       );
     } else {
       uploadedThumbnail = updateProjectModel?.thumbnail;
+    }
+
+    if (links.isEmpty && (linkName.isNotEmpty && linkUrl.isNotEmpty)) {
+      links.add(
+        LinkModel(label: linkName, link: linkUrl),
+      );
     }
 
     // Update Project
@@ -604,7 +612,7 @@ class CreateNewProjectController extends GetxController {
     }
   }
 
-  initUpdateData() {
+  initUpdateData() async {
     titleCtrl.text = updateProjectModel?.title ?? '';
     descriptionCtrl.text = updateProjectModel?.description ?? '';
 

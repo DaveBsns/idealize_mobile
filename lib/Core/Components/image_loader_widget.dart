@@ -1,5 +1,7 @@
 import 'dart:typed_data';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:idealize_new_version/Core/Constants/config.dart';
 import '../Data/Services/resource_downloader_service.dart';
 
 class AppImageLoader extends StatelessWidget {
@@ -56,4 +58,21 @@ class AppImageLoader extends StatelessWidget {
           );
         });
   }
+}
+
+showImageFromNetwork(
+  String imageId, {
+  double? width,
+  double? height,
+  Widget? placeholder,
+  BoxFit fit = BoxFit.cover,
+}) {
+  return CachedNetworkImage(
+    imageUrl: '${AppConfig().baseURL}/uploads/resource/$imageId',
+    width: width,
+    height: height,
+    fit: fit,
+    errorWidget: (context, url, error) => const Icon(Icons.error),
+    placeholder: (context, url) => placeholder ?? const SizedBox.shrink(),
+  );
 }

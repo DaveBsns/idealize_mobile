@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Features/authentication/domain/authentication_repository.dart';
 import 'package:idealize_new_version/app_repo.dart';
@@ -69,14 +70,14 @@ class AuthenticationController extends GetxController {
             }
           } on HttpException catch (exception) {
             AppRepo().showSnackbar(
-              label: 'Error',
+              label: AppStrings.error.tr,
               text: exception.message,
               position: SnackPosition.TOP,
             );
             AppRepo().hideLoading();
           } catch (er) {
             AppRepo().showSnackbar(
-              label: 'Error',
+              label: AppStrings.error.tr,
               text: er.toString(),
               position: SnackPosition.TOP,
             );
