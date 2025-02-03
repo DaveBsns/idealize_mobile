@@ -11,19 +11,19 @@ class AppSettingController extends GetxController {
   var sliderValue = 1.0.obs;
   var sliderLabel = 'Small'.obs;
 
-  final List<RadioListItem> deleteAccountoptions = [
-    RadioListItem(
-        title:
-            "I want to keep my projects data with my name and delete my account",
-        value: 0),
-    RadioListItem(
-        title:
-            "I want to keep my projects data without my name and delete my account",
-        value: 1),
-    RadioListItem(
-        title: "I want to delete my account and all my projects data",
-        value: 2),
-  ];
+  // final List<RadioListItem> deleteAccountoptions = [
+  //   RadioListItem(
+  //       title:
+  //           "I want to keep my projects data with my name and delete my account",
+  //       value: 0),
+  //   RadioListItem(
+  //       title:
+  //           "I want to keep my projects data without my name and delete my account",
+  //       value: 1),
+  //   RadioListItem(
+  //       title: "I want to delete my account and all my projects data",
+  //       value: 2),
+  // ];
 
   List<RadioListItem> languagesOptions = [
     RadioListItem(title: AppStrings.english.tr, value: 0),
@@ -33,6 +33,8 @@ class AppSettingController extends GetxController {
   RxString selecteddeleteAccountoption = RxString("");
   RxInt selectedLanguageOption = RxInt(0);
   RxBool isDarkMode = false.obs;
+
+  RxList<Map<String, dynamic>> projects = RxList([]);
 
   AppSettingController({
     required this.repo,
@@ -55,5 +57,16 @@ class AppSettingController extends GetxController {
       sliderLabel.value = 'Large';
     }
     update();
+  }
+
+  void delete() async {
+    projects.clear();
+    AppRepo().showLoading();
+    final projectsFetched = await repo.deleteAccount();
+    AppRepo().hideLoading();
+
+    if (projectsFetched.isNotEmpty) {
+      projects.addAll(projectsFetched);
+    } else {}
   }
 }

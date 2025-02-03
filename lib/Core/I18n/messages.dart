@@ -276,4 +276,8 @@ class AppStrings {
   static const String notifJoinTeamMember = "notifJoinTeamMember";
 
   static const String message = "message";
+
+  static const String deleteAccountDesc = "deleteAccountDesc";
+  static const String yesDelete = "yesDelete";
+  static const String youHaveToChangeTheOwner = "youHaveToChangeTheOwner";
 }
