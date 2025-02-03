@@ -314,5 +314,8 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.addTeamMemberCanceledByYou:
             "You canceled to be a part of @project",
         AppStrings.message: "Message",
+        AppStrings.deleteAccountDesc: "Are you sure you want to delete your account? This action cannot be undone.",
+        AppStrings.yesDelete: "Yes, delete my account",
+        AppStrings.youHaveToChangeTheOwner: "You have to change the owner of the projects, before you delete your account.",
       };
 }

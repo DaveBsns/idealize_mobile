@@ -323,5 +323,10 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.addTeamMemberCanceledByYou:
             "Sie haben abgebrochen, Teil von @project zu sein",
         AppStrings.message: "Nachricht",
+        AppStrings.deleteAccountDesc:
+            "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+        AppStrings.yesDelete: "Ja, lösche mein Konto",
+        AppStrings.youHaveToChangeTheOwner:
+            "Sie müssen den Eigentümer der Projekte ändern, bevor Sie Ihr Konto löschen.",
       };
 }
