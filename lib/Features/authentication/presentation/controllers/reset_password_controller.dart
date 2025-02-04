@@ -42,7 +42,7 @@ class ResetPasswordController extends GetxController {
     } else {
       AppRepo().hideLoading();
       AppRepo().showSnackbar(
-          label: 'Error',
+          label: AppStrings.error.tr,
           text: AppStrings.enterValidEmail.tr,
           position: SnackPosition.TOP);
     }
@@ -77,7 +77,7 @@ class ResetPasswordController extends GetxController {
   void reset() async {
     if (email.isEmpty || !email.isEmail) {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: AppStrings.enterValidEmail.tr,
         position: SnackPosition.TOP,
       );
@@ -88,7 +88,7 @@ class ResetPasswordController extends GetxController {
         passwordController.text.isEmpty ||
         rePasswordController.text.isEmpty) {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: AppStrings.enterCodePassword.tr,
         position: SnackPosition.TOP,
       );
@@ -97,7 +97,7 @@ class ResetPasswordController extends GetxController {
 
     if (passwordController.text != rePasswordController.text) {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: AppStrings.passIsNotMatch.tr,
         position: SnackPosition.TOP,
       );
@@ -115,9 +115,8 @@ class ResetPasswordController extends GetxController {
 
       if (response != null) {
         AppRepo().showSnackbar(
-          label: 'Success',
-          text:
-              AppStrings.passIsReset.tr,
+          label: AppStrings.success.tr,
+          text: AppStrings.passIsReset.tr,
           position: SnackPosition.TOP,
         );
         await Future.delayed(const Duration(seconds: 3));
@@ -125,14 +124,14 @@ class ResetPasswordController extends GetxController {
       }
     } on HttpException catch (exception) {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: exception.message,
         position: SnackPosition.TOP,
       );
       AppRepo().hideLoading();
     } catch (er) {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: er.toString(),
         position: SnackPosition.TOP,
       );

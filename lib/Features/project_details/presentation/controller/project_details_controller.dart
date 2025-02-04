@@ -239,14 +239,14 @@ class ProjectDetailsController extends GetxController {
       await file.writeAsBytes(response.bodyBytes);
     } catch (e) {
       AppRepo().showSnackbar(
-        label: 'Error',
+        label: AppStrings.error.tr,
         text: AppStrings.downloadError.tr,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.BOTTOM,
       );
     } finally {
       AppRepo().showSnackbar(
-        label: 'Download complete',
+        label: AppStrings.downloadComplete.tr,
         text: AppStrings.downloadComplete.tr + ' ' + file.path,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.BOTTOM,

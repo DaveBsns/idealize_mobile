@@ -40,7 +40,8 @@ class CreateNewProjectScreen extends GetView<CreateNewProjectController> {
           init: controller,
           builder: (_) => controller.updateProjectModel != null
               ? Text(
-                  "Edit ${controller.updateProjectModel!.isDraft ? 'Draft' : 'Project'}")
+                  "${AppStrings.edit.tr} ${controller.updateProjectModel!.isDraft ? AppStrings.draft.tr : AppStrings.project.tr}",
+                )
               : Text(AppStrings.newProject.tr),
         ),
       ),

@@ -87,8 +87,8 @@ class CreateNewProjectStepTwoScreen
                   title: (controller.updateProjectModel == null)
                       ? AppStrings.saveAsDraft.tr
                       : (controller.routeFrom == "add-project")
-                          ? "Save as Draft"
-                          : "Edit and Save",
+                          ? AppStrings.saveAsDraft.tr
+                          : AppStrings.editAndSave.tr,
                   onTap: (controller.titleCtrl.text.isNotEmpty &&
                           controller.descriptionCtrl.text.isNotEmpty &&
                           controller.selectedTags.isNotEmpty)

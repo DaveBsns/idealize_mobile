@@ -33,6 +33,7 @@ dependencies:
   socket_io_client: ^3.0.0
   adaptive_dialog: ^2.3.0
   permission_handler: ^11.3.1
+  cached_network_image: ^3.4.1
 
 
 get:

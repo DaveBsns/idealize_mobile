@@ -63,10 +63,8 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
               child: Column(
                 children: [
                   if (controller.project?.thumbnail?.id != null)
-                    AppImageLoader(
-                      imageId: controller.project?.thumbnail?.id ?? '',
-                      decoration:
-                          const BoxDecoration(shape: BoxShape.rectangle),
+                    showImageFromNetwork(
+                      controller.project?.thumbnail?.id ?? '',
                       placeholder: ColoredBox(
                         color: AppColors().secondaryColor,
                         child: SizedBox(

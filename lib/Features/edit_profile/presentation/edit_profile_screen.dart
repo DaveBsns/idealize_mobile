@@ -50,40 +50,42 @@ class EditProfileScreen extends GetView<ProfileController> {
                             ),
                           ),
                         )
-                      : AppImageLoader(
-                          imageId: AppRepo().user?.profilePicture?.id ?? '',
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          placeholder: Container(
-                            height: 170,
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(170),
+                          child: showImageFromNetwork(
+                            AppRepo().user?.profilePicture?.id ?? '',
                             width: 170,
-                            decoration: controller.image != null
-                                ? BoxDecoration(
-                                    border: Border.all(
-                                      color: AppConfig().colors.primaryColor,
-                                      width: 2,
-                                    ),
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      image: FileImage(
-                                        File(controller.image!.path),
+                            height: 170,
+                            placeholder: Container(
+                              height: 170,
+                              width: 170,
+                              decoration: controller.image != null
+                                  ? BoxDecoration(
+                                      border: Border.all(
+                                        color: AppConfig().colors.primaryColor,
+                                        width: 2,
                                       ),
-                                      fit: BoxFit.cover,
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: FileImage(
+                                          File(controller.image!.path),
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                  : BoxDecoration(
+                                      border: Border.all(
+                                        color: AppConfig().colors.primaryColor,
+                                        width: 2,
+                                      ),
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            Assets.png.placeholderProfile.path),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  )
-                                : BoxDecoration(
-                                    border: Border.all(
-                                      color: AppConfig().colors.primaryColor,
-                                      width: 2,
-                                    ),
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          Assets.png.placeholderProfile.path),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                            ),
                           ),
                         ),
                 ),

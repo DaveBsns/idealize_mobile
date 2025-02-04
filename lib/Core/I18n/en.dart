@@ -28,6 +28,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.desciption: "Description:",
         AppStrings.descriptionHint: "Enter description here",
         AppStrings.saveAsDraft: "Save as draft",
+        AppStrings.editAndSave: "Edit and Save",
         AppStrings.save: "Save",
         AppStrings.forgotPassword: "Forgot Password?",
         AppStrings.forgotPasswordHint:
@@ -155,6 +156,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.emptyDraftProject:
             "You don't have any draft projects yet. \n Start by creating a new project.",
         AppStrings.multiLineTextFieldHint: "Enter your text here",
+        AppStrings.success: "Success",
         AppStrings.addLink: "Add Links:",
         AppStrings.addLinkTitle: "Link Name",
         AppStrings.addLinkUrl: "Add URL",
@@ -314,8 +316,26 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.addTeamMemberCanceledByYou:
             "You canceled to be a part of @project",
         AppStrings.message: "Message",
-        AppStrings.deleteAccountDesc: "Are you sure you want to delete your account? This action cannot be undone.",
+        AppStrings.deleteAccountDesc:
+            "Are you sure you want to delete your account? This action cannot be undone.",
         AppStrings.yesDelete: "Yes, delete my account",
-        AppStrings.youHaveToChangeTheOwner: "You have to change the owner of the projects, before you delete your account.",
+        AppStrings.youHaveToChangeTheOwner:
+            "You have to change the owner of the projects, before you delete your account.",
+        AppStrings.connectionProblem: "Connection Problem",
+        AppStrings.project: "Project",
+        AppStrings.draft: "Draft",
+        // Dialogs
+        AppStrings.dailogAddLinksTitle: "Add Links",
+        AppStrings.dailogAddLinksContent:
+            "The links could be shown in the project page, such as GitHub, LinkedIn, etc.",
+        AppStrings.dailogAddTagsTitle: "Add Tags",
+        AppStrings.dailogAddTagsContent:
+            "Add tags to the project to make it easier to find it.",
+        AppStrings.dailogAddCoursesTitle: "Add Courses",
+        AppStrings.dailogAddCoursesContent:
+            "Add courses to the project to make it easier to find it.",
+        AppStrings.dailogAddTeamMemberTitle: "Add Team Member",
+        AppStrings.dailogAddTeamMemberContent:
+            "You can add members to the project, for contribution and more.",
       };
 }

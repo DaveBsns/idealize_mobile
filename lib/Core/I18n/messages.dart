@@ -12,6 +12,9 @@ class AppStrings {
   static const String addMembers = "addMembers";
   static const String next = "next";
   static const String edit = "edit";
+  static const String project = "project";
+  static const String draft = "draft";
+  static const String success = "success";
   static const String close = "close";
   static const String done = "done";
   static const String required = "required";
@@ -274,10 +277,20 @@ class AppStrings {
   static const String notifReport = "notifReport";
   static const String notifAddTeamMamber = "notifAddTeamMamber";
   static const String notifJoinTeamMember = "notifJoinTeamMember";
-
   static const String message = "message";
-
   static const String deleteAccountDesc = "deleteAccountDesc";
   static const String yesDelete = "yesDelete";
   static const String youHaveToChangeTheOwner = "youHaveToChangeTheOwner";
+  static const String connectionProblem = "connectionProblem";
+  static const String editAndSave = "editAndSave";
+
+  // Dialogs
+  static const String dailogAddLinksTitle = "dailogAddLinksTitle";
+  static const String dailogAddLinksContent = "dailogAddLinksContent";
+  static const String dailogAddTagsTitle = "dailogAddTagsTitle";
+  static const String dailogAddTagsContent = "dailogAddTagsContent";
+  static const String dailogAddCoursesTitle = "dailogAddCoursesTitle";
+  static const String dailogAddCoursesContent = "dailogAddCoursesContent";
+  static const String dailogAddTeamMemberTitle = "dailogAddTeamMemberTitle";
+  static const String dailogAddTeamMemberContent = "dailogAddTeamMemberContent";
 }

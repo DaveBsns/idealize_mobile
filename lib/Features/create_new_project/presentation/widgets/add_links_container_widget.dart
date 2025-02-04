@@ -59,9 +59,9 @@ class AddLinksContainer extends StatelessWidget {
               Gap(AppConfig().dimens.small),
               GestureDetector(
                 onTap: () => AppRepo().showCustomAlertDialog(
-                  title: AppStrings.fileUploadInfo.tr,
-                  content: AppStrings.uploadInformation.tr,
-                  buttonText: 'OK',
+                  title: AppStrings.dailogAddLinksTitle.tr,
+                  content: AppStrings.dailogAddLinksContent.tr,
+                  buttonText: AppStrings.okay.tr,
                   buttonTextStyle: TextStyle(
                       color: AppConfig().colors.primaryColor,
                       fontWeight: FontWeight.w700),
@@ -88,11 +88,13 @@ class AddLinksContainer extends StatelessWidget {
                       linkCtrl.clear();
                     } else {
                       AppRepo().showSnackbar(
-                          label: 'Error', text: AppStrings.errorValidUrl.tr);
+                          label: AppStrings.error.tr,
+                          text: AppStrings.errorValidUrl.tr);
                     }
                   } else {
                     AppRepo().showSnackbar(
-                        label: 'Warning', text: AppStrings.fillAllFields.tr);
+                        label: AppStrings.warning.tr,
+                        text: AppStrings.fillAllFields.tr);
                   }
                 },
                 icon: const Icon(Iconsax.add),
@@ -126,6 +128,12 @@ class AddLinksContainer extends StatelessWidget {
                 icon: Iconsax.edit_2,
                 controller: linkCtrl,
                 onChanged: onLinkUrlChanged,
+                validator: (value) => (((value ?? '').startsWith('http://') ||
+                            (value ?? '').startsWith('https://') ||
+                            (value ?? '').startsWith('www.')) &&
+                        (value ?? '').isURL)
+                    ? null
+                    : AppStrings.errorValidUrl.tr,
               ),
               Gap(AppConfig().dimens.medium),
               Obx(
