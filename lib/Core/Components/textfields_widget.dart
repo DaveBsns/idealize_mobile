@@ -22,6 +22,7 @@ class CustomTextField extends StatefulWidget {
   final int? maxLines;
 
   final TextInputAction? textInputAction;
+  final bool isCode;
 
   const CustomTextField({
     super.key,
@@ -41,6 +42,7 @@ class CustomTextField extends StatefulWidget {
     this.maxLines,
     this.textInputAction,
     this.onEditingComplete,
+    this.isCode = false,
   });
 
   @override
@@ -145,10 +147,21 @@ class _CustomTextFieldState extends State<CustomTextField> {
         hintStyle: TextStyle(
           color: AppColors().lightGrayColor,
           fontSize: 16,
+          letterSpacing: 0,
+          fontWeight: FontWeight.w300,
         ),
       ),
       validator: widget.validator,
-      style: textTheme.bodyMedium,
+      maxLength: widget.isCode ? 6 : null,
+      textAlign: widget.isCode ? TextAlign.center : TextAlign.start,
+      style: widget.isCode
+          ? TextStyle(
+              letterSpacing: 10,
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              color: AppConfig().colors.darkGrayColor,
+            )
+          : textTheme.bodyMedium,
       minLines: widget.minLines,
       maxLines: widget.isPassword ? 1 : widget.maxLines,
       textInputAction: widget.textInputAction,

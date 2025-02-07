@@ -317,7 +317,13 @@ class EnLanguageData extends LanguageDataKeys {
             "You canceled to be a part of @project",
         AppStrings.message: "Message",
         AppStrings.deleteAccountDesc:
-            "Are you sure you want to delete your account? This action cannot be undone.",
+            "Before you delete your account, consider the impact on our community. You have two options:",
+        AppStrings.deleteAccountDescOption1:
+            "Option 1: Anonymize your account Delete your personal account information, but allow your projects to remain in the system anonymously. This helps preserve the ecosystem and allows others to learn from and build upon your contributions.",
+        AppStrings.deleteAccountDescOption2:
+            "Option 2: Permanently delete everything Completely remove your account and all associated projects from our system. This action is irreversible and will delete all your data.",
+        AppStrings.deleteAccountDesc2:
+            "Please choose an option below:\n\nYou could also add a warning or a note to emphasize the permanence of the deletion, such as:\n\nNote: Once you delete your account, it cannot be recovered. Please make sure you have exported any important data before proceeding.",
         AppStrings.yesDelete: "Yes, delete my account",
         AppStrings.youHaveToChangeTheOwner:
             "You have to change the owner of the projects, before you delete your account.",
@@ -337,5 +343,17 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.dailogAddTeamMemberTitle: "Add Team Member",
         AppStrings.dailogAddTeamMemberContent:
             "You can add members to the project, for contribution and more.",
+        AppStrings.deleteAccountAnanymize: "Anonymize my account",
+        AppStrings.deleteAccountComplete: "Permanently delete my account",
+
+        AppStrings.deleteAccountOption1Desc:
+            "Good choice!\n\n Now we require your confirmation to delete your account, so please tap! on the button below to get a confirmation code sent to your email.",
+        AppStrings.deleteAccountOption1Button: "Send confirmation code",
+        AppStrings.deleteAccountOption1TextField: "Enter code",
+        AppStrings.deleteAccountOption2Desc:
+            "Okey, let's do it!\n\nNow we require your confirmation to delete your account, so please tap! on the button below to get a confirmation code sent to your email.",
+        AppStrings.deleteAccountOption3Desc:
+            "Opss, you've some projects, with team members, please remove them, or change the owner, before deleting your account.",
+            AppStrings.pickMember: "Pick a member",
       };
 }

@@ -3,6 +3,10 @@ import 'package:idealize_new_version/Features/Base/presentation/screens/chat_scr
 import 'package:idealize_new_version/Features/Edit_Profile/presentation/edit_profile_screen.dart';
 import 'package:idealize_new_version/Features/Splash/presentation/splash_screen.dart';
 import 'package:idealize_new_version/Features/authentication/presentation/screens/reset_password_screen.dart';
+import 'package:idealize_new_version/Features/delete_account/presentation/binding/delete_account_binding.dart';
+import 'package:idealize_new_version/Features/delete_account/presentation/pages/delete_account_ananymize_page.dart';
+import 'package:idealize_new_version/Features/delete_account/presentation/pages/delete_account_complete_page.dart';
+import 'package:idealize_new_version/Features/delete_account/presentation/pages/delete_account_page.dart';
 import 'package:idealize_new_version/Features/project_details/presentation/binding/project_details_binding.dart';
 import 'package:idealize_new_version/Features/project_details/presentation/project_details_screen.dart';
 
@@ -58,6 +62,9 @@ class AppRoutes {
   final archivedProject = '/archivedProject';
   final userSuggestionProfile = '/userSuggestionProfile';
   final reportaBug = '/reportaBug';
+  final deleteAccount = '/deleteAccount';
+  final deleteAccountOption1 = '/deleteAccount/anonymize';
+  final deleteAccountOption2 = '/deleteAccount/delete';
 
   List<GetPage> get pages {
     return [
@@ -154,6 +161,21 @@ class AppRoutes {
         name: reportaBug,
         page: () => const ReportBugScreen(),
         binding: ReportBugBinding(),
+      ),
+      GetPage(
+        name: deleteAccount,
+        page: () => const DeleteAccountPage(),
+        binding: DeleteAccountBinding(),
+      ),
+      GetPage(
+        name: deleteAccountOption1,
+        page: () => const DeleteAccountAnanymizePage(),
+        binding: DeleteAccountBinding(),
+      ),
+      GetPage(
+        name: deleteAccountOption2,
+        page: () => const DeleteAccountCompletelyPage(),
+        binding: DeleteAccountBinding(),
       ),
     ];
   }
