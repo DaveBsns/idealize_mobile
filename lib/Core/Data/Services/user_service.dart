@@ -58,4 +58,27 @@ class UserService extends ServicesHelper {
 
     return mappedData;
   }
+
+  Future<Map<String, dynamic>?> softAnanymizedDeleteUserRequest() async {
+    final mappedData = await request(
+      '$baseURL/users/soft-anonymized-delete-request',
+      serviceType: ServiceType.delete,
+      requiredDefaultHeader: true,
+    );
+
+    return mappedData;
+  }
+
+  Future<Map<String, dynamic>?> verifyDelete(String code) async {
+    final mappedData = await request(
+      '$baseURL/users/verify-soft-delete',
+      serviceType: ServiceType.delete,
+      body: {
+        'code': code,
+      },
+      requiredDefaultHeader: true,
+    );
+
+    return mappedData;
+  }
 }

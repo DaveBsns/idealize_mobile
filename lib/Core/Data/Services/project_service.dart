@@ -214,4 +214,22 @@ class ProjectService extends ServicesHelper {
       return true;
     }
   }
+
+  Future<bool> changeOwner(String projectId, String newOwnerId) async {
+    final response = await request(
+      '$baseURL/projects/update-owner',
+      serviceType: ServiceType.put,
+      requiredDefaultHeader: true,
+      body: {
+        'ownerId': newOwnerId,
+        'projectId': projectId,
+      },
+    );
+
+    if (response == null || response.toString().isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

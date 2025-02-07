@@ -3,8 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
-import 'package:idealize_new_version/Features/app_setting/presentation/widgets/delete_account_bottomsheet_widget.dart';
-import 'package:idealize_new_version/Core/Components/switch_btn_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
@@ -228,14 +226,7 @@ class AppSettingScreen extends GetView<AppSettingController> {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () => showModalBottomSheet(
-                      backgroundColor: Colors.white,
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (BuildContext context) {
-                        return const DeleteAccountBottomSheet();
-                      },
-                    ),
+                    onTap: () => Get.toNamed(AppRoutes().deleteAccount),
                     child: Row(
                       children: [
                         Icon(

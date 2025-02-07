@@ -75,6 +75,8 @@ class AppStrings {
   static const String lastNameHint = "lastNameHint";
   static const String delete = "delete";
   static const String deleteAccount = "deleteAccount";
+  static const String deleteAccountAnanymize = "deleteAccountAnanymize";
+  static const String deleteAccountComplete = "deleteAccountComplete";
   static const String deleteMaterial = "deleteMaterial";
   static const String changePicture = "changePicture";
   static const String editProfile = "editProfile";
@@ -279,6 +281,9 @@ class AppStrings {
   static const String notifJoinTeamMember = "notifJoinTeamMember";
   static const String message = "message";
   static const String deleteAccountDesc = "deleteAccountDesc";
+  static const String deleteAccountDescOption1 = "deleteAccountDescOption1";
+  static const String deleteAccountDescOption2 = "deleteAccountDescOption2";
+  static const String deleteAccountDesc2 = "deleteAccountDesc2";
   static const String yesDelete = "yesDelete";
   static const String youHaveToChangeTheOwner = "youHaveToChangeTheOwner";
   static const String connectionProblem = "connectionProblem";
@@ -293,4 +298,12 @@ class AppStrings {
   static const String dailogAddCoursesContent = "dailogAddCoursesContent";
   static const String dailogAddTeamMemberTitle = "dailogAddTeamMemberTitle";
   static const String dailogAddTeamMemberContent = "dailogAddTeamMemberContent";
+
+  static const String deleteAccountOption1Desc = "deleteAccountOption1Desc";
+  static const String deleteAccountOption2Desc = "deleteAccountOption2Desc";
+  static const String deleteAccountOption3Desc = "deleteAccountOption3Desc";
+  static const String deleteAccountOption1Button = "deleteAccountOption1Button";
+  static const String deleteAccountOption1TextField = "deleteAccountOption1TextField";
+
+  static const String pickMember = "pickMember";
 }

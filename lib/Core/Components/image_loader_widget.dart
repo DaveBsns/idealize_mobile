@@ -72,7 +72,8 @@ showImageFromNetwork(
     width: width,
     height: height,
     fit: fit,
-    errorWidget: (context, url, error) => const Icon(Icons.error),
+    errorWidget: (context, url, error) =>
+        placeholder ?? const SizedBox.shrink(),
     placeholder: (context, url) => placeholder ?? const SizedBox.shrink(),
   );
 }
