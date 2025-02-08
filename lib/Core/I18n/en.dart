@@ -258,7 +258,7 @@ class EnLanguageData extends LanguageDataKeys {
             "Are you sure you want to delete @projectKeyword? This action cannot be undone.",
         AppStrings.jrdTitle: "Join Request",
         AppStrings.jrdContent:
-            "By joining to a project, you can participate in it. cooperating with other users and working on projects together. you can even leave a message to the project owner.",
+            "By joining a project, you can participate and collaborate with other users. You can send a membership request to the project owner, stating why you want to join the project and what your motivation is.",
         AppStrings.jrdContentHint: "Enter your message (Optional)",
         AppStrings.submit: "Submit",
         AppStrings.reply: "Reply",
@@ -354,6 +354,10 @@ class EnLanguageData extends LanguageDataKeys {
             "Okey, let's do it!\n\nNow we require your confirmation to delete your account, so please tap! on the button below to get a confirmation code sent to your email.",
         AppStrings.deleteAccountOption3Desc:
             "Opss, you've some projects, with team members, please remove them, or change the owner, before deleting your account.",
-            AppStrings.pickMember: "Pick a member",
+        AppStrings.pickMember: "Pick a member",
+        AppStrings.rightsForMedia:
+            "I confirm that I have the right to use the images or links I have uploaded.",
+        AppStrings.mediaStoredPlace:
+            "Media storage location\nAndroid: Uploaded images and media are stored on your device at _____.\niPhone: Uploaded images and media are stored on your device at _____.\nThe exact storage location may vary depending on the device model and operating system version."
       };
 }
