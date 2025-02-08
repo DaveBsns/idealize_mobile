@@ -256,6 +256,8 @@ class AppStrings {
   static const String somebodyLikedyou = "somebodyLikedyou";
   static const String somebodyReportedyou = "somebodyReportedyou";
   static const String somebodyCommentedyou = "somebodyCommentedyou";
+  static const String rightsForMedia = "rightsForMedia";
+  static const String mediaStoredPlace = "mediaStoredPlace";
 
   // Join team member
   static const String joinTeamMemberCanceledByYou =

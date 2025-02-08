@@ -6,13 +6,13 @@ class DeLanguageData extends LanguageDataKeys {
 
   @override
   Map<String, String> get keys => {
-        AppStrings.addTag: "Schlagwort hinzufügen",
-        AppStrings.addTags: "Schlagwörter hinzufügen",
+        AppStrings.addTag: "Tag hinzufügen",
+        AppStrings.addTags: "Tags hinzufügen",
         AppStrings.searchNotFound: "keine Suchergebnisse",
         AppStrings.createNewProject: "Neues Projekt erstellen",
         AppStrings.editProject: "Projekt bearbeiten",
         AppStrings.addProjekt: "Neues Projekt",
-        AppStrings.tags: "Schlagworte:*",
+        AppStrings.tags: "Tags:*",
         AppStrings.members: "Team",
         AppStrings.addMembers: "Zum Team hinzufügen",
         AppStrings.next: "Weiter",
@@ -24,25 +24,25 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.profile: "Profil",
         AppStrings.settings: "Einstellungen",
         AppStrings.projectTitle: "Projekttitel:*",
-        AppStrings.projectTitleHint: "Gib deinem Projekt einen Titel",
+        AppStrings.projectTitleHint: "Geben Sie Ihrem Projekt einen Titel",
         AppStrings.desciption: "Beschreibung:",
         AppStrings.descriptionHint: "Gib eine Beschreibung ein",
         AppStrings.saveAsDraft: "Als Entwurf speichern",
         AppStrings.save: "Speichern",
         AppStrings.forgotPassword: "Passwort vergessen?",
         AppStrings.forgotPasswordHint:
-            "Gib deine E-Mailadresse ein. Wir senden dir einen 4 stelligen Bestätigungscode.",
-        AppStrings.emailHint: "Gib deine E-Mailadresse ein",
+            "Geben Sie Ihre E-Mailadresse ein. Wir senden Ihnen einen 4 stelligen Bestätigungscode.",
+        AppStrings.emailHint: "Geben Sie Ihre E-Mailadresse ein",
         AppStrings.enterVerificationCode: "Bestätigungscode eingeben",
         AppStrings.enterVerificationCodeHint:
-            "Gib den 4 stelligen Code ein, den du per Mail bekommen hast.",
+            "Geben Sie den 4 stelligen Code ein, den Sie per Mail bekommen haben.",
         AppStrings.didntReceiveCode: "Code nicht erhalten?",
         AppStrings.resendCode: "Erneut senden",
         AppStrings.verificationCodeNotCorrect:
             "Der eingegebene Code ist falsch",
         AppStrings.resetPassword: "Neues Passwort vergeben",
         AppStrings.resetPasswordHint:
-            "Gib ein neues Passwort für deinen Account ein.",
+            "Geben Sie ein neues Passwort für Ihren Account ein.",
         AppStrings.newPassword: "Neues Passwort",
         AppStrings.newPasswordHint: "Neues Passwort eingeben",
         AppStrings.reEnterNewPassword: "Neues Passwort erneut eingeben",
@@ -63,15 +63,15 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.german: "Deutsch",
         AppStrings.signIn: "Anmelden",
         AppStrings.userName: "Benutzername:",
-        AppStrings.userNameHint: "Gib deinen Benutzernamen ein",
+        AppStrings.userNameHint: "Geben Sie Ihren Benutzernamen ein",
         AppStrings.password: "Passwort",
-        AppStrings.passwordHint: "Gib dein Passwort ein",
+        AppStrings.passwordHint: "Geben Sie Ihr Passwort ein",
         AppStrings.clickHere: "Hier klicken",
         AppStrings.login: "Anmelden",
         AppStrings.signUpHere: "Hier registrieren",
         AppStrings.wrongCredentials:
-            "Dein Passwort oder der Nutzername ist falsch.",
-        AppStrings.myProjects: "Meine Projekte",
+            "Ihr Passwort oder der Nutzername ist falsch.",
+        AppStrings.myProjects: "Mein Bereich",
         AppStrings.favorites: "Favoriten",
         AppStrings.interests: "Interessen:",
         AppStrings.addInterest: "Interesse hinzufügen",
@@ -134,11 +134,11 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.addProgram: "Studiengang hinzufügen",
         AppStrings.search: "Suche",
         AppStrings.click: "Klick",
-        AppStrings.addNewTagOrCourse: "Neues Schlagwort oder Kurs hinzufügen.",
+        AppStrings.addNewTagOrCourse: "Neues Tag oder Kurs hinzufügen.",
         AppStrings.toAddNew: "neues @name hinzufügen.",
         AppStrings.addNew: "Neues @name hinzufügen.",
         AppStrings.toAddNewTagOrCourse:
-            "um ein neues Schlagwort oder Kurs hinzuzufügen.",
+            "um ein neues Tag oder Kurs hinzuzufügen.",
         AppStrings.confirmationRequired: "Bestätigung erforderlich",
         AppStrings.skipRegistrationStepsMsg:
             "Sie haben die Möglichkeit, die Registrierungsschritte zu überspringen und sie später in Ihren Profileinstellungen zu vervollständigen.",
@@ -180,8 +180,8 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.clearAll: "Alle löschen",
         AppStrings.responseSent: "Antwort gesendet",
         AppStrings.responseSentMsg: "Antwort gesendet",
-        AppStrings.firstNameHint: "Dein Vorname",
-        AppStrings.lastNameHint: "Dein Nachname",
+        AppStrings.firstNameHint: "Ihr Vorname",
+        AppStrings.lastNameHint: "Ihr Nachname",
         AppStrings.backToHome: "Zurück zur Startseite",
         AppStrings.newProject: "Neues Projekt",
         AppStrings.addStudyPrograms: "Studiengänge hinz",
@@ -196,7 +196,7 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.joinProjectAccepted: "Sie sind Teil des Projekts!",
         AppStrings.joinProjectCancelled: "Anfrage zum Beitritt abgebrochen",
         AppStrings.report: "Melden",
-        AppStrings.tagNameValid: "Schlagwort-Name muss gültig sein!",
+        AppStrings.tagNameValid: "Tag-Name muss gültig sein!",
         AppStrings.editInformation: "Informationen bearbeiten?",
         AppStrings.tooManyRequests:
             "Zu viele Anfragen, bitte versuchen Sie es später noch einmal!",
@@ -243,7 +243,7 @@ class DeLanguageData extends LanguageDataKeys {
             "Passwortanforderungen:\n- Mindestens 8 Zeichen\n- Mindestens ein Großbuchstabe\n- Mindestens eine Ziffer\n- Mindestens ein Sonderzeichen",
         AppStrings.termsCondifitonCheckbox:
             "Sie haben die Nutzungsbedingungen akzeptiert",
-        AppStrings.tag: "Schlagwort",
+        AppStrings.tag: "Tag",
         AppStrings.course: "Kurs",
         AppStrings.studyProgram: "Studiengang",
         AppStrings.skip: "Umschalten",
@@ -259,7 +259,7 @@ class DeLanguageData extends LanguageDataKeys {
             "Sind Sie sicher, dass Sie @projectKeyword löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
         AppStrings.jrdTitle: "Join-Anfrage",
         AppStrings.jrdContent:
-            "Indem Sie einem Projekt beitreten, können Sie daran teilnehmen. Sie können mit anderen Benutzern zusammenarbeiten und an Projekten zusammenarbeiten. Sie können sogar eine Nachricht an den Projektinhaber senden.",
+            "Indem Sie einem Projekt beitreten, können Sie daran teilnehmen und mit anderen Benutzern zusammenarbeiten. Sie können dem Projektinhaber eine Beitrittsanfrage senden, in der Sie angeben, warum Sie dem Projekt beitreten möchten und welche Motivation Sie dazu haben.",
         AppStrings.jrdContentHint: "Geben Sie Ihre Nachricht ein (Optional)",
         AppStrings.submit: "Senden",
         AppStrings.reply: "Antworten",
@@ -285,8 +285,8 @@ class DeLanguageData extends LanguageDataKeys {
             "Sind Sie auf einen Fehler in der App gestoßen? Sie können ihn hier einfach melden. Bitte beschreiben Sie den Fehler für uns.",
         AppStrings.reportBugDesc:
             "Geben Sie Ihre Fehlerbeschreibung/Hinweise ein",
-        AppStrings.addNewTag: "Neues Schlagwort hinzufügen",
-        AppStrings.tagName: "Schlagwortname",
+        AppStrings.addNewTag: "Neues Tag hinzufügen",
+        AppStrings.tagName: "Tag-Name",
         AppStrings.add: "Hinzufügen",
         AppStrings.reportedSuccessTitle: "Erfolgreich gemeldet",
         AppStrings.reportedSuccessDesc:
@@ -363,5 +363,9 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.deleteAccountOption3Desc:
             "Ups, Sie haben einige Projekte, mit Team-Mitgliedern, bitte entfernen Sie sie, oder ändern Sie den Eigentümer, bevor Sie Ihr Konto löschen.",
         AppStrings.pickMember: "Mitglied auswählen",
+        AppStrings.rightsForMedia:
+            "Ich bestätige, dass ich das Recht habe, die von mir hochgeladenen Bilder oder Links zu verwenden.",
+        AppStrings.mediaStoredPlace:
+            "Speicherort für Medien\nAndroid: Hochgeladene Bilder und Medien werden auf Ihrem Gerät unter _____ gespeichert.\niPhone: Hochgeladene Bilder und Medien werden auf Ihrem Gerät unter _____ gespeichert.\nDer genaue Speicherort kann je nach Gerätemodell und Betriebssystemversion variieren."
       };
 }
