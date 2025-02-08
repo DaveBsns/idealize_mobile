@@ -6,4 +6,12 @@ class SplashLocalServices extends LocalSecureCacheHelper {
   Future<dynamic> fetchUser() async {
     return await read(LocalSecureCacheKeys().userObject);
   }
+
+  Future<String?> fetchUserJwtToken() async {
+    return await read(LocalSecureCacheKeys().jwtToken);
+  }
+
+  Future<String?> fetchUserJwtRefreshToken() async {
+    return await read(LocalSecureCacheKeys().jwtRefreshToken);
+  }
 }

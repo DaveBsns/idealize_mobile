@@ -183,6 +183,9 @@ class AppRepo {
 
     AppRepo().tags.clear();
     AppRepo().tags.addAll(await TagService().fetchAllTags());
+    AppRepo().tags.sort(
+          (a, b) => a.tagName.compareTo(b.tagName),
+        );
 
     AppRepo().users.clear();
     AppRepo().users.addAll(await UserService().fetchAllUsers());
@@ -208,12 +211,24 @@ class AppRepo {
 
   Future<bool> loginUser(Map<String, dynamic> response) async {
     /* Update localCache based on Server data */
+
     user = User.fromJson(response);
     jwtToken = user!.token;
     jwtRefreshToken = user!.refreshToken;
+
     await secureLocalCache.write(
       AppConfig().localSecureCacheKeys.userObject,
       jsonEncode(response),
+    );
+
+    await secureLocalCache.write(
+      AppConfig().localSecureCacheKeys.jwtToken,
+      user!.token,
+    );
+
+    await secureLocalCache.write(
+      AppConfig().localSecureCacheKeys.jwtRefreshToken,
+      user!.refreshToken,
     );
 
     AppRepo().localCache.write(

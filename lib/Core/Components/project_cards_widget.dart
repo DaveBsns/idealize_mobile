@@ -124,6 +124,7 @@ class ProjectCardHomeWidget extends StatelessWidget {
               children: project.tags.isEmpty
                   ? <Widget>[const SizedBox.shrink()]
                   : project.tags
+                      .take(3)
                       .map((tag) => Container(
                             padding: const EdgeInsets.all(2),
                             decoration: BoxDecoration(

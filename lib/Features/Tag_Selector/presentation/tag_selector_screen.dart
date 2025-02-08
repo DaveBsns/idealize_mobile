@@ -42,8 +42,6 @@ class TagSelectorScreen extends StatelessWidget {
 
     TextTheme textStyles = Theme.of(context).textTheme;
 
-    controller.tags.sort((a, b) => a.tagName.compareTo(b.tagName));
-
     return Obx(
       () => ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
@@ -61,7 +59,7 @@ class TagSelectorScreen extends StatelessWidget {
                     width: double.infinity,
                     child: CustomSearchField(
                       secondIcon: Iconsax.search_normal_14,
-                      labelText: "Suche",
+                      labelText: AppStrings.search.tr,
                       controller: controller.searchCtrl,
                       onChanged: controller.search,
                     ),
@@ -123,7 +121,7 @@ class TagSelectorScreen extends StatelessWidget {
                                 Gap(AppConfig().dimens.small),
                                 Text(
                                   AppStrings.emptyHere.tr,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 14,
                                   ),
@@ -144,7 +142,7 @@ class TagSelectorScreen extends StatelessWidget {
                                   child: RichText(
                                     textAlign: TextAlign.center,
                                     text: TextSpan(
-                                      text: AppStrings.click.tr + "  ",
+                                      text: '${AppStrings.click.tr} ',
                                       style: textStyles.titleMedium!.copyWith(
                                         color:
                                             AppConfig().colors.lightGrayColor,
@@ -153,7 +151,7 @@ class TagSelectorScreen extends StatelessWidget {
                                       ),
                                       children: [
                                         TextSpan(
-                                          text: AppStrings.here.tr + "\n",
+                                          text: '${AppStrings.here.tr}"\n"',
                                           style:
                                               textStyles.titleMedium!.copyWith(
                                             color: AppConfig()

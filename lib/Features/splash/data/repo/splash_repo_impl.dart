@@ -7,4 +7,14 @@ class SplashRepositoryImpl implements SplashRepository {
   Future<dynamic> fetchUserFromLocalCache() async {
     return await SplashLocalServices().fetchUser();
   }
+
+  @override
+  Future<String?> fetchUserJwtRefreshTokenFromLocalCache() async {
+    return await SplashLocalServices().fetchUserJwtToken();
+  }
+
+  @override
+  Future<String?> fetchUserJwtTokenFromLocalCache() async {
+    return await SplashLocalServices().fetchUserJwtRefreshToken();
+  }
 }

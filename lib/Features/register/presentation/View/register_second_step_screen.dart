@@ -221,7 +221,7 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                                           ),
                                         ),
                                         backgroundColor:
-                                            AppConfig().colors.greenColor,
+                                            AppConfig().colors.purpleColor,
                                         deleteIcon: const Icon(
                                           Icons.close,
                                           size: 18.0,

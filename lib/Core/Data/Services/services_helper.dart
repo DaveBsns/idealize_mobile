@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:idealize_new_version/Core/Data/LocalCache/local_cache_helper.dart';
 import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/app_repo.dart';
@@ -219,6 +220,10 @@ class ServicesHelper {
           jsonEncode(updatedUserStr));
 
       final updatedUserObject = User.fromLocalCacheJson(updatedUserStr!);
+      LocalCacheHelper().write(
+          AppConfig().localSecureCacheKeys.jwtToken, updatedUserObject.token);
+      LocalCacheHelper().write(AppConfig().localSecureCacheKeys.jwtRefreshToken,
+          updatedUserObject.refreshToken);
 
       AppRepo().user = updatedUserObject;
       AppRepo().jwtToken = updatedUserObject.token;
@@ -231,9 +236,8 @@ class ServicesHelper {
 
       return await originalRequest!();
     } else if (response.statusCode == 429) {
-      AppRepo().showSnackbar(
-          label: 'Server',
-          text: AppStrings.tooManyRequests.tr);
+      AppRepo()
+          .showSnackbar(label: 'Server', text: AppStrings.tooManyRequests.tr);
       return null;
     } else {
       AppRepo().hideLoading();
