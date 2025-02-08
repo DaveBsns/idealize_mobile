@@ -11,12 +11,14 @@ class AppConfig {
   factory AppConfig() => _singleton;
   AppConfig._internal();
 
-  String get baseURL => "http://localhost:3000/api";
-  String get baseFileUrl => "http://localhost:3000";
-  String get chatBotServer => "http://localhost:3000/chat";
+  String get baseURL => "https://api.campusconnects.de";
+  String get baseFileUrl => "https://api.campusconnects.de";
+  String get chatBotServer => "https://bot.campusconnects.de";
 
-  String get termsCondiftionsUrl => "https://localhost:4200/terms";
-  String get privacyPolicyUrl => "https://localhost:4200/privacy";
+  String get termsCondiftionsUrl =>
+      "https://landing.campusconnects.de/terms-conditions.htm";
+  String get privacyPolicyUrl =>
+      "https://landing.campusconnects.de/privacy-policy.htm";
 
   double get textRatio => 1.0;
   final baseLocale = LanguageConstants().languageList[0];

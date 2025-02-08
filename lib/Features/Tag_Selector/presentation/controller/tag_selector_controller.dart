@@ -35,6 +35,8 @@ class TagSelectorController extends GetxController {
 
     initialChipData.addAll(initialChipDataList);
     initialSelectedChipData.addAll(initialSelectedChipDataList);
+
+    reorderTagsBasedOnSelectedTags();
   }
 
   Future<void> addNewTag(String tagName) async {
@@ -59,12 +61,24 @@ class TagSelectorController extends GetxController {
     Get.back();
     searchCtrl.text = '';
     search(searchCtrl.text);
+
+    // Bring just inserted tag, up!
+    final foundInsertedTag =
+        AppRepo().tags.where((tag) => tag.tagName == tagName).toList();
+    if (foundInsertedTag.isNotEmpty) {
+      reorderTagsBasedOnSelectedTags(selectNewOne: foundInsertedTag.first);
+    }
   }
 
   void search(String searchValue) {
     if (searchValue.isEmpty) {
       tags.clear();
       tags.addAll(initialChipData);
+      tags.sort(
+        (a, b) => a.tagName.compareTo(b.tagName),
+      );
+
+      reorderTagsBasedOnSelectedTags();
       return;
     }
 
@@ -75,5 +89,24 @@ class TagSelectorController extends GetxController {
 
     tags.clear();
     tags.addAll(searchList);
+
+    tags.sort(
+      (a, b) => a.tagName.compareTo(b.tagName),
+    );
+  }
+
+  void reorderTagsBasedOnSelectedTags({Tag? selectNewOne}) {
+    List<Tag> myList = [];
+    for (var selectedTag in selectedTags) {
+      tags.removeWhere((tag) => tag.id == selectedTag.id);
+    }
+    myList.addAll(tags);
+
+    tags.clear();
+    if (selectNewOne != null) {
+      tags.add(selectNewOne);
+    }
+    tags.addAll(selectedTags);
+    tags.addAll(myList);
   }
 }

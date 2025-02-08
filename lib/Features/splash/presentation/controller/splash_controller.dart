@@ -27,8 +27,11 @@ class SplashController extends GetxController {
     switch (rawUserStatusFromLocalCache.toUserStatus()) {
       case UserStatus.loggedIn:
         final userObjectStr = await repo.fetchUserFromLocalCache();
+        final userJwtToken = await repo.fetchUserJwtTokenFromLocalCache();
+        final userJwtRefreshToken =
+            await repo.fetchUserJwtRefreshTokenFromLocalCache();
 
-        if (userObjectStr == null) {
+        if (userObjectStr == null || userObjectStr == 'null') {
           AppRepo().logoutUser();
           break;
         }
@@ -36,8 +39,8 @@ class SplashController extends GetxController {
         final userObject = User.fromLocalCacheJson(jsonDecode(userObjectStr!));
 
         AppRepo().user = userObject;
-        AppRepo().jwtToken = userObject.token;
-        AppRepo().jwtRefreshToken = userObject.refreshToken;
+        AppRepo().jwtToken = userJwtToken;
+        AppRepo().jwtRefreshToken = userJwtRefreshToken;
 
         await AppRepo().refillAllTheData();
 

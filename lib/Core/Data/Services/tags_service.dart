@@ -6,7 +6,7 @@ import 'package:idealize_new_version/app_repo.dart';
 class TagService extends ServicesHelper {
   Future<List<Tag>> fetchAllTags() async {
     final mappedData = await request(
-      '$baseURL/tags',
+      '$baseURL/tags?sortField=name&sort=asc',
       serviceType: ServiceType.get,
       requiredDefaultHeader: false,
     );

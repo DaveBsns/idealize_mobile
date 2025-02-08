@@ -8,4 +8,6 @@ class LocalCacheKeys {
 
 class LocalSecureCacheKeys {
   final userObject = 'user_object';
+  final jwtToken = 'jwt_token';
+  final jwtRefreshToken = 'jwt_refresh_token';
 }
