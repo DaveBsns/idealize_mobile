@@ -131,6 +131,8 @@ class ProjectDetailsController extends GetxController {
         initComments();
         removeReply();
         commentCtrl.clear();
+
+        Get.find<HomeController>().refreshContent(currentPage: true);
       }
     }
   }

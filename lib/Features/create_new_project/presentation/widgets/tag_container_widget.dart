@@ -51,7 +51,7 @@ class TagsContainer extends StatelessWidget {
                       runSpacing: 0.0,
                       children: [
                         Text(
-                          "${AppStrings.tags.tr} :*",
+                          AppStrings.tags.tr,
                           style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -90,6 +90,7 @@ class TagsContainer extends StatelessWidget {
                           builder: (BuildContext context) {
                             return TagSelectorScreen(
                               tagType: TagType.tag,
+                              limit: 3,
                               initialSelectedChipData: selectedTags,
                               initialChipData: AppRepo()
                                   .tags

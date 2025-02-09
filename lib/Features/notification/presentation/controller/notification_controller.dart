@@ -30,8 +30,6 @@ class NotificationController extends GetxController {
   }
 
   void back() {
-    readNotifications([...notifications.map((e) => e.id)]);
-    Get.find<HomeController>().getUnreadNotificationsCount();
     Get.back();
   }
 
@@ -49,6 +47,7 @@ class NotificationController extends GetxController {
     final result = await repo.read(notificationsId);
     if (result) {
       fetchNotifications();
+      Get.find<HomeController>().getUnreadNotificationsCount();
     }
   }
 

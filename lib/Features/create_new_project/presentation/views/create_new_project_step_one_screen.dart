@@ -41,18 +41,30 @@ class CreateNewProjectStepOneScreen
                 onChanged: controller.updateTitle,
               ),
               Gap(AppConfig().dimens.medium),
-              Text(
-                '${AppStrings.desciption.tr}*',
-                style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black),
+              RichText(
+                text: TextSpan(
+                    style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                    children: [
+                      TextSpan(text: '${AppStrings.desciption.tr}*'),
+                      TextSpan(
+                        text: ' ${AppStrings.minimum100Characters.tr}',
+                        style: const TextStyle(
+                            fontSize: 12,
+                            letterSpacing: -0.5,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black),
+                      ),
+                    ]),
               ),
               Gap(AppConfig().dimens.small),
               CustomMultiLineTextField(
                 controller: controller.descriptionCtrl,
                 onChanged: controller.updateDescription,
                 labelText: AppStrings.descriptionHint.tr,
+                minChars: 100,
               ),
               Gap(AppConfig().dimens.medium),
               TagsContainer(

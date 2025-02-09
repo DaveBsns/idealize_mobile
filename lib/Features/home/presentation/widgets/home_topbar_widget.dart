@@ -18,14 +18,29 @@ class HomeTopBarWidget extends GetView<HomeController> {
       builder: (_) => Row(
         children: [
           Expanded(
-            child: CustomSearchField(
-              // icon: Iconsax.filter,
-              secondIcon: Iconsax.search_normal_14,
-              onChanged: (newSearchValue) =>
-                  controller.searchInput = newSearchValue,
-              onDoneAction: () => controller.search(),
-              keyboardType: TextInputType.text,
-              labelText: AppStrings.findProjects.tr,
+            child: Obx(
+              () => CustomSearchField(
+                // icon: Iconsax.filter,
+                controller: controller.searchInputController,
+                secondIcon: controller.isSearchFieldEmpty.value
+                    ? Iconsax.search_normal_14
+                    : Iconsax.close_square,
+                onIconPressed: controller.isSearchFieldEmpty.value
+                    ? null
+                    : () {
+                        controller.searchInput = '';
+                        controller.searchInputController.clear();
+                        controller.isSearchFieldEmpty.value = true;
+                        controller.search();
+                      },
+                onChanged: (newSearchValue) {
+                  controller.isSearchFieldEmpty.value = newSearchValue.isEmpty;
+                  return controller.searchInput = newSearchValue;
+                },
+                onDoneAction: () => controller.search(),
+                keyboardType: TextInputType.text,
+                labelText: AppStrings.findProjects.tr,
+              ),
             ),
           ),
           IconButton(
