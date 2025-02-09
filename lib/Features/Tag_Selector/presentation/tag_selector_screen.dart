@@ -20,6 +20,7 @@ class TagSelectorScreen extends StatelessWidget {
   final Function(List<Tag>)? onChipSelectedList;
   final VoidCallback? onTapedSavedButton;
   final TagType tagType;
+  final int? limit;
 
   TagSelectorScreen({
     super.key,
@@ -28,6 +29,7 @@ class TagSelectorScreen extends StatelessWidget {
     required this.tagType,
     this.onChipSelectedList,
     this.onTapedSavedButton,
+    this.limit,
   });
 
   final controller = Get.put(TagSelectorController());
@@ -217,7 +219,29 @@ class TagSelectorScreen extends StatelessWidget {
     );
   }
 
+  String get _tagName {
+    switch (tagType) {
+      case TagType.tag:
+        return AppStrings.tag.tr;
+      case TagType.course:
+        return AppStrings.course.tr;
+      case TagType.studyProgram:
+        return AppStrings.studyProgram.tr;
+    }
+  }
+
   void _updateTagSelection(Tag tag, bool isSelected) {
+    if (limit != null) {
+      if (controller.selectedTags.value.length >= limit!) {
+        Get.snackbar(
+          AppStrings.warning.tr,
+          AppStrings.pickMoreThan3Error
+              .trParams({'count': limit.toString(), 'name': _tagName}),
+        );
+        return;
+      }
+    }
+
     if (isSelected) {
       controller.selectedTags.value.add(tag);
     } else {

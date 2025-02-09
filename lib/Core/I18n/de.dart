@@ -366,6 +366,10 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.rightsForMedia:
             "Ich bestätige, dass ich das Recht habe, die von mir hochgeladenen Bilder oder Links zu verwenden.",
         AppStrings.mediaStoredPlace:
-            "Speicherort für Medien\nAndroid: Hochgeladene Bilder und Medien werden auf Ihrem Gerät unter _____ gespeichert.\niPhone: Hochgeladene Bilder und Medien werden auf Ihrem Gerät unter _____ gespeichert.\nDer genaue Speicherort kann je nach Gerätemodell und Betriebssystemversion variieren."
+            "Speicherort für Medien\nAndroid: Hochgeladene Bilder und Medien werden auf Ihrem Gerät unter _____ gespeichert.\niPhone: Hochgeladene Bilder und Medien werden auf Ihrem Gerät unter _____ gespeichert.\nDer genaue Speicherort kann je nach Gerätemodell und Betriebssystemversion variieren.",
+        AppStrings.pickMoreThan3Error:
+            "Sie können nicht mehr als @count @name auswählen",
+        AppStrings.minimum100Characters:
+            "muss mindestens 100 Zeichen lang sein.",
       };
 }

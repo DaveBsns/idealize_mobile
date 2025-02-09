@@ -358,6 +358,9 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.rightsForMedia:
             "I confirm that I have the right to use the images or links I have uploaded.",
         AppStrings.mediaStoredPlace:
-            "Media storage location\nAndroid: Uploaded images and media are stored on your device at _____.\niPhone: Uploaded images and media are stored on your device at _____.\nThe exact storage location may vary depending on the device model and operating system version."
+            "Media storage location\nAndroid: Uploaded images and media are stored on your device at _____.\niPhone: Uploaded images and media are stored on your device at _____.\nThe exact storage location may vary depending on the device model and operating system version.",
+        AppStrings.pickMoreThan3Error:
+            "You can\'t select more than @count @name",
+            AppStrings.minimum100Characters: "must be at least 100 characters.",
       };
 }

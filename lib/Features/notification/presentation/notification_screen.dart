@@ -56,6 +56,12 @@ class NotificationScreen extends GetView<NotificationController> {
               if (controller.notifications.isEmpty) {
                 return Center(child: Text(AppStrings.emptyNotification.tr));
               } else {
+                final unreadList =
+                    controller.notifications.where((e) => !e.isRead).toList();
+                if (unreadList.isNotEmpty) {
+                  controller
+                      .readNotifications([...unreadList.map((e) => e.id)]);
+                }
                 return ListView.separated(
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),

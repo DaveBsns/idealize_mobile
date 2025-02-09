@@ -16,6 +16,8 @@ class HomeController extends GetxController {
   List<Project> searchedProjects = [];
   String selectedFilter = 'all-projects';
   ScrollController scrollController = ScrollController();
+  RxBool isSearchFieldEmpty = true.obs;
+  TextEditingController searchInputController = TextEditingController();
 
   int hasNewNotfications = 0;
 
@@ -37,7 +39,7 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  Future<void> _fetchAllTheProjects() async {
+  Future<void> _fetchAllTheProjects({bool currentPage = false}) async {
     getUnreadNotificationsCount();
     if (loading || lastPage) return;
 
@@ -61,10 +63,13 @@ class HomeController extends GetxController {
     }
 
     searchedProjects.addAll(result);
-    if (result.isNotEmpty) {
-      _pageIncreament();
-    } else {
-      lastPage = true;
+
+    if (!currentPage) {
+      if (result.isNotEmpty) {
+        _pageIncreament();
+      } else {
+        lastPage = true;
+      }
     }
 
     loading = false;
@@ -83,9 +88,9 @@ class HomeController extends GetxController {
     _fetchAllTheProjects();
   }
 
-  Future<void> refreshContent() async {
+  Future<void> refreshContent({bool currentPage = false}) async {
     _resetPage();
-    await _fetchAllTheProjects();
+    await _fetchAllTheProjects(currentPage: currentPage);
   }
 
   Future<void> init() async {

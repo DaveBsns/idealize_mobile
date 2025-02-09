@@ -308,4 +308,8 @@ class AppStrings {
   static const String deleteAccountOption1TextField = "deleteAccountOption1TextField";
 
   static const String pickMember = "pickMember";
+  
+  static const String pickMoreThan3Error = "pickMoreThan3Error";
+
+  static const String minimum100Characters = "minimum100Characters";
 }

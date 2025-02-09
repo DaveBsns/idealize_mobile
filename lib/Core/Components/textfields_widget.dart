@@ -175,22 +175,36 @@ class CustomSearchField extends StatelessWidget {
   final String? labelText;
   final IconData? icon;
   final IconData? secondIcon;
+  final VoidCallback? onIconPressed;
   final TextInputType? keyboardType;
   final FormFieldValidator<String>? validator;
 
   final Function(String)? onChanged;
   final VoidCallback? onDoneAction;
 
-  const CustomSearchField(
-      {super.key,
-      this.controller,
-      this.labelText,
-      this.icon,
-      this.secondIcon,
-      this.validator,
-      this.keyboardType,
-      this.onDoneAction,
-      this.onChanged});
+  const CustomSearchField({
+    super.key,
+    this.controller,
+    this.labelText,
+    this.icon,
+    this.secondIcon,
+    this.validator,
+    this.keyboardType,
+    this.onDoneAction,
+    this.onChanged,
+    this.onIconPressed,
+  });
+
+  Widget get _buildSuffixIcon {
+    return Padding(
+      padding: const EdgeInsets.only(right: 14.0, left: 8),
+      child: Icon(
+        secondIcon,
+        color: AppConfig().colors.primaryColor,
+        size: 22,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -230,14 +244,12 @@ class CustomSearchField extends StatelessWidget {
                 )
               : null,
           suffixIcon: secondIcon != null
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 14.0, left: 8),
-                  child: Icon(
-                    secondIcon,
-                    color: AppConfig().colors.primaryColor,
-                    size: 22,
-                  ),
-                )
+              ? (onIconPressed != null
+                  ? IconButton(
+                      onPressed: onIconPressed,
+                      icon: _buildSuffixIcon,
+                    )
+                  : _buildSuffixIcon)
               : null,
           border: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
@@ -273,6 +285,7 @@ class CustomMultiLineTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final int? maxCharcters;
   final int? maxLines;
+  final int? minChars;
 
   const CustomMultiLineTextField({
     super.key,
@@ -282,6 +295,7 @@ class CustomMultiLineTextField extends StatelessWidget {
     this.onChanged,
     this.maxCharcters,
     this.maxLines,
+    this.minChars,
   });
 
   @override

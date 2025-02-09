@@ -384,6 +384,7 @@ class CreateNewProjectController extends GetxController {
     selectedTags.clear();
     selectedCourses.clear();
     selectedUsers.clear();
+    links.clear();
     currentStep.value = 0;
   }
 
