@@ -3,14 +3,17 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
 import 'package:idealize_new_version/Features/home/presentation/controller/home_controller.dart';
 
 class TagsContainerWidget extends StatelessWidget {
+  final Project? project;
   final List<Tag> tags;
   const TagsContainerWidget({
     super.key,
     required this.tags,
+    this.project,
   });
 
   @override
@@ -44,7 +47,8 @@ class TagsContainerWidget extends StatelessWidget {
                     .map(
                       (tag) => InkWell(
                         onTap: () {
-                          Get.find<HomeController>().updateFilteredByTag(tag);
+                          Get.find<HomeController>()
+                              .updateFilteredByTag(tag, project);
                           Get.back();
                         },
                         child: Chip(

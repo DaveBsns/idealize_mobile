@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Constants/icons.dart';
+import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Features/home/presentation/controller/home_controller.dart';
 
@@ -102,46 +104,85 @@ class HomeTopSegmentWidget extends GetView<HomeController> {
           ),
           Obx(
             () => controller.filteredByTag.value != null
-                ? Container(
-                    decoration: BoxDecoration(
-                      color: AppColors().greenColor,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    margin: const EdgeInsets.only(top: 20),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {
-                          controller.updateFilteredByTag(null);
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed(AppRoutes().projectDetails,
+                              arguments: controller.filteredByTagProject?.id);
                         },
-                        child: Ink(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 3.5, horizontal: 10),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  controller.filteredByTag.value!.tagName,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
+                        style: const ButtonStyle(
+                          padding: WidgetStatePropertyAll(
+                            EdgeInsets.all(0),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.chevron_left,
+                              color: AppColors().primaryColor,
+                            ),
+                            Text(
+                              controller.filteredByTagProject?.title ?? '',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
+                                    color: AppColors().primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13.5,
                                   ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors().greenColor,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        margin: const EdgeInsets.only(top: 0),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              controller.updateFilteredByTag(null, null);
+                            },
+                            child: Ink(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 3.5, horizontal: 10),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      controller.filteredByTag.value!.tagName,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 8,
+                                    ),
+                                    const Icon(
+                                      Icons.close,
+                                      size: 16,
+                                      color: Colors.white,
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                const Icon(
-                                  Icons.close,
-                                  size: 16,
-                                  color: Colors.white,
-                                ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   )
                 : const SizedBox.shrink(),
           ),

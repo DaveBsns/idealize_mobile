@@ -27,6 +27,7 @@ class HomeController extends GetxController {
   List<Project> projects = [];
 
   Rx<Tag?> filteredByTag = Rx<Tag?>(null);
+  Project? filteredByTagProject;
 
   @override
   void onInit() {
@@ -76,8 +77,9 @@ class HomeController extends GetxController {
     update();
   }
 
-  void updateFilteredByTag(Tag? tag) {
+  void updateFilteredByTag(Tag? tag, Project? project) {
     filteredByTag.value = tag;
+    filteredByTagProject = project;
     update();
     refreshContent();
   }
