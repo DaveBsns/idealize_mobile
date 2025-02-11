@@ -4,12 +4,15 @@ import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Features/create_new_project/presentation/controller/create_new_project_controller.dart';
+import 'package:idealize_new_version/Features/home/domain/home_repository.dart';
+import 'package:idealize_new_version/Features/home/presentation/controller/home_controller.dart';
 import 'package:idealize_new_version/app_repo.dart';
 
 import '../../domain/my_projects_repo.dart';
 
 class MyProjectsController extends GetxController {
   late MyProjectsRepository repo;
+  late HomeRepository homeRepo;
 
   var tabIndex = 0.obs;
   int _page = 1;
@@ -19,6 +22,7 @@ class MyProjectsController extends GetxController {
 
   MyProjectsController({
     required this.repo,
+    required this.homeRepo,
   });
 
   @override
@@ -40,6 +44,30 @@ class MyProjectsController extends GetxController {
     }
 
     update();
+  }
+
+  void toggleLike(Project project) async {
+    AppRepo().showLoading();
+
+    if (project.isLiked) {
+      await homeRepo.unlike(projectId: project.id);
+    } else {
+      await homeRepo.like(projectId: project.id);
+    }
+    AppRepo().hideLoading();
+
+    refreshContent();
+    Get.find<HomeController>().refreshContent(currentPage: true);
+  }
+
+  void routeToProjectDetails(Project project, {bool scrollToComments = false}) {
+    Get.toNamed(
+      AppConfig().routes.projectDetails,
+      arguments: project.id,
+      parameters: {
+        'scroll-to-comments': '$scrollToComments',
+      },
+    );
   }
 
   void deleteProject(Project project) async {

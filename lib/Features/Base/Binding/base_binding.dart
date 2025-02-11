@@ -33,7 +33,11 @@ class BaseBinding extends Bindings {
         () => NotificationController(repo: NotificationRepositoryImpl()));
 
     Get.lazyPut<ArchivedProjctsController>(
-        () => ArchivedProjctsController(repo: ArchivedProjctsRepositoryImpl()));
+      () => ArchivedProjctsController(
+        repo: ArchivedProjctsRepositoryImpl(),
+        homeRepo: HomeRepositoryImpl(),
+      ),
+    );
 
     Get.lazyPut<AppSettingController>(
         () => AppSettingController(repo: AppSettingRepositoryImpl()));

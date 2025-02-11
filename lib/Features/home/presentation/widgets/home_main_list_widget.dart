@@ -99,11 +99,17 @@ class HomeMainListWidget extends GetView<HomeController> {
                                     controller.routeToProject(
                                   controller.searchedProjects[index],
                                 ),
-                                onTapLikeCommentToOpenProject: () =>
-                                    controller.routeToProject(
-                                  controller.searchedProjects[index],
-                                  scrollToComments: true,
-                                ),
+                                onTapCommentToOpenProject: () {
+                                  controller.routeToProject(
+                                    controller.searchedProjects[index],
+                                    scrollToComments: true,
+                                  );
+                                },
+                                onTapLikeProject: () {
+                                  controller.toggleLike(
+                                    controller.searchedProjects[index],
+                                  );
+                                },
                                 toggleFavorite: controller.toggleArchive,
                               );
 

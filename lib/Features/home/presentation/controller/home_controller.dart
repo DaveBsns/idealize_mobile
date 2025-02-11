@@ -4,6 +4,7 @@ import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
 import 'package:idealize_new_version/Features/home/domain/home_repository.dart';
+import 'package:idealize_new_version/app_repo.dart';
 
 class HomeController extends GetxController {
   late HomeRepository repo;
@@ -84,6 +85,19 @@ class HomeController extends GetxController {
     refreshContent();
   }
 
+  void toggleLike(Project project) async {
+    AppRepo().showLoading();
+
+    if (project.isLiked) {
+      await repo.unlike(projectId: project.id);
+    } else {
+      await repo.like(projectId: project.id);
+    }
+    AppRepo().hideLoading();
+
+    await refreshContent(currentPage: true);
+  }
+
   void search() {
     FocusManager.instance.primaryFocus?.unfocus();
     _resetPage();
@@ -141,6 +155,8 @@ class HomeController extends GetxController {
             archive: true, archiveId: archiveId);
       }
     }
+
+    await refreshContent(currentPage: true);
   }
 
   void updateProjectArchiveInList(

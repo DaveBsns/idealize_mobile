@@ -35,22 +35,36 @@ class MyProjectsScreen extends GetView<MyProjectsController> {
                     ProjectItemListWidget(
                       projects: controller.myProjects,
                       isEditLabel: true,
+                      onTappedOpenProjectDetails: (project) =>
+                          controller.routeToProjectDetails(project),
                       onTappedDeleteProject: (project) =>
                           controller.deleteProject(
                         project,
                       ),
                       onTappedOpenProject: (project) =>
                           controller.routeToProject(project),
+                      onTappedLikeProject: (project) =>
+                          controller.toggleLike(project),
+                      onTappedCommentProject: (project) =>
+                          controller.routeToProjectDetails(project,
+                              scrollToComments: true),
                     ),
                     ProjectItemListWidget(
                       isEditLabel: true,
                       projects: controller.draftProjects,
+                      onTappedOpenProjectDetails: (project) =>
+                          controller.routeToProjectDetails(project),
                       onTappedDeleteProject: (project) =>
                           controller.deleteProject(
                         project,
                       ),
                       onTappedOpenProject: (project) =>
                           controller.routeToProject(project),
+                      onTappedLikeProject: (project) =>
+                          controller.toggleLike(project),
+                      onTappedCommentProject: (project) =>
+                          controller.routeToProjectDetails(project,
+                              scrollToComments: true),
                     ),
                   ],
                 )).paddingSymmetric(

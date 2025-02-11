@@ -7,7 +7,6 @@ import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 import 'controller/archived_projcts_controller.dart';
-import 'package:idealize_new_version/Core/I18n/messages.dart';
 
 class ArchivedProjctsScreen extends GetView<ArchivedProjctsController> {
   const ArchivedProjctsScreen({super.key});
@@ -18,7 +17,7 @@ class ArchivedProjctsScreen extends GetView<ArchivedProjctsController> {
       backgroundColor: AppConfig().colors.backGroundColor,
       appBar: AppBar(
         backgroundColor: AppConfig().colors.backGroundColor,
-        title:  Text(
+        title: Text(
           AppStrings.favoritesTab.tr,
         ),
       ),
@@ -29,11 +28,17 @@ class ArchivedProjctsScreen extends GetView<ArchivedProjctsController> {
               itemBuilder: (context, index) => Padding(
                 padding: EdgeInsets.only(bottom: AppConfig().dimens.medium),
                 child: ProjectCardHomeWidget(
-                  onTapLikeCommentToOpenProject: () =>
-                      controller.routeToProject(
-                    controller.archives[index],
-                    scrollToComments: true,
-                  ),
+                  onTapCommentToOpenProject: () {
+                    controller.routeToProject(
+                      controller.archives[index],
+                      scrollToComments: true,
+                    );
+                  },
+                  onTapLikeProject: () {
+                    controller.toggleLike(
+                      controller.archives[index],
+                    );
+                  },
                   favoritePage: true,
                   toggleFavorite: (_, __) {
                     controller.unArchive(false, controller.archives[index]);
