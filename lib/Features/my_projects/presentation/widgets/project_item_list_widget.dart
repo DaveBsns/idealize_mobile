@@ -11,6 +11,9 @@ import 'package:idealize_new_version/Core/I18n/messages.dart';
 class ProjectItemListWidget extends StatelessWidget {
   final Function(Project)? onTappedDeleteProject;
   final Function(Project)? onTappedOpenProject;
+  final Function(Project)? onTappedOpenProjectDetails;
+  final Function(Project)? onTappedLikeProject;
+  final Function(Project)? onTappedCommentProject;
   final List<Project> projects;
   final bool isEditLabel;
 
@@ -19,6 +22,9 @@ class ProjectItemListWidget extends StatelessWidget {
     required this.projects,
     this.onTappedDeleteProject,
     this.onTappedOpenProject,
+    this.onTappedOpenProjectDetails,
+    this.onTappedLikeProject,
+    this.onTappedCommentProject,
     this.isEditLabel = false,
   });
 
@@ -40,13 +46,21 @@ class ProjectItemListWidget extends StatelessWidget {
         if (index == projects.length) {
           return const Gap(50);
         }
-        return ProjectCardMyProjectsWidget(
-          onDeleteProject: () => onTappedDeleteProject?.call(projects[index]),
-          btnTitle: isEditLabel
-              ? AppStrings.editProject.tr
-              : AppStrings.openProject.tr,
-          project: projects[index],
-          onTapOpenProject: () => onTappedOpenProject?.call(projects[index]),
+        return InkWell(
+          onTap: () {
+            onTappedOpenProjectDetails?.call(projects[index]);
+          },
+          child: ProjectCardMyProjectsWidget(
+            onDeleteProject: () => onTappedDeleteProject?.call(projects[index]),
+            btnTitle: isEditLabel
+                ? AppStrings.editProject.tr
+                : AppStrings.openProject.tr,
+            project: projects[index],
+            onTapLikeProject: () => onTappedLikeProject?.call(projects[index]),
+            onTapCommentProject: () =>
+                onTappedCommentProject?.call(projects[index]),
+            onTapOpenProject: () => onTappedOpenProject?.call(projects[index]),
+          ),
         );
       },
     );

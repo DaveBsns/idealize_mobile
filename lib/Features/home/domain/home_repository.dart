@@ -11,4 +11,6 @@ abstract class HomeRepository {
   Future<String?> archive({required String projectId});
   Future<bool> unarchive({required String archiveId});
   Future<int> unreadNotifications();
+  Future<bool> like({required String projectId});
+  Future<bool> unlike({required String projectId});
 }

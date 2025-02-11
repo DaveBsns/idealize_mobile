@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,8 @@ class ProjectCardHomeWidget extends StatelessWidget {
   final Project project;
   final bool isLoading;
   final VoidCallback? onTapOpenProject;
-  final VoidCallback? onTapLikeCommentToOpenProject;
+  final VoidCallback? onTapCommentToOpenProject;
+  final VoidCallback? onTapLikeProject;
   final Function(bool, Project)? toggleFavorite;
   final bool favoritePage;
 
@@ -23,8 +25,9 @@ class ProjectCardHomeWidget extends StatelessWidget {
     required this.isLoading,
     this.toggleFavorite,
     this.onTapOpenProject,
-    this.onTapLikeCommentToOpenProject,
     this.favoritePage = false,
+    this.onTapCommentToOpenProject,
+    this.onTapLikeProject,
   });
 
   @override
@@ -163,12 +166,12 @@ class ProjectCardHomeWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: InkWell(
-                    onTap: () {
-                      onTapLikeCommentToOpenProject?.call();
-                    },
                     child: CustomIconText(
                       likes: project.likes,
                       comments: project.comments,
+                      onTapLike: onTapLikeProject,
+                      onTapComment: onTapCommentToOpenProject,
+                      isLiked: project.isLiked,
                     ),
                   ),
                 ),
@@ -193,6 +196,8 @@ class ProjectCardMyProjectsWidget extends StatelessWidget {
   final VoidCallback? onTapOpenProject;
   final String? btnTitle;
   final VoidCallback? onDeleteProject;
+  final VoidCallback? onTapLikeProject;
+  final VoidCallback? onTapCommentProject;
 
   const ProjectCardMyProjectsWidget({
     super.key,
@@ -200,6 +205,8 @@ class ProjectCardMyProjectsWidget extends StatelessWidget {
     required this.btnTitle,
     this.onTapOpenProject,
     this.onDeleteProject,
+    this.onTapLikeProject,
+    this.onTapCommentProject,
   });
 
   @override
@@ -298,11 +305,15 @@ class ProjectCardMyProjectsWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                    child: CustomIconText(
-                  comments: project.comments,
-                  likes: project.likes,
-                )),
+                Flexible(
+                  child: CustomIconText(
+                    comments: project.comments,
+                    likes: project.likes,
+                    onTapComment: onTapCommentProject,
+                    onTapLike: onTapLikeProject,
+                    isLiked: project.isLiked,
+                  ),
+                ),
                 CustomOutlineIconButton(
                   width: 150,
                   height: 45,
@@ -321,46 +332,85 @@ class ProjectCardMyProjectsWidget extends StatelessWidget {
 class CustomIconText extends StatelessWidget {
   final int comments;
   final int likes;
+  final bool isLiked;
+
+  final VoidCallback? onTapLike;
+  final VoidCallback? onTapComment;
 
   const CustomIconText({
     super.key,
     required this.comments,
     required this.likes,
+    this.onTapLike,
+    this.onTapComment,
+    this.isLiked = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Icon(
-          Iconsax.like_1,
-          size: 20,
-          color: AppConfig().colors.darkGrayColor,
-        ),
-        Gap(AppConfig().dimens.extraSmall),
-        Flexible(
-          child: Text(
-            '$likes',
-            style: TextStyle(
-              color: AppConfig().colors.darkGrayColor,
+        CupertinoButton(
+          padding: EdgeInsets.zero,
+          onPressed: onTapLike,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              minWidth: 50,
+              maxWidth: 60,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  isLiked ? Iconsax.like_15 : Iconsax.like_1,
+                  size: 20,
+                  color: AppConfig().colors.darkGrayColor,
+                ),
+                Gap(AppConfig().dimens.extraSmall),
+                Flexible(
+                  child: Text(
+                    '$likes',
+                    style: TextStyle(
+                      color: AppConfig().colors.darkGrayColor,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-        Gap(AppConfig().dimens.medium),
-        Icon(
-          Iconsax.messages_3,
-          size: 20,
-          color: AppConfig().colors.darkGrayColor,
-        ),
-        Gap(AppConfig().dimens.extraSmall),
-        Flexible(
-          child: Text(
-            '$comments',
-            style: TextStyle(
-              color: AppConfig().colors.darkGrayColor,
-            ),
-          ),
-        ),
+        Gap(AppConfig().dimens.small),
+        CupertinoButton(
+          padding: EdgeInsets.zero,
+          onPressed: onTapComment,
+          child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                minWidth: 50,
+                maxWidth: 60,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Iconsax.messages_3,
+                    size: 20,
+                    color: AppConfig().colors.darkGrayColor,
+                  ),
+                  Gap(AppConfig().dimens.extraSmall),
+                  Flexible(
+                    child: Text(
+                      '$comments',
+                      style: TextStyle(
+                        color: AppConfig().colors.darkGrayColor,
+                      ),
+                    ),
+                  ),
+                ],
+              )),
+        )
       ],
     );
   }
