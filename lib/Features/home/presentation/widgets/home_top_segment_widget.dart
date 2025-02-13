@@ -102,8 +102,15 @@ class HomeTopSegmentWidget extends GetView<HomeController> {
               onSelectionChanged: controller.updateSegmentValue,
             ),
           ),
-          Obx(
-            () => controller.filteredByTag.value != null
+          _filteredByTagWidget(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _filteredByTagWidget(BuildContext context) => Obx(
+        () => controller.selectedFilter == 'all-projects'
+            ? (controller.filteredByTag.value != null
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,10 +191,7 @@ class HomeTopSegmentWidget extends GetView<HomeController> {
                       ),
                     ],
                   )
-                : const SizedBox.shrink(),
-          ),
-        ],
-      ),
-    );
-  }
+                : const SizedBox.shrink())
+            : const SizedBox.shrink(),
+      );
 }

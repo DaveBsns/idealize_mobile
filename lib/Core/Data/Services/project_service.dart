@@ -16,6 +16,7 @@ class ProjectService extends ServicesHelper {
     String ownerId = '',
     String? filter,
     String? filterByTag,
+    bool joinedProjects = false,
   }) async {
     final base =
         myProjects ? '$baseURL/projects/my-projects' : '$baseURL/projects';
@@ -24,6 +25,7 @@ class ProjectService extends ServicesHelper {
       'page': page,
       'isDraft': isDraft,
       'limit': limit ?? pageSize,
+      'joined': joinedProjects
     };
 
     if (search != null) {

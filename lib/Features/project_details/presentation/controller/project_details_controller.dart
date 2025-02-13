@@ -139,10 +139,8 @@ class ProjectDetailsController extends GetxController {
 
   Future<void> initComments() async {
     final commentsFromServer = await repo.comments(project!.id);
-    if (commentsFromServer.isNotEmpty) {
-      comments.clear();
-      comments.addAll(commentsFromServer);
-    }
+    comments.clear();
+    comments.addAll(commentsFromServer);
   }
 
   // TODO asign it to UI widget

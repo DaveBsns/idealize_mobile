@@ -11,8 +11,10 @@ class AppConfig {
   factory AppConfig() => _singleton;
   AppConfig._internal();
 
-  String get baseURL => "https://api.campusconnects.de";
-  String get baseFileUrl => "https://api.campusconnects.de";
+  String get baseURL =>
+      "http://localhost:3000"; // https://api.campusconnects.de  |   http://localhost:3000
+  String get baseFileUrl =>
+      "http://localhost:3000"; // https://api.campusconnects.de  |   http://localhost:3000
   String get chatBotServer => "https://bot.campusconnects.de";
 
   String get termsCondiftionsUrl =>
