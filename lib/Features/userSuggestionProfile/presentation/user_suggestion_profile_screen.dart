@@ -281,9 +281,28 @@ class UserSuggestionProfileScreen
                                           children: [
                                             for (final project
                                                 in state.projects)
-                                              ProjectCardHomeWidget(
-                                                project: project,
-                                                isLoading: false,
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    bottom: 10.0),
+                                                child: ProjectCardHomeWidget(
+                                                  project: project,
+                                                  isLoading: false,
+                                                  onTapOpenProject: () =>
+                                                      controller.routeToProject(
+                                                          project),
+                                                  onTapLikeProject: () =>
+                                                      controller
+                                                          .toggleLike(project),
+                                                  onTapCommentToOpenProject:
+                                                      () => controller
+                                                          .routeToProject(
+                                                              project,
+                                                              scrollToComments:
+                                                                  true),
+                                                  toggleFavorite: (p0, p1) =>
+                                                      controller.toggleArchive(
+                                                          p0, p1),
+                                                ),
                                               )
                                           ],
                                         ),

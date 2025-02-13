@@ -52,7 +52,8 @@ class HomeController extends GetxController {
       page: page,
       searchInput: searchInput,
       selectedSegment: selectedFilter,
-      filteredByTag: filteredByTag.value,
+      filteredByTag:
+          selectedFilter == 'all-projects' ? filteredByTag.value : null,
     );
 
     if (result.isNotEmpty) {

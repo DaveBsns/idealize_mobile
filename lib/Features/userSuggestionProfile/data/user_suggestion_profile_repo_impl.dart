@@ -21,6 +21,7 @@ class UserSuggestionProfileRepoImpl implements UserSuggestionProfileRepo {
       isDraft: false,
       myProjects: false,
       ownerId: userId,
+      joinedProjects: true,
     );
   }
 }

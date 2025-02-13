@@ -157,16 +157,24 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                 ),
               ).paddingOnly(top: 13),
               ...members.map(
-                (member) => Chip(
-                  side: BorderSide(color: AppConfig().colors.lightBlue),
-                  label: Text(
-                    '${member.firstName} ${member.lastName}',
-                    style: TextStyle(
-                      color: AppConfig().colors.lightBlue,
-                      fontWeight: FontWeight.bold,
+                (member) => InkWell(
+                  onTap: () {
+                    Get.toNamed(
+                      AppRoutes().userSuggestionProfile,
+                      arguments: member.id,
+                    );
+                  },
+                  child: Chip(
+                    side: BorderSide(color: AppConfig().colors.lightBlue),
+                    label: Text(
+                      '${member.firstName} ${member.lastName}',
+                      style: TextStyle(
+                        color: AppConfig().colors.lightBlue,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    backgroundColor: Colors.transparent,
                   ),
-                  backgroundColor: Colors.transparent,
                 ),
               ),
               if (members.isEmpty)
