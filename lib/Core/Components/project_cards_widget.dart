@@ -73,7 +73,7 @@ class ProjectCardHomeWidget extends StatelessWidget {
                                 height: 10,
                                 child: CustomLoadingIndicator(stroke: 2))
                             : Icon(
-                                Icons.delete,
+                                Iconsax.archive_11,
                                 color: AppConfig().colors.purpleColor,
                               ),
                         onPressed: () {
