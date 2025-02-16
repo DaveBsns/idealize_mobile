@@ -6,6 +6,8 @@ class EnLanguageData extends LanguageDataKeys {
 
   @override
   Map<String, String> get keys => {
+        AppStrings.accept: "Accept",
+        AppStrings.reject: "Reject",
         AppStrings.addTag: "Add Tag",
         AppStrings.addTags: "Add Tags",
         AppStrings.searchNotFound: "Search not found",
@@ -362,5 +364,20 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.pickMoreThan3Error:
             "You can\'t select more than @count @name",
         AppStrings.minimum100Characters: "must be at least 100 characters.",
+        AppStrings.enterYourEmailAdr: "Enter Your Email Address",
+        AppStrings.enterYourPassword: "Enter Your Password",
+        AppStrings.resetPasswordCaption:
+            "Enter your email address and we will send you a link to reset your password",
+        AppStrings.alreadyReported: "Already Reported",
+        AppStrings.alreadyReportedCaption:
+            "You have already reported this project.",
+        AppStrings.reportReason:
+            "Please enter the reason for reporting this project. We will review your report and take necessary actions.",
+        AppStrings.reason: "Reason",
+        AppStrings.enterYourReason: "Enter Your Reason",
+        AppStrings.createNewProjectStepTwoCaption:
+            "Your project will be more successful, if you add some tags, team members or links.",
+        AppStrings.createNewProjectStepThreeCaption:
+            "Adding more information such as Files, Media and Thumbnail, could make your project, more attractive.",
       };
 }

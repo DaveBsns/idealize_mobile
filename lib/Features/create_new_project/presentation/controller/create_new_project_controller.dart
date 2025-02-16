@@ -146,6 +146,9 @@ class CreateNewProjectController extends GetxController {
     if (result) {
       attachments.removeWhere((element) => element.id == attachmentId);
       await updateProjectAfterDeletingFiles();
+      Get.back();
+    } else {
+      Get.back();
     }
 
     AppRepo().hideLoading();

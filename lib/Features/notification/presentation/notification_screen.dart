@@ -5,6 +5,7 @@ import 'package:idealize_new_version/Core/Components/image_loader_widget.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
+import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
@@ -69,247 +70,266 @@ class NotificationScreen extends GetView<NotificationController> {
                   separatorBuilder: (context, index) =>
                       Gap(AppConfig().dimens.medium),
                   itemBuilder: (context, index) {
-                    return Container(
-                      clipBehavior: Clip.none,
-                      width: MediaQuery.sizeOf(context).width,
-                      height: _hasActions(index) ? 140 : 80,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                            BorderRadius.circular(AppConfig().dimens.small),
-                        border: Border.all(
-                          color: AppConfig().colors.lightGrayColor,
-                          width: 0.3,
+                    return InkWell(
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoutes().projectDetails,
+                          arguments:
+                              controller.notifications[index].projectId.id,
+                        );
+                      },
+                      child: Container(
+                        clipBehavior: Clip.none,
+                        width: MediaQuery.sizeOf(context).width,
+                        height: _hasActions(index) ? 140 : 80,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              BorderRadius.circular(AppConfig().dimens.small),
+                          border: Border.all(
+                            color: AppConfig().colors.lightGrayColor,
+                            width: 0.3,
+                          ),
                         ),
-                      ),
-                      child: Center(
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 7,
-                              decoration: BoxDecoration(
-                                color: _read(index)
-                                    ? Colors.transparent
-                                    : AppColors().secondaryColor,
-                                borderRadius: BorderRadius.only(
-                                  topLeft:
-                                      Radius.circular(AppConfig().dimens.small),
-                                  bottomLeft:
-                                      Radius.circular(AppConfig().dimens.small),
+                        child: Center(
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 7,
+                                decoration: BoxDecoration(
+                                  color: _read(index)
+                                      ? Colors.transparent
+                                      : AppColors().secondaryColor,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(
+                                        AppConfig().dimens.small),
+                                    bottomLeft: Radius.circular(
+                                        AppConfig().dimens.small),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Gap(AppConfig().dimens.medium),
-                                      Container(
-                                        height: 44,
-                                        width: 44,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: AppConfig()
-                                                .colors
-                                                .lightGrayColor,
-                                            width: 1,
-                                          ),
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            child: showImageFromNetwork(
-                                              _getProfileImage(index) ?? '',
-                                              fit: BoxFit.cover,
-                                              placeholder: Assets
-                                                  .png.placeholderProfile
-                                                  .image(),
-                                              width: 44,
-                                              height: 44,
-                                            )),
-                                      ),
-                                      Gap(AppConfig().dimens.medium),
-                                      Flexible(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.stretch,
-                                          children: [
-                                            Text(
-                                              _notifTitle(index),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                letterSpacing: -0.5,
-                                                fontWeight: FontWeight.bold,
-                                                color: AppConfig()
-                                                    .colors
-                                                    .primaryColor,
-                                              ),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Gap(AppConfig().dimens.medium),
+                                        Container(
+                                          height: 44,
+                                          width: 44,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: AppConfig()
+                                                  .colors
+                                                  .lightGrayColor,
+                                              width: 1,
                                             ),
-                                            Text(
-                                              _notifMessage(index),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                fontSize: 13,
-                                                letterSpacing: -0.5,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              child: showImageFromNetwork(
+                                                _getProfileImage(index) ?? '',
+                                                fit: BoxFit.cover,
+                                                placeholder: Assets
+                                                    .png.placeholderProfile
+                                                    .image(),
+                                                width: 44,
+                                                height: 44,
+                                              )),
+                                        ),
+                                        Gap(AppConfig().dimens.medium),
+                                        Flexible(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              Text(
+                                                _notifTitle(index),
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  letterSpacing: -0.5,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: AppConfig()
+                                                      .colors
+                                                      .primaryColor,
+                                                ),
                                               ),
+                                              Text(
+                                                _notifMessage(index),
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                  fontSize: 13,
+                                                  letterSpacing: -0.5,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Gap(AppConfig().dimens.medium),
+                                        Icon(
+                                          controller
+                                              .notifications[index].type.toIcon,
+                                          size: AppConfig().dimens.medium,
+                                          color: AppColors().primaryColor,
+                                        ),
+                                        Gap(AppConfig().dimens.medium),
+                                      ],
+                                    ),
+                                    if (_hasActions(index))
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            top: AppConfig().dimens.medium),
+                                        child: Row(
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                controller.responseToProjectRequest(
+                                                    action: RequestResponseType
+                                                        .accepted,
+                                                    projectId: controller
+                                                        .notifications[index]
+                                                        .projectId
+                                                        .id,
+                                                    notificationId: controller
+                                                        .notifications[index]
+                                                        .id,
+                                                    userId: controller
+                                                        .notifications[index]
+                                                        .receiver,
+                                                    requestType: controller
+                                                                .notifications[
+                                                                    index]
+                                                                .type ==
+                                                            NotificationType
+                                                                .addTeamMember
+                                                        ? 'addTeamMember'
+                                                        : 'joinTeamMember');
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color:
+                                                      AppColors().primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      AppStrings.accept.tr,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: AppConfig()
+                                                              .dimens
+                                                              .mediumSmall,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                    Gap(AppConfig()
+                                                        .dimens
+                                                        .small),
+                                                    Icon(Iconsax.tick_circle,
+                                                        size: AppConfig()
+                                                            .dimens
+                                                            .mediumSmall,
+                                                        color: Colors.white),
+                                                  ],
+                                                ).paddingSymmetric(
+                                                    horizontal: 10,
+                                                    vertical: 4),
+                                              ).paddingOnly(
+                                                  left:
+                                                      AppConfig().dimens.large,
+                                                  bottom: AppConfig()
+                                                      .dimens
+                                                      .medium),
+                                            ),
+                                            InkWell(
+                                              onTap: () {
+                                                controller.responseToProjectRequest(
+                                                    action: RequestResponseType
+                                                        .canceled,
+                                                    projectId: controller
+                                                        .notifications[index]
+                                                        .projectId
+                                                        .id,
+                                                    notificationId: controller
+                                                        .notifications[index]
+                                                        .id,
+                                                    userId: controller
+                                                        .notifications[index]
+                                                        .receiver,
+                                                    requestType: controller
+                                                                .notifications[
+                                                                    index]
+                                                                .type ==
+                                                            NotificationType
+                                                                .addTeamMember
+                                                        ? 'addTeamMember'
+                                                        : 'joinTeamMember');
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color:
+                                                      AppColors().darkRedColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      AppStrings.reject.tr,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: AppConfig()
+                                                              .dimens
+                                                              .mediumSmall,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                    Gap(AppConfig()
+                                                        .dimens
+                                                        .small),
+                                                    Icon(Icons.cancel_outlined,
+                                                        size: AppConfig()
+                                                            .dimens
+                                                            .mediumSmall,
+                                                        color: Colors.white),
+                                                  ],
+                                                ).paddingSymmetric(
+                                                    horizontal: 10,
+                                                    vertical: 4),
+                                              ).paddingOnly(
+                                                  left: AppConfig()
+                                                      .dimens
+                                                      .mediumSmall,
+                                                  right:
+                                                      AppConfig().dimens.medium,
+                                                  bottom: AppConfig()
+                                                      .dimens
+                                                      .medium),
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      Gap(AppConfig().dimens.medium),
-                                      Icon(
-                                        controller
-                                            .notifications[index].type.toIcon,
-                                        size: AppConfig().dimens.medium,
-                                        color: AppColors().primaryColor,
-                                      ),
-                                      Gap(AppConfig().dimens.medium),
-                                    ],
-                                  ),
-                                  if (_hasActions(index))
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          top: AppConfig().dimens.medium),
-                                      child: Row(
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              controller
-                                                  .responseToProjectRequest(
-                                                      action:
-                                                          RequestResponseType
-                                                              .accepted,
-                                                      projectId: controller
-                                                          .notifications[index]
-                                                          .projectId
-                                                          .id,
-                                                      notificationId: controller
-                                                          .notifications[index]
-                                                          .id,
-                                                      userId: controller
-                                                          .notifications[index]
-                                                          .receiver,
-                                                      requestType: controller
-                                                                  .notifications[
-                                                                      index]
-                                                                  .type ==
-                                                              NotificationType
-                                                                  .addTeamMember
-                                                          ? 'addTeamMember'
-                                                          : 'joinTeamMember');
-                                            },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: AppColors().primaryColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(100),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    'Accept',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: AppConfig()
-                                                            .dimens
-                                                            .small,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                  Gap(AppConfig().dimens.small),
-                                                  Icon(Iconsax.tick_circle,
-                                                      size: AppConfig()
-                                                          .dimens
-                                                          .small,
-                                                      color: Colors.white),
-                                                ],
-                                              ).paddingSymmetric(
-                                                  horizontal: 10, vertical: 4),
-                                            ).paddingOnly(
-                                                left: AppConfig().dimens.large,
-                                                bottom:
-                                                    AppConfig().dimens.medium),
-                                          ),
-                                          InkWell(
-                                            onTap: () {
-                                              controller
-                                                  .responseToProjectRequest(
-                                                      action:
-                                                          RequestResponseType
-                                                              .canceled,
-                                                      projectId: controller
-                                                          .notifications[index]
-                                                          .projectId
-                                                          .id,
-                                                      notificationId: controller
-                                                          .notifications[index]
-                                                          .id,
-                                                      userId: controller
-                                                          .notifications[index]
-                                                          .receiver,
-                                                      requestType: controller
-                                                                  .notifications[
-                                                                      index]
-                                                                  .type ==
-                                                              NotificationType
-                                                                  .addTeamMember
-                                                          ? 'addTeamMember'
-                                                          : 'joinTeamMember');
-                                            },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: AppColors().darkRedColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(100),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    'Reject',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: AppConfig()
-                                                            .dimens
-                                                            .small,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                  Gap(AppConfig().dimens.small),
-                                                  Icon(Icons.cancel_outlined,
-                                                      size: AppConfig()
-                                                          .dimens
-                                                          .small,
-                                                      color: Colors.white),
-                                                ],
-                                              ).paddingSymmetric(
-                                                  horizontal: 10, vertical: 4),
-                                            ).paddingOnly(
-                                                left: AppConfig()
-                                                    .dimens
-                                                    .mediumSmall,
-                                                right:
-                                                    AppConfig().dimens.medium,
-                                                bottom:
-                                                    AppConfig().dimens.medium),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                ],
+                                      )
+                                  ],
+                                ),
                               ),
-                            ),
-                            const SizedBox(width: 7),
-                          ],
+                              const SizedBox(width: 7),
+                            ],
+                          ),
                         ),
                       ),
                     );

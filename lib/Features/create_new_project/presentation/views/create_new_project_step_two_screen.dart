@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
+import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
@@ -31,6 +32,13 @@ class CreateNewProjectStepTwoScreen
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                AppStrings.createNewProjectStepTwoCaption.tr,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppColors().darkGrayColor,
+                    ),
+              ),
+              Gap(AppConfig().dimens.large),
               CoursesContainerWidget(
                 selectedCourses: controller.selectedCourses,
                 onCoursesChanged: (newCourses) {

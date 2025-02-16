@@ -46,30 +46,29 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
   void _showReportDialog(BuildContext context) {
     if (isReported) {
       AppRepo().showSnackbar(
-          label: 'Already Reported',
-          text: 'You have already reported this project.');
+          label: AppStrings.alreadyReported.tr,
+          text: AppStrings.alreadyReportedCaption.tr);
       return;
     }
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Report"),
-          content: const Text(
-              "Please enter the reason for reporting this project. We will review your report and take necessary actions."),
+          title: Text(AppStrings.report.tr),
+          content: Text(AppStrings.reportReason.tr),
           actions: <Widget>[
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Reason:",
+                Text("${AppStrings.reason.tr}:",
                     style: TextStyle(
                       color: AppConfig().colors.txtColor,
                       fontWeight: FontWeight.w700,
                     )),
                 Gap(AppConfig().dimens.small),
                 CustomMultiLineTextField(
-                  labelText: "Enter your reason",
+                  labelText: AppStrings.enterYourReason.tr,
                   controller: reportController,
                   maxCharcters: 300,
                   maxLines: 7,
@@ -78,7 +77,7 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
             ),
             // Gap(AppConfig().dimens.medium),
             CustomIconButton(
-                    title: "Report",
+                    title: AppStrings.report.tr,
                     onTap: () {
                       onReportProjectTapped(reportController.text);
                     },
