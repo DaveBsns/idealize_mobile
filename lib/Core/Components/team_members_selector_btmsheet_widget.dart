@@ -111,7 +111,7 @@ class _InterestAndCourseSelectorBottomSheetState
                   width: double.infinity,
                   child: CustomSearchField(
                     secondIcon: Iconsax.search_normal_14,
-                    labelText: "Suche",
+                    labelText: AppStrings.search.tr,
                     controller: _searchCtrl,
                   ),
                 ),

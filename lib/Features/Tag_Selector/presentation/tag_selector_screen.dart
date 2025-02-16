@@ -153,7 +153,7 @@ class TagSelectorScreen extends StatelessWidget {
                                       ),
                                       children: [
                                         TextSpan(
-                                          text: '${AppStrings.here.tr}"\n"',
+                                          text: '"${AppStrings.here.tr}"',
                                           style:
                                               textStyles.titleMedium!.copyWith(
                                             color: AppConfig()
@@ -231,18 +231,18 @@ class TagSelectorScreen extends StatelessWidget {
   }
 
   void _updateTagSelection(Tag tag, bool isSelected) {
-    if (limit != null) {
-      if (controller.selectedTags.value.length >= limit!) {
-        Get.snackbar(
-          AppStrings.warning.tr,
-          AppStrings.pickMoreThan3Error
-              .trParams({'count': limit.toString(), 'name': _tagName}),
-        );
-        return;
-      }
-    }
-
     if (isSelected) {
+      if (limit != null) {
+        if (controller.selectedTags.value.length >= limit!) {
+          Get.snackbar(
+            AppStrings.warning.tr,
+            AppStrings.pickMoreThan3Error
+                .trParams({'count': limit.toString(), 'name': _tagName}),
+          );
+          return;
+        }
+      }
+
       controller.selectedTags.value.add(tag);
     } else {
       controller.selectedTags.value.removeWhere((elem) => elem.id == tag.id);

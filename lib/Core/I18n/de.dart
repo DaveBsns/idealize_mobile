@@ -6,6 +6,8 @@ class DeLanguageData extends LanguageDataKeys {
 
   @override
   Map<String, String> get keys => {
+        AppStrings.accept: "Annehmen",
+        AppStrings.reject: "Ablehnen",
         AppStrings.addTag: "Tag hinzufügen",
         AppStrings.addTags: "Tags hinzufügen",
         AppStrings.searchNotFound: "keine Suchergebnisse",
@@ -371,5 +373,20 @@ class DeLanguageData extends LanguageDataKeys {
             "Sie können nicht mehr als @count @name auswählen",
         AppStrings.minimum100Characters:
             "muss mindestens 100 Zeichen lang sein.",
+        AppStrings.enterYourEmailAdr: "E-Mail-Adresse eingeben",
+        AppStrings.enterYourPassword: "Passwort eingeben",
+        AppStrings.resetPasswordCaption:
+            "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts",
+        AppStrings.alreadyReported: "Bereits gemeldet",
+        AppStrings.alreadyReportedCaption:
+            "Sie haben dieses Projekt bereits gemeldet.",
+        AppStrings.reportReason:
+            "Bitte geben Sie den Grund für die Meldung dieses Projekts an. Wir werden Ihren Bericht überprüfen und erforderliche Maßnahmen ergreifen.",
+        AppStrings.reason: "Grund",
+        AppStrings.enterYourReason: "Geben Sie Ihren Grund ein",
+        AppStrings.createNewProjectStepTwoCaption:
+            "Ihr Projekt wird erfolgreicher, wenn Sie einige Tags, Team-Mitglieder oder Links hinzufügen.",
+        AppStrings.createNewProjectStepThreeCaption:
+            "Das Hinzufügen von mehr Informationen wie Dateien, Medien und Miniaturansicht kann Ihr Projekt attraktiver machen.",
       };
 }

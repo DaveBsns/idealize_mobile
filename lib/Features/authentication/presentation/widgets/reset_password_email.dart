@@ -5,6 +5,7 @@ import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
 import 'package:idealize_new_version/Core/Components/textfields_widget.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Features/authentication/presentation/controllers/reset_password_controller.dart';
 
@@ -46,7 +47,7 @@ class ResetPasswordEmailBottomSheet extends GetView<ResetPasswordController> {
                         ),
                         Gap(AppConfig().dimens.medium),
                         Text(
-                          "Enter your email address and we will send you a link to reset your password",
+                          AppStrings.resetPasswordCaption.tr,
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge!
@@ -68,7 +69,7 @@ class ResetPasswordEmailBottomSheet extends GetView<ResetPasswordController> {
                         Gap(AppConfig().dimens.medium),
                         CustomTextField(
                           controller: controller.emailController,
-                          labelText: "Enter your email address",
+                          labelText: AppStrings.enterYourEmailAdr.tr,
                         ),
                         Gap(AppConfig().dimens.extraLarge),
                         CustomIconButton(

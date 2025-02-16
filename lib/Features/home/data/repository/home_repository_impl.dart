@@ -34,6 +34,7 @@ class HomeRepositoryImpl extends HomeRepository {
       sortField: 'creationDate',
       filter: selectedSegment,
       filterByTag: filteredByTag?.id,
+      joinedProjects: (selectedSegment == 'my-projects'),
     );
   }
 

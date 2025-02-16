@@ -54,7 +54,8 @@ class TagSelectorController extends GetxController {
             (tagItem) => tagItem.type == type,
           )
           .toList(),
-      initialSelectedChipDataList: initialSelectedChipData,
+      initialSelectedChipDataList:
+          selectedTags.map((element) => element).toList(),
       typeValue: type,
     );
 
@@ -75,7 +76,7 @@ class TagSelectorController extends GetxController {
       tags.clear();
       tags.addAll(initialChipData);
       tags.sort(
-        (a, b) => a.tagName.compareTo(b.tagName),
+        (a, b) => a.tagName.toLowerCase().compareTo(b.tagName.toLowerCase()),
       );
 
       reorderTagsBasedOnSelectedTags();
@@ -97,16 +98,33 @@ class TagSelectorController extends GetxController {
 
   void reorderTagsBasedOnSelectedTags({Tag? selectNewOne}) {
     List<Tag> myList = [];
+
     for (var selectedTag in selectedTags) {
       tags.removeWhere((tag) => tag.id == selectedTag.id);
     }
+
+    if (selectNewOne != null) {
+      tags.removeWhere((tag) => tag.id == selectNewOne.id);
+    }
+
     myList.addAll(tags);
 
     tags.clear();
+
     if (selectNewOne != null) {
       tags.add(selectNewOne);
     }
+
+    selectedTags.sort(
+      (a, b) => a.tagName.toLowerCase().compareTo(b.tagName.toLowerCase()),
+    );
+
     tags.addAll(selectedTags);
+
+    myList.sort(
+      (a, b) => a.tagName.toLowerCase().compareTo(b.tagName.toLowerCase()),
+    );
+
     tags.addAll(myList);
   }
 }

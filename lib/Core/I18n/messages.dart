@@ -1,4 +1,6 @@
 class AppStrings {
+  static const String accept = "accept";
+  static const String reject = "reject";
   static const String login = "login";
   static const String signUp = "signUp";
   static const String addTag = "addTag";
@@ -312,4 +314,17 @@ class AppStrings {
   static const String pickMoreThan3Error = "pickMoreThan3Error";
 
   static const String minimum100Characters = "minimum100Characters";
+
+  static const String enterYourEmailAdr = "enterYourEmailAdr";
+  static const String enterYourPassword = "enterYourPassword";
+  static const String resetPasswordCaption = "resetPasswordCaption";
+
+  static const String alreadyReported = "alreadyReported";
+  static const String alreadyReportedCaption = "alreadyReportedCaption";
+  static const String reportReason = "reportReason";
+  static const String reason = "reason";
+  static const String enterYourReason = "enterYourReason";
+
+  static const String createNewProjectStepTwoCaption = "createNewProjectStepTwoCaption";
+  static const String createNewProjectStepThreeCaption = "createNewProjectStepThreeCaption";
 }

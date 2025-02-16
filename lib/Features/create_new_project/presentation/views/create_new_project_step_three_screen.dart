@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
+import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Features/create_new_project/presentation/controller/create_new_project_controller.dart';
@@ -23,7 +24,21 @@ class CreateNewProjectStepThreeScreen
             right: AppConfig().dimens.medium,
             bottom: AppConfig().dimens.medium,
           ),
-          child: const StepThreeUploadFilewidget(),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  AppStrings.createNewProjectStepThreeCaption.tr,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppColors().darkGrayColor,
+                      ),
+                ),
+              ),
+              Gap(AppConfig().dimens.large),
+              const StepThreeUploadFilewidget(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

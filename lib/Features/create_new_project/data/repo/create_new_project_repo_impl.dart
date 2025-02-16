@@ -95,9 +95,14 @@ class CreateNewProjectRepositoryImpl implements CreateNewProjectRepository {
   @override
   Future<ProjectFile?> uploadFile(
       String path, http_parser.MediaType mediaType) async {
-    return await UploadService().uploadFile(
-      path: path,
-      mediaType: mediaType,
-    );
+    try {
+      return await UploadService().uploadFile(
+        path: path,
+        mediaType: mediaType,
+      );
+    } catch (e) {
+      print('....... upload file error ....... $e');
+      return null;
+    }
   }
 }

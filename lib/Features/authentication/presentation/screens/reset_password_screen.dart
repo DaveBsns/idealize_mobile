@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Features/authentication/presentation/controllers/reset_password_controller.dart';
 
 import '../../../../Core/Components/buttons_widget.dart';
@@ -26,14 +27,14 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Text(
-              "New Password:",
+              '${AppStrings.newPassword.tr}:',
               style: textTheme.titleMedium,
             ),
             Gap(AppConfig().dimens.small),
             CustomTextField(
               key: const Key('auth_password'),
               controller: controller.passwordController,
-              labelText: 'Enter Your Email Address',
+              labelText: AppStrings.enterYourEmailAdr.tr,
               isPassword: true,
               secondIcon: Icons.remove_red_eye,
               onSecondIconPressed: () {
@@ -49,7 +50,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
             CustomTextField(
               key: const Key('auth_re_password'),
               controller: controller.rePasswordController,
-              labelText: 'Enter Your Password',
+              labelText: AppStrings.enterYourPassword.tr,
               isPassword: true,
               secondIcon: Icons.remove_red_eye,
               onSecondIconPressed: () {
