@@ -114,6 +114,7 @@ class DeleteAccountController extends GetxController {
       Get.back();
 
       if (projectsMustBeConsider.isEmpty) {
+        canSendCode.value = true;
         sendCodeForCompletelyDelete();
       }
     }
