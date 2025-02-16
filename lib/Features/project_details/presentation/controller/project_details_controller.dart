@@ -157,6 +157,7 @@ class ProjectDetailsController extends GetxController {
   void reply(String replyId) {
     replyCommentId.value = replyId;
     FocusScope.of(Get.context!).requestFocus(myFocusNode);
+    scrollToComments();
   }
 
   void removeComment(String commentId) async {
@@ -178,6 +179,7 @@ class ProjectDetailsController extends GetxController {
         await repo.deleteComment(commentId);
         initComments();
         AppRepo().hideLoading();
+        Get.find<HomeController>().refreshContent(currentPage: true);
       },
       outlinedButtonOnPressed: () => Get.back(),
     );
@@ -197,6 +199,22 @@ class ProjectDetailsController extends GetxController {
     }
 
     return 'Unknown';
+  }
+
+  String getCommentBasedOnReplyId(String replyId) {
+    for (var comment in comments) {
+      if (comment.id == replyId) {
+        return comment.content;
+      }
+
+      for (var reply in comment.replies.$2) {
+        if (reply.id == replyId) {
+          return reply.content;
+        }
+      }
+    }
+
+    return '...';
   }
 
   void scrollToComments() {

@@ -189,8 +189,8 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.aboutProject: "About Project",
         AppStrings.projectMaterials: "Project Materials",
         AppStrings.noComments:
-            "No Comments Available!\nBe the first to comment!",
-        AppStrings.noContributors: "No Contributors",
+            "No comments available!\nbe the first to comment!",
+        AppStrings.noContributors: "No contributors",
         AppStrings.joinProject: "Join Project",
         AppStrings.joinProjectPending:
             "Your request to join the project has been sent. Please wait for the project owner to respond.",
@@ -361,6 +361,6 @@ class EnLanguageData extends LanguageDataKeys {
             "Media storage location\nAndroid: Uploaded images and media are stored on your device at _____.\niPhone: Uploaded images and media are stored on your device at _____.\nThe exact storage location may vary depending on the device model and operating system version.",
         AppStrings.pickMoreThan3Error:
             "You can\'t select more than @count @name",
-            AppStrings.minimum100Characters: "must be at least 100 characters.",
+        AppStrings.minimum100Characters: "must be at least 100 characters.",
       };
 }
