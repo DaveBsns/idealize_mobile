@@ -241,7 +241,7 @@ class ProjectDetailsController extends GetxController {
       Directory docDir = await getApplicationDocumentsDirectory();
 
       // Create a new directory in the application documents directory
-      Directory dir = Directory('${docDir.path}/MyAppFiles/');
+      Directory dir = Directory('${docDir.path}/Media/');
 
       // Create the directory if it doesn't exist
       if (!await dir.exists()) {
@@ -254,7 +254,9 @@ class ProjectDetailsController extends GetxController {
 
       // Write the response body to a file
       var file = File('${dir.path}/$filename');
-      await file.writeAsBytes(response.bodyBytes);
+      await file.writeAsBytes(
+        response.bodyBytes,
+      );
     } catch (e) {
       AppRepo().showSnackbar(
         label: AppStrings.error.tr,
@@ -265,9 +267,10 @@ class ProjectDetailsController extends GetxController {
     } finally {
       AppRepo().showSnackbar(
         label: AppStrings.downloadComplete.tr,
-        text: AppStrings.downloadComplete.tr + ' ' + file.path,
+        text: AppStrings.mediaStoredPlace.tr,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 5),
       );
     }
   }

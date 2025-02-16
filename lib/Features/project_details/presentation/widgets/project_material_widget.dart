@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Components/image_loader_widget.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/Data/Models/custom_x_file_model.dart';
 import 'package:idealize_new_version/Core/Data/Models/link_model.dart';
+import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 
 class ProjectMaterialWidget extends StatelessWidget {
@@ -40,13 +42,15 @@ class ProjectMaterialWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     vertical: AppConfig().dimens.large,
                   ),
-                  child: const Text('No Document Files Available!'),
+                  child: Text(
+                    AppStrings.noDocumentFilesAvailable.tr,
+                  ),
                 ))
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Document Files:',
+                      '${AppStrings.documentFiles.tr}:',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: AppColors().txtColor,
                           ),
@@ -110,13 +114,13 @@ class ProjectMaterialWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     vertical: AppConfig().dimens.large,
                   ),
-                  child: const Text('No Media Available!'),
+                  child: Text(AppStrings.noMediaAvailable.tr),
                 ))
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Media Files:',
+                      '${AppStrings.mediaFiles.tr}:',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: AppColors().txtColor,
                           ),
@@ -147,10 +151,8 @@ class ProjectMaterialWidget extends StatelessWidget {
                               color: mediaFiles[index].fileColor,
                               borderRadius: BorderRadius.circular(6),
                             ),
-                            child: Icon(
-                              mediaFiles[index].fileIcon,
-                              color: Colors.white,
-                            ),
+                            child: showImageFromNetwork(
+                                mediaFiles[index].uploadedId),
                           ),
                           trailing: IconButton(
                             icon: Icon(
@@ -180,13 +182,13 @@ class ProjectMaterialWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     vertical: AppConfig().dimens.large,
                   ),
-                  child: const Text('No Links Available!'),
+                  child: Text(AppStrings.noLinksAvailable.tr),
                 ))
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Links:',
+                      '${AppStrings.links.tr}:',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: AppColors().txtColor,
                           ),

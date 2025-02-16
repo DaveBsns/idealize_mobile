@@ -388,5 +388,12 @@ class DeLanguageData extends LanguageDataKeys {
             "Ihr Projekt wird erfolgreicher, wenn Sie einige Tags, Team-Mitglieder oder Links hinzufügen.",
         AppStrings.createNewProjectStepThreeCaption:
             "Das Hinzufügen von mehr Informationen wie Dateien, Medien und Miniaturansicht kann Ihr Projekt attraktiver machen.",
+        AppStrings.links: "Links",
+        AppStrings.noLinksAvailable: "Keine Links verfügbar!",
+        AppStrings.mediaFiles: "Medien-Dateien",
+        AppStrings.noMediaAvailable: "Keine Medien verfügbar!",
+        AppStrings.documentFiles: "Dokument-Dateien",
+        AppStrings.noDocumentFilesAvailable:
+            "Keine Dokument-Dateien verfügbar!",
       };
 }
