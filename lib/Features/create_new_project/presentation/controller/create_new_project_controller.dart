@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:path/path.dart' as path;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/widgets.dart';
@@ -32,6 +33,7 @@ class CreateNewProjectController extends GetxController {
   final _scrollController = ScrollController();
   final titleCtrl = TextEditingController();
   final descriptionCtrl = TextEditingController();
+  final checkboxValue = Rx<CustomCheckBoxValue>(CustomCheckBoxValue.unchecked);
 
   String linkName = '';
   String linkUrl = '';
@@ -678,6 +680,7 @@ class CreateNewProjectController extends GetxController {
     attachments.clear();
     pickedThumbnail.value = null;
     links.clear();
+    checkboxValue.value = CustomCheckBoxValue.unchecked;
 
     currentStep.value = 1;
     pageController.jumpToPage(0);
@@ -695,6 +698,11 @@ class CreateNewProjectController extends GetxController {
       return;
     }
 
+    manualDispose();
+    Get.back();
+  }
+
+  void close() {
     manualDispose();
     Get.back();
   }

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
+import 'package:idealize_new_version/Core/Components/checkbox_btn_widget.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
+import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Features/create_new_project/presentation/controller/create_new_project_controller.dart';
 import 'package:idealize_new_version/Features/create_new_project/presentation/widgets/step_three_upload_file_widget.dart';
 
@@ -37,6 +39,48 @@ class CreateNewProjectStepThreeScreen
               ),
               Gap(AppConfig().dimens.large),
               const StepThreeUploadFilewidget(),
+              Gap(AppConfig().dimens.large),
+              if (controller.updateProjectModel == null)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Obx(
+                        () => SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CustomCheckboxButton(
+                            key: UniqueKey(),
+                            value: controller.checkboxValue.value,
+                            onTapped: () {
+                              if (controller.checkboxValue.value ==
+                                  CustomCheckBoxValue.checked) {
+                                controller.checkboxValue.value =
+                                    CustomCheckBoxValue.unchecked;
+                              } else {
+                                controller.checkboxValue.value =
+                                    CustomCheckBoxValue.checked;
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+                      Gap(AppConfig().dimens.mediumSmall),
+                      Expanded(
+                        child: Text(
+                          AppStrings.rightsForMedia.tr,
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppColors().darkGrayColor,
+                                    fontSize: 13,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ],
           ),
         ),
@@ -66,33 +110,80 @@ class CreateNewProjectStepThreeScreen
             return Row(
               children: [
                 Expanded(
-                  child: CustomOutlineIconButton(
-                    title: (controller.updateProjectModel == null)
-                        ? AppStrings.saveAsDraft.tr
-                        : (controller.routeFrom == "add-project")
-                            ? AppStrings.saveAsDraft.tr
-                            : AppStrings.editAndSave.tr,
-                    onTap: (controller.titleCtrl.text.isNotEmpty &&
-                            controller.descriptionCtrl.text.isNotEmpty &&
-                            controller.selectedTags.isNotEmpty)
-                        ? (controller.updateProjectModel != null
-                            ? () => controller.updateProject(
-                                isDraft: controller.updateProjectModel!.isDraft)
-                            : controller.createNewProjectAsDraft)
-                        : null,
-                  ),
+                  child: controller.updateProjectModel == null
+                      ? Obx(
+                          () => Opacity(
+                            opacity: controller.checkboxValue.value ==
+                                    CustomCheckBoxValue.checked
+                                ? 1
+                                : 0.5,
+                            child: CustomOutlineIconButton(
+                              title: AppStrings.saveAsDraft.tr,
+                              onTap: () {
+                                if (controller.titleCtrl.text.isNotEmpty &&
+                                    controller
+                                        .descriptionCtrl.text.isNotEmpty &&
+                                    controller.selectedTags.isNotEmpty) {
+                                  if (controller.checkboxValue.value ==
+                                      CustomCheckBoxValue.checked) {
+                                    controller.createNewProjectAsDraft();
+                                  } else {
+                                    controller.checkboxValue.value =
+                                        CustomCheckBoxValue.error;
+                                  }
+                                }
+                              },
+                            ),
+                          ),
+                        )
+                      : CustomOutlineIconButton(
+                          title: (controller.routeFrom == "add-project")
+                              ? AppStrings.saveAsDraft.tr
+                              : AppStrings.editAndSave.tr,
+                          onTap: () {
+                            if (controller.titleCtrl.text.isNotEmpty &&
+                                controller.descriptionCtrl.text.isNotEmpty &&
+                                controller.selectedTags.isNotEmpty) {
+                              controller.updateProject(
+                                  isDraft:
+                                      controller.updateProjectModel!.isDraft);
+                            }
+                          },
+                        ),
                 ),
                 Gap(AppConfig().dimens.small),
                 Expanded(
-                  child: CustomIconButton(
-                      // title: controller.updateProjectModel != null
-                      title: AppStrings.publish.tr,
-                      txtColor: AppConfig().colors.primaryColor,
-                      color: AppConfig().colors.secondaryColor,
-                      onTap: controller.updateProjectModel != null
-                          ? () => controller.updateProject(isDraft: false)
-                          : controller.createNewProject),
-                ),
+                    child: controller.updateProjectModel != null
+                        ? CustomIconButton(
+                            title: AppStrings.publish.tr,
+                            txtColor: AppConfig().colors.primaryColor,
+                            color: AppConfig().colors.secondaryColor,
+                            onTap: () {
+                              controller.updateProject(isDraft: false);
+                            },
+                          )
+                        : Obx(
+                            () => Opacity(
+                              opacity: controller.checkboxValue.value ==
+                                      CustomCheckBoxValue.checked
+                                  ? 1
+                                  : 0.5,
+                              child: CustomIconButton(
+                                title: AppStrings.publish.tr,
+                                txtColor: AppConfig().colors.primaryColor,
+                                color: AppConfig().colors.secondaryColor,
+                                onTap: () {
+                                  if (controller.checkboxValue.value ==
+                                      CustomCheckBoxValue.checked) {
+                                    controller.createNewProject();
+                                  } else {
+                                    controller.checkboxValue.value =
+                                        CustomCheckBoxValue.error;
+                                  }
+                                },
+                              ),
+                            ),
+                          )),
               ],
             );
           },

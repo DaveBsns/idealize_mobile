@@ -360,7 +360,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.rightsForMedia:
             "I confirm that I have the right to use the images or links I have uploaded.",
         AppStrings.mediaStoredPlace:
-            "Media storage location\nAndroid: Uploaded images and media are stored on your device at _____.\niPhone: Uploaded images and media are stored on your device at _____.\nThe exact storage location may vary depending on the device model and operating system version.",
+            "Media storage location\nAndroid: Uploaded images and media are stored on your device at Files > IdeaLize > Media.\niPhone: Uploaded images and media are stored on your device at Files > IdeaLize > Media.\nThe exact storage location may vary depending on the device model and operating system version.",
         AppStrings.pickMoreThan3Error:
             "You can\'t select more than @count @name",
         AppStrings.minimum100Characters: "must be at least 100 characters.",
@@ -379,5 +379,12 @@ class EnLanguageData extends LanguageDataKeys {
             "Your project will be more successful, if you add some tags, team members or links.",
         AppStrings.createNewProjectStepThreeCaption:
             "Adding more information such as Files, Media and Thumbnail, could make your project, more attractive.",
+
+        AppStrings.links: "Links",
+        AppStrings.noLinksAvailable: "No Links Available!",
+        AppStrings.mediaFiles: "Media Files",
+        AppStrings.noMediaAvailable: "No Media Available!",
+        AppStrings.documentFiles: "Document Files",
+        AppStrings.noDocumentFilesAvailable: "No Document Files Available!"
       };
 }

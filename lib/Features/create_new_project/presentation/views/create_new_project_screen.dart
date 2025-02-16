@@ -30,12 +30,22 @@ class CreateNewProjectScreen extends GetView<CreateNewProjectController> {
       appBar: AppBar(
         backgroundColor: AppConfig().colors.backGroundColor,
         leading: IconButton(
-            onPressed: () {
-              controller.back();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-            )),
+          onPressed: () {
+            controller.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: controller.close,
+            icon: Icon(
+              Icons.close,
+              color: AppConfig().colors.primaryColor,
+            ),
+          ),
+        ],
         title: GetBuilder<CreateNewProjectController>(
           init: controller,
           builder: (_) => controller.updateProjectModel != null

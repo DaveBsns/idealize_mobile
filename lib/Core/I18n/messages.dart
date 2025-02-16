@@ -307,10 +307,11 @@ class AppStrings {
   static const String deleteAccountOption2Desc = "deleteAccountOption2Desc";
   static const String deleteAccountOption3Desc = "deleteAccountOption3Desc";
   static const String deleteAccountOption1Button = "deleteAccountOption1Button";
-  static const String deleteAccountOption1TextField = "deleteAccountOption1TextField";
+  static const String deleteAccountOption1TextField =
+      "deleteAccountOption1TextField";
 
   static const String pickMember = "pickMember";
-  
+
   static const String pickMoreThan3Error = "pickMoreThan3Error";
 
   static const String minimum100Characters = "minimum100Characters";
@@ -325,6 +326,15 @@ class AppStrings {
   static const String reason = "reason";
   static const String enterYourReason = "enterYourReason";
 
-  static const String createNewProjectStepTwoCaption = "createNewProjectStepTwoCaption";
-  static const String createNewProjectStepThreeCaption = "createNewProjectStepThreeCaption";
+  static const String createNewProjectStepTwoCaption =
+      "createNewProjectStepTwoCaption";
+  static const String createNewProjectStepThreeCaption =
+      "createNewProjectStepThreeCaption";
+
+  static const String links = "links";
+  static const String noLinksAvailable = "noLinksAvailable";
+  static const String mediaFiles = "mediaFiles";
+  static const String noMediaAvailable = "noMediaAvailable";
+  static const String documentFiles = "documentFiles";
+  static const String noDocumentFilesAvailable = "noDocumentFilesAvailable";
 }
