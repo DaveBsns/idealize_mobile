@@ -261,8 +261,40 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                        '${AppStrings.replyTo.tr} ${controller.getNameBasedOnReplyId(controller.replyCommentId.value)}'),
+                                    RichText(
+                                      text: TextSpan(
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.black,
+                                            height: 1.37,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: AppStrings.replyTo.tr,
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  " ${controller.getNameBasedOnReplyId(controller.replyCommentId.value)}",
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  "\n${controller.getCommentBasedOnReplyId(controller.replyCommentId.value).pickFirstTenWords()}",
+                                              style: const TextStyle(
+                                                overflow: TextOverflow.ellipsis,
+                                                color: Color.fromARGB(
+                                                  255,
+                                                  49,
+                                                  49,
+                                                  49,
+                                                ),
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
                                     IconButton(
                                         onPressed: controller.removeReply,
                                         icon: const Icon(Icons.close)),

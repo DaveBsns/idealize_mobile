@@ -254,6 +254,11 @@ extension NotificationTypeExtension on NotificationType {
 }
 
 extension ParseToString on String {
+  String pickFirstTenWords() {
+    final words = split(' ');
+    return words.length <= 10 ? this : '${words.take(10).join(' ')}...';
+  }
+
   NotificationType toNotificationType() {
     switch (this) {
       case 'like':
