@@ -76,27 +76,23 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                                 width: 160,
                                 height: 45,
                                 onTap: () {
-                                  showModalBottomSheet(
-                                    backgroundColor: Colors.white,
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return TagSelectorScreen(
-                                        tagType: TagType.tag,
-                                        initialSelectedChipData:
-                                            controller.selectedTags,
-                                        initialChipData: AppRepo()
-                                            .tags
-                                            .where(
-                                              (tag) => tag.type == TagType.tag,
-                                            )
-                                            .toList(),
-                                        onChipSelectedList: (newList) {
-                                          controller.selectedTags.clear();
-                                          controller.selectedTags
-                                              .addAll(newList);
-                                        },
-                                      );
-                                    },
+                                  Get.to(
+                                    () => TagSelectorScreen(
+                                      title: AppStrings.addInterest.tr,
+                                      tagType: TagType.tag,
+                                      initialSelectedChipData:
+                                          controller.selectedTags,
+                                      initialChipData: AppRepo()
+                                          .tags
+                                          .where(
+                                            (tag) => tag.type == TagType.tag,
+                                          )
+                                          .toList(),
+                                      onChipSelectedList: (newList) {
+                                        controller.selectedTags.clear();
+                                        controller.selectedTags.addAll(newList);
+                                      },
+                                    ),
                                   );
                                 },
                               ),
@@ -174,30 +170,27 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                                 width: 160,
                                 height: 45,
                                 onTap: () {
-                                  showModalBottomSheet(
-                                    backgroundColor: Colors.white,
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return TagSelectorScreen(
-                                        tagType: TagType.studyProgram,
-                                        initialSelectedChipData:
-                                            controller.selectedStudyPrograms,
-                                        initialChipData: AppRepo()
-                                            .tags
-                                            .where(
-                                              (tag) =>
-                                                  tag.type ==
-                                                  TagType.studyProgram,
-                                            )
-                                            .toList(),
-                                        onChipSelectedList: (newList) {
-                                          controller.selectedStudyPrograms
-                                              .clear();
-                                          controller.selectedStudyPrograms
-                                              .addAll(newList);
-                                        },
-                                      );
-                                    },
+                                  Get.to(
+                                    () => TagSelectorScreen(
+                                      title: AppStrings.addProgram.tr,
+                                      tagType: TagType.studyProgram,
+                                      initialSelectedChipData:
+                                          controller.selectedStudyPrograms,
+                                      initialChipData: AppRepo()
+                                          .tags
+                                          .where(
+                                            (tag) =>
+                                                tag.type ==
+                                                TagType.studyProgram,
+                                          )
+                                          .toList(),
+                                      onChipSelectedList: (newList) {
+                                        controller.selectedStudyPrograms
+                                            .clear();
+                                        controller.selectedStudyPrograms
+                                            .addAll(newList);
+                                      },
+                                    ),
                                   );
                                 },
                               ),

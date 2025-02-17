@@ -62,8 +62,7 @@ class CoursesContainerWidget extends StatelessWidget {
                         GestureDetector(
                           onTap: () => AppRepo().showCustomAlertDialog(
                             title: AppStrings.dailogAddCoursesTitle.tr,
-                            content:
-                                AppStrings.dailogAddCoursesContent.tr,
+                            content: AppStrings.dailogAddCoursesContent.tr,
                             buttonText: AppStrings.okay.tr,
                             buttonTextStyle: TextStyle(
                                 color: AppConfig().colors.primaryColor,
@@ -85,18 +84,16 @@ class CoursesContainerWidget extends StatelessWidget {
                     width: 160,
                     height: 45,
                     onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return TagSelectorScreen(
-                            tagType: TagType.course,
-                            initialSelectedChipData: selectedCourses,
-                            initialChipData: allCourses,
-                            onChipSelectedList: (newList) {
-                              onCoursesChanged(newList);
-                            },
-                          );
-                        },
+                      Get.to(
+                        () => TagSelectorScreen(
+                          title: AppStrings.courses.tr,
+                          tagType: TagType.course,
+                          initialSelectedChipData: selectedCourses,
+                          initialChipData: allCourses,
+                          onChipSelectedList: (newList) {
+                            onCoursesChanged(newList);
+                          },
+                        ),
                       );
                     },
                   ),
