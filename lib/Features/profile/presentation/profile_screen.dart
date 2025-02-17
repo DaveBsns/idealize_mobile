@@ -190,30 +190,26 @@ class ProfileScreen extends GetView<ProfileController> {
                                   width: 160,
                                   height: 45,
                                   onTap: () {
-                                    showModalBottomSheet(
-                                      backgroundColor: Colors.white,
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return TagSelectorScreen(
-                                          tagType: TagType.tag,
-                                          onTapedSavedButton:
-                                              controller.saveChanges,
-                                          initialSelectedChipData:
-                                              controller.selectedTags,
-                                          initialChipData: AppRepo()
-                                              .tags
-                                              .where(
-                                                (tag) =>
-                                                    tag.type == TagType.tag,
-                                              )
-                                              .toList(),
-                                          onChipSelectedList: (newList) {
-                                            controller.selectedTags.clear();
-                                            controller.selectedTags
-                                                .addAll(newList);
-                                          },
-                                        );
-                                      },
+                                    Get.to(
+                                      () => TagSelectorScreen(
+                                        title: AppStrings.interests.tr,
+                                        initialChipData: AppRepo()
+                                            .tags
+                                            .where(
+                                              (tag) => tag.type == TagType.tag,
+                                            )
+                                            .toList(),
+                                        initialSelectedChipData:
+                                            controller.selectedTags,
+                                        tagType: TagType.tag,
+                                        onTapedSavedButton:
+                                            controller.saveChanges,
+                                        onChipSelectedList: (newList) {
+                                          controller.selectedTags.clear();
+                                          controller.selectedTags
+                                              .addAll(newList);
+                                        },
+                                      ),
                                     );
                                   },
                                 ),
@@ -297,33 +293,29 @@ class ProfileScreen extends GetView<ProfileController> {
                                   width: 160,
                                   height: 45,
                                   onTap: () {
-                                    showModalBottomSheet(
-                                      // TODO BG color is not pure white
-                                      backgroundColor: Colors.white,
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return TagSelectorScreen(
-                                          tagType: TagType.studyProgram,
-                                          onTapedSavedButton:
-                                              controller.saveChanges,
-                                          initialSelectedChipData:
-                                              controller.selectedStudyProgram,
-                                          initialChipData: AppRepo()
-                                              .tags
-                                              .where(
-                                                (tag) =>
-                                                    tag.type ==
-                                                    TagType.studyProgram,
-                                              ) // Filter tags by category
-                                              .toList(),
-                                          onChipSelectedList: (newList) {
-                                            controller.selectedStudyProgram
-                                                .clear();
-                                            controller.selectedStudyProgram
-                                                .addAll(newList);
-                                          },
-                                        );
-                                      },
+                                    Get.to(
+                                      () => TagSelectorScreen(
+                                        title: AppStrings.studyPrograms.tr,
+                                        tagType: TagType.studyProgram,
+                                        onTapedSavedButton:
+                                            controller.saveChanges,
+                                        initialSelectedChipData:
+                                            controller.selectedStudyProgram,
+                                        initialChipData: AppRepo()
+                                            .tags
+                                            .where(
+                                              (tag) =>
+                                                  tag.type ==
+                                                  TagType.studyProgram,
+                                            ) // Filter tags by category
+                                            .toList(),
+                                        onChipSelectedList: (newList) {
+                                          controller.selectedStudyProgram
+                                              .clear();
+                                          controller.selectedStudyProgram
+                                              .addAll(newList);
+                                        },
+                                      ),
                                     );
                                   },
                                 ),

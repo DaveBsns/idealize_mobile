@@ -84,23 +84,20 @@ class TagsContainer extends StatelessWidget {
                       width: 160,
                       height: 45,
                       onTap: () {
-                        showModalBottomSheet(
-                          backgroundColor: Colors.white,
-                          context: context,
-                          builder: (BuildContext context) {
-                            return TagSelectorScreen(
-                              tagType: TagType.tag,
-                              limit: 3,
-                              initialSelectedChipData: selectedTags,
-                              initialChipData: AppRepo()
-                                  .tags
-                                  .where((tag) => tag.type == TagType.tag)
-                                  .toList(),
-                              onChipSelectedList: (newList) {
-                                onTagsChanged(newList);
-                              },
-                            );
-                          },
+                        Get.to(
+                          () => TagSelectorScreen(
+                            title: AppStrings.tags.tr,
+                            tagType: TagType.tag,
+                            limit: 3,
+                            initialSelectedChipData: selectedTags,
+                            initialChipData: AppRepo()
+                                .tags
+                                .where((tag) => tag.type == TagType.tag)
+                                .toList(),
+                            onChipSelectedList: (newList) {
+                              onTagsChanged(newList);
+                            },
+                          ),
                         );
                       },
                     ),
