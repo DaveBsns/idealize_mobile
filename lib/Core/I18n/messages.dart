@@ -337,4 +337,6 @@ class AppStrings {
   static const String noMediaAvailable = "noMediaAvailable";
   static const String documentFiles = "documentFiles";
   static const String noDocumentFilesAvailable = "noDocumentFilesAvailable";
+
+  static const String timeLeft = "timeLeft";
 }

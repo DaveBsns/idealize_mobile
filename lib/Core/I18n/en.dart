@@ -385,6 +385,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.mediaFiles: "Media Files",
         AppStrings.noMediaAvailable: "No Media Available!",
         AppStrings.documentFiles: "Document Files",
-        AppStrings.noDocumentFilesAvailable: "No Document Files Available!"
+        AppStrings.noDocumentFilesAvailable: "No Document Files Available!",
+        AppStrings.timeLeft: "Time Left: @time",
       };
 }

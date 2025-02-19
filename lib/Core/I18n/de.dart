@@ -395,5 +395,6 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.documentFiles: "Dokument-Dateien",
         AppStrings.noDocumentFilesAvailable:
             "Keine Dokument-Dateien verfügbar!",
+        AppStrings.timeLeft: "Verbleibende Zeit: @time",
       };
 }
