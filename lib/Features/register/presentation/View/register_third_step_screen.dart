@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
 import 'package:idealize_new_version/Core/Components/image_picker_btmsheet_widget.dart';
 import 'package:idealize_new_version/Core/Components/stepper_widget.dart';
-import 'package:idealize_new_version/Core/Components/textfields_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Features/register/presentation/controller/register_controller.dart';

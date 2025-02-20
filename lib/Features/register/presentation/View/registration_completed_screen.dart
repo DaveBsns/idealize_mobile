@@ -30,7 +30,7 @@ class RegistrationCompletedScreen extends GetView<RegisterController> {
               width: MediaQuery.sizeOf(context).width / 1.5,
               title: AppStrings.startUsingIdealize.tr,
               txtColor: AppConfig().colors.primaryColor,
-              onTap: () => Get.offAllNamed(AppConfig().routes.base),
+              onTap: () => Get.offAllNamed(AppConfig().routes.splash),
             )
           ],
         ),

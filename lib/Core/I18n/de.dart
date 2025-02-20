@@ -144,7 +144,7 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.confirmationRequired: "Bestätigung erforderlich",
         AppStrings.skipRegistrationStepsMsg:
             "Sie haben die Möglichkeit, die Registrierungsschritte zu überspringen und sie später in Ihren Profileinstellungen zu vervollständigen.",
-        AppStrings.okay: "Okay",
+        AppStrings.okay: "OK",
         AppStrings.gallery: "Galerie",
         AppStrings.camera: "Kamera",
         AppStrings.registartionSuccessMsg:
@@ -248,7 +248,7 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.tag: "Tag",
         AppStrings.course: "Kurs",
         AppStrings.studyProgram: "Studiengang",
-        AppStrings.skip: "Umschalten",
+        AppStrings.skip: "Speichern & Überspringen",
         AppStrings.photoAccessDenied:
             "Zugriff auf Fotos verweigert, bitte erlauben Sie den Zugriff in den Einstellungen",
         AppStrings.accessDenied: "Zugriff verweigert",
@@ -396,5 +396,9 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.noDocumentFilesAvailable:
             "Keine Dokument-Dateien verfügbar!",
         AppStrings.timeLeft: "Verbleibende Zeit: @time",
+        AppStrings.signUpStep2InterestsCaption:
+            "Wählen Sie die Themen aus, die Sie am meisten interessieren",
+        AppStrings.signUpStep2StudyProgramsCaption:
+            "Wählen Sie Ihre Studiengänge aus",
       };
 }

@@ -6,8 +6,11 @@ import 'package:idealize_new_version/Core/Data/Services/upload_service.dart';
 import 'package:idealize_new_version/Features/authentication/data/remote/authentication_service.dart';
 
 import '../../domain/register_repo.dart';
+import '../data/local/register_local_services.dart';
 
 class RegisterRepositoryImpl implements RegisterRepository {
+  final localService = RegisterLocalServices();
+
   @override
   Future<Map<String, dynamic>?> createUser({
     required String firstname,
@@ -75,5 +78,10 @@ class RegisterRepositoryImpl implements RegisterRepository {
       code: code,
       email: email,
     );
+  }
+
+  @override
+  Future<void> updateUserFromLocalCache(Map<String, dynamic> data) async {
+    await localService.updateUser(data);
   }
 }
