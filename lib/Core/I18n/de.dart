@@ -16,6 +16,7 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.addProjekt: "Neues Projekt",
         AppStrings.tags: "Tags:*",
         AppStrings.members: "Team",
+        AppStrings.teamMembers: "Teammitglieder",
         AppStrings.addMembers: "Zum Team hinzufügen",
         AppStrings.next: "Weiter",
         AppStrings.edit: "Bearbeiten",
@@ -155,13 +156,13 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.weeklyTrend: "Wöchentliche Trends",
         AppStrings.addNewProject: "Neues Projekt hinzufügen",
         AppStrings.or: "Oder",
-        AppStrings.workOnAProjectFromDraft: "Arbeite an einem Entwurf:",
+        AppStrings.workOnAProjectFromDraft: "Arbeiten Sie an einem Entwurf:",
         AppStrings.emptyDraftProjectMessage:
-            "Sie haben noch keine Entwurfsprojekte.",
+            "Sie haben noch keine Enwürfe.",
         AppStrings.emptyFavoriteProject:
             "Sie haben noch keine Lieblingsprojekte.",
         AppStrings.emptyDraftProject:
-            "Sie haben noch keine Entwurfsprojekte. \n Beginnen Sie mit der Erstellung eines neuen Projekts.",
+            "Sie haben noch keine Entwürfe. \n Beginnen Sie mit der Erstellung eines neuen Projekts.",
         AppStrings.multiLineTextFieldHint: "Geben Sie Ihren Text hier ein",
         AppStrings.addLink: "Link hinzufügen",
         AppStrings.addLinkTitle: "Link Name",

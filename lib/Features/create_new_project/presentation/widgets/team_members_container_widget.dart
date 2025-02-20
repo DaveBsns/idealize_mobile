@@ -51,8 +51,8 @@ class TeamMembersContainerWidget extends StatelessWidget {
                       spacing: 10.0,
                       runSpacing: 0.0,
                       children: [
-                        const Text(
-                          "Team Members :",
+                        Text(
+                          AppStrings.teamMembers.tr + " :",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
