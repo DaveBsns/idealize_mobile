@@ -257,7 +257,7 @@ class RegisterController extends GetxController {
     );
 
     if (response != null) {
-      Get.replace(AppConfig().routes.splash);
+      await repo.updateUserFromLocalCache(response);
     }
   }
 

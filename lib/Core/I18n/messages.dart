@@ -339,4 +339,7 @@ class AppStrings {
   static const String noDocumentFilesAvailable = "noDocumentFilesAvailable";
 
   static const String timeLeft = "timeLeft";
+
+  static const String signUpStep2InterestsCaption = "signUpStep2InterestsCaption";
+  static const String signUpStep2StudyProgramsCaption = "signUpStep2StudyProgramsCaption";
 }

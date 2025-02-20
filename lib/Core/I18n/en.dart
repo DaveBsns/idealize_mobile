@@ -58,7 +58,8 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.openProject: "Open Project",
         AppStrings.backToTop: "Back to top",
         AppStrings.pullDownToRefresh: "Pull down to refresh",
-        AppStrings.emptyList: "Your list is empty Refresh to load new projects",
+        AppStrings.emptyList:
+            "Your list is empty, refresh to load new projects",
         AppStrings.selectLanguage: "Select Language",
         AppStrings.english: "English",
         AppStrings.german: "German",
@@ -118,7 +119,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.here: "here",
         AppStrings.alreadyHaveAnAccount: "Already have an account?",
         AppStrings.iAgree: "I agree with the ",
-        AppStrings.termsAndConditions: "terms and conditions *.",
+        AppStrings.termsAndConditions: "Terms and conditions *.",
         AppStrings.isNotEmail: "Email is not valid",
         AppStrings.passIsNotStrong: "Password is not strong",
         AppStrings.passIsNotMatch: "Passwords do not match",
@@ -139,7 +140,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.confirmationRequired: "Confirmation Required",
         AppStrings.skipRegistrationStepsMsg:
             "You have the option to skip the registration steps and complete them later in your profile settings.",
-        AppStrings.okay: "Okay",
+        AppStrings.okay: "OK",
         AppStrings.gallery: "Gallery",
         AppStrings.camera: "Camera",
         AppStrings.registartionSuccessMsg:
@@ -191,7 +192,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.aboutProject: "About Project",
         AppStrings.projectMaterials: "Project Materials",
         AppStrings.noComments:
-            "No comments available!\nbe the first to comment!",
+            "No comments available!\nBe the first to comment!",
         AppStrings.noContributors: "No contributors",
         AppStrings.joinProject: "Join Project",
         AppStrings.joinProjectPending:
@@ -246,11 +247,11 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.tag: "Tag",
         AppStrings.course: "Course",
         AppStrings.studyProgram: "Study Program",
-        AppStrings.skip: "Skip",
+        AppStrings.skip: "Save & Skip",
         AppStrings.photoAccessDenied:
             "Photo access denied, please allow access in settings",
         AppStrings.accessDenied: "Access Denied",
-        AppStrings.okey: "Okey",
+        AppStrings.okey: "OK",
         AppStrings.skipReqDesc:
             "You have the option to skip this steps and add it later in your profile.",
         AppStrings.noTitle: "No title",
@@ -387,5 +388,9 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.documentFiles: "Document Files",
         AppStrings.noDocumentFilesAvailable: "No Document Files Available!",
         AppStrings.timeLeft: "Time Left: @time",
+        AppStrings.signUpStep2InterestsCaption:
+            "Select the topics that interest you the most",
+        AppStrings.signUpStep2StudyProgramsCaption:
+            "Select your study programs",
       };
 }
