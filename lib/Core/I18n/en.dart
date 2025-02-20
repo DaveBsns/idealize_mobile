@@ -16,6 +16,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.addProjekt: "Add Project",
         AppStrings.tags: "Tags:*",
         AppStrings.members: "Members",
+        AppStrings.teamMembers: "Team Members",
         AppStrings.addMembers: "Add Members",
         AppStrings.next: "Next",
         AppStrings.edit: "Edit",
@@ -283,7 +284,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.openSettings: "Open Settings",
         AppStrings.reportBug: "Report Bug",
         AppStrings.reportBugContent:
-            "You visited a bug in the app? you can easily report it here, please describe the bug for us.",
+            "You noticed a bug in the app? you can easily report it here, please describe the bug for us.",
         AppStrings.reportBugDesc: "Enter your bug description/suggestion",
         AppStrings.addNewTag: "Add New Tag",
         AppStrings.tagName: "Tag name",

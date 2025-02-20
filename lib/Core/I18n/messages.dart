@@ -11,6 +11,7 @@ class AppStrings {
   static const String addProjekt = "addProjekt";
   static const String tags = "tags";
   static const String members = "members";
+  static const String teamMembers = "teamMembers";
   static const String addMembers = "addMembers";
   static const String next = "next";
   static const String edit = "edit";
