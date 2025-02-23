@@ -38,6 +38,7 @@ class NotificationController extends GetxController {
     final result = await repo.clear();
     if (result) {
       notifications.clear();
+      await fetchNotifications();
       notifications.refresh();
     }
     AppRepo().hideLoading();

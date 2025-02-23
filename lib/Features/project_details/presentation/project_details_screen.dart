@@ -238,6 +238,11 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                                 .comments.reversed
                                                 .map(
                                                   (e) => CommentContainerWidget(
+                                                    projectOwner: controller
+                                                            .project
+                                                            ?.owner
+                                                            ?.id ??
+                                                        '',
                                                     comment: e,
                                                     isReply: false,
                                                     onTappedReply: (id) =>
@@ -245,6 +250,20 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                                                     onTappedRemove: (id) =>
                                                         controller
                                                             .removeComment(id),
+                                                    onTappedReport: (
+                                                      commentId,
+                                                      comment,
+                                                      reportedUser,
+                                                      reason,
+                                                    ) =>
+                                                        controller
+                                                            .reportComment(
+                                                      commentId,
+                                                      reportedUser:
+                                                          reportedUser,
+                                                      comment: comment,
+                                                      reason: reason,
+                                                    ),
                                                   ),
                                                 )
                                                 .toList(),

@@ -33,12 +33,12 @@ class CreateNewProjectStepTwoScreen
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppStrings.createNewProjectStepTwoCaption.tr,
+                AppStrings.createNewProjectStepTwoCaptionForCourses.tr,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: AppColors().darkGrayColor,
                     ),
               ),
-              Gap(AppConfig().dimens.large),
+              Gap(AppConfig().dimens.medium),
               CoursesContainerWidget(
                 selectedCourses: controller.selectedCourses,
                 onCoursesChanged: (newCourses) {
@@ -57,16 +57,38 @@ class CreateNewProjectStepTwoScreen
                   controller.updateProjectModel == null)
                 Padding(
                   padding: EdgeInsets.only(bottom: AppConfig().dimens.medium),
-                  child: TeamMembersContainerWidget(
-                    selectedUsers: controller.selectedUsers,
-                    onUsersChanged: (newUsers) {
-                      controller.selectedUsers.clear();
-                      controller.selectedUsers.addAll(newUsers);
-                      controller.update();
-                    },
-                    allUsers: AppRepo().users.toList(),
+                  child: Column(
+                    children: [
+                      Gap(AppConfig().dimens.medium),
+                      Text(
+                        AppStrings
+                            .createNewProjectStepTwoCaptionForTeamMembers.tr,
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: AppColors().darkGrayColor,
+                                ),
+                      ),
+                      Gap(AppConfig().dimens.medium),
+                      TeamMembersContainerWidget(
+                        selectedUsers: controller.selectedUsers,
+                        onUsersChanged: (newUsers) {
+                          controller.selectedUsers.clear();
+                          controller.selectedUsers.addAll(newUsers);
+                          controller.update();
+                        },
+                        allUsers: AppRepo().users.toList(),
+                      ),
+                    ],
                   ),
                 ),
+              Gap(AppConfig().dimens.medium),
+              Text(
+                AppStrings.createNewProjectStepTwoCaptionForLinks.tr,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppColors().darkGrayColor,
+                    ),
+              ),
+              Gap(AppConfig().dimens.medium),
               AddLinksContainer(
                 onAddLink: controller.onAddLink,
                 links: controller.links,

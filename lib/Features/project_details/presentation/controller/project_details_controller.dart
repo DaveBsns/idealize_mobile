@@ -160,6 +160,27 @@ class ProjectDetailsController extends GetxController {
     scrollToComments();
   }
 
+  void reportComment(
+    String commentId, {
+    required String reportedUser,
+    required String comment,
+    required String reason,
+  }) async {
+    AppRepo().showLoading();
+    await repo.report(
+      projectId,
+      reportedUser,
+      type: 'comment',
+      content: 'On comment ($commentId): $comment,\n\nReason: $reason',
+    );
+    AppRepo().hideLoading();
+    Get.back();
+    AppRepo().showSnackbar(
+      label: AppStrings.reportedSuccessTitle.tr,
+      text: AppStrings.reportedSuccessDesc.tr,
+    );
+  }
+
   void removeComment(String commentId) async {
     AppRepo().showCustomAlertDialog(
       title: AppStrings.deleteCommentTitle.tr,

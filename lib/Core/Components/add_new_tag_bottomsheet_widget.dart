@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
 import 'package:idealize_new_version/Core/Components/textfields_widget.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
+import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/app_repo.dart';
 import 'package:get/get.dart';
@@ -11,11 +12,13 @@ import 'package:idealize_new_version/Core/I18n/messages.dart';
 class AddNewTagBottomsheetWidget extends StatelessWidget {
   final Function(String tagName) onAddedTagName;
   final String tagName;
+  final TagType type;
 
   const AddNewTagBottomsheetWidget({
     super.key,
     required this.onAddedTagName,
     required this.tagName,
+    required this.type,
   });
 
   @override
@@ -33,7 +36,7 @@ class AddNewTagBottomsheetWidget extends StatelessWidget {
               Gap(
                 AppConfig().dimens.medium,
               ),
-              Text(AppStrings.addNewTag.tr),
+              Text(_tagName),
               Gap(AppConfig().dimens.small),
               SizedBox(
                 height: 60,
@@ -68,5 +71,18 @@ class AddNewTagBottomsheetWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String get _tagName {
+    switch (type) {
+      case TagType.tag:
+        return AppStrings.addNewTag.tr;
+      case TagType.course:
+        return AppStrings.addNewCourse.tr;
+      case TagType.studyProgram:
+        return AppStrings.addNewStudyProgram.tr;
+      default:
+        return AppStrings.addNewTag.tr;
+    }
   }
 }

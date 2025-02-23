@@ -5,7 +5,7 @@ import 'package:idealize_new_version/app_repo.dart';
 class ReportService extends ServicesHelper {
   Future<dynamic> report(
     String projectId,
-    String userId, {
+    String reportedUserId, {
     String type = 'project', // 'project' | 'comment' | 'user'
     String content = '',
   }) async {
@@ -15,7 +15,7 @@ class ReportService extends ServicesHelper {
       requiredDefaultHeader: true,
       body: {
         "userId": AppRepo().user!.id,
-        "reportedUser": userId,
+        "reportedUser": reportedUserId,
         "projectId": projectId,
         "type": type,
         "content": content,
