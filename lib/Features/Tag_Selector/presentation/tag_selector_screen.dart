@@ -151,6 +151,7 @@ class TagSelectorScreen extends StatelessWidget {
                                             AddNewTagBottomsheetWidget(
                                           onAddedTagName: controller.addNewTag,
                                           tagName: controller.searchCtrl.text,
+                                          type: tagType,
                                         ),
                                       );
                                     },

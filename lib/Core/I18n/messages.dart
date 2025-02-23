@@ -182,6 +182,7 @@ class AppStrings {
   static const String joinProjectAccepted = "joinProjectAccepted";
   static const String joinProjectCancelled = "joinProjectCancelled";
   static const String report = "report";
+  static const String reportComment = "reportComment";
   static const String tagNameValid = "tagNameValid";
   static const String editInformation = "editInformation";
   static const String tooManyRequests = "tooManyRequests";
@@ -250,6 +251,8 @@ class AppStrings {
   static const String reportBugContent = "reportBugContent";
   static const String reportBugDesc = "reportBugDesc";
   static const String addNewTag = "addNewTag";
+  static const String addNewCourse = "addNewCourse";
+  static const String addNewStudyProgram = "addNewStudyProgram";
   static const String tagName = "tagName";
   static const String add = "add";
   static const String reportedSuccessTitle = "reportedSuccessTitle";
@@ -341,6 +344,18 @@ class AppStrings {
 
   static const String timeLeft = "timeLeft";
 
-  static const String signUpStep2InterestsCaption = "signUpStep2InterestsCaption";
-  static const String signUpStep2StudyProgramsCaption = "signUpStep2StudyProgramsCaption";
+  static const String signUpStep2InterestsCaption =
+      "signUpStep2InterestsCaption";
+  static const String signUpStep2StudyProgramsCaption =
+      "signUpStep2StudyProgramsCaption";
+
+  static const String reportBugDescEmpty = "reportBugDescEmpty";
+  static const String commentReportReason = "commentReportReason";
+
+  static const String createNewProjectStepTwoCaptionForCourses =
+      "createNewProjectStepTwoCaptionForCourses";
+  static const String createNewProjectStepTwoCaptionForTeamMembers =
+      "createNewProjectStepTwoCaptionForTeamMembers";
+  static const String createNewProjectStepTwoCaptionForLinks =
+      "createNewProjectStepTwoCaptionForLinks";
 }

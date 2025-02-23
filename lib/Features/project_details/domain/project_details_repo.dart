@@ -25,7 +25,7 @@ abstract class ProjectDetailsRepository {
   });
   Future<dynamic> report(
     String projectId,
-    String userId, {
+    String reportedUserId, {
     String type = 'project', // 'project' | 'comment' | 'user'
     String content = '',
   });

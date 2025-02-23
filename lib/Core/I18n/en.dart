@@ -287,6 +287,9 @@ class EnLanguageData extends LanguageDataKeys {
             "You noticed a bug in the app? you can easily report it here, please describe the bug for us.",
         AppStrings.reportBugDesc: "Enter your bug description/suggestion",
         AppStrings.addNewTag: "Add New Tag",
+        AppStrings.addNewCourse: "Add New Course",
+        AppStrings.addNewStudyProgram: "Add New Study Program",
+        AppStrings.reportBugDescEmpty: "Please enter your bug description",
         AppStrings.tagName: "Tag name",
         AppStrings.add: "Add",
         AppStrings.reportedSuccessTitle: "Reported Successfully",
@@ -393,5 +396,14 @@ class EnLanguageData extends LanguageDataKeys {
             "Select the topics that interest you the most",
         AppStrings.signUpStep2StudyProgramsCaption:
             "Select your study programs",
+        AppStrings.reportComment: "Report Comment",
+        AppStrings.commentReportReason:
+            "Please enter the reason for reporting this comment. We will review your report and take necessary actions.",
+        AppStrings.createNewProjectStepTwoCaptionForCourses:
+            'Choosing a course will help you to be visible to more people, with the same interest or study program.',
+        AppStrings.createNewProjectStepTwoCaptionForTeamMembers:
+            'You can add team members to the project, for contribution and more.',
+        AppStrings.createNewProjectStepTwoCaptionForLinks:
+            'The links could be shown in the project page, such as GitHub, LinkedIn, etc.',
       };
 }

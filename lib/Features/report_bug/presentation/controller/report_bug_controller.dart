@@ -12,12 +12,20 @@ class ReportBugController extends GetxController {
   final bugDescCtrl = TextEditingController();
 
   Future<void> submit() async {
-    if (bugDescCtrl.text.length < 100) {
+    // if (bugDescCtrl.text.length < 100) {
+    //   AppRepo().showSnackbar(
+    //     label: AppStrings.warning.tr,
+    //     text: AppStrings.descriptionWaring.tr,
+    //   );
+
+    //   return;
+    // }
+
+    if (bugDescCtrl.text.isEmpty) {
       AppRepo().showSnackbar(
         label: AppStrings.warning.tr,
-        text: AppStrings.descriptionWaring.tr,
+        text: AppStrings.reportBugDescEmpty.tr,
       );
-
       return;
     }
 

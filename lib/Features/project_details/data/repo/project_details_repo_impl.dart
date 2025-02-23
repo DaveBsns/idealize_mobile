@@ -76,13 +76,13 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
   @override
   Future<dynamic> report(
     String projectId,
-    String userId, {
+    String reportedUserId, {
     String type = 'project', // 'project' | 'comment' | 'user'
     String content = '',
   }) async {
     return await ReportService().report(
       projectId,
-      userId,
+      reportedUserId,
       content: content,
       type: type,
     );

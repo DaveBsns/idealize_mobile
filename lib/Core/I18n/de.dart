@@ -157,8 +157,7 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.addNewProject: "Neues Projekt hinzufügen",
         AppStrings.or: "Oder",
         AppStrings.workOnAProjectFromDraft: "Arbeiten Sie an einem Entwurf:",
-        AppStrings.emptyDraftProjectMessage:
-            "Sie haben noch keine Enwürfe.",
+        AppStrings.emptyDraftProjectMessage: "Sie haben noch keine Enwürfe.",
         AppStrings.emptyFavoriteProject:
             "Sie haben noch keine Lieblingsprojekte.",
         AppStrings.emptyDraftProject:
@@ -289,6 +288,10 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.reportBugDesc:
             "Geben Sie Ihre Fehlerbeschreibung/Hinweise ein",
         AppStrings.addNewTag: "Neues Tag hinzufügen",
+        AppStrings.addNewCourse: "Neuen Kurs hinzufügen",
+        AppStrings.addNewStudyProgram: "Neues Studienprogramm hinzufügen",
+        AppStrings.reportBugDescEmpty:
+            "Bitte geben Sie Ihre Fehlerbeschreibung ein",
         AppStrings.tagName: "Tag-Name",
         AppStrings.add: "Hinzufügen",
         AppStrings.reportedSuccessTitle: "Erfolgreich gemeldet",
@@ -401,5 +404,14 @@ class DeLanguageData extends LanguageDataKeys {
             "Wählen Sie die Themen aus, die Sie am meisten interessieren",
         AppStrings.signUpStep2StudyProgramsCaption:
             "Wählen Sie Ihre Studiengänge aus",
+        AppStrings.reportComment: "Kommentar melden",
+        AppStrings.commentReportReason:
+            "Bitte geben Sie den Grund für die Meldung dieses Kommentars an. Wir werden Ihren Bericht überprüfen und erforderliche Maßnahmen ergreifen.",
+        AppStrings.createNewProjectStepTwoCaptionForCourses:
+            'Die Auswahl eines Kurses hilft Ihnen, für mehr Menschen sichtbar zu sein, die das gleiche Interesse oder Studienprogramm haben.',
+        AppStrings.createNewProjectStepTwoCaptionForTeamMembers:
+            'Sie können dem Projekt Teammitglieder hinzufügen, um Beiträge zu leisten und mehr.',
+        AppStrings.createNewProjectStepTwoCaptionForLinks:
+            'Die Links könnten auf der Projektseite angezeigt werden, wie GitHub, LinkedIn usw.',
       };
 }
