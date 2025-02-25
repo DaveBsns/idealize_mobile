@@ -405,5 +405,9 @@ class EnLanguageData extends LanguageDataKeys {
             'You can add team members to the project, for contribution and more.',
         AppStrings.createNewProjectStepTwoCaptionForLinks:
             'The links could be shown in the project page, such as GitHub, LinkedIn, etc.',
+        AppStrings.userForbidden: 'Forbidden',
+        AppStrings.userForbiddenCaption: 'User is not activated',
+        AppStrings.userBlockedAdminCaption: 'User is blocked by admin',
+        AppStrings.tryAgain: 'Try Again',
       };
 }

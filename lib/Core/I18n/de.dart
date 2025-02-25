@@ -413,5 +413,10 @@ class DeLanguageData extends LanguageDataKeys {
             'Sie können dem Projekt Teammitglieder hinzufügen, um Beiträge zu leisten und mehr.',
         AppStrings.createNewProjectStepTwoCaptionForLinks:
             'Die Links könnten auf der Projektseite angezeigt werden, wie GitHub, LinkedIn usw.',
+        AppStrings.userForbidden: "Verboten",
+        AppStrings.userForbiddenCaption: "Dieser Benutzer ist nicht aktiviert",
+        AppStrings.userBlockedAdminCaption:
+            "Dieser Benutzer wurde von einem Admin geblockt",
+        AppStrings.tryAgain: 'Erneut versuchen',
       };
 }

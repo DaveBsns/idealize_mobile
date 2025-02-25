@@ -358,4 +358,9 @@ class AppStrings {
       "createNewProjectStepTwoCaptionForTeamMembers";
   static const String createNewProjectStepTwoCaptionForLinks =
       "createNewProjectStepTwoCaptionForLinks";
+
+  static const String userForbidden = "Forbidden";
+  static const String userForbiddenCaption = "user_forbidden_caption";
+  static const String userBlockedAdminCaption = "user_blocked_admin_caption";
+  static const String tryAgain = "tryAgain";
 }
