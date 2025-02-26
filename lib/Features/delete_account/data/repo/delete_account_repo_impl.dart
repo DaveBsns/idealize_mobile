@@ -22,6 +22,20 @@ class DeleteAccountRepoImpl implements DeleteAccountRepo {
   }
 
   @override
+  Future<String?> deleteAccountKeepData() async {
+    final res = await service.softKeepDataDeleteUserRequest();
+    if (res != null) {
+      if (res['message'] == 'otp_sent_success') {
+        return res['message'];
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
+
+  @override
   Future<dynamic> deleteAccountCompletely() async {
     await Future.delayed(const Duration(seconds: 2));
     final res = await service.softDeleteUserRequest();
@@ -51,8 +65,11 @@ class DeleteAccountRepoImpl implements DeleteAccountRepo {
   }
 
   @override
-  Future<bool> veryfyDelete(String code) async {
-    final res = await service.verifyDelete(code);
+  Future<bool> veryfyDelete(
+    String code, {
+    required bool keepData,
+  }) async {
+    final res = await service.verifyDelete(code, keepData: keepData);
     if (res != null) {
       if (res['message'] == 'user_deleted_success') {
         return true;

@@ -7,8 +7,8 @@ import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Features/delete_account/presentation/controller/delete_account_controller.dart';
 
-class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
-  const DeleteAccountAnanymizePage({super.key});
+class DeleteAccountKeepDataPage extends GetView<DeleteAccountController> {
+  const DeleteAccountKeepDataPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
       appBar: AppBar(
         titleSpacing: 0,
         title: Text(
-          AppStrings.deleteAccountAnanymize.tr,
+          AppStrings.deleteAccountKeepData.tr,
           style: const TextStyle(
             fontSize: 16,
           ),
@@ -35,7 +35,7 @@ class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      AppStrings.deleteAccountOption1Desc.tr,
+                      AppStrings.deleteAccountOption0Desc.tr,
                       textAlign: TextAlign.justify,
                       style: const TextStyle(
                         fontSize: 13,
@@ -50,8 +50,8 @@ class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
                           )
                         : controller.canSendCode.value
                             ? CustomIconButton(
-                                onTap: controller.sendCodeForAnanymizedDelete,
-                                title: AppStrings.deleteAccountOption1Button.tr,
+                                onTap: controller.sendCodeForKeepingDataDelete,
+                                title: AppStrings.deleteAccountOption0Button.tr,
                                 color: AppColors().primaryColor,
                                 width: 250,
                               )
@@ -63,7 +63,7 @@ class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
                               ),
                     const Gap(20),
                     CustomTextField(
-                      labelText: AppStrings.deleteAccountOption1TextField.tr,
+                      labelText: AppStrings.deleteAccountOption0TextField.tr,
                       keyboardType: TextInputType.number,
                       isCode: true,
                       onChanged: (p0) => controller.enteredCode.value = p0,
@@ -91,7 +91,7 @@ class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
                             ? null
                             : (() {
                                 controller.verifyDelete(
-                                  keepData: false,
+                                  keepData: true,
                                 );
                               }),
                       ),

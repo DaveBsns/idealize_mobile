@@ -69,9 +69,22 @@ class UserService extends ServicesHelper {
     return mappedData;
   }
 
-  Future<Map<String, dynamic>?> verifyDelete(String code) async {
+  Future<Map<String, dynamic>?> softKeepDataDeleteUserRequest() async {
     final mappedData = await request(
-      '$baseURL/users/verify-soft-delete',
+      '$baseURL/users/soft-keepdata-delete-request',
+      serviceType: ServiceType.delete,
+      requiredDefaultHeader: true,
+    );
+
+    return mappedData;
+  }
+
+  Future<Map<String, dynamic>?> verifyDelete(
+    String code, {
+    required bool keepData,
+  }) async {
+    final mappedData = await request(
+      '$baseURL/users/verify-soft-delete?keep_data=$keepData',
       serviceType: ServiceType.delete,
       body: {
         'code': code,

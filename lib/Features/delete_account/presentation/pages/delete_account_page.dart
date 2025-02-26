@@ -34,6 +34,20 @@ class DeleteAccountPage extends GetView<DeleteAccountController> {
                     ),
                     const Gap(20),
                     RadioListTile(
+                      value: 0,
+                      groupValue: controller.selectedDeleteOption.value,
+                      onChanged: controller.onChooseDeleteOtion,
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        AppStrings.deleteAccountDescOption0.tr,
+                        textAlign: TextAlign.justify,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                    RadioListTile(
                       value: 1,
                       groupValue: controller.selectedDeleteOption.value,
                       onChanged: controller.onChooseDeleteOtion,
@@ -78,7 +92,10 @@ class DeleteAccountPage extends GetView<DeleteAccountController> {
                   onTap: controller.selectedDeleteOption.value == null
                       ? null
                       : (() {
-                          if (controller.selectedDeleteOption.value == 1) {
+                          if (controller.selectedDeleteOption.value == 0) {
+                            controller.goToDeleteWithOption0();
+                          } else if (controller.selectedDeleteOption.value ==
+                              1) {
                             controller.goToDeleteWithOption1();
                           } else {
                             controller.goToDeleteWithOption2();

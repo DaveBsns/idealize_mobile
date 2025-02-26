@@ -6,6 +6,7 @@ import 'package:idealize_new_version/Features/authentication/presentation/screen
 import 'package:idealize_new_version/Features/delete_account/presentation/binding/delete_account_binding.dart';
 import 'package:idealize_new_version/Features/delete_account/presentation/pages/delete_account_ananymize_page.dart';
 import 'package:idealize_new_version/Features/delete_account/presentation/pages/delete_account_complete_page.dart';
+import 'package:idealize_new_version/Features/delete_account/presentation/pages/delete_account_keep_data_page.dart';
 import 'package:idealize_new_version/Features/delete_account/presentation/pages/delete_account_page.dart';
 import 'package:idealize_new_version/Features/project_details/presentation/binding/project_details_binding.dart';
 import 'package:idealize_new_version/Features/project_details/presentation/project_details_screen.dart';
@@ -63,6 +64,7 @@ class AppRoutes {
   final userSuggestionProfile = '/userSuggestionProfile';
   final reportaBug = '/reportaBug';
   final deleteAccount = '/deleteAccount';
+  final deleteAccountOption0 = '/deleteAccount/keepdata';
   final deleteAccountOption1 = '/deleteAccount/anonymize';
   final deleteAccountOption2 = '/deleteAccount/delete';
 
@@ -165,6 +167,11 @@ class AppRoutes {
       GetPage(
         name: deleteAccount,
         page: () => const DeleteAccountPage(),
+        binding: DeleteAccountBinding(),
+      ),
+      GetPage(
+        name: deleteAccountOption0,
+        page: () => const DeleteAccountKeepDataPage(),
         binding: DeleteAccountBinding(),
       ),
       GetPage(

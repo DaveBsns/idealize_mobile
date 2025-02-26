@@ -331,10 +331,12 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.message: "Nachricht",
         AppStrings.deleteAccountDesc:
             "Bevor Sie Ihr Konto löschen, bedenken Sie die Auswirkungen auf unsere Community. Sie haben zwei Möglichkeiten:",
+        AppStrings.deleteAccountDescOption0:
+            "Option 1: Behalten Sie Ihren Kontonamen und Projekte für die Community sichtbar, löschen Sie jedoch Ihr Konto (E-Mail, Passwort). Dies ermöglicht anderen, von Ihren Beiträgen zu lernen und darauf aufzubauen.",
         AppStrings.deleteAccountDescOption1:
-            "Option 1: Anonymisieren Sie Ihr Konto. Löschen Sie Ihre persönlichen Kontoinformationen, lassen Sie Ihre Projekte jedoch anonym im System. Dies hilft, das Ökosystem zu bewahren und ermöglicht anderen, aus Ihren Beiträgen zu lernen und darauf aufzubauen.",
+            "Option 2: Anonymisieren Sie Ihr Konto. Löschen Sie Ihre persönlichen Kontoinformationen, lassen Sie Ihre Projekte jedoch anonym im System. Dies hilft, das Ökosystem zu bewahren und ermöglicht anderen, aus Ihren Beiträgen zu lernen und darauf aufzubauen.",
         AppStrings.deleteAccountDescOption2:
-            "Option 2: Löschen Sie dauerhaft alles. Entfernen Sie Ihr Konto und alle zugehörigen Projekte vollständig aus unserem System. Diese Aktion ist unwiderruflich und wird alle Ihre Daten löschen.",
+            "Option 3: Löschen Sie dauerhaft alles. Entfernen Sie Ihr Konto und alle zugehörigen Projekte vollständig aus unserem System. Diese Aktion ist unwiderruflich und wird alle Ihre Daten löschen.",
         AppStrings.deleteAccountDesc2:
             "Bitte wählen Sie eine Option unten:\n\nSie könnten auch eine Warnung oder einen Hinweis hinzufügen, um die Endgültigkeit der Löschung zu betonen, zum Beispiel:\n\nHinweis: Sobald Sie Ihr Konto gelöscht haben, kann es nicht wiederhergestellt werden. Bitte stellen Sie sicher, dass Sie alle wichtigen Daten exportiert haben, bevor Sie fortfahren.",
         AppStrings.yesDelete: "Ja, lösche mein Konto",
@@ -358,11 +360,16 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.dailogAddTeamMemberTitle: "Team-Mitglied hinzufügen",
         AppStrings.dailogAddTeamMemberContent:
             "Sie können Mitglieder zum Projekt hinzufügen, um an der Arbeit mitzuwirken und mehr.",
+        AppStrings.deleteAccountKeepData: "Behalte meine Daten",
         AppStrings.deleteAccountAnanymize: "Anonymisieren Sie mein Konto",
         AppStrings.deleteAccountComplete: "Mein Konto dauerhaft löschen",
+        AppStrings.deleteAccountOption0Desc:
+            "Gute Wahl!\n\n Wir behalten den Namen Ihres Kontos und die Projekte sichtbar für die Community, löschen jedoch Ihr Konto (E-Mail, Passwort). Dies ermöglicht anderen, von Ihren Beiträgen zu lernen und darauf aufzubauen.",
         AppStrings.deleteAccountOption1Desc:
             "Gute Wahl!\n\n Jetzt benötigen wir Ihre Bestätigung, um Ihr Konto zu löschen. Bitte tippen Sie auf die Schaltfläche unten, um einen Bestätigungscode an Ihre E-Mail zu senden.",
+        AppStrings.deleteAccountOption0Button: "Bestätigungscode senden",
         AppStrings.deleteAccountOption1Button: "Bestätigungscode senden",
+        AppStrings.deleteAccountOption0TextField: "Code eingeben",
         AppStrings.deleteAccountOption1TextField: "Code eingeben",
         AppStrings.deleteAccountOption2Desc:
             "Okey, machen wir es!\n\nJetzt benötigen wir Ihre Bestätigung, um Ihr Konto zu löschen. Bitte tippen Sie auf die Schaltfläche unten, um einen Bestätigungscode an Ihre E-Mail zu senden.",

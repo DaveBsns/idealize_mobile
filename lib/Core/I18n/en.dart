@@ -325,10 +325,12 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.message: "Message",
         AppStrings.deleteAccountDesc:
             "Before you delete your account, consider the impact on our community. You have two options:",
+        AppStrings.deleteAccountDescOption0:
+            "Option 1: Keep your account's name and projects visible to the community, but delete your account (email, password). This allows others to learn from and build upon your contributions.",
         AppStrings.deleteAccountDescOption1:
-            "Option 1: Anonymize your account Delete your personal account information, but allow your projects to remain in the system anonymously. This helps preserve the ecosystem and allows others to learn from and build upon your contributions.",
+            "Option 2: Anonymize your account Delete your personal account information, but allow your projects to remain in the system anonymously. This helps preserve the ecosystem and allows others to learn from and build upon your contributions.",
         AppStrings.deleteAccountDescOption2:
-            "Option 2: Permanently delete everything Completely remove your account and all associated projects from our system. This action is irreversible and will delete all your data.",
+            "Option 3: Permanently delete everything Completely remove your account and all associated projects from our system. This action is irreversible and will delete all your data.",
         AppStrings.deleteAccountDesc2:
             "Please choose an option below:\n\nYou could also add a warning or a note to emphasize the permanence of the deletion, such as:\n\nNote: Once you delete your account, it cannot be recovered. Please make sure you have exported any important data before proceeding.",
         AppStrings.yesDelete: "Yes, delete my account",
@@ -350,12 +352,17 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.dailogAddTeamMemberTitle: "Add Team Member",
         AppStrings.dailogAddTeamMemberContent:
             "You can add members to the project, for contribution and more.",
+        AppStrings.deleteAccountKeepData: "Keep my data",
         AppStrings.deleteAccountAnanymize: "Anonymize my account",
         AppStrings.deleteAccountComplete: "Permanently delete my account",
 
+        AppStrings.deleteAccountOption0Desc:
+            "Good choice!\n\n we keep your account's name and projects visible to the community, but delete your account (email, password). This allows others to learn from and build upon your contributions.",
         AppStrings.deleteAccountOption1Desc:
             "Good choice!\n\n Now we require your confirmation to delete your account, so please tap! on the button below to get a confirmation code sent to your email.",
+        AppStrings.deleteAccountOption0Button: "Send confirmation code",
         AppStrings.deleteAccountOption1Button: "Send confirmation code",
+        AppStrings.deleteAccountOption0TextField: "Enter code",
         AppStrings.deleteAccountOption1TextField: "Enter code",
         AppStrings.deleteAccountOption2Desc:
             "Okey, let's do it!\n\nNow we require your confirmation to delete your account, so please tap! on the button below to get a confirmation code sent to your email.",
