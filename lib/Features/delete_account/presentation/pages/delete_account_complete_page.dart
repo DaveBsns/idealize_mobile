@@ -63,7 +63,9 @@ class DeleteAccountCompletelyPage extends GetView<DeleteAccountController> {
                             onTap: controller.enteredCode.value.length != 4
                                 ? null
                                 : (() {
-                                    controller.verifyDelete();
+                                    controller.verifyDelete(
+                                      keepData: false,
+                                    );
                                   }),
                           ),
               ),

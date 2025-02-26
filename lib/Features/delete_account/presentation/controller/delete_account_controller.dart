@@ -26,6 +26,11 @@ class DeleteAccountController extends GetxController {
   RxList<Map<String, dynamic>> projectsMustBeConsider = RxList([]);
 
   void onChooseDeleteOtion(int? option) => selectedDeleteOption.value = option;
+
+  void goToDeleteWithOption0() {
+    Get.toNamed(AppRoutes().deleteAccountOption0);
+  }
+
   void goToDeleteWithOption1() {
     Get.toNamed(AppRoutes().deleteAccountOption1);
   }
@@ -41,6 +46,19 @@ class DeleteAccountController extends GetxController {
     isLoadingSendCode.value = true;
     canSendCode.value = false;
     final res = await repo.deleteAccountAnanymously();
+    isLoadingSendCode.value = false;
+
+    if (res != null) {
+      _startTimer();
+    }
+  }
+
+  void sendCodeForKeepingDataDelete() async {
+    if (!canSendCode.value) return;
+
+    isLoadingSendCode.value = true;
+    canSendCode.value = false;
+    final res = await repo.deleteAccountKeepData();
     isLoadingSendCode.value = false;
 
     if (res != null) {
@@ -91,9 +109,14 @@ class DeleteAccountController extends GetxController {
     }
   }
 
-  void verifyDelete() async {
+  void verifyDelete({
+    required bool keepData,
+  }) async {
     isLoadingDelete.value = true;
-    final res = await repo.veryfyDelete(enteredCode.value);
+    final res = await repo.veryfyDelete(
+      enteredCode.value,
+      keepData: keepData,
+    );
     isLoadingDelete.value = false;
 
     if (res) {

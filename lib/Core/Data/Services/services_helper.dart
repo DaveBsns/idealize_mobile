@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:idealize_new_version/Core/Data/LocalCache/local_cache_helper.dart';
 import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
+import 'package:idealize_new_version/Features/user_forbidden_screen.dart';
 import 'package:idealize_new_version/app_repo.dart';
 import '../../Constants/config.dart';
 import 'package:http_parser/http_parser.dart' as http_parser;
@@ -239,16 +240,31 @@ class ServicesHelper {
       AppRepo()
           .showSnackbar(label: 'Server', text: AppStrings.tooManyRequests.tr);
       return null;
+    } else if (response.statusCode == 403) {
+      AppRepo().hideLoading();
+
+      final message = jsonDecode(response.body);
+
+      Get.offAll(
+        () => UserForbiddenScreen(
+          title: message['error'] ?? '',
+          caption: message['message'] ?? '',
+        ),
+      );
+
+      return null;
     } else {
       AppRepo().hideLoading();
 
       final message = jsonDecode(response.body);
 
       if (message['message'] is List<dynamic>) {
-        Get.snackbar(
-            message['error'] ?? '', (message['message'].join('\n')) ?? '');
+        AppRepo().showSnackbar(
+            label: message['error'] ?? '',
+            text: message['message'].join('\n') ?? '');
       } else {
-        Get.snackbar(message['error'] ?? '', message['message'] ?? '');
+        AppRepo().showSnackbar(
+            label: message['error'] ?? '', text: message['message'] ?? '');
       }
 
       // debugPrint('Error: $message');

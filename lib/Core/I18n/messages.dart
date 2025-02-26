@@ -78,6 +78,7 @@ class AppStrings {
   static const String lastNameHint = "lastNameHint";
   static const String delete = "delete";
   static const String deleteAccount = "deleteAccount";
+  static const String deleteAccountKeepData = "deleteAccountKeepData";
   static const String deleteAccountAnanymize = "deleteAccountAnanymize";
   static const String deleteAccountComplete = "deleteAccountComplete";
   static const String deleteMaterial = "deleteMaterial";
@@ -289,6 +290,7 @@ class AppStrings {
   static const String notifJoinTeamMember = "notifJoinTeamMember";
   static const String message = "message";
   static const String deleteAccountDesc = "deleteAccountDesc";
+  static const String deleteAccountDescOption0 = "deleteAccountDescOption0";
   static const String deleteAccountDescOption1 = "deleteAccountDescOption1";
   static const String deleteAccountDescOption2 = "deleteAccountDescOption2";
   static const String deleteAccountDesc2 = "deleteAccountDesc2";
@@ -307,10 +309,14 @@ class AppStrings {
   static const String dailogAddTeamMemberTitle = "dailogAddTeamMemberTitle";
   static const String dailogAddTeamMemberContent = "dailogAddTeamMemberContent";
 
+  static const String deleteAccountOption0Desc = "deleteAccountOption0Desc";
   static const String deleteAccountOption1Desc = "deleteAccountOption1Desc";
   static const String deleteAccountOption2Desc = "deleteAccountOption2Desc";
   static const String deleteAccountOption3Desc = "deleteAccountOption3Desc";
+  static const String deleteAccountOption0Button = "deleteAccountOption0Button";
   static const String deleteAccountOption1Button = "deleteAccountOption1Button";
+  static const String deleteAccountOption0TextField =
+      "deleteAccountOption0TextField";
   static const String deleteAccountOption1TextField =
       "deleteAccountOption1TextField";
 
@@ -358,4 +364,9 @@ class AppStrings {
       "createNewProjectStepTwoCaptionForTeamMembers";
   static const String createNewProjectStepTwoCaptionForLinks =
       "createNewProjectStepTwoCaptionForLinks";
+
+  static const String userForbidden = "Forbidden";
+  static const String userForbiddenCaption = "user_forbidden_caption";
+  static const String userBlockedAdminCaption = "user_blocked_admin_caption";
+  static const String tryAgain = "tryAgain";
 }
