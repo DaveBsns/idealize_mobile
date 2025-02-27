@@ -65,6 +65,7 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                   if (controller.project?.thumbnail?.id != null)
                     showImageFromNetwork(
                       controller.project?.thumbnail?.id ?? '',
+                      height: Get.height * 0.18,
                       placeholder: ColoredBox(
                         color: AppColors().secondaryColor,
                         child: SizedBox(

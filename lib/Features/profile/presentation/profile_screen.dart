@@ -67,17 +67,14 @@ class ProfileScreen extends GetView<ProfileController> {
                                     height: 170,
                                     width: 170,
                                     decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
                                       border: Border.all(
                                         color: AppConfig().colors.primaryColor,
                                         width: 2,
                                       ),
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            Assets.png.placeholderProfile.path),
-                                        fit: BoxFit.cover,
-                                      ),
                                     ),
+                                    child:
+                                        Assets.png.placeholderProfile.image(),
                                   ),
                                 ),
                               ),

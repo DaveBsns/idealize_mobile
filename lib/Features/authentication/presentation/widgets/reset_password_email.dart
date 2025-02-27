@@ -36,7 +36,7 @@ class ResetPasswordEmailBottomSheet extends GetView<ResetPasswordController> {
                         const Gap(11),
                         Center(
                           child: Text(
-                            "Forgot Password",
+                            AppStrings.forgotPassword.tr,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
@@ -57,7 +57,7 @@ class ResetPasswordEmailBottomSheet extends GetView<ResetPasswordController> {
                         ),
                         Gap(AppConfig().dimens.large),
                         Text(
-                          "Email Address:",
+                          "${AppStrings.email.tr}:",
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge!
@@ -73,7 +73,7 @@ class ResetPasswordEmailBottomSheet extends GetView<ResetPasswordController> {
                         ),
                         Gap(AppConfig().dimens.extraLarge),
                         CustomIconButton(
-                          title: "Weiter",
+                          title: AppStrings.next.tr,
                           onTap: controller.resetPasswordRequest,
                           txtColor: AppColors().primaryColor,
                         ),

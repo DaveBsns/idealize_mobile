@@ -43,7 +43,18 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
             ),
             Obx(
               () => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    AppStrings.signUpStep2InterestsCaption.tr,
+                    style: const TextStyle(
+                      fontSize: 14.5,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  Gap(AppConfig().dimens.small),
                   Container(
                     clipBehavior: Clip.none,
                     width: MediaQuery.sizeOf(context).width,
@@ -138,6 +149,16 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                   const SizedBox(
                     height: 20,
                   ),
+                  Text(
+                    AppStrings.signUpStep2StudyProgramsCaption.tr,
+                    style: const TextStyle(
+                      fontSize: 14.5,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  Gap(AppConfig().dimens.small),
                   Container(
                     clipBehavior: Clip.none,
                     width: MediaQuery.sizeOf(context).width,

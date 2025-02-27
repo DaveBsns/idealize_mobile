@@ -30,6 +30,8 @@ abstract class RegisterRepository {
     List<String> studyPrograms = const [],
   });
 
+  Future<void> updateUserFromLocalCache(Map<String, dynamic> data);
+
   Future<ProjectFile?> uploadFile(
     String path,
     http_parser.MediaType mediaType,

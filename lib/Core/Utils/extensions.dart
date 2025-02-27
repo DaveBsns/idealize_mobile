@@ -207,8 +207,13 @@ extension TagTypeExtensionsStr on TagType {
 
 extension StringURLExtensions on String {
   Future<void> launchURL() async {
-    if (!await launchUrlString(this)) {
-      throw Exception('Could not launch $this');
+    String url = this;
+    if (!startsWith('http://') && !startsWith('https://')) {
+      url = 'https://$this';
+    }
+
+    if (!await launchUrlString(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 }

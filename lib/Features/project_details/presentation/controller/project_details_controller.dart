@@ -317,6 +317,7 @@ class ProjectDetailsController extends GetxController {
           text: AppStrings.requestSent.tr,
           backgroundColor: AppColors().primaryColor,
           position: SnackPosition.TOP,
+          duration: const Duration(seconds: 5),
         );
       }
     } else {
@@ -325,6 +326,7 @@ class ProjectDetailsController extends GetxController {
         text: AppStrings.ownerNotAvailable.tr,
         backgroundColor: AppColors().primaryColor,
         position: SnackPosition.TOP,
+        duration: const Duration(seconds: 5),
       );
     }
   }
