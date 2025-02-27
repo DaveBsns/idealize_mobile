@@ -26,6 +26,7 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.home: "Home",
         AppStrings.profile: "Profil",
         AppStrings.settings: "Einstellungen",
+        AppStrings.ifCourseOrStudyProgram: "Falls Ihr Projekt im Rahmen eines Studiengangs oder Kurses entsteht, machen Sie dies bitte über die entsprechenden Auswahlfelder sichtbar.",
         AppStrings.projectTitle: "Projekttitel:*",
         AppStrings.projectTitleHint: "Geben Sie Ihrem Projekt einen Titel",
         AppStrings.desciption: "Beschreibung:",

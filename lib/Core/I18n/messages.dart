@@ -174,6 +174,7 @@ class AppStrings {
   static const String addStudyPrograms = "addStudyPrograms";
   static const String projectDetails = "projectDetails";
   static const String aboutProject = "aboutProject";
+  static const String ifCourseOrStudyProgram = "ifCourseOrStudyProgram";  
   static const String projectMaterials = "projectMaterials";
   static const String noComments = "noComments";
   static const String noContributors = "noContributors";

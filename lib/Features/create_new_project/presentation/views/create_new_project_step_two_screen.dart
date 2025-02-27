@@ -33,7 +33,7 @@ class CreateNewProjectStepTwoScreen
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppStrings.createNewProjectStepTwoCaption.tr,
+                AppStrings.ifCourseOrStudyProgram.tr,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: AppColors().darkGrayColor,
                     ),

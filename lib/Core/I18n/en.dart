@@ -26,6 +26,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.home: "Home",
         AppStrings.profile: "Profile",
         AppStrings.settings: "Settings",
+        AppStrings.ifCourseOrStudyProgram: "If your project is part of a study program or course, please make it visible by using the appropriate selection fields.",
         AppStrings.projectTitle: "Project Title:*",
         AppStrings.projectTitleHint: "Enter a title for your project",
         AppStrings.desciption: "Description:",
