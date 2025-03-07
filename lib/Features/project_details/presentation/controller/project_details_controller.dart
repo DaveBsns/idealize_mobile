@@ -253,6 +253,8 @@ class ProjectDetailsController extends GetxController {
   }
 
   Future<void> downloadProjectFile(CustomXFile file) async {
+    AppRepo().showLoading();
+
     String url = '${AppConfig().baseFileUrl}/uploads/${file.name}';
 
     String filename = file.name;
@@ -279,6 +281,8 @@ class ProjectDetailsController extends GetxController {
         response.bodyBytes,
       );
     } catch (e) {
+      AppRepo().hideLoading();
+
       AppRepo().showSnackbar(
         label: AppStrings.error.tr,
         text: AppStrings.downloadError.tr,
@@ -286,6 +290,8 @@ class ProjectDetailsController extends GetxController {
         position: SnackPosition.BOTTOM,
       );
     } finally {
+      AppRepo().hideLoading();
+
       AppRepo().showSnackbar(
         label: AppStrings.downloadComplete.tr,
         text: AppStrings.mediaStoredPlace.tr,
