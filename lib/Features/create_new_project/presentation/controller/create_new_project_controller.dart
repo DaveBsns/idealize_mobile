@@ -159,9 +159,10 @@ class CreateNewProjectController extends GetxController {
 
   Future<void> createNewProject({bool saveAsDraftCondition = false}) async {
     loading.value = true;
-    AppRepo().showLoading();
     update();
     attachments.clear();
+
+    AppRepo().showLoading();
 
     // Upload the attachments
     for (final media
@@ -241,8 +242,9 @@ class CreateNewProjectController extends GetxController {
 
   Future<void> updateProject({bool isDraft = true}) async {
     loading.value = true;
-    AppRepo().showLoading();
     update();
+
+    AppRepo().showLoading();
 
     for (final media in mediaFiles) {
       final uploadFile = await repo.uploadFile(
