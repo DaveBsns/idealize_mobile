@@ -46,6 +46,19 @@ class TagSelectorScreen extends StatelessWidget {
 
     TextTheme textStyles = Theme.of(context).textTheme;
 
+    String txt = AppStrings.addNewTag.tr;
+    switch (tagType) {
+      case TagType.tag:
+        txt = AppStrings.addNewTag.tr;
+        break;
+      case TagType.course:
+        txt = AppStrings.addNewCourse.tr;
+        break;
+      case TagType.studyProgram:
+        txt = AppStrings.addNewStudyProgram.tr;
+        break;
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -79,50 +92,100 @@ class TagSelectorScreen extends StatelessWidget {
                     Gap(AppConfig().dimens.medium),
                     Expanded(
                       child: controller.tags.value.isNotEmpty
-                          ? SingleChildScrollView(
-                              physics: const BouncingScrollPhysics(),
-                              child: Wrap(
-                                spacing: 8.0,
-                                runSpacing: 4.0,
-                                children: controller.tags.value.map((entry) {
-                                  bool isSelected = controller
-                                          .selectedTags.value
-                                          .indexWhere((element) =>
-                                              element.id == entry.id) >
-                                      -1;
-
-                                  return ChoiceChip(
-                                    checkmarkColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                        color: isSelected
-                                            ? (tagType == TagType.studyProgram
-                                                ? AppConfig().colors.lightBlue
-                                                : AppConfig().colors.greenColor)
-                                            : AppConfig().colors.primaryColor,
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                  child: InkWell(
+                                    onTap: () => _addNewTag(context),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 15,
                                       ),
-                                      borderRadius: BorderRadius.circular(
-                                          AppConfig().dimens.small),
+                                      decoration: BoxDecoration(
+                                        color: AppColors().primaryColor,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          const Icon(
+                                            Icons.add_circle_outline,
+                                            size: 19,
+                                            color: Colors.white,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            txt,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    selectedColor:
-                                        tagType == TagType.studyProgram
-                                            ? AppConfig().colors.lightBlue
-                                            : AppConfig().colors.greenColor,
-                                    label: Text(entry.tagName),
-                                    labelStyle: isSelected
-                                        ? textStyles.titleMedium!
-                                            .copyWith(color: Colors.white)
-                                        : textStyles.titleMedium!.copyWith(
-                                            color: AppConfig()
-                                                .colors
-                                                .primaryColor),
-                                    selected: isSelected,
-                                    onSelected: (bool selected) {
-                                      _updateTagSelection(entry, selected);
-                                    },
-                                  );
-                                }).toList(),
-                              ),
+                                  ),
+                                ),
+                                const Gap(10),
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    physics: const BouncingScrollPhysics(),
+                                    child: Wrap(
+                                      spacing: 8.0,
+                                      runSpacing: 4.0,
+                                      children:
+                                          controller.tags.value.map((entry) {
+                                        bool isSelected = controller
+                                                .selectedTags.value
+                                                .indexWhere((element) =>
+                                                    element.id == entry.id) >
+                                            -1;
+
+                                        return ChoiceChip(
+                                          checkmarkColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                              color: isSelected
+                                                  ? (tagType ==
+                                                          TagType.studyProgram
+                                                      ? AppConfig()
+                                                          .colors
+                                                          .lightBlue
+                                                      : AppConfig()
+                                                          .colors
+                                                          .greenColor)
+                                                  : AppConfig()
+                                                      .colors
+                                                      .primaryColor,
+                                            ),
+                                            borderRadius: BorderRadius.circular(
+                                                AppConfig().dimens.small),
+                                          ),
+                                          selectedColor: tagType ==
+                                                  TagType.studyProgram
+                                              ? AppConfig().colors.lightBlue
+                                              : AppConfig().colors.greenColor,
+                                          label: Text(entry.tagName),
+                                          labelStyle: isSelected
+                                              ? textStyles.titleMedium!
+                                                  .copyWith(color: Colors.white)
+                                              : textStyles.titleMedium!
+                                                  .copyWith(
+                                                      color: AppConfig()
+                                                          .colors
+                                                          .primaryColor),
+                                          selected: isSelected,
+                                          onSelected: (bool selected) {
+                                            _updateTagSelection(
+                                                entry, selected);
+                                          },
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             )
                           : Center(
                               child: Column(
@@ -144,16 +207,7 @@ class TagSelectorScreen extends StatelessWidget {
                                   Gap(AppConfig().dimens.extraLarge),
                                   GestureDetector(
                                     onTap: () {
-                                      showModalBottomSheet(
-                                        backgroundColor: Colors.white,
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            AddNewTagBottomsheetWidget(
-                                          onAddedTagName: controller.addNewTag,
-                                          tagName: controller.searchCtrl.text,
-                                          type: tagType,
-                                        ),
-                                      );
+                                      _addNewTag(context);
                                     },
                                     child: RichText(
                                       textAlign: TextAlign.center,
@@ -232,6 +286,18 @@ class TagSelectorScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _addNewTag(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.white,
+      context: context,
+      builder: (BuildContext context) => AddNewTagBottomsheetWidget(
+        onAddedTagName: controller.addNewTag,
+        tagName: controller.searchCtrl.text,
+        type: tagType,
       ),
     );
   }

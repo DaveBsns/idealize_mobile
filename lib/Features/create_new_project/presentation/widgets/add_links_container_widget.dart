@@ -77,12 +77,13 @@ class AddLinksContainer extends StatelessWidget {
               IconButton(
                 onPressed: () async {
                   if (labelCtrl.text.isNotEmpty && linkCtrl.text.isNotEmpty) {
-                    String? formattedUrl = linkCtrl.text.formatUrl();
-
-                    if (formattedUrl != null &&
-                        await canLaunchUrlString(formattedUrl)) {
+                    if (linkCtrl.text.formatUrl()) {
                       onAddLink?.call(
-                          LinkModel(label: labelCtrl.text, link: formattedUrl));
+                        LinkModel(
+                          label: labelCtrl.text,
+                          link: linkCtrl.text,
+                        ),
+                      );
 
                       labelCtrl.clear();
                       linkCtrl.clear();
