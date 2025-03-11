@@ -8,6 +8,7 @@ import 'package:idealize_new_version/gen/assets.gen.dart';
 import 'package:intl/intl.dart';
 import 'package:http_parser/http_parser.dart' as http_parser;
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:get/get.dart';
 
 extension UserStatusExtension on int? {
   UserStatus toUserStatus() {
@@ -297,11 +298,10 @@ extension ParserCheck on List {
 }
 
 extension FormatUrl on String {
-  String? formatUrl() {
-    const urlPattern =
-        r'^(https?:\/\/)?(www\.)?([a-zA-Z0-9._-]+\.[a-zA-Z]{2,6})(\/\S*)?$';
-    final urlRegExp = RegExp(urlPattern);
-
-    return urlRegExp.hasMatch(this) ? this : null;
+  bool formatUrl() {
+    return (((this).startsWith('http://') ||
+            (this).startsWith('https://') ||
+            (this).startsWith('www.')) &&
+        (this).isURL);
   }
 }
