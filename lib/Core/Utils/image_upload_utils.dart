@@ -5,19 +5,14 @@ import 'package:path/path.dart' as path;
 Future<XFile> compressImage(XFile imageFile) async {
   String targetPath = path.join(
     (await getTemporaryDirectory()).path,
-    '${DateTime.now().millisecondsSinceEpoch}.${path.extension(imageFile.path).substring(1)}',
+    '${DateTime.now().millisecondsSinceEpoch}.jpg',
   );
-
-  CompressFormat format;
 
   String filePathLowercase = imageFile.path.toLowerCase();
 
-  if (filePathLowercase.endsWith('.jpg') ||
-      filePathLowercase.endsWith('.jpeg')) {
-    format = CompressFormat.jpeg;
-  } else if (filePathLowercase.endsWith('.png')) {
-    format = CompressFormat.png;
-  } else {
+  if (!(filePathLowercase.endsWith('.jpg') ||
+      filePathLowercase.endsWith('.jpeg') ||
+      filePathLowercase.endsWith('.png'))) {
     throw Exception(
         'Unsupported image format. Please upload a JPEG or PNG image.');
   }
@@ -25,8 +20,8 @@ Future<XFile> compressImage(XFile imageFile) async {
   var result = await FlutterImageCompress.compressAndGetFile(
     imageFile.path,
     targetPath,
-    quality: 88,
-    format: format,
+    quality: 70,
+    format: CompressFormat.jpeg,
   );
 
   return XFile(result!.path);

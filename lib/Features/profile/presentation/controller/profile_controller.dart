@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
 import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
+import 'package:idealize_new_version/Core/Utils/image_upload_utils.dart';
 import 'package:idealize_new_version/Features/Profile/domain/profile_repo.dart';
 import 'package:idealize_new_version/Features/edit_profile/domain/edit_profile_repo.dart';
 import 'package:idealize_new_version/app_repo.dart';
@@ -151,6 +152,7 @@ class ProfileController extends GetxController {
     Map<String, dynamic> bodyParams = {};
 
     if (image != null) {
+      image = await compressImage(image!);
       final attachedFile = await editRepo.uploadFile(
         image!.path,
         (image!.mimeType ?? 'image/jpeg').toMediaType(),
