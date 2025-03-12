@@ -424,13 +424,9 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
 
   Widget get _uploadedFile {
     final file = controller.pickedThumbnail.value;
-    final fileFromWeb = controller.updateProjectModel?.thumbnail?.id;
+    final webFile = controller.updateProjectModel?.thumbnail?.id;
 
-    if (file == null && controller.updateProjectModel == null) {
-      return const SizedBox();
-    }
-
-    if (fileFromWeb == null && controller.updateProjectModel != null) {
+    if (file == null && webFile == null) {
       return const SizedBox();
     }
 
@@ -449,7 +445,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                     height: 50,
                   )
                 : showImageFromNetwork(
-                    controller.updateProjectModel!.thumbnail!.id,
+                    webFile!,
                   )),
       ),
       trailing: IconButton(
@@ -482,6 +478,7 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
               createdAt: controller.updateProjectModel!.createdAt,
               thumbnail: null,
             );
+            controller.pickedThumbnail.refresh();
           }
         },
       ),

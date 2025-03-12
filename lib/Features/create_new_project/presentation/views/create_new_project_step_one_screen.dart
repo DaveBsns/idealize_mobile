@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
+import 'package:idealize_new_version/Core/Components/checkbox_btn_widget.dart';
+import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
+import 'package:idealize_new_version/Core/Utils/enums.dart';
 import 'package:idealize_new_version/Features/create_new_project/presentation/controller/create_new_project_controller.dart';
 import 'package:idealize_new_version/Features/create_new_project/presentation/widgets/tag_container_widget.dart';
 import '../../../../Core/Components/textfields_widget.dart';
@@ -82,7 +85,48 @@ class CreateNewProjectStepOneScreen
                     fontWeight: FontWeight.w400,
                     color: AppConfig().colors.txtColor,
                   )),
-              Gap(AppConfig().dimens.medium),
+              Gap(AppConfig().dimens.large),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Obx(
+                      () => SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CustomCheckboxButton(
+                          key: UniqueKey(),
+                          value: controller.checkboxValue.value,
+                          onTapped: () {
+                            if (controller.checkboxValue.value ==
+                                CustomCheckBoxValue.checked) {
+                              controller.checkboxValue.value =
+                                  CustomCheckBoxValue.unchecked;
+                            } else {
+                              controller.checkboxValue.value =
+                                  CustomCheckBoxValue.checked;
+                            }
+                            controller.update();
+                          },
+                        ),
+                      ),
+                    ),
+                    Gap(AppConfig().dimens.mediumSmall),
+                    Expanded(
+                      child: Text(
+                        AppStrings.rightsForMedia.tr,
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: AppColors().darkGrayColor,
+                                  fontSize: 13,
+                                ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -107,7 +151,9 @@ class CreateNewProjectStepOneScreen
                           : AppStrings.editAndSave.tr,
                   onTap: (controller.titleCtrl.text.isNotEmpty &&
                           controller.descriptionCtrl.text.isNotEmpty &&
-                          controller.selectedTags.isNotEmpty)
+                          controller.selectedTags.isNotEmpty &&
+                          controller.checkboxValue.value ==
+                              CustomCheckBoxValue.checked)
                       ? (controller.updateProjectModel != null
                           ? () => controller.updateProject(
                               isDraft: controller.updateProjectModel!.isDraft)
@@ -124,7 +170,9 @@ class CreateNewProjectStepOneScreen
                   onTap: ((controller.titleCtrl.text.isEmpty ||
                               controller.descriptionCtrl.text.isEmpty) ||
                           controller.loading.value ||
-                          controller.selectedTags.isEmpty)
+                          controller.selectedTags.isEmpty ||
+                          controller.checkboxValue.value !=
+                              CustomCheckBoxValue.checked)
                       ? null
                       : controller.createNewProjectStep2,
                 ),

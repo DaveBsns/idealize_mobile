@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
-import 'package:idealize_new_version/Core/Components/checkbox_btn_widget.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
@@ -40,47 +39,6 @@ class CreateNewProjectStepThreeScreen
               Gap(AppConfig().dimens.large),
               const StepThreeUploadFilewidget(),
               Gap(AppConfig().dimens.large),
-              if (controller.updateProjectModel == null)
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Obx(
-                        () => SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: CustomCheckboxButton(
-                            key: UniqueKey(),
-                            value: controller.checkboxValue.value,
-                            onTapped: () {
-                              if (controller.checkboxValue.value ==
-                                  CustomCheckBoxValue.checked) {
-                                controller.checkboxValue.value =
-                                    CustomCheckBoxValue.unchecked;
-                              } else {
-                                controller.checkboxValue.value =
-                                    CustomCheckBoxValue.checked;
-                              }
-                            },
-                          ),
-                        ),
-                      ),
-                      Gap(AppConfig().dimens.mediumSmall),
-                      Expanded(
-                        child: Text(
-                          AppStrings.rightsForMedia.tr,
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    color: AppColors().darkGrayColor,
-                                    fontSize: 13,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
             ],
           ),
         ),
