@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/colors.dart';
@@ -252,37 +252,91 @@ class ProjectDetailsController extends GetxController {
     replyCommentId.value = '';
   }
 
+  // Future<void> downloadProjectFile(CustomXFile file) async {
+  //   AppRepo().showLoading();
+
+  //   String url = '${AppConfig().baseFileUrl}/uploads/${file.name}';
+
+  //   String filename = file.name;
+
+  //   try {
+  //     // Get the document directory for iOS and Android
+  //     Directory docDir = await getApplicationDocumentsDirectory();
+
+  //     // Create a new directory in the application documents directory
+  //     Directory dir = Directory('${docDir.path}/Media/');
+
+  //     // Create the directory if it doesn't exist
+  //     if (!await dir.exists()) {
+  //       await dir.create(recursive: true);
+  //     }
+
+  //     // Download the file
+
+  //     var response = await http.get(Uri.parse(url));
+
+  //     // Write the response body to a file
+  //     var file = File('${dir.path}/$filename');
+  //     await file.writeAsBytes(
+  //       response.bodyBytes,
+  //     );
+  //   } catch (e) {
+  //     AppRepo().hideLoading();
+
+  //     AppRepo().showSnackbar(
+  //       label: AppStrings.error.tr,
+  //       text: AppStrings.downloadError.tr,
+  //       backgroundColor: AppColors().primaryColor,
+  //       position: SnackPosition.BOTTOM,
+  //     );
+  //   } finally {
+  //     AppRepo().hideLoading();
+
+  //     AppRepo().showSnackbar(
+  //       label: AppStrings.downloadComplete.tr,
+  //       text: AppStrings.mediaStoredPlace.tr,
+  //       backgroundColor: AppColors().primaryColor,
+  //       position: SnackPosition.BOTTOM,
+  //       duration: const Duration(seconds: 5),
+  //     );
+  //   }
+  // }
+
   Future<void> downloadProjectFile(CustomXFile file) async {
     AppRepo().showLoading();
 
-    String url = '${AppConfig().baseFileUrl}/uploads/${file.name}';
+    String url =
+        '${AppConfig().baseFileUrl}/uploads/resource/${file.uploadedId}';
 
     String filename = file.name;
 
+    print('url: $url');
     try {
       // Get the document directory for iOS and Android
       Directory docDir = await getApplicationDocumentsDirectory();
 
       // Create a new directory in the application documents directory
       Directory dir = Directory('${docDir.path}/Media/');
-
-      // Create the directory if it doesn't exist
       if (!await dir.exists()) {
         await dir.create(recursive: true);
       }
+      String filePath = '${dir.path}/$filename';
 
-      // Download the file
-
-      var response = await http.get(Uri.parse(url));
-
-      // Write the response body to a file
-      var file = File('${dir.path}/$filename');
-      await file.writeAsBytes(
-        response.bodyBytes,
+      // Use Dio for downloading the file with progress tracking
+      Dio dio = Dio();
+      await dio.download(
+        url,
+        filePath,
+        onReceiveProgress: (received, total) {
+          if (total != -1) {
+            print(
+                "Download Progress: ${(received / total * 100).toStringAsFixed(0)}%");
+            // Optionally update a progress indicator here
+          }
+        },
       );
     } catch (e) {
       AppRepo().hideLoading();
-
       AppRepo().showSnackbar(
         label: AppStrings.error.tr,
         text: AppStrings.downloadError.tr,
@@ -291,7 +345,6 @@ class ProjectDetailsController extends GetxController {
       );
     } finally {
       AppRepo().hideLoading();
-
       AppRepo().showSnackbar(
         label: AppStrings.downloadComplete.tr,
         text: AppStrings.mediaStoredPlace.tr,
