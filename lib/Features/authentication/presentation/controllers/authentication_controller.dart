@@ -29,26 +29,42 @@ class AuthenticationController extends GetxController {
     final username = usernameCtrl.text;
     final password = passwordCtrl.text;
 
-    if (username.isNotEmpty && password.isNotEmpty && username.isEmail) {
-      loading.value = true;
-      final response = await repo.login(username: username, password: password);
+    if (username.isEmpty || password.isEmpty) {
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: AppStrings.isEmpty.tr,
+        position: SnackPosition.BOTTOM,
+      );
+      return;
+    }
 
-      if (response != null &&
-          response.keys.isNotEmpty &&
-          response.keys.first == 'custom-response' &&
-          response['custom-response'] ==
-              ServiceHelperCustomResponse.activateAccount) {
-        loading.value = false;
-        showCodeBottomSheet();
-        return;
-      }
+    if (!username.isEmail) {
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: AppStrings.enterValidEmail.tr,
+        position: SnackPosition.BOTTOM,
+      );
+      return;
+    }
 
-      if (response != null) {
-        await AppRepo().loginUser(response);
-        Get.offAllNamed(AppConfig().routes.base);
-      } else {
-        loading.value = false;
-      }
+    loading.value = true;
+    final response = await repo.login(username: username, password: password);
+
+    if (response != null &&
+        response.keys.isNotEmpty &&
+        response.keys.first == 'custom-response' &&
+        response['custom-response'] ==
+            ServiceHelperCustomResponse.activateAccount) {
+      loading.value = false;
+      showCodeBottomSheet();
+      return;
+    }
+
+    if (response != null) {
+      await AppRepo().loginUser(response);
+      Get.offAllNamed(AppConfig().routes.base);
+    } else {
+      loading.value = false;
     }
   }
 
