@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>7</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -46,7 +46,7 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>We need access to your photo library to select photos</string>
+	<string>We need access to your photo library to select photos</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera to capture photos</string>
 	<key>NSDocumentsDirectory</key>
@@ -54,7 +54,7 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSFileProviderDomainUsageDescription</key>
-    <string>We need access to your files to select them</string>
+	<string>We need access to your files to select them</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 </dict>
