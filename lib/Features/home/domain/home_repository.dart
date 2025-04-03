@@ -8,9 +8,12 @@ abstract class HomeRepository {
     int page = 1,
     Tag? filteredByTag,
   });
-  Future<String?> archive({required String projectId});
+  Future<String?> archive({
+    required String projectId,
+    required String projectOwnerId,
+  });
   Future<bool> unarchive({required String archiveId});
   Future<int> unreadNotifications();
-  Future<bool> like({required String projectId});
+  Future<bool> like({required String projectId, required String ownerId});
   Future<bool> unlike({required String projectId});
 }

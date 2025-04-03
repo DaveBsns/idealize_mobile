@@ -7,6 +7,7 @@ class CommentService extends ServicesHelper {
     String projectId,
     String userId, {
     required String content,
+    required String projectOwnerId,
     String? parentCommentId,
   }) async {
     final response = await request(
@@ -18,6 +19,7 @@ class CommentService extends ServicesHelper {
         'userId': userId,
         'parentCommentId': parentCommentId,
         'content': content,
+        'projectOwnerId': projectOwnerId
       },
     );
 

@@ -1,5 +1,16 @@
 import 'package:idealize_new_version/Core/Data/Models/user_model.dart';
 
+class ProjectLikes {
+  final String id;
+  final User user;
+
+  ProjectLikes({required this.id, required this.user});
+
+  factory ProjectLikes.fromJson(Map<String, dynamic> json) {
+    return ProjectLikes(id: json['_id'], user: User.fromJson(json['userId']));
+  }
+}
+
 class ProjectComment {
   final String id;
   final User user;

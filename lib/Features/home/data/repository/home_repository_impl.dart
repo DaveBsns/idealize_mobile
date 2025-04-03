@@ -14,8 +14,15 @@ class HomeRepositoryImpl extends HomeRepository {
   final archiveService = ArchiveService();
 
   @override
-  Future<String?> archive({required String projectId}) async =>
-      await archiveService.archiveProject(projectId, AppRepo().user!.id);
+  Future<String?> archive({
+    required String projectId,
+    required String projectOwnerId,
+  }) async =>
+      await archiveService.archiveProject(
+        projectId,
+        AppRepo().user!.id,
+        projectOwnerId,
+      );
 
   @override
   Future<bool> unarchive({required String archiveId}) async =>
@@ -44,8 +51,10 @@ class HomeRepositoryImpl extends HomeRepository {
   }
 
   @override
-  Future<bool> like({required String projectId}) async {
-    return await likeService.likeProject(projectId, AppRepo().user!.id);
+  Future<bool> like(
+      {required String projectId, required String ownerId}) async {
+    return await likeService.likeProject(
+        projectId, AppRepo().user!.id, ownerId);
   }
 
   @override

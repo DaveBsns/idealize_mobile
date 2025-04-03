@@ -294,6 +294,7 @@ class TagSelectorScreen extends StatelessWidget {
     showModalBottomSheet(
       backgroundColor: Colors.white,
       context: context,
+      isScrollControlled: true,
       builder: (BuildContext context) => AddNewTagBottomsheetWidget(
         onAddedTagName: controller.addNewTag,
         tagName: controller.searchCtrl.text,

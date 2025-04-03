@@ -8,6 +8,7 @@ import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/Constants/routes.dart';
+import 'package:idealize_new_version/Core/Data/Models/project_comment_model.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/app_repo.dart';
@@ -17,6 +18,8 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
   final int comments;
   final String ownerName;
   final String ownerId;
+  final Project project;
+  final List<ProjectLikes> projectLikes;
   final List<ProjectUser> members;
   final VoidCallback? onTappedLike;
   final bool isLiked;
@@ -32,7 +35,9 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
     this.likes = 0,
     this.comments = 0,
     required this.ownerName,
+    required this.project,
     required this.ownerId,
+    this.projectLikes = const [],
     this.members = const [],
     this.onTappedLike,
     this.isLiked = false,
@@ -214,7 +219,9 @@ class ProjectDetailsInfoWidget extends StatelessWidget {
                   context: context,
                   isScrollControlled: true,
                   builder: (BuildContext context) {
-                    return const UserslikeBottomSheet();
+                    return UserslikeBottomSheet(
+                      likes: projectLikes,
+                    );
                   },
                 ),
                 child: Text(

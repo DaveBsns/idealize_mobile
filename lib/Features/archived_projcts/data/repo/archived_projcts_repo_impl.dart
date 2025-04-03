@@ -8,8 +8,15 @@ class ArchivedProjctsRepositoryImpl implements ArchivedProjctsRepository {
   final archiveService = ArchiveService();
 
   @override
-  Future<String?> archive({required String projectId}) async =>
-      await archiveService.archiveProject(projectId, AppRepo().user!.id);
+  Future<String?> archive({
+    required String projectId,
+    required String projectOwnerId,
+  }) async =>
+      await archiveService.archiveProject(
+        projectId,
+        AppRepo().user!.id,
+        projectOwnerId,
+      );
 
   @override
   Future<bool> unarchive({required String archiveId}) async =>

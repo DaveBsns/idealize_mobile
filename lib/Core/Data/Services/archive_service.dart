@@ -2,7 +2,7 @@ import 'package:idealize_new_version/Core/Data/Services/services_helper.dart';
 import 'package:idealize_new_version/Core/Utils/enums.dart';
 
 class ArchiveService extends ServicesHelper {
-  Future<String?> archiveProject(String projectId, String userId) async {
+  Future<String?> archiveProject(String projectId, String userId, String projectOwnerId) async {
     // print('Archiving project $projectId for user $userId...');
 
     final response = await request(
@@ -12,6 +12,7 @@ class ArchiveService extends ServicesHelper {
       body: {
         'projectId': projectId,
         'userId': userId,
+        'projectOwnerId': projectOwnerId
       },
     );
 

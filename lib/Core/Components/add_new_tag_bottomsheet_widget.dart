@@ -24,49 +24,53 @@ class AddNewTagBottomsheetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tagNameCtrl = TextEditingController(text: tagName);
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
-      child: SizedBox(
-        child: ColoredBox(
-          color: Colors.white,
-          child: Padding(
-            padding: AppConfig().dimens.medium.allPadding,
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Gap(
-                AppConfig().dimens.medium,
-              ),
-              Text(_tagName),
-              Gap(AppConfig().dimens.small),
-              SizedBox(
-                height: 60,
-                width: double.infinity,
-                child: CustomTextField(
-                  labelText: "${AppStrings.tagName.tr}...",
-                  icon: null,
-                  controller: tagNameCtrl,
-                ),
-              ),
-              Gap(
-                AppConfig().dimens.medium,
-              ),
-              CustomIconButton(
-                title: AppStrings.add.tr,
-                onTap: () {
-                  if (tagNameCtrl.text.isEmpty) {
-                    AppRepo().showSnackbar(
-                      label: AppStrings.error.tr,
-                      text: AppStrings.tagNameValid.tr,
-                    );
-                  } else {
-                    onAddedTagName(tagNameCtrl.text);
-                  }
-                },
-              ),
-              Gap(
-                AppConfig().dimens.medium,
-              ),
-            ]),
+    return SizedBox(
+      height: Get.height * 0.7,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20.0)),
+        child: SizedBox(
+          child: ColoredBox(
+            color: Colors.white,
+            child: Padding(
+              padding: AppConfig().dimens.medium.allPadding,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Gap(
+                      AppConfig().dimens.medium,
+                    ),
+                    Text(_tagName),
+                    Gap(AppConfig().dimens.small),
+                    SizedBox(
+                      height: 60,
+                      width: double.infinity,
+                      child: CustomTextField(
+                        labelText: "${AppStrings.tagName.tr}...",
+                        icon: null,
+                        controller: tagNameCtrl,
+                      ),
+                    ),
+                    Gap(
+                      AppConfig().dimens.medium,
+                    ),
+                    CustomIconButton(
+                      title: AppStrings.add.tr,
+                      onTap: () {
+                        if (tagNameCtrl.text.isEmpty) {
+                          AppRepo().showSnackbar(
+                            label: AppStrings.error.tr,
+                            text: AppStrings.tagNameValid.tr,
+                          );
+                        } else {
+                          onAddedTagName(tagNameCtrl.text);
+                        }
+                      },
+                    ),
+                    Gap(
+                      AppConfig().dimens.medium,
+                    ),
+                  ]),
+            ),
           ),
         ),
       ),

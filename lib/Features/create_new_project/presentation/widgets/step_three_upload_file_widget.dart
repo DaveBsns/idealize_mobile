@@ -277,6 +277,25 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                       itemCount: mediaFiles.length,
                       separatorBuilder: (context, index) => const Divider(),
                       itemBuilder: (context, index) {
+                        Widget tunb;
+
+                        if (mediaFiles[index].mediaType.mimeType ==
+                            'video/mp4') {
+                          tunb = const Icon(
+                            Iconsax.video_circle,
+                            color: Colors.white,
+                          );
+                        } else {
+                          tunb = mediaFiles[index].isUploadedMedia
+                              ? showImageFromNetwork(
+                                  mediaFiles[index].uploadedId,
+                                )
+                              : Image.file(
+                                  File(mediaFiles[index].path),
+                                  fit: BoxFit.cover,
+                                );
+                        }
+
                         return ListTile(
                           title: Text(mediaFiles[index].name, maxLines: 1),
                           leading: Container(
@@ -287,16 +306,8 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(6),
-                              child: mediaFiles[index].isUploadedMedia
-                                  ? showImageFromNetwork(
-                                      mediaFiles[index].uploadedId,
-                                    )
-                                  : Image.file(
-                                      File(mediaFiles[index].path),
-                                      fit: BoxFit.cover,
-                                    ),
-                            ),
+                                borderRadius: BorderRadius.circular(6),
+                                child: tunb),
                           ),
                           trailing: IconButton(
                             icon: const Icon(

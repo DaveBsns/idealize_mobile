@@ -45,8 +45,10 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                   color: AppColors().purpleColor,
                 ),
                 onPressed: () async {
-                  await controller
-                      .toggleArchive((controller.project?.id ?? ''));
+                  await controller.toggleArchive(
+                    (controller.project?.id ?? ''),
+                    (controller.project?.owner?.id ?? ''),
+                  );
                 },
               ))
         ],
@@ -122,6 +124,8 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
                           children: [
                             Obx(
                               () => ProjectDetailsInfoWidget(
+                                project: controller.project!,
+                                projectLikes: controller.likes,
                                 onReportProjectTapped: (reason) {
                                   controller.reportProject(reason);
                                 },

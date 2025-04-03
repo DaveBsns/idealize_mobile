@@ -119,7 +119,9 @@ class TeamMembersContainerWidget extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            backgroundColor: AppConfig().colors.greenColor,
+                            backgroundColor: (selectedUser.pendingUser ?? false)
+                                ? AppConfig().colors.lightGrayColor
+                                : AppConfig().colors.greenColor,
                             deleteIcon: const Icon(
                               Icons.close,
                               size: 18.0,

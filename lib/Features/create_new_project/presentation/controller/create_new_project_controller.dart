@@ -558,8 +558,8 @@ class CreateNewProjectController extends GetxController {
         } else {
           if ((['.jpg', '.png', '.gif', '.jpeg', '.webp']
                       .contains(fileExtension) &&
-                  fileSize <= 100 * 1024 * 1024) ||
-              fileSize <= 150 * 1024 * 1024) {
+                  fileSize <= 10 * 1024 * 1024) ||
+              fileSize <= 10 * 1024 * 1024) {
             // Compress the image if it's a JPEG, PNG or WEBP file
             if (['.jpg', '.png', '.jpeg', '.webp'].contains(fileExtension)) {
               try {
@@ -646,6 +646,7 @@ class CreateNewProjectController extends GetxController {
             surname: e.lastName,
             status: true,
             updatedAt: DateTime.now(),
+            pendingUser: false,
           ),
         ) ??
         []);
@@ -659,6 +660,7 @@ class CreateNewProjectController extends GetxController {
               surname: e.lastName,
               status: true,
               updatedAt: DateTime.now(),
+              pendingUser: true,
             ),
           ) ??
           [],

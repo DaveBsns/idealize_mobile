@@ -19,8 +19,9 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
   Future<String?> archive(
     String projectId,
     String userId,
+    String projectOwnerId
   ) async {
-    return await ArchiveService().archiveProject(projectId, userId);
+    return await ArchiveService().archiveProject(projectId, userId, projectOwnerId);
   }
 
   @override
@@ -28,6 +29,7 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
     String projectId,
     String userId, {
     required String content,
+    required String projectOwnerId,
     String? parentCommentId,
   }) async {
     return await CommentService().comment(
@@ -35,6 +37,7 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
       userId,
       content: content,
       parentCommentId: parentCommentId,
+      projectOwnerId: projectOwnerId,
     );
   }
 
@@ -58,9 +61,10 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
   @override
   Future<bool> like(
     String projectId,
+    String ownerId,
     String userId,
   ) async {
-    return await LikeService().likeProject(projectId, userId);
+    return await LikeService().likeProject(projectId, userId, ownerId);
   }
 
   @override
@@ -87,9 +91,18 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
       type: type,
     );
   }
-  
+
   @override
   Future<void> deleteComment(String commentId) async {
     await CommentService().deleteComment(commentId);
+  }
+
+  @override
+  Future<List<ProjectLikes>> likes(String projectId, {int page = 1}) async {
+    final result = await LikeService().likes(projectId);
+
+    return [
+      for (final item in result['likes']) ProjectLikes.fromJson(item),
+    ];
   }
 }

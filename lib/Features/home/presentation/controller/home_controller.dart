@@ -92,7 +92,7 @@ class HomeController extends GetxController {
     if (project.isLiked) {
       await repo.unlike(projectId: project.id);
     } else {
-      await repo.like(projectId: project.id);
+      await repo.like(projectId: project.id, ownerId: project.owner!.id);
     }
     AppRepo().hideLoading();
 
@@ -150,7 +150,10 @@ class HomeController extends GetxController {
         updateProjectArchiveInList(project, archive: false, archiveId: null);
       }
     } else {
-      final archiveId = await repo.archive(projectId: project.id);
+      final archiveId = await repo.archive(
+        projectId: project.id,
+        projectOwnerId: project.owner!.id,
+      );
       if (archiveId != null) {
         updateProjectArchiveInList(project,
             archive: true, archiveId: archiveId);

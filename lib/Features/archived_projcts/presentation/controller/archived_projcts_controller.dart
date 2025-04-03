@@ -47,7 +47,7 @@ class ArchivedProjctsController extends GetxController {
     if (project.isLiked) {
       await homeRepo.unlike(projectId: project.id);
     } else {
-      await homeRepo.like(projectId: project.id);
+      await homeRepo.like(projectId: project.id, ownerId: project.owner!.id);
     }
     AppRepo().hideLoading();
 

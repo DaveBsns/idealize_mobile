@@ -4,9 +4,13 @@ import '../../../Core/Data/Models/project_comment_model.dart';
 
 abstract class ProjectDetailsRepository {
   Future<Project> projectDetails(String projectId);
-  Future<bool> like(String projectId, String userId);
+  Future<bool> like(String projectId, String ownerId, String userId);
   Future<bool> unlike(String likeId);
   Future<List<ProjectComment>> comments(
+    String projectId, {
+    int page = 1,
+  });
+  Future<List<ProjectLikes>> likes(
     String projectId, {
     int page = 1,
   });
@@ -14,9 +18,11 @@ abstract class ProjectDetailsRepository {
     String projectId,
     String userId, {
     required String content,
+    required String projectOwnerId,
     String? parentCommentId,
   });
-  Future<String?> archive(String projectId, String userId);
+  Future<String?> archive(
+      String projectId, String userId, String projectOwnerId);
   Future<bool> unarchive(String archiveId);
   Future<dynamic> join(
     String projectId,

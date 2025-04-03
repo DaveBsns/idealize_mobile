@@ -70,7 +70,7 @@ class UserSuggestionProfileController extends GetxController {
     if (project.isLiked) {
       await homeRepo.unlike(projectId: project.id);
     } else {
-      await homeRepo.like(projectId: project.id);
+      await homeRepo.like(projectId: project.id, ownerId: project.owner!.id);
     }
     AppRepo().hideLoading();
 
@@ -86,7 +86,10 @@ class UserSuggestionProfileController extends GetxController {
         _refresh();
       }
     } else {
-      final archiveId = await homeRepo.archive(projectId: project.id);
+      final archiveId = await homeRepo.archive(
+        projectId: project.id,
+        projectOwnerId: project.owner!.id,
+      );
       if (archiveId != null) {
         _refresh();
       }

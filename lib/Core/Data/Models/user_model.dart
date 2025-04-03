@@ -17,6 +17,7 @@ class User {
   final List<Tag> interestedCourses;
   final List<Tag> studyPrograms;
   final String? username;
+  final bool? pendingUser;
 
   User({
     required this.id,
@@ -33,6 +34,7 @@ class User {
     this.interestedCourses = const [],
     this.interestedTags = const [],
     this.studyPrograms = const [],
+    this.pendingUser,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {

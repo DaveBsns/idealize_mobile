@@ -45,6 +45,7 @@ class ProjectDetailsController extends GetxController {
   RxInt isLikedValue = 0.obs;
   RxString replyCommentId = ''.obs;
   RxList<ProjectComment> comments = RxList([]);
+  List<ProjectLikes> likes = [];
 
   int currentCommentsPage = 1;
   RxString joinedStatus = RxString('');
@@ -82,6 +83,7 @@ class ProjectDetailsController extends GetxController {
     project = result;
 
     await initComments();
+    await initLikes();
     joinedStatus.value = project!.joinedStatus ?? '';
     isLiked.value = project!.isLiked;
     isArchived.value = project!.isArchived ?? false;
@@ -112,7 +114,7 @@ class ProjectDetailsController extends GetxController {
       isLikedValue.value -= 1;
       homeViewModel.refreshContent();
     } else {
-      await repo.like(project!.id, userId);
+      await repo.like(project!.id, project!.owner!.id, userId);
       isLikedValue.value += 1;
       homeViewModel.refreshContent();
     }
@@ -122,10 +124,14 @@ class ProjectDetailsController extends GetxController {
 
   Future<void> comment() async {
     if (commentCtrl.text.trim().isNotEmpty) {
-      final status = await repo.leaveComment(project!.id, AppRepo().user!.id,
-          content: commentCtrl.text,
-          parentCommentId:
-              replyCommentId.value.isNotEmpty ? replyCommentId.value : null);
+      final status = await repo.leaveComment(
+        project!.id,
+        AppRepo().user!.id,
+        content: commentCtrl.text,
+        parentCommentId:
+            replyCommentId.value.isNotEmpty ? replyCommentId.value : null,
+        projectOwnerId: project!.owner!.id,
+      );
 
       if (status) {
         initComments();
@@ -141,6 +147,11 @@ class ProjectDetailsController extends GetxController {
     final commentsFromServer = await repo.comments(project!.id);
     comments.clear();
     comments.addAll(commentsFromServer);
+  }
+
+  Future<void> initLikes() async {
+    likes.clear();
+    likes.addAll(await repo.likes(project!.id));
   }
 
   // TODO asign it to UI widget
@@ -355,9 +366,9 @@ class ProjectDetailsController extends GetxController {
     }
   }
 
-  Future<void> toggleArchive(String projectId) async {
+  Future<void> toggleArchive(String projectId, String projectOwnerId) async {
     if (!isArchived.value) {
-      final result = await repo.archive(projectId, AppRepo().user!.id);
+      final result = await repo.archive(projectId, AppRepo().user!.id, projectOwnerId);
       if (result != null) {
         archiveId.value = result;
         isArchived.value = true;
