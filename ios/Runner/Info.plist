@@ -46,15 +46,15 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need access to your photo library to select photos</string>
+	<string>We need photo library access so you can select images to upload or use in the app.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>We need access to your camera to capture photos</string>
+	<string>We need camera access so you can take photos in the app to upload.</string>
 	<key>NSDocumentsDirectory</key>
 	<string>File Picker</string>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSFileProviderDomainUsageDescription</key>
-	<string>We need access to your files to select them</string>
+	<string>We need file access so you can select documents to upload or attach.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 </dict>
