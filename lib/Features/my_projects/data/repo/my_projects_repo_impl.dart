@@ -4,8 +4,13 @@ import '../../domain/my_projects_repo.dart';
 
 class MyProjectsRepositoryImpl implements MyProjectsRepository {
   @override
-  Future<void> delete(projectId) async {
-    await ProjectService().deleteProject(projectId);
+  Future<bool> delete(projectId) async {
+    try {
+      final res = await ProjectService().deleteProject(projectId);
+      return (res != null);
+    } catch (e) {
+      return false;
+    }
   }
 
   @override

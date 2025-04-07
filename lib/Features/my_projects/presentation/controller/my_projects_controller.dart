@@ -87,22 +87,34 @@ class MyProjectsController extends GetxController {
         AppRepo().showLoading();
         update();
         await Future.delayed(const Duration(milliseconds: 1000));
-        await repo.delete(project.id);
-        // update projects page
-        final createNewProjectController =
-            Get.find<CreateNewProjectController>();
-        await createNewProjectController.refreshContent();
+        try {
+          final res = await repo.delete(project.id);
+          // update projects page
+          final createNewProjectController =
+              Get.find<CreateNewProjectController>();
+          await createNewProjectController.refreshContent();
 
-        if (tabIndex.value == 0) {
-          myProjects.removeWhere((element) => element.id == project.id);
-        } else {
-          draftProjects.removeWhere((element) => element.id == project.id);
+          if (res) {
+            if (tabIndex.value == 0) {
+              myProjects.removeWhere((element) => element.id == project.id);
+            } else {
+              draftProjects.removeWhere((element) => element.id == project.id);
+            }
+            tabIndex.refresh();
+            update();
+            // refreshContent();
+          }
+
+          AppRepo().hideLoading();
+          Get.back();
+        } catch (er) {
+          AppRepo().hideLoading();
+          Get.back();
+          AppRepo().showSnackbar(
+            label: AppStrings.error.tr,
+            text: er.toString(),
+          );
         }
-        tabIndex.refresh();
-        update();
-        // refreshContent();
-        AppRepo().hideLoading();
-        Get.back();
       },
       buttonTextStyle: TextStyle(
         color: AppConfig().colors.primaryColor,

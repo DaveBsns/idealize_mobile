@@ -416,5 +416,9 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.userForbiddenCaption: 'User is not activated',
         AppStrings.userBlockedAdminCaption: 'User is blocked by admin',
         AppStrings.tryAgain: 'Try Again',
+        AppStrings.teamMember: "Member",
+        AppStrings.weakPassword: "Password is weak, follow the requirements",
+        AppStrings.emailShouldBeHHNHint:
+            "Your email should be @hs-heilbronn.de or @stud.hs-heilbronn.de",
       };
 }

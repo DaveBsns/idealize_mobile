@@ -139,6 +139,15 @@ class RegisterController extends GetxController {
       return;
     }
 
+    if(isStrongPassword(passwordCtrl.text) == false){
+      AppRepo().showSnackbar(
+        label: AppStrings.error.tr,
+        text: AppStrings.weakPassword.tr,
+        position: SnackPosition.TOP,
+      );
+      return;
+    }
+
     if (checkboxValue.value != CustomCheckBoxValue.checked) {
       checkboxValue.value = CustomCheckBoxValue.error;
 

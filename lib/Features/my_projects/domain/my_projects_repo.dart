@@ -1,7 +1,7 @@
 import '../../../Core/Data/Models/project_model.dart';
 
 abstract class MyProjectsRepository {
-  Future<void> delete(projectId);
+  Future<bool> delete(projectId);
   Future<List<Project>> fetchAll({
     int page = 1,
     String? sortField,

@@ -7,6 +7,7 @@ import 'package:idealize_new_version/Core/Components/empty_list_widget.dart';
 
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
+import 'package:idealize_new_version/app_repo.dart';
 
 class ProjectItemListWidget extends StatelessWidget {
   final Function(Project)? onTappedDeleteProject;
@@ -51,6 +52,7 @@ class ProjectItemListWidget extends StatelessWidget {
             onTappedOpenProjectDetails?.call(projects[index]);
           },
           child: ProjectCardMyProjectsWidget(
+            mine: projects[index].owner?.id == AppRepo().user?.id,
             onDeleteProject: () => onTappedDeleteProject?.call(projects[index]),
             btnTitle: isEditLabel
                 ? AppStrings.editProject.tr

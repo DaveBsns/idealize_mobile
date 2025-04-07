@@ -121,8 +121,8 @@ class ProjectService extends ServicesHelper {
     );
   }
 
-  Future<void> deleteProject(String projectId) async {
-    await request(
+  Future<dynamic> deleteProject(String projectId) async {
+    return await request(
       '$baseURL/projects/$projectId',
       serviceType: ServiceType.delete,
       requiredDefaultHeader: true,

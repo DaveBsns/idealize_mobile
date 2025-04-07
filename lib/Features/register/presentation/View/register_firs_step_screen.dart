@@ -55,7 +55,7 @@ class RegisterFirstStepScreen extends GetView<RegisterController> {
               controller: controller.firstnameCtrl,
               labelText: AppStrings.firstName.tr,
               validator: (newTextfieldValue) {
-                if (newTextfieldValue!.isEmpty) {
+                if (newTextfieldValue!.trim().isEmpty) {
                   controller.firstNameCheck = false;
                   return AppStrings.isEmpty.tr;
                 } else {
@@ -75,7 +75,7 @@ class RegisterFirstStepScreen extends GetView<RegisterController> {
               controller: controller.surnameCtrl,
               labelText: AppStrings.lastName.tr,
               validator: (newTextfieldValue) {
-                if (newTextfieldValue!.isEmpty) {
+                if (newTextfieldValue!.trim().isEmpty) {
                   controller.surnameCheck = false;
                   return AppStrings.isEmpty.tr;
                 } else {
@@ -89,6 +89,17 @@ class RegisterFirstStepScreen extends GetView<RegisterController> {
               "${AppStrings.email.tr}: *",
               style: textTheme.titleMedium,
             ),
+            Container(
+              margin: const EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                AppStrings.emailShouldBeHHNHint.tr,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppConfig().colors.lightGrayColor,
+                ),
+              ),
+            ),
             Gap(AppConfig().dimens.small),
             CustomTextField(
               key: const Key('auth_email'),
@@ -99,8 +110,17 @@ class RegisterFirstStepScreen extends GetView<RegisterController> {
                   controller.emailCheck = false;
                   return AppStrings.isEmpty.tr;
                 } else {
-                  controller.emailCheck = true;
-                  return null;
+                  final email = newTextfieldValue.trim();
+                  if (email.contains('@')) {
+                    final domain = email.split('@')[1];
+                    if (['hs-heilbronn.de', 'stud.hs-heilbronn.de']
+                        .contains(domain)) {
+                      controller.emailCheck = true;
+                      return null;
+                    }
+                  }
+                  controller.emailCheck = false;
+                  return AppStrings.emailShouldBeHHNHint.tr;
                 }
               },
             ),

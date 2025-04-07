@@ -198,6 +198,7 @@ class ProjectCardMyProjectsWidget extends StatelessWidget {
   final VoidCallback? onDeleteProject;
   final VoidCallback? onTapLikeProject;
   final VoidCallback? onTapCommentProject;
+  final bool mine;
 
   const ProjectCardMyProjectsWidget({
     super.key,
@@ -207,6 +208,7 @@ class ProjectCardMyProjectsWidget extends StatelessWidget {
     this.onDeleteProject,
     this.onTapLikeProject,
     this.onTapCommentProject,
+    this.mine = true,
   });
 
   @override
@@ -243,12 +245,35 @@ class ProjectCardMyProjectsWidget extends StatelessWidget {
                         : project.createdAt.toFullDate(),
                   ),
                 ),
-                IconButton(
+                if (mine)
+                  IconButton(
                     onPressed: onDeleteProject,
                     icon: Icon(
                       Iconsax.trash,
                       color: AppConfig().colors.darkGrayColor,
-                    ))
+                    ),
+                  )
+                else
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppConfig().colors.primaryColor,
+                      borderRadius: BorderRadius.circular(
+                        30,
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 3.5,
+                    ),
+                    margin: const EdgeInsets.only(top: 15),
+                    child: Text(
+                      AppStrings.teamMember.tr,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
               ],
             ),
             Text(

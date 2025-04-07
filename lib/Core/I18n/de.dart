@@ -425,5 +425,10 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.userBlockedAdminCaption:
             "Dieser Benutzer wurde von einem Admin geblockt",
         AppStrings.tryAgain: 'Erneut versuchen',
+        AppStrings.teamMember: "Mitglied",
+        AppStrings.weakPassword:
+            "Passwort ist schwach, bitte die Anforderungen erfüllen",
+        AppStrings.emailShouldBeHHNHint:
+            "Ihre E-Mail-Adresse sollte @hs-heilbronn.de oder @stud.hs-heilbronn.de sein",
       };
 }

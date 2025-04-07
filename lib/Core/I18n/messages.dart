@@ -369,4 +369,8 @@ class AppStrings {
   static const String userForbiddenCaption = "user_forbidden_caption";
   static const String userBlockedAdminCaption = "user_blocked_admin_caption";
   static const String tryAgain = "tryAgain";
+  static const String teamMember = "teamMember";
+  static const String weakPassword = "weakPassword";
+
+  static const String emailShouldBeHHNHint = "emailShouldBeHHNHint";
 }

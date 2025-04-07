@@ -32,11 +32,24 @@ class AuthenticationDataScreen extends GetView<AuthenticationController> {
               AppStrings.email.tr,
               style: textTheme.titleMedium,
             ),
+            Container(
+              margin: const EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                AppStrings.emailShouldBeHHNHint.tr,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppConfig().colors.lightGrayColor,
+                ),
+              ),
+            ),
             Gap(AppConfig().dimens.small),
             CustomTextField(
               key: const Key('auth_username'),
               controller: controller.usernameCtrl,
               labelText: AppStrings.emailHint.tr,
+              textInputAction: TextInputAction.done,
+              onEditingComplete: () => controller.signIn(),
             ),
             Gap(AppConfig().dimens.medium),
             Text(
@@ -48,6 +61,8 @@ class AuthenticationDataScreen extends GetView<AuthenticationController> {
               key: const Key('auth_password'),
               controller: controller.passwordCtrl,
               labelText: AppStrings.passwordHint.tr,
+              textInputAction: TextInputAction.done,
+              onEditingComplete: () => controller.signIn(),
               isPassword: true,
               secondIcon: Icons.remove_red_eye,
               onSecondIconPressed: () {
