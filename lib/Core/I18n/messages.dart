@@ -373,4 +373,7 @@ class AppStrings {
   static const String weakPassword = "weakPassword";
 
   static const String emailShouldBeHHNHint = "emailShouldBeHHNHint";
+  static const String storageAccessFailed = "storageAccessFailed";
+  static const String downloadFailed = "downloadFailed";
+  static const String couldNotOpenDownloadedFile = "couldNotOpenDownloadedFile";
 }
