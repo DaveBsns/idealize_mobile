@@ -15,6 +15,7 @@ import 'package:idealize_new_version/Core/Data/Models/project_model.dart';
 // import 'package:idealize_new_version/Core/Data/Services/report_service.dart';
 import 'package:idealize_new_version/Features/home/presentation/controller/home_controller.dart';
 import 'package:idealize_new_version/app_repo.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../domain/project_details_repo.dart';
@@ -318,57 +319,47 @@ class ProjectDetailsController extends GetxController {
 
     String url =
         '${AppConfig().baseFileUrl}/uploads/resource/${file.uploadedId}';
-
     String filename = file.name;
 
-    print('url: $url');
     try {
-      // Get the document directory for iOS and Android
-      Directory docDir = await getApplicationDocumentsDirectory();
+      Directory? dir = Platform.isAndroid
+          ? await getExternalStorageDirectory()
+          : await getApplicationDocumentsDirectory();
 
-      // Create a new directory in the application documents directory
-      Directory dir = Directory('${docDir.path}/Media/');
-      if (!await dir.exists()) {
-        await dir.create(recursive: true);
+      if (dir == null) throw Exception(AppStrings.storageAccessFailed.tr);
+
+      final downloadDir = Directory(
+          '${dir.path}/materials/${project?.title.replaceAll(' ', '_')}');
+      if (!await downloadDir.exists()) {
+        await downloadDir.create(recursive: true);
       }
-      String filePath = '${dir.path}/$filename';
 
-      // Use Dio for downloading the file with progress tracking
-      Dio dio = Dio();
-      await dio.download(
-        url,
-        filePath,
-        onReceiveProgress: (received, total) {
-          if (total != -1) {
-            print(
-                "Download Progress: ${(received / total * 100).toStringAsFixed(0)}%");
-            // Optionally update a progress indicator here
-          }
-        },
-      );
-    } catch (e) {
+      String filePath = '${downloadDir.path}/$filename';
+
+      await Dio().download(url, filePath);
       AppRepo().hideLoading();
+
+      final openResult = await OpenFilex.open(filePath);
+      if (openResult.type != ResultType.done) {
+        AppRepo().showSnackbar(
+          label: AppStrings.error.tr,
+          text: AppStrings.couldNotOpenDownloadedFile.tr,
+        );
+      }
+    } catch (e) {
       AppRepo().showSnackbar(
-        label: AppStrings.error.tr,
-        text: AppStrings.downloadError.tr,
-        backgroundColor: AppColors().primaryColor,
-        position: SnackPosition.BOTTOM,
+        label: AppStrings.downloadFailed.tr,
+        text: '${AppStrings.error.tr}: ${e.toString()}',
       );
     } finally {
       AppRepo().hideLoading();
-      AppRepo().showSnackbar(
-        label: AppStrings.downloadComplete.tr,
-        text: AppStrings.mediaStoredPlace.tr,
-        backgroundColor: AppColors().primaryColor,
-        position: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 5),
-      );
     }
   }
 
   Future<void> toggleArchive(String projectId, String projectOwnerId) async {
     if (!isArchived.value) {
-      final result = await repo.archive(projectId, AppRepo().user!.id, projectOwnerId);
+      final result =
+          await repo.archive(projectId, AppRepo().user!.id, projectOwnerId);
       if (result != null) {
         archiveId.value = result;
         isArchived.value = true;

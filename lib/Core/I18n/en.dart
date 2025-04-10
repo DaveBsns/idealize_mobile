@@ -420,5 +420,8 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.weakPassword: "Password is weak, follow the requirements",
         AppStrings.emailShouldBeHHNHint:
             "Your email should be @hs-heilbronn.de or @stud.hs-heilbronn.de",
+        AppStrings.storageAccessFailed: "Could not access storage",
+        AppStrings.downloadFailed: "Download failed",
+        AppStrings.couldNotOpenDownloadedFile: "Could not open downloaded file",
       };
 }

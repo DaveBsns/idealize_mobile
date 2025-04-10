@@ -151,8 +151,16 @@ class ProjectMaterialWidget extends StatelessWidget {
                               color: mediaFiles[index].fileColor,
                               borderRadius: BorderRadius.circular(6),
                             ),
-                            child: showImageFromNetwork(
-                                mediaFiles[index].uploadedId),
+                            child: mediaFiles[index].fileIcon == Icons.image
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(6),
+                                    child: showImageFromNetwork(
+                                        mediaFiles[index].uploadedId),
+                                  )
+                                : Icon(
+                                    mediaFiles[index].fileIcon,
+                                    color: Colors.white,
+                                  ),
                           ),
                           trailing: IconButton(
                             icon: Icon(

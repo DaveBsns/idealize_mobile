@@ -430,5 +430,10 @@ class DeLanguageData extends LanguageDataKeys {
             "Passwort ist schwach, bitte die Anforderungen erfüllen",
         AppStrings.emailShouldBeHHNHint:
             "Ihre E-Mail-Adresse sollte @hs-heilbronn.de oder @stud.hs-heilbronn.de sein",
+        AppStrings.storageAccessFailed:
+            "Konnte nicht auf den Speicher zugreifen",
+        AppStrings.downloadFailed: "Download fehlgeschlagen",
+        AppStrings.couldNotOpenDownloadedFile:
+            "Konnte die heruntergeladene Datei nicht öffnen",
       };
 }
