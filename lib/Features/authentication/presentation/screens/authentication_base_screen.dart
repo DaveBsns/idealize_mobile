@@ -59,6 +59,19 @@ class AuthenticationBaseScreen extends GetView<AuthenticationController> {
                             .copyWith(color: AppConfig().colors.lightBlue),
                         textAlign: TextAlign.center)
                     .paddingSymmetric(horizontal: AppConfig().dimens.medium),
+                if (AppConfig().baseFileUrl.contains('-dev'))
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text("Staging version",
+                            style: textTheme.headlineMedium!.copyWith(
+                              color: AppConfig().colors.lightBlue,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 14,
+                            ),
+                            textAlign: TextAlign.center)
+                        .paddingSymmetric(
+                            horizontal: AppConfig().dimens.medium),
+                  ),
                 Gap(AppConfig().dimens.medium),
               ],
             ),
