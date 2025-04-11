@@ -78,12 +78,8 @@ class TagsContainer extends StatelessWidget {
                     ),
                   ),
                   Flexible(
-                    child: CustomOutlineIconButton(
-                      title: AppStrings.addTags.tr,
-                      icon: const Icon(Iconsax.add),
-                      width: 160,
-                      height: 45,
-                      onTap: () {
+                    child: IconButton(
+                      onPressed: () {
                         Get.to(
                           () => TagSelectorScreen(
                             title: AppStrings.tags.tr,
@@ -100,6 +96,11 @@ class TagsContainer extends StatelessWidget {
                           ),
                         );
                       },
+                      icon: Icon(
+                        Iconsax.add_circle,
+                        color: AppColors().primaryColor,
+                        size: 28,
+                      ),
                     ),
                   ),
                 ],

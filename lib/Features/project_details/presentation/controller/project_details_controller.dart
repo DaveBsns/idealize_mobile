@@ -323,10 +323,10 @@ class ProjectDetailsController extends GetxController {
 
     try {
       Directory? dir = Platform.isAndroid
-          ? await getExternalStorageDirectory()
+          ? Directory('/storage/emulated/0/Download')
           : await getApplicationDocumentsDirectory();
 
-      if (dir == null) throw Exception(AppStrings.storageAccessFailed.tr);
+      // if (dir == null) throw Exception(AppStrings.storageAccessFailed.tr);
 
       final downloadDir = Directory(
           '${dir.path}/materials/${project?.title.replaceAll(' ', '_')}');

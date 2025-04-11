@@ -423,5 +423,14 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.storageAccessFailed: "Could not access storage",
         AppStrings.downloadFailed: "Download failed",
         AppStrings.couldNotOpenDownloadedFile: "Could not open downloaded file",
+        AppStrings.faq: "FAQ",
+        AppStrings.faq1:
+            "Where do my downloaded materials go after I click download?",
+        AppStrings.faq1A: """
+Downloads are usually saved in your device’s:
+
+Android: Files > Downloads > materials > {project_name}
+iOS: Files app > Downloads > materials > {project_name}
+        """,
       };
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 
 class CustomRow extends StatelessWidget {
@@ -17,33 +16,32 @@ class CustomRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Expanded(
-            child: Text(
-          lable,
-          style: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 16,
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            lable,
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+            ),
           ),
-        )),
-        Gap(AppConfig().dimens.extraLarge),
-        Expanded(
-            flex: 3,
-            child: TextField(
-              controller: controller,
-              onChanged: onChanged,
-              decoration: InputDecoration(
-                hintText: lableValue,
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppConfig().colors.primaryColor,
-                  ),
+          TextField(
+            controller: controller,
+            onChanged: onChanged,
+            decoration: InputDecoration(
+              hintText: lableValue,
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: AppConfig().colors.primaryColor,
                 ),
               ),
-            )),
-      ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -376,4 +376,8 @@ class AppStrings {
   static const String storageAccessFailed = "storageAccessFailed";
   static const String downloadFailed = "downloadFailed";
   static const String couldNotOpenDownloadedFile = "couldNotOpenDownloadedFile";
+
+  static const String faq = "faq";
+  static const String faq1 = "faq1";
+  static const String faq1A = "faq1A";
 }

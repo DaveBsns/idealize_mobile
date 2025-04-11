@@ -435,5 +435,14 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.downloadFailed: "Download fehlgeschlagen",
         AppStrings.couldNotOpenDownloadedFile:
             "Konnte die heruntergeladene Datei nicht öffnen",
+        AppStrings.faq: "FAQ",
+        AppStrings.faq1:
+            "Wohin gehen meine heruntergeladenen Materialien, nachdem ich auf Download geklickt habe?",
+        AppStrings.faq1A: """
+Downloads werden in der Regel im Speicher Ihres Geräts gespeichert:
+
+Android: Dateien > Downloads > Materialien > {Name des Projekts}
+iOS: Dateien-App > Downloads > Materialien > {Name des Projekts}
+        """,
       };
 }

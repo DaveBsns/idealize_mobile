@@ -124,7 +124,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                   lableValue: AppStrings.firstNameHint.tr,
                   controller: controller.firstNameCtrl,
                 ),
-                Gap(AppConfig().dimens.large),
+                Gap(AppConfig().dimens.small),
                 CustomRow(
                   lable: AppStrings.lastName.tr,
                   lableValue: AppStrings.lastNameHint.tr,

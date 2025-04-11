@@ -1,4 +1,4 @@
-package com.example.idealize_new_version
+package com.idealize.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

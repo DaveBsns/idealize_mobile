@@ -98,7 +98,10 @@ class AddLinksContainer extends StatelessWidget {
                         text: AppStrings.fillAllFields.tr);
                   }
                 },
-                icon: const Icon(Iconsax.add),
+                icon: const Icon(
+                  Iconsax.add_circle,
+                  size: 28,
+                ),
                 color: AppConfig().colors.primaryColor,
                 iconSize: 28,
               ),

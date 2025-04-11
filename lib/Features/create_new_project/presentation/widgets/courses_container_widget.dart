@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
+import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/Data/Models/tag_model.dart';
@@ -78,12 +79,8 @@ class CoursesContainerWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  CustomOutlineIconButton(
-                    title: AppStrings.addCourses.tr,
-                    icon: const Icon(Iconsax.add),
-                    width: 160,
-                    height: 45,
-                    onTap: () {
+                  IconButton(
+                    onPressed: () {
                       Get.to(
                         () => TagSelectorScreen(
                           title: AppStrings.courses.tr,
@@ -96,6 +93,11 @@ class CoursesContainerWidget extends StatelessWidget {
                         ),
                       );
                     },
+                    icon: Icon(
+                      Iconsax.add_circle,
+                      color: AppColors().primaryColor,
+                      size: 28,
+                    ),
                   ),
                 ],
               ),

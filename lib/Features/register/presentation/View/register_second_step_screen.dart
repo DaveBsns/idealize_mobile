@@ -81,12 +81,8 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black),
                               ),
-                              CustomOutlineIconButton(
-                                title: AppStrings.addInterest.tr,
-                                icon: const Icon(Iconsax.add),
-                                width: 160,
-                                height: 45,
-                                onTap: () {
+                              IconButton(
+                                onPressed: () {
                                   Get.to(
                                     () => TagSelectorScreen(
                                       title: AppStrings.addInterest.tr,
@@ -106,6 +102,11 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                                     ),
                                   );
                                 },
+                                icon: Icon(
+                                  Iconsax.add_circle,
+                                  color: AppColors().primaryColor,
+                                  size: 28,
+                                ),
                               ),
                             ],
                           ),
@@ -185,12 +186,8 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black),
                               ),
-                              CustomOutlineIconButton(
-                                title: AppStrings.addProgram.tr,
-                                icon: const Icon(Iconsax.add),
-                                width: 160,
-                                height: 45,
-                                onTap: () {
+                              IconButton(
+                                onPressed: () {
                                   Get.to(
                                     () => TagSelectorScreen(
                                       title: AppStrings.addProgram.tr,
@@ -214,6 +211,11 @@ class RegisterSecondStepScreen extends GetView<RegisterController> {
                                     ),
                                   );
                                 },
+                                icon: Icon(
+                                  Iconsax.add_circle,
+                                  color: AppColors().primaryColor,
+                                  size: 28,
+                                ),
                               ),
                             ],
                           ),

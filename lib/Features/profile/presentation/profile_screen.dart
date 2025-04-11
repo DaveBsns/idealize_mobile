@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Components/buttons_widget.dart';
 import 'package:idealize_new_version/Core/Components/image_loader_widget.dart';
+import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/global_keys.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
@@ -181,12 +182,8 @@ class ProfileScreen extends GetView<ProfileController> {
                                       fontWeight: FontWeight.w600,
                                       color: Colors.black),
                                 ),
-                                CustomOutlineIconButton(
-                                  title: AppStrings.addInterest.tr,
-                                  icon: const Icon(Iconsax.add),
-                                  width: 160,
-                                  height: 45,
-                                  onTap: () {
+                                IconButton(
+                                  onPressed: () {
                                     Get.to(
                                       () => TagSelectorScreen(
                                         title: AppStrings.interests.tr,
@@ -209,7 +206,12 @@ class ProfileScreen extends GetView<ProfileController> {
                                       ),
                                     );
                                   },
-                                ),
+                                  icon: Icon(
+                                    Iconsax.add_circle,
+                                    color: AppColors().primaryColor,
+                                    size: 28,
+                                  ),
+                                )
                               ],
                             ),
                             Gap(AppConfig().dimens.small),
@@ -284,12 +286,8 @@ class ProfileScreen extends GetView<ProfileController> {
                                       fontWeight: FontWeight.w600,
                                       color: Colors.black),
                                 ),
-                                CustomOutlineIconButton(
-                                  title: AppStrings.addStudyPrograms.tr,
-                                  icon: const Icon(Iconsax.add),
-                                  width: 160,
-                                  height: 45,
-                                  onTap: () {
+                                IconButton(
+                                  onPressed: () {
                                     Get.to(
                                       () => TagSelectorScreen(
                                         title: AppStrings.studyPrograms.tr,
@@ -315,6 +313,11 @@ class ProfileScreen extends GetView<ProfileController> {
                                       ),
                                     );
                                   },
+                                  icon: Icon(
+                                    Iconsax.add_circle,
+                                    color: AppColors().primaryColor,
+                                    size: 28,
+                                  ),
                                 ),
                               ],
                             ),

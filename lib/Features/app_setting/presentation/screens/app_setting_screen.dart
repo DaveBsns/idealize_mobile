@@ -6,6 +6,7 @@ import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
+import 'package:idealize_new_version/Features/app_setting/presentation/screens/app_faq_screen.dart';
 import 'package:idealize_new_version/Features/app_setting/presentation/widgets/language_bottom_sheet_widget.dart';
 import 'package:idealize_new_version/app_repo.dart';
 
@@ -182,6 +183,35 @@ class AppSettingScreen extends GetView<AppSettingController> {
                         Gap(AppConfig().dimens.medium),
                         Text(AppStrings.termsAndConditions.tr
                             .replaceAll(' *.', '')),
+                        const Spacer(),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 22,
+                          color: AppConfig().colors.darkGrayColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    color: AppConfig().colors.lightGrayColor,
+                    thickness: 0.5,
+                    height: 40,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => const AppFaqScreen(),
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Iconsax.message_question,
+                          size: 25,
+                          color: AppConfig().colors.darkGrayColor,
+                        ),
+                        Gap(AppConfig().dimens.medium),
+                        Text(AppStrings.faq.tr.replaceAll(' *.', '')),
                         const Spacer(),
                         Icon(
                           Icons.arrow_forward_ios_rounded,

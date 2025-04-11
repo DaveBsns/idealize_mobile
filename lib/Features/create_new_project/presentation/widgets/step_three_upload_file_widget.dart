@@ -77,15 +77,16 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                     ),
                     Gap(AppConfig().dimens.small),
                     Flexible(
-                      fit: FlexFit.tight,
-                      child: CustomOutlineIconButton(
-                        title: AppStrings.uploadFiles.tr,
-                        icon: const Icon(Iconsax.add),
-                        width: 160,
-                        height: 50,
-                        onTap: () {
+                      fit: FlexFit.loose,
+                      child: IconButton(
+                        onPressed: () {
                           controller.pickGeneralFile();
                         },
+                        icon: Icon(
+                          Iconsax.add_circle,
+                          size: 28,
+                          color: AppColors().primaryColor,
+                        ),
                       ),
                     ),
                   ],
@@ -239,15 +240,16 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                     ),
                     Gap(AppConfig().dimens.small),
                     Flexible(
-                      fit: FlexFit.tight,
-                      child: CustomOutlineIconButton(
-                        title: AppStrings.uploadMedia.tr,
-                        icon: const Icon(Iconsax.add),
-                        width: 160,
-                        height: 50,
-                        onTap: () {
+                      fit: FlexFit.loose,
+                      child: IconButton(
+                        onPressed: () {
                           controller.pickMediaFile();
                         },
+                        icon: Icon(
+                          Iconsax.add_circle,
+                          size: 28,
+                          color: AppColors().primaryColor,
+                        ),
                       ),
                     ),
                   ],
@@ -410,15 +412,16 @@ class StepThreeUploadFilewidget extends GetView<CreateNewProjectController> {
                       ),
                       Gap(AppConfig().dimens.small),
                       Flexible(
-                        fit: FlexFit.tight,
-                        child: CustomOutlineIconButton(
-                          title: AppStrings.uploadThumbnail.tr,
-                          icon: const Icon(Iconsax.add),
-                          width: 160,
-                          height: 50,
-                          onTap: () {
+                        fit: FlexFit.loose,
+                        child: IconButton(
+                          onPressed: () {
                             controller.pickThumbnail();
                           },
+                          icon: Icon(
+                            Iconsax.add_circle,
+                            size: 28,
+                            color: AppColors().primaryColor,
+                          ),
                         ),
                       ),
                     ],
