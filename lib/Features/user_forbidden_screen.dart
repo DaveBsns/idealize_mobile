@@ -5,6 +5,7 @@ import 'package:idealize_new_version/Core/Constants/icons.dart';
 import 'package:get/get.dart';
 import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
+import 'package:idealize_new_version/app_repo.dart';
 
 class UserForbiddenScreen extends StatefulWidget {
   final String title;
@@ -64,18 +65,44 @@ class _UserForbiddenScreenState extends State<UserForbiddenScreen> {
             ),
             const Gap(30),
             Center(
-                child: ElevatedButton(
-              onPressed: () => Get.offAllNamed(AppRoutes().splash),
-              style: ElevatedButton.styleFrom(),
-              child: Text(
-                AppStrings.tryAgain.tr,
-                style: TextStyle(
-                  color: AppColors().primaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () => Get.offAllNamed(AppRoutes().splash),
+                    style: ElevatedButton.styleFrom(),
+                    child: Text(
+                      AppStrings.tryAgain.tr,
+                      style: TextStyle(
+                        color: AppColors().primaryColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Divider(
+                      color: Colors.white.withAlpha(30),
+                      thickness: 0.5,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      AppRepo().logoutUser();
+                    },
+                    style: TextButton.styleFrom(),
+                    child: Text(
+                      AppStrings.logout.tr,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ))
+            )
           ],
         ),
       ),
