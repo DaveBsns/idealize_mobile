@@ -19,7 +19,6 @@ import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../domain/project_details_repo.dart';
-import 'package:flutter/widgets.dart';
 import 'dart:async';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 
@@ -47,6 +46,7 @@ class ProjectDetailsController extends GetxController {
   RxString replyCommentId = ''.obs;
   RxList<ProjectComment> comments = RxList([]);
   List<ProjectLikes> likes = [];
+  bool isLoadingLikes = false;
 
   int currentCommentsPage = 1;
   RxString joinedStatus = RxString('');
@@ -61,7 +61,7 @@ class ProjectDetailsController extends GetxController {
     super.onInit();
     projectId = Get.arguments;
     scrolableToComments = Get.parameters['scroll-to-comments'] == 'true';
-    getProject();
+    // getProject();
   }
 
   Future<Project> getProjectAfterInit() async {
@@ -151,8 +151,18 @@ class ProjectDetailsController extends GetxController {
   }
 
   Future<void> initLikes() async {
+    if (isLoadingLikes) {
+      return;
+    }
+
+    isLoadingLikes = true;
     likes.clear();
     likes.addAll(await repo.likes(project!.id));
+
+    refresh();
+    update();
+
+    isLoadingLikes = false;
   }
 
   // TODO asign it to UI widget

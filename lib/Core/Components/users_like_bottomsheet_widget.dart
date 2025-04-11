@@ -7,6 +7,7 @@ import 'package:idealize_new_version/Core/Constants/config.dart';
 import 'package:idealize_new_version/Core/Data/Models/project_comment_model.dart';
 import 'package:idealize_new_version/Core/I18n/messages.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
+import 'package:idealize_new_version/gen/assets.gen.dart';
 
 class UserslikeBottomSheet extends StatelessWidget {
   final List<ProjectLikes> likes;
@@ -56,6 +57,18 @@ class UserslikeBottomSheet extends StatelessWidget {
                                 height: 50,
                                 child: showImageFromNetwork(
                                   likes[index].user.profilePicture?.id ?? '',
+                                  placeholder: Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            Assets.png.placeholderProfile.path),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
