@@ -9,7 +9,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpController extends GetxController {
   var code = ''.obs;
-  var timeLeft = 120.obs;
+  var timeLeft = 300.obs;
   Timer? _timer;
 
   @override
@@ -19,7 +19,7 @@ class OtpController extends GetxController {
   }
 
   void startTimer() {
-    timeLeft.value = 120;
+    timeLeft.value = 300;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (timeLeft.value > 0) {
         timeLeft.value--;
