@@ -20,7 +20,7 @@ class DeleteAccountController extends GetxController {
   RxBool isLoadingCheckingProjects = RxBool(false);
 
   RxBool canSendCode = RxBool(true);
-  RxInt timeLeft = RxInt(60);
+  RxInt timeLeft = RxInt(300);
   Timer? timer;
 
   RxList<Map<String, dynamic>> projectsMustBeConsider = RxList([]);
@@ -144,7 +144,7 @@ class DeleteAccountController extends GetxController {
   }
 
   void _startTimer() {
-    timeLeft.value = 60;
+    timeLeft.value = 300;
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (timeLeft.value > 0) {
         timeLeft.value--;
