@@ -33,6 +33,15 @@ class SplashScreen extends GetView<SplashController> {
             Assets.png.indukoWhite.image(
               width: 150,
             ),
+            if (AppConfig().baseFileUrl.contains('-dev'))
+              const Center(
+                child: Text(
+                  'Staging version',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             Gap(AppConfig().dimens.extraLarge),
           ],
         ),

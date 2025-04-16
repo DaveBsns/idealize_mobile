@@ -41,7 +41,7 @@ class TagSelectorController extends GetxController {
 
   Future<void> addNewTag(String tagName) async {
     await TagService().addNewTag(
-      tagName,
+      tagName.trim(),
       type: type.toTagName,
     );
     AppRepo().tags.clear();
@@ -71,7 +71,9 @@ class TagSelectorController extends GetxController {
     }
   }
 
-  void search(String searchValue) {
+  void search(String searchVal) {
+    final searchValue = searchVal.trim();
+
     if (searchValue.isEmpty) {
       tags.clear();
       tags.addAll(initialChipData);

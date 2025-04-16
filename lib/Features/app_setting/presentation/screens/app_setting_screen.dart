@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:idealize_new_version/Core/Constants/colors.dart';
 import 'package:idealize_new_version/Core/Constants/routes.dart';
 import 'package:idealize_new_version/Core/Utils/extensions.dart';
 import 'package:idealize_new_version/Core/Constants/config.dart';
@@ -306,6 +307,15 @@ class AppSettingScreen extends GetView<AppSettingController> {
               ).paddingAll(AppConfig().dimens.medium),
             ),
             Gap(AppConfig().dimens.large),
+            if (AppConfig().baseFileUrl.contains('-dev'))
+              Center(
+                child: Text(
+                  'Staging version',
+                  style: TextStyle(
+                    color: AppColors().darkGrayColor,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
