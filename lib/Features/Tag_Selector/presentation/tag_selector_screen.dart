@@ -297,7 +297,7 @@ class TagSelectorScreen extends StatelessWidget {
       isScrollControlled: true,
       builder: (BuildContext context) => AddNewTagBottomsheetWidget(
         onAddedTagName: controller.addNewTag,
-        tagName: controller.searchCtrl.text,
+        tagName: controller.searchCtrl.text.trim(),
         type: tagType,
       ),
     );
