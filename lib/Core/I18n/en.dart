@@ -278,6 +278,7 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.descriptionWaring:
             "Description must be at least 100 characters.",
         AppStrings.linksWarningMoreThan5: "You cannot add more than 5 links.",
+        AppStrings.linksWarningMoreThan15: "You cannot add more than 15 links.",
         AppStrings.permissionRequired: "Permission Required",
         AppStrings.permissionRequiredContent:
             "Please allow access to photos in your settings.",
@@ -432,5 +433,6 @@ Downloads are usually saved in your device’s:
 Android: Files > Downloads > materials > {project_name}
 iOS: Files app > Downloads > materials > {project_name}
         """,
+        AppStrings.impressum: "Imprint",
       };
 }

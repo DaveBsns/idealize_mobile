@@ -278,6 +278,8 @@ class DeLanguageData extends LanguageDataKeys {
             "Die Beschreibung muss mindestens 100 Zeichen lang sein.",
         AppStrings.linksWarningMoreThan5:
             "Sie können nicht mehr als 5 Links hinzufügen.",
+        AppStrings.linksWarningMoreThan15:
+            "Sie können nicht mehr als 15 Links hinzufügen.",
         AppStrings.permissionRequired: "Berechtigung erforderlich",
         AppStrings.permissionRequiredContent:
             "Bitte erlauben Sie in Ihren Einstellungen den Zugriff auf Fotos.",
@@ -444,5 +446,6 @@ Downloads werden in der Regel im Speicher Ihres Geräts gespeichert:
 Android: Dateien > Downloads > Materialien > {Name des Projekts}
 iOS: Dateien-App > Downloads > Materialien > {Name des Projekts}
         """,
+        AppStrings.impressum: "Impressum",
       };
 }
