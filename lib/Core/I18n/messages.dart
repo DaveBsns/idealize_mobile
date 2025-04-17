@@ -245,6 +245,7 @@ class AppStrings {
   static const String unknown = "unknown";
   static const String descriptionWaring = "descriptionWaring";
   static const String linksWarningMoreThan5 = "linksWarningMoreThan5";
+  static const String linksWarningMoreThan15 = "linksWarningMoreThan15";
   static const String permissionRequired = "permissionRequired";
   static const String permissionRequiredContent = "permissionRequiredContent";
   static const String openSettings = "openSettings";
@@ -380,4 +381,6 @@ class AppStrings {
   static const String faq = "faq";
   static const String faq1 = "faq1";
   static const String faq1A = "faq1A";
+
+  static const String impressum = "impressum";
 }

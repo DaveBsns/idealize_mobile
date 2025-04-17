@@ -200,6 +200,33 @@ class AppSettingScreen extends GetView<AppSettingController> {
                   ),
                   InkWell(
                     onTap: () {
+                      'https://www.hs-heilbronn.de/de/impressum'.launchURL();
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Iconsax.document,
+                          size: 25,
+                          color: AppConfig().colors.darkGrayColor,
+                        ),
+                        Gap(AppConfig().dimens.medium),
+                        Text(AppStrings.impressum.tr),
+                        const Spacer(),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 22,
+                          color: AppConfig().colors.darkGrayColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    color: AppConfig().colors.lightGrayColor,
+                    thickness: 0.5,
+                    height: 40,
+                  ),
+                  InkWell(
+                    onTap: () {
                       Get.to(
                         () => const AppFaqScreen(),
                       );

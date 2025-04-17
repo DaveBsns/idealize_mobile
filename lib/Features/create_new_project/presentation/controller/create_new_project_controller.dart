@@ -89,10 +89,10 @@ class CreateNewProjectController extends GetxController {
   // }
 
   void onAddLink(LinkModel model) {
-    if (links.length >= 5) {
+    if (links.length >= 15) {
       AppRepo().showSnackbar(
         label: AppStrings.warning.tr,
-        text: AppStrings.linksWarningMoreThan5.tr,
+        text: AppStrings.linksWarningMoreThan15.tr,
       );
       return;
     }

@@ -220,20 +220,26 @@ class ProjectMaterialWidget extends StatelessWidget {
                             link.link.launchURL();
                           },
                           title: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(
-                                Iconsax.link,
-                                color: AppColors().primaryColor,
+                              SizedBox(
+                                width: 24,
+                                child: Icon(
+                                  Iconsax.link,
+                                  color: AppColors().primaryColor,
+                                ),
                               ),
                               Gap(AppConfig().dimens.small),
-                              Text(
-                                link.label,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                                style: TextStyle(
-                                  color: AppColors().txtColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
+                              Expanded(
+                                child: Text(
+                                  link.label,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                    color: AppColors().txtColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ],
