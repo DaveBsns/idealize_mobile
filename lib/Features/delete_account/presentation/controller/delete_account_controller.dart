@@ -23,6 +23,10 @@ class DeleteAccountController extends GetxController {
   RxInt timeLeft = RxInt(300);
   Timer? timer;
 
+  bool firstTimeChangeToRecoveryOpt3 = true;
+  bool firstTimeChangeToRecoveryOpt2 = true;
+  bool firstTimeChangeToRecoveryOpt1 = true;
+
   RxList<Map<String, dynamic>> projectsMustBeConsider = RxList([]);
 
   void onChooseDeleteOtion(int? option) => selectedDeleteOption.value = option;
@@ -40,12 +44,14 @@ class DeleteAccountController extends GetxController {
     Get.toNamed(AppRoutes().deleteAccountOption2);
   }
 
-  void sendCodeForAnanymizedDelete() async {
+  void sendCodeForAnanymizedDelete({bool useRecoveryEmail = false}) async {
     if (!canSendCode.value) return;
 
     isLoadingSendCode.value = true;
     canSendCode.value = false;
-    final res = await repo.deleteAccountAnanymously();
+    final res = await repo.deleteAccountAnanymously(
+      useRecoveryEmail: (useRecoveryEmail || !firstTimeChangeToRecoveryOpt2),
+    );
     isLoadingSendCode.value = false;
 
     if (res != null) {
@@ -53,12 +59,13 @@ class DeleteAccountController extends GetxController {
     }
   }
 
-  void sendCodeForKeepingDataDelete() async {
+  void sendCodeForKeepingDataDelete({bool useRecoveryEmail = false}) async {
     if (!canSendCode.value) return;
 
     isLoadingSendCode.value = true;
     canSendCode.value = false;
-    final res = await repo.deleteAccountKeepData();
+    final res = await repo.deleteAccountKeepData(
+        useRecoveryEmail: (useRecoveryEmail || !firstTimeChangeToRecoveryOpt1));
     isLoadingSendCode.value = false;
 
     if (res != null) {
@@ -66,10 +73,11 @@ class DeleteAccountController extends GetxController {
     }
   }
 
-  void checkDeleteCompletely() async {
+  void checkDeleteCompletely({bool useRecoveryEmail = false}) async {
     isLoadingCheckingProjects.value = true;
     canSendCode.value = false;
-    final res = await repo.deleteAccountCompletely();
+    final res = await repo.deleteAccountCompletely(
+        useRecoveryEmail: (useRecoveryEmail || !firstTimeChangeToRecoveryOpt3));
     isLoadingCheckingProjects.value = false;
 
     if (res != null) {
@@ -81,12 +89,14 @@ class DeleteAccountController extends GetxController {
     }
   }
 
-  void sendCodeForCompletelyDelete() async {
+  void sendCodeForCompletelyDelete({bool useRecoveryEmail = false}) async {
     if (!canSendCode.value) return;
 
     isLoadingSendCode.value = true;
     canSendCode.value = false;
-    final res = await repo.deleteAccountCompletely();
+    final res = await repo.deleteAccountCompletely(
+      useRecoveryEmail: (useRecoveryEmail || !firstTimeChangeToRecoveryOpt3),
+    );
     isLoadingSendCode.value = false;
 
     if (res != null) {
@@ -98,9 +108,10 @@ class DeleteAccountController extends GetxController {
     }
   }
 
-  void deleteAccountAnanymously() async {
+  void deleteAccountAnanymously({bool useRecoveryEmail = false}) async {
     isLoadingDelete.value = true;
-    final res = await repo.deleteAccountAnanymously();
+    final res =
+        await repo.deleteAccountAnanymously(useRecoveryEmail: useRecoveryEmail);
 
     if (res != null) {
       await AppRepo().logoutUser();
@@ -111,11 +122,13 @@ class DeleteAccountController extends GetxController {
 
   void verifyDelete({
     required bool keepData,
+    bool useRecoveryEmail = false,
   }) async {
     isLoadingDelete.value = true;
     final res = await repo.veryfyDelete(
       enteredCode.value,
       keepData: keepData,
+      useRecoveryEmail: useRecoveryEmail,
     );
     isLoadingDelete.value = false;
 

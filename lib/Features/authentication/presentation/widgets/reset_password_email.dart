@@ -71,6 +71,31 @@ class ResetPasswordEmailBottomSheet extends GetView<ResetPasswordController> {
                           controller: controller.emailController,
                           labelText: AppStrings.enterYourEmailAdr.tr,
                         ),
+                        Gap(AppConfig().dimens.large),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Obx(() => Checkbox(
+                                  value: controller.isRecoveryEmail.value,
+                                  onChanged: (bool? value) {
+                                    controller.isRecoveryEmail.value =
+                                        value ?? false;
+                                  },
+                                )),
+                            Text(
+                              AppStrings.useRecoveryEmail.tr,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors().txtColor,
+                                  ),
+                            ),
+                          ],
+                        ),
                         Gap(AppConfig().dimens.extraLarge),
                         CustomIconButton(
                           title: AppStrings.next.tr,

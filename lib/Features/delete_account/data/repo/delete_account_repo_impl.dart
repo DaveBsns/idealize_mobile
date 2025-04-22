@@ -8,8 +8,11 @@ class DeleteAccountRepoImpl implements DeleteAccountRepo {
   final pService = ProjectService();
 
   @override
-  Future<String?> deleteAccountAnanymously() async {
-    final res = await service.softAnanymizedDeleteUserRequest();
+  Future<String?> deleteAccountAnanymously(
+      {bool useRecoveryEmail = false}) async {
+    final res = await service.softAnanymizedDeleteUserRequest(
+      useRecoveryEmail: useRecoveryEmail,
+    );
     if (res != null) {
       if (res['message'] == 'otp_sent_success') {
         return res['message'];
@@ -22,8 +25,10 @@ class DeleteAccountRepoImpl implements DeleteAccountRepo {
   }
 
   @override
-  Future<String?> deleteAccountKeepData() async {
-    final res = await service.softKeepDataDeleteUserRequest();
+  Future<String?> deleteAccountKeepData({bool useRecoveryEmail = false}) async {
+    final res = await service.softKeepDataDeleteUserRequest(
+      useRecoveryEmail: useRecoveryEmail,
+    );
     if (res != null) {
       if (res['message'] == 'otp_sent_success') {
         return res['message'];
@@ -36,9 +41,12 @@ class DeleteAccountRepoImpl implements DeleteAccountRepo {
   }
 
   @override
-  Future<dynamic> deleteAccountCompletely() async {
+  Future<dynamic> deleteAccountCompletely(
+      {bool useRecoveryEmail = false}) async {
     await Future.delayed(const Duration(seconds: 2));
-    final res = await service.softDeleteUserRequest();
+    final res = await service.softDeleteUserRequest(
+      useRecoveryEmail: useRecoveryEmail,
+    );
     if (res != null) {
       if (res['message'] == 'soft_delete_projects_exists') {
         List<Map<String, dynamic>> projects = [];
@@ -68,8 +76,10 @@ class DeleteAccountRepoImpl implements DeleteAccountRepo {
   Future<bool> veryfyDelete(
     String code, {
     required bool keepData,
+    bool useRecoveryEmail = false,
   }) async {
-    final res = await service.verifyDelete(code, keepData: keepData);
+    final res = await service.verifyDelete(code,
+        keepData: keepData, useRecoveryEmail: useRecoveryEmail);
     if (res != null) {
       if (res['message'] == 'user_deleted_success') {
         return true;

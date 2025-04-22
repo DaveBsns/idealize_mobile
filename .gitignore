@@ -143,3 +143,4 @@ app.*.symbols
 ios/Runner.xcodeproj/project.pbxproj
 ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
 
+.qodo

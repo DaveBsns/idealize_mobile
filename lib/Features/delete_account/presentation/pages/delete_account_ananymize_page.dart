@@ -68,6 +68,27 @@ class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
                       isCode: true,
                       onChanged: (p0) => controller.enteredCode.value = p0,
                     ),
+                    TextButton(
+                      onPressed: () {
+                        if (controller.firstTimeChangeToRecoveryOpt2) {
+                          controller.firstTimeChangeToRecoveryOpt2 = false;
+
+                          controller.canSendCode.value = true;
+                          controller.sendCodeForAnanymizedDelete(
+                            useRecoveryEmail: true,
+                          );
+                        }
+                      },
+                      child: Text(
+                        AppStrings.useRecoveryEmailDesc.tr,
+                        style: const TextStyle(
+                          fontSize: 12.5,
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                    const Gap(20),
                   ],
                 ),
               ),
@@ -92,6 +113,9 @@ class DeleteAccountAnanymizePage extends GetView<DeleteAccountController> {
                             : (() {
                                 controller.verifyDelete(
                                   keepData: false,
+                                  useRecoveryEmail: controller
+                                          .firstTimeChangeToRecoveryOpt2 ==
+                                      false,
                                 );
                               }),
                       ),
