@@ -49,9 +49,10 @@ class UserService extends ServicesHelper {
     return mappedData;
   }
 
-  Future<Map<String, dynamic>?> softDeleteUserRequest() async {
+  Future<Map<String, dynamic>?> softDeleteUserRequest(
+      {bool useRecoveryEmail = false}) async {
     final mappedData = await request(
-      '$baseURL/users/soft-delete-request',
+      '$baseURL/users/soft-delete-request?useRecoveryEmail=$useRecoveryEmail',
       serviceType: ServiceType.delete,
       requiredDefaultHeader: true,
     );
@@ -59,9 +60,10 @@ class UserService extends ServicesHelper {
     return mappedData;
   }
 
-  Future<Map<String, dynamic>?> softAnanymizedDeleteUserRequest() async {
+  Future<Map<String, dynamic>?> softAnanymizedDeleteUserRequest(
+      {bool useRecoveryEmail = false}) async {
     final mappedData = await request(
-      '$baseURL/users/soft-anonymized-delete-request',
+      '$baseURL/users/soft-anonymized-delete-request?useRecoveryEmail=$useRecoveryEmail',
       serviceType: ServiceType.delete,
       requiredDefaultHeader: true,
     );
@@ -69,9 +71,10 @@ class UserService extends ServicesHelper {
     return mappedData;
   }
 
-  Future<Map<String, dynamic>?> softKeepDataDeleteUserRequest() async {
+  Future<Map<String, dynamic>?> softKeepDataDeleteUserRequest(
+      {bool useRecoveryEmail = false}) async {
     final mappedData = await request(
-      '$baseURL/users/soft-keepdata-delete-request',
+      '$baseURL/users/soft-keepdata-delete-request?useRecoveryEmail=$useRecoveryEmail',
       serviceType: ServiceType.delete,
       requiredDefaultHeader: true,
     );
@@ -82,9 +85,10 @@ class UserService extends ServicesHelper {
   Future<Map<String, dynamic>?> verifyDelete(
     String code, {
     required bool keepData,
+    bool useRecoveryEmail = false,
   }) async {
     final mappedData = await request(
-      '$baseURL/users/verify-soft-delete?keep_data=$keepData',
+      '$baseURL/users/verify-soft-delete?keep_data=$keepData&useRecoveryEmail=$useRecoveryEmail',
       serviceType: ServiceType.delete,
       body: {
         'code': code,

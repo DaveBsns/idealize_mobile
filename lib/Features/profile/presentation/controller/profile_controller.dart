@@ -91,6 +91,7 @@ class ProfileController extends GetxController {
       usernameCtrl.text = AppRepo().user?.username ?? '';
       firstNameCtrl.text = AppRepo().user?.firstname ?? '';
       lastNameCtrl.text = AppRepo().user?.surname ?? '';
+      recoveryEmailCtrl.text = AppRepo().user?.recoveryEmail ?? '';
 
       selectedTags.clear();
       selectedTags.addAll(AppRepo().user?.interestedTags ?? []);
@@ -106,6 +107,7 @@ class ProfileController extends GetxController {
   final usernameCtrl = TextEditingController();
   final firstNameCtrl = TextEditingController();
   final lastNameCtrl = TextEditingController();
+  final recoveryEmailCtrl = TextEditingController();
   final imagePicker = ImagePicker();
 
   XFile? image;
@@ -171,6 +173,10 @@ class ProfileController extends GetxController {
 
     if (lastNameCtrl.text.isNotEmpty) {
       bodyParams['lastName'] = lastNameCtrl.text;
+    }
+
+    if (recoveryEmailCtrl.text.isNotEmpty) {
+      bodyParams['recoveryEmail'] = recoveryEmailCtrl.text;
     }
 
     if (bodyParams.isNotEmpty) {

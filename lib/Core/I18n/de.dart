@@ -112,6 +112,9 @@ class DeLanguageData extends LanguageDataKeys {
         AppStrings.requestNewInterest:
             "Hier klicken um ein neues Interesse anzufragen",
         AppStrings.email: "E-Mailadresse",
+        AppStrings.recoveryEmail: "Backup-E-Mailadresse",
+        AppStrings.recoveryEmailExplanation:
+            "Diese E-Mail wird verwendet, um dein HHN-Konto wiederherzustellen, falls du den Zugriff darauf verlierst.",
         AppStrings.exitsitingAccount: "Schon registriert?",
         AppStrings.loginHere: "Hier anmelden",
         AppStrings.passwordCriteriaFailed:
@@ -447,5 +450,9 @@ Android: Dateien > Downloads > Materialien > {Name des Projekts}
 iOS: Dateien-App > Downloads > Materialien > {Name des Projekts}
         """,
         AppStrings.impressum: "Impressum",
+        AppStrings.useRecoveryEmail:
+            "OTP an meine Wiederherstellungs-E-Mail senden.",
+        AppStrings.useRecoveryEmailDesc:
+            "Kein Zugriff auf dein HHN-Konto? Tippe hier, um ein OTP an deine Wiederherstellungs-E-Mail zu erhalten.",
       };
 }

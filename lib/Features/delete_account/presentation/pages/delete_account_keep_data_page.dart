@@ -68,6 +68,28 @@ class DeleteAccountKeepDataPage extends GetView<DeleteAccountController> {
                       isCode: true,
                       onChanged: (p0) => controller.enteredCode.value = p0,
                     ),
+                    const Gap(20),
+                    TextButton(
+                      onPressed: () {
+                        if (controller.firstTimeChangeToRecoveryOpt1) {
+                          controller.firstTimeChangeToRecoveryOpt1 = false;
+
+                          controller.canSendCode.value = true;
+                          controller.sendCodeForKeepingDataDelete(
+                            useRecoveryEmail: true,
+                          );
+                        }
+                      },
+                      child: Text(
+                        AppStrings.useRecoveryEmailDesc.tr,
+                        style: const TextStyle(
+                          fontSize: 12.5,
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                    const Gap(20),
                   ],
                 ),
               ),
@@ -92,6 +114,9 @@ class DeleteAccountKeepDataPage extends GetView<DeleteAccountController> {
                             : (() {
                                 controller.verifyDelete(
                                   keepData: true,
+                                  useRecoveryEmail: controller
+                                          .firstTimeChangeToRecoveryOpt1 ==
+                                      false,
                                 );
                               }),
                       ),

@@ -4,8 +4,8 @@ import '../../domain/reset_password_repository.dart';
 
 class ResetPasswordRepositoryImpl extends ResetPasswordRepository {
   @override
-  Future<Map<String, dynamic>?> resetPasswordRequest(String email) async {
-    return await AuthenticationService().resetPasswordRequest(email: email);
+  Future<Map<String, dynamic>?> resetPasswordRequest(String email, bool isRecovery) async {
+    return await AuthenticationService().resetPasswordRequest(email: email, isRecovery: isRecovery);
   }
 
   @override

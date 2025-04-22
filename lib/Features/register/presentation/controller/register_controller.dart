@@ -25,11 +25,13 @@ class RegisterController extends GetxController {
 
   bool firstNameCheck = false;
   bool emailCheck = false;
+  bool reEmailCheck = false;
   bool surnameCheck = false;
   bool passwordCheck = false;
 
   final usernameCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
+  final reEmailCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   final reEnterPasswordCtrl = TextEditingController();
   final firstnameCtrl = TextEditingController();
@@ -130,6 +132,7 @@ class RegisterController extends GetxController {
         !emailCheck ||
         !surnameCheck ||
         !passwordCheck ||
+        (reEmailCtrl.text.isNotEmpty && !reEmailCheck) ||
         !arePasswordsSame()) {
       AppRepo().showSnackbar(
         label: AppStrings.error.tr,
@@ -139,7 +142,7 @@ class RegisterController extends GetxController {
       return;
     }
 
-    if(isStrongPassword(passwordCtrl.text) == false){
+    if (isStrongPassword(passwordCtrl.text) == false) {
       AppRepo().showSnackbar(
         label: AppStrings.error.tr,
         text: AppStrings.weakPassword.tr,
@@ -229,12 +232,14 @@ class RegisterController extends GetxController {
   Future<void> _signUp() async {
     final password = passwordCtrl.text.trim();
     final email = emailCtrl.text.trim();
+    final recoveryEmail = reEmailCtrl.text.trim();
     final firstname = firstnameCtrl.text.trim();
     final surname = surnameCtrl.text.trim();
 
     loading.value = true;
     final response = await repo.createUser(
       email: email,
+      recoveryEmail: recoveryEmail,
       firstname: firstname,
       password: password,
       surname: surname,

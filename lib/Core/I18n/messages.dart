@@ -106,6 +106,7 @@ class AppStrings {
   static const String addInterestHint = "addInterestHint";
   static const String requestNewInterest = "requestNewInterest";
   static const String email = "email";
+  static const String recoveryEmail = "recoveryEmail";
   static const String exitsitingAccount = "exitsitingAccount";
   static const String loginHere = "loginHere";
   static const String passwordCriteriaFailed = "passwordCriteriaFailed";
@@ -374,6 +375,7 @@ class AppStrings {
   static const String weakPassword = "weakPassword";
 
   static const String emailShouldBeHHNHint = "emailShouldBeHHNHint";
+  static const String recoveryEmailExplanation = "recoveryEmailExplanation";
   static const String storageAccessFailed = "storageAccessFailed";
   static const String downloadFailed = "downloadFailed";
   static const String couldNotOpenDownloadedFile = "couldNotOpenDownloadedFile";
@@ -383,4 +385,6 @@ class AppStrings {
   static const String faq1A = "faq1A";
 
   static const String impressum = "impressum";
+  static const String useRecoveryEmail = "useRecoveryEmail";
+  static const String useRecoveryEmailDesc = "useRecoveryEmailDesc";
 }

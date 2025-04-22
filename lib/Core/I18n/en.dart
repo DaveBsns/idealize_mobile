@@ -110,6 +110,9 @@ class EnLanguageData extends LanguageDataKeys {
         AppStrings.requestNewInterest:
             "Click here to send request for adding a new interest",
         AppStrings.email: "Email Address",
+        AppStrings.recoveryEmail: "Recovery Email",
+        AppStrings.recoveryEmailExplanation:
+            "This email will be used to recover your HHN account if you lost access to it.",
         AppStrings.exitsitingAccount: "Already have an account?",
         AppStrings.loginHere: "login here",
         AppStrings.passwordCriteriaFailed: "Must contain numbers and symbols",
@@ -434,5 +437,8 @@ Android: Files > Downloads > materials > {project_name}
 iOS: Files app > Downloads > materials > {project_name}
         """,
         AppStrings.impressum: "Imprint",
+        AppStrings.useRecoveryEmail: "Send OTP to my recovery email.",
+        AppStrings.useRecoveryEmailDesc:
+            "You don't access to your HHN account? tap here to receive OTP on your recovery email",
       };
 }

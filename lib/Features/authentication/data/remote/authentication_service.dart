@@ -13,12 +13,14 @@ class AuthenticationService extends ServicesHelper {
     required String firstname,
     required String surname,
     required String email,
+    required String recoveryEmail,
     required String password,
   }) async {
     final Map<String, dynamic> data = {
       "firstName": firstname,
       "lastName": surname,
       "email": email,
+      "recoveryEmail": recoveryEmail,
       "password": password,
       "userType": "student",
     };
@@ -122,13 +124,14 @@ class AuthenticationService extends ServicesHelper {
 
   Future<Map<String, dynamic>?> resetPasswordRequest({
     required String email,
+    required bool isRecovery,
   }) async {
     final Map<String, dynamic> data = {
       "email": email,
     };
 
     final mappedData = await request(
-      '$apiURL/reset-password',
+      '$apiURL/reset-password?useRecoveryEmail=$isRecovery',
       body: data,
       serviceType: ServiceType.post,
       requiredDefaultHeader: false,
