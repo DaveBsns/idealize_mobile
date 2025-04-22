@@ -5,6 +5,7 @@ import 'package:idealize_new_version/Core/Utils/extensions.dart';
 class User {
   final String id;
   final String email;
+  final String? recoveryEmail;
   final String firstname;
   final String surname;
   final bool? status;
@@ -25,6 +26,7 @@ class User {
     required this.createdAt,
     required this.firstname,
     required this.surname,
+    this.recoveryEmail,
     this.status,
     this.username,
     this.token,
@@ -41,6 +43,7 @@ class User {
     return User(
       id: json['_id'],
       email: json['email'],
+      recoveryEmail: json['recoveryEmail'],
       status: json['status'],
       createdAt:
           json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
@@ -78,6 +81,7 @@ class User {
     return User(
       id: json['_id'],
       email: json['email'],
+      recoveryEmail: json['recoveryEmail'],
       status: json['status'],
       createdAt:
           json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,

@@ -8,6 +8,7 @@ abstract class RegisterRepository {
     required String firstname,
     required String surname,
     required String email,
+    required String recoveryEmail,
     required String password,
   });
 

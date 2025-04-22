@@ -16,6 +16,7 @@ class ResetPasswordController extends GetxController {
   String code = '';
   String email = '';
 
+  RxBool isRecoveryEmail = RxBool(false);
   RxBool isPassword = RxBool(true);
   RxBool loading = RxBool(false);
 
@@ -32,7 +33,10 @@ class ResetPasswordController extends GetxController {
 
     if (emailController.text.isNotEmpty && emailController.text.isEmail) {
       AppRepo().showLoading();
-      final result = await repo.resetPasswordRequest(emailController.text);
+      final result = await repo.resetPasswordRequest(
+        emailController.text,
+        isRecoveryEmail.value,
+      );
       AppRepo().hideLoading();
       if (result != null) {
         Get.back();

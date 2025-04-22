@@ -130,6 +130,12 @@ class EditProfileScreen extends GetView<ProfileController> {
                   lableValue: AppStrings.lastNameHint.tr,
                   controller: controller.lastNameCtrl,
                 ),
+                Gap(AppConfig().dimens.small),
+                CustomRow(
+                  lable: AppStrings.recoveryEmail.tr,
+                  lableValue: AppStrings.recoveryEmail.tr,
+                  controller: controller.recoveryEmailCtrl,
+                ),
               ],
             ).paddingAll(
               AppConfig().dimens.medium,

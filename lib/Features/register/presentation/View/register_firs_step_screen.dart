@@ -126,6 +126,40 @@ class RegisterFirstStepScreen extends GetView<RegisterController> {
             ),
             Gap(AppConfig().dimens.medium),
             Text(
+              "${AppStrings.recoveryEmail.tr}: ",
+              style: textTheme.titleMedium,
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                AppStrings.recoveryEmailExplanation.tr,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppConfig().colors.lightGrayColor,
+                ),
+              ),
+            ),
+            Gap(AppConfig().dimens.small),
+            CustomTextField(
+              key: const Key('auth_recovery_email'),
+              controller: controller.reEmailCtrl,
+              labelText: AppStrings.recoveryEmail.tr,
+              validator: (newTextfieldValue) {
+                controller.reEmailCheck = true;
+
+                if ((newTextfieldValue ?? '').isNotEmpty) {
+                  if (!newTextfieldValue!.isEmail) {
+                    controller.reEmailCheck = false;
+                    return AppStrings.isNotEmail.tr;
+                  }
+                }
+
+                return null;
+              },
+            ),
+            Gap(AppConfig().dimens.medium),
+            Text(
               "${AppStrings.password.tr}: *",
               style: textTheme.titleMedium,
             ),

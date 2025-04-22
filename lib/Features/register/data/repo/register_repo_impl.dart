@@ -16,12 +16,14 @@ class RegisterRepositoryImpl implements RegisterRepository {
     required String firstname,
     required String surname,
     required String email,
+    required String recoveryEmail,
     required String password,
   }) async {
     return await AuthenticationService().createUser(
       firstname: firstname,
       surname: surname,
       email: email,
+      recoveryEmail: recoveryEmail,
       password: password,
     );
   }
