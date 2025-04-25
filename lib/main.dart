@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
               AppConfig().languages.languageList[0].countryCode,
             ),
             translations: AppTranslations(),
-            debugShowCheckedModeBanner: true,
+            debugShowCheckedModeBanner: false,
             theme: AppConfig().themes.light(ratio: 1.0),
             getPages: AppConfig().routes.pages,
             initialRoute: AppConfig().routes.splash,
