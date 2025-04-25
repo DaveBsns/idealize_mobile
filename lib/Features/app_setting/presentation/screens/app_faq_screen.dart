@@ -20,6 +20,10 @@ class AppFaqScreen extends StatelessWidget {
             AppStrings.faq1.tr,
             AppStrings.faq1A.tr,
           ),
+          _buildQuestionAnswerBoxWidget(
+            AppStrings.faq2.tr,
+            AppStrings.faq2A.tr,
+          ),
         ],
       ),
     );

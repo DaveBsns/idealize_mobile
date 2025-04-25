@@ -384,6 +384,9 @@ class AppStrings {
   static const String faq1 = "faq1";
   static const String faq1A = "faq1A";
 
+  static const String faq2 = "faq2";
+  static const String faq2A = "faq2A";
+
   static const String impressum = "impressum";
   static const String useRecoveryEmail = "useRecoveryEmail";
   static const String useRecoveryEmailDesc = "useRecoveryEmailDesc";

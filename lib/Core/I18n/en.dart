@@ -436,6 +436,21 @@ Downloads are usually saved in your device’s:
 Android: Files > Downloads > materials > {project_name}
 iOS: Files app > Downloads > materials > {project_name}
         """,
+
+        AppStrings.faq2:
+            "What can I do if I lose access to my school or work email?",
+        AppStrings.faq2A: """
+	1.	Add a Secondary Email
+	•	Go to Account Settings (⚙️) → Email & Security.
+	•	Under Secondary Email, enter your personal email address and click Add.
+	•	You’ll receive a confirmation message at that address—click the link to verify.
+	2.	Use Your Secondary Email for Password Resets
+	•	If you ever get locked out or forget your password, choose “Reset via secondary email” on the password-reset page.
+	•	We’ll send the reset link to your personal email so you can securely create a new password.
+	3.	Deleting Your Account
+	•	If you decide to close your account and can’t access your primary email, select “Delete via secondary email” in the account-deletion workflow.
+	•	We’ll email you a one-time link at your personal address to confirm and complete the deletion process.
+        """,
         AppStrings.impressum: "Imprint",
         AppStrings.useRecoveryEmail: "Send OTP to my recovery email.",
         AppStrings.useRecoveryEmailDesc:

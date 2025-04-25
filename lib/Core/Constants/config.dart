@@ -12,9 +12,9 @@ class AppConfig {
   AppConfig._internal();
 
   String get baseURL =>
-      "https://api-dev.campusconnects.de"; // https://api-dev.campusconnects.de  |   http://localhost:6000
+      "https://api.campusconnects.de"; // https://api.campusconnects.de  |   http://localhost:6000
   String get baseFileUrl =>
-      "https://api-dev.campusconnects.de"; // https://api-dev.campusconnects.de  |   http://localhost:6000
+      "https://api.campusconnects.de"; // https://api.campusconnects.de  |   http://localhost:6000
   String get chatBotServer => "https://bot.campusconnects.de";
 
   String get termsCondiftionsUrl =>

@@ -449,6 +449,23 @@ Downloads werden in der Regel im Speicher Ihres Geräts gespeichert:
 Android: Dateien > Downloads > Materialien > {Name des Projekts}
 iOS: Dateien-App > Downloads > Materialien > {Name des Projekts}
         """,
+
+        AppStrings.faq2:
+            "Was kann ich tun, wenn ich keinen Zugriff mehr auf meine Schul- oder Arbeits-E-Mail habe?",
+        AppStrings.faq2A: """
+1.	Eine sekundäre E-Mail-Adresse hinzufügen
+•	Gehe zu den Kontoeinstellungen (⚙️) → E-Mail & Sicherheit.
+•	Gib unter Sekundäre E-Mail deine private E-Mail-Adresse ein und klicke auf Hinzufügen.
+•	Du erhältst eine Bestätigungsnachricht an diese Adresse – klicke auf den Link, um sie zu verifizieren.
+
+2.	Sekundäre E-Mail für Passwort-Zurücksetzung nutzen
+•	Wenn du dein Passwort vergessen hast oder keinen Zugriff mehr hast, wähle auf der Passwort-zurücksetzen-Seite „Über sekundäre E-Mail zurücksetzen“.
+•	Wir senden dir den Link zur Zurücksetzung an deine private E-Mail, damit du sicher ein neues Passwort erstellen kannst.
+
+3.	Konto löschen
+•	Wenn du dein Konto löschen möchtest und keinen Zugriff mehr auf deine primäre E-Mail hast, wähle im Löschvorgang „Über sekundäre E-Mail löschen“.
+•	Wir senden dir einen einmaligen Bestätigungslink an deine private Adresse, um den Vorgang abzuschließen.
+""",
         AppStrings.impressum: "Impressum",
         AppStrings.useRecoveryEmail:
             "OTP an meine Wiederherstellungs-E-Mail senden.",
