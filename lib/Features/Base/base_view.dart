@@ -9,6 +9,9 @@ import 'package:idealize_new_version/Features/app_setting/presentation/screens/a
 
 import '../Profile/presentation/profile_screen.dart';
 
+import 'package:flutter_svg/svg.dart';
+import 'package:idealize_new_version/gen/assets.gen.dart';
+
 class AppBaseView extends GetView<BaseViewModel> {
   const AppBaseView({super.key});
 
@@ -24,15 +27,15 @@ class AppBaseView extends GetView<BaseViewModel> {
               extendBody: true,
               extendBodyBehindAppBar: true,
               // TODO should be uncoment after realse version 1.0.0
-              // floatingActionButton: Padding(
-              //   padding: const EdgeInsets.only(right: 10),
-              //   child: FloatingActionButton(
-              //     onPressed: controller.openChatScreen,
-              //     backgroundColor: const Color(0xff6675AE),
-              //     shape: const CircleBorder(),
-              //     child: SvgPicture.asset(Assets.svg.chatIc),
-              //   ),
-              // ),
+              floatingActionButton: Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: FloatingActionButton(
+                  onPressed: controller.openChatScreen,
+                  backgroundColor: const Color(0xff6675AE),
+                  shape: const CircleBorder(),
+                  child: SvgPicture.asset(Assets.svg.chatIc),
+                ),
+              ),
               body: IndexedStack(
                   index: controller.model.currentNavigationbarIndex,
                   children: const [
