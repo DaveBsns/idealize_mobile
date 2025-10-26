@@ -65,12 +65,11 @@ class BaseViewModel extends GetxController {
 
   void onTappedSendMessage() {
     if (messageCtrl.text.isNotEmpty) {
+      debugPrint('Sending message: "${messageCtrl.text}"');
       chats.add(ChatEntity(text: messageCtrl.text, isMe: true));
-
       socket?.emit("sendMessage", {
         "message": messageCtrl.text,
       });
-
       messageCtrl.clear();
       aiIsResponding.value = true;
 
@@ -80,6 +79,7 @@ class BaseViewModel extends GetxController {
   }
 
   Future<void> connectSocket() async {
+    debugPrint('Connect to socket...');
     try {
       socket?.disconnect();
       socket = null;
@@ -98,13 +98,13 @@ class BaseViewModel extends GetxController {
       });
 
       socket?.on("error", (data) {
-        // print('error: $data');
+        debugPrint('Socket Error: $data');
         chats.add(ChatEntity(text: data, isMe: false));
         aiIsResponding.value = false;
       });
 
       socket?.on("receiveMessage", (data) {
-        // print('receiveMessage: $data["message"]');
+        debugPrint('Receive message: ${data["message"]}');
         chats.add(ChatEntity(text: data['message']['message'], isMe: false));
         if (data['message']['projects'] != null &&
             data['message']['projects'].isNotEmpty) {
@@ -122,11 +122,11 @@ class BaseViewModel extends GetxController {
       });
 
       socket?.onConnect((data) {
-        debugPrint("connect");
+        debugPrint('WebSocket Connected: ${socket?.id}');
         isConnect = true;
       });
       socket?.onDisconnect((data) {
-        debugPrint("disconnect");
+        debugPrint('WebSocket Disconnected');
         isConnect = false;
       });
 

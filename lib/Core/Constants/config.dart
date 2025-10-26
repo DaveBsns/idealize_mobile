@@ -12,10 +12,10 @@ class AppConfig {
   AppConfig._internal();
 
   String get baseURL =>
-      "http://10.0.2.2:6000"; // https://api.campusconnects.de  |   http://localhost:6000
+      "http://10.0.2.2:4000"; // https://api.campusconnects.de  |   http://localhost:4000
   String get baseFileUrl =>
-      "http://10.0.2.2:6000"; // https://api.campusconnects.de  |   http://localhost:6000
-  String get chatBotServer => "http://10.0.2.2:6000/chat";
+      "http://10.0.2.2:4000"; // https://api.campusconnects.de  |   http://localhost:4000
+  String get chatBotServer => "http://10.0.2.2:4000/chat";
 
   String get termsCondiftionsUrl =>
       "https://landing.campusconnects.de/terms-conditions.htm";

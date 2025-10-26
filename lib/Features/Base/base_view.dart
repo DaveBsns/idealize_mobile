@@ -17,7 +17,7 @@ class AppBaseView extends GetView<BaseViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    // controller.connectSocket();
+    controller.connectSocket();
 
     return GetBuilder<BaseViewModel>(
         init: controller,
